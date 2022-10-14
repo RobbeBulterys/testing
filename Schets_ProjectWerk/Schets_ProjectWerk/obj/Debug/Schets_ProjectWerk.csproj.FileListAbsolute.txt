@@ -1,0 +1,16 @@
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\bin\Debug\Schets_ProjectWerk.exe.config
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\bin\Debug\Schets_ProjectWerk.exe
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\bin\Debug\Schets_ProjectWerk.pdb
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.AssemblyReference.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.SuggestedBindingRedirects.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\MainWindow.g.cs
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\App.g.cs
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk_MarkupCompile.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk_MarkupCompile.lref
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\MainWindow.baml
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.g.resources
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.Properties.Resources.resources
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.GenerateResource.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.CoreCompileInputs.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.exe
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.pdb
