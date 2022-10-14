@@ -14,3 +14,19 @@ C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_P
 C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.CoreCompileInputs.cache
 C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.exe
 C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.pdb
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\bin\Debug\Schets_ProjectWerk.exe.config
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\bin\Debug\Schets_ProjectWerk.exe
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\bin\Debug\Schets_ProjectWerk.pdb
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.AssemblyReference.cache
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.SuggestedBindingRedirects.cache
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\MainWindow.g.cs
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\App.g.cs
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk_MarkupCompile.cache
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk_MarkupCompile.lref
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\MainWindow.baml
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.g.resources
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.Properties.Resources.resources
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.GenerateResource.cache
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.csproj.CoreCompileInputs.cache
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.exe
+E:\programming\github repos\testing\Schets_ProjectWerk\Schets_ProjectWerk\obj\Debug\Schets_ProjectWerk.pdb

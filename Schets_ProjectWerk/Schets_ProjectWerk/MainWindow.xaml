@@ -7,28 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top" Height="30">
+        <DockPanel DockPanel.Dock="Top" Height="35">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="BedrijvenBtn" Content="Bedrijven" Grid.Column="0" Margin="5" Click="BedrijvenBtn_Click" >
+                <Button x:Name="BedrijvenBtn" Content="Bedrijven" Grid.Column="0" Margin="5" Click="TopRowBtn_Click" 
+                        BorderBrush="Black" Background="LightBlue" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="WerknemersBtn" Content="Werknemers" Grid.Column="1" Margin="5" Click="WerknemersBtn_Click">
+                <Button x:Name="WerknemersBtn" Content="Werknemers" Grid.Column="1" Margin="5" Click="TopRowBtn_Click"
+                        BorderBrush="Black" Background="LightBlue" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="BezoekersBtn" Content="Bezoekers" Grid.Column="2" Margin="5" Click="BezoekersBtn_Click">
+                <Button x:Name="BezoekersBtn" Content="Bezoekers" Grid.Column="2" Margin="5" Click="TopRowBtn_Click"
+                        BorderBrush="Black" Background="LightBlue" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -38,7 +41,7 @@
             </Grid>
         </DockPanel>
         <DockPanel>
-            <DockPanel x:Name="BedrijfPanel" DockPanel.Dock="Top" Height="30" Visibility="Hidden">
+            <DockPanel x:Name="BedrijfPanel" DockPanel.Dock="Top" Height="30" Visibility="Visible">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -48,42 +51,42 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Bedrijf Toevoegen" Grid.Column="0" Margin="5" >
+                    <Button x:Name="BedrijfToevoegenBtn" Content="Bedrijf Toevoegen" Grid.Column="0" Margin="5" Click="TopRowBedrijfBtn_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Bedrijf Verwijderen" Grid.Column="1" Margin="5">
+                    <Button x:Name="BedrijfVerwijderenBtn" Content="Bedrijf Verwijderen" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Bedrijf Aanpassen" Grid.Column="2" Margin="5">
+                    <Button x:Name="BedrijfAanpassenBtn" Content="Bedrijf Aanpassen" Grid.Column="2" Margin="5" Click="TopRowBedrijfBtn_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Contract Toevoegen" Grid.Column="3" Margin="5" >
+                    <Button x:Name="ContractToevoegenBtn" Content="Contract Toevoegen" Grid.Column="3" Margin="5" Click="TopRowBedrijfBtn_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Contract Verwijderen" Grid.Column="4" Margin="5">
+                    <Button x:Name="ContractVerwijderenBtn" Content="Contract Verwijderen" Grid.Column="4" Margin="5" Click="TopRowBedrijfBtn_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Contract Aanpassen" Grid.Column="5" Margin="5">
+                    <Button x:Name="ContractAanpassenBtn" Content="Contract Aanpassen" Grid.Column="5" Margin="5" Click="TopRowBedrijfBtn_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>

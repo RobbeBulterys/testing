@@ -25,28 +25,56 @@ namespace Schets_ProjectWerk
             InitializeComponent();
         }
 
-        private void BedrijvenBtn_Click(object sender, RoutedEventArgs e)
+        private void TopRowBtn_Click(object sender, RoutedEventArgs e)
         {
-            BedrijfPanel.Visibility = Visibility.Visible;
-            BedrijvenBtn.Opacity = 1;
-            WerknemersBtn.Opacity = 0.5;
-            BezoekersBtn.Opacity =  0.5;
+            if (sender.GetType() == typeof(Button))
+            {
+                Button button = (Button)sender;
+                BedrijvenBtn.Opacity = 0.5;
+                WerknemersBtn.Opacity = 0.5;
+                BezoekersBtn.Opacity = 0.5;
+                BedrijfPanel.Visibility = Visibility.Hidden;
+                if (button.Name == "BedrijvenBtn")
+                {
+                    BedrijfPanel.Visibility = Visibility.Visible;
+                    BedrijvenBtn.Opacity = 1;
+                    BedrijfToevoegenBtn.Opacity = 1;
+                    BedrijfVerwijderenBtn.Opacity = 1;
+                    BedrijfAanpassenBtn.Opacity = 1;
+                    ContractToevoegenBtn.Opacity = 1;
+                    ContractVerwijderenBtn.Opacity = 1;
+                    ContractAanpassenBtn.Opacity = 1;
+                } 
+                else if (button.Name == "WerknemersBtn")
+                    WerknemersBtn.Opacity = 1;
+                else if (button.Name == "BezoekersBtn")
+                    BezoekersBtn.Opacity = 1;
+            }
         }
-
-        private void WerknemersBtn_Click(object sender, RoutedEventArgs e)
+        private void TopRowBedrijfBtn_Click(object sender, RoutedEventArgs e)
         {
-            BedrijfPanel.Visibility = Visibility.Hidden;
-            BedrijvenBtn.Opacity = 0.5;
-            WerknemersBtn.Opacity = 1;
-            BezoekersBtn.Opacity = 0.5;
-        }
-
-        private void BezoekersBtn_Click(object sender, RoutedEventArgs e)
-        {
-            BedrijfPanel.Visibility = Visibility.Hidden;
-            BedrijvenBtn.Opacity = 0.5;
-            WerknemersBtn.Opacity = 0.5;
-            BezoekersBtn.Opacity = 1;
+            if (sender.GetType() == typeof(Button))
+            {
+                Button button = (Button)sender;
+                BedrijfToevoegenBtn.Opacity = 0.5;
+                BedrijfVerwijderenBtn.Opacity = 0.5;
+                BedrijfAanpassenBtn.Opacity = 0.5;
+                ContractToevoegenBtn.Opacity = 0.5;
+                ContractVerwijderenBtn.Opacity = 0.5;
+                ContractAanpassenBtn.Opacity = 0.5;
+                if (button.Name == "BedrijfToevoegenBtn")
+                    BedrijfToevoegenBtn.Opacity = 1;
+                else if (button.Name == "BedrijfVerwijderenBtn")
+                    BedrijfVerwijderenBtn.Opacity = 1;
+                else if (button.Name == "BedrijfAanpassenBtn")
+                    BedrijfAanpassenBtn.Opacity = 1;
+                else if (button.Name == "ContractToevoegenBtn")
+                    ContractToevoegenBtn.Opacity = 1;
+                else if (button.Name == "ContractVerwijderenBtn")
+                    ContractVerwijderenBtn.Opacity = 1;
+                else if (button.Name == "ContractAanpassenBtn")
+                    ContractAanpassenBtn.Opacity = 1;
+            }
         }
     }
 }
