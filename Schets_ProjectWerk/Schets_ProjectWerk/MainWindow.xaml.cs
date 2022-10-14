@@ -34,9 +34,12 @@ namespace Schets_ProjectWerk
                 WerknemersBtn.Opacity = 0.5;
                 BezoekersBtn.Opacity = 0.5;
                 BedrijfPanel.Visibility = Visibility.Hidden;
+                BedrijfToevoegenGridPanel.Visibility = Visibility.Hidden;
+                TopSecondDP.Background = Brushes.LightGray;
                 if (button.Name == "BedrijvenBtn")
                 {
                     BedrijfPanel.Visibility = Visibility.Visible;
+                    TopSecondDP.Background = Brushes.Gray;
                     BedrijvenBtn.Opacity = 1;
                     BedrijfToevoegenBtn.Opacity = 1;
                     BedrijfVerwijderenBtn.Opacity = 1;
@@ -62,8 +65,12 @@ namespace Schets_ProjectWerk
                 ContractToevoegenBtn.Opacity = 0.5;
                 ContractVerwijderenBtn.Opacity = 0.5;
                 ContractAanpassenBtn.Opacity = 0.5;
+                BedrijfToevoegenGridPanel.Visibility = Visibility.Hidden;
                 if (button.Name == "BedrijfToevoegenBtn")
+                {
+                    BedrijfToevoegenGridPanel.Visibility = Visibility.Visible;
                     BedrijfToevoegenBtn.Opacity = 1;
+                }
                 else if (button.Name == "BedrijfVerwijderenBtn")
                     BedrijfVerwijderenBtn.Opacity = 1;
                 else if (button.Name == "BedrijfAanpassenBtn")
