@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Creating an xml file using c#-->
+<Users>
+  <User>
+    <Firstname>Robbe</Firstname>
+    <Lastname>Bulterys</Lastname>
+    <Username>Scairbite</Username>
+    <Password>AF49689EC2FB6D36D9B3</Password>
+    <Darts>
+      <ScoreTraining />
+    </Darts>
+  </User>
+  <User>
+    <Firstname>Root</Firstname>
+    <Lastname>Root</Lastname>
+    <Username>Root</Username>
+    <Password>68F411</Password>
+    <Darts>
+      <ScoreTraining>
+        <TotalPoints>394</TotalPoints>
+        <AveragePoints>78.8</AveragePoints>
+        <TotalOfTurns>5</TotalOfTurns>
+      </ScoreTraining>
+    </Darts>
+  </User>
+  <User>
+    <Firstname>A</Firstname>
+    <Lastname>A</Lastname>
+    <Username>A</Username>
+    <Password>1</Password>
+    <Darts>
+      <ScoreTraining>
+        <TotalPoints>620</TotalPoints>
+        <AveragePoints>62</AveragePoints>
+        <TotalOfTurns>10</TotalOfTurns>
+        <TotalPoints>320</TotalPoints>
+        <AveragePoints>45.71</AveragePoints>
+        <TotalOfTurns>7</TotalOfTurns>
+      </ScoreTraining>
+    </Darts>
+  </User>
+</Users>

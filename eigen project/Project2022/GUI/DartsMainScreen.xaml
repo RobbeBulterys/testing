@@ -1,0 +1,142 @@
+﻿<Window x:Class="GUI.DartsMainScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="DartsMainScreen" Height="600" Width="1200"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        >
+    <DockPanel>
+        <DockPanel.Background>
+            <ImageBrush ImageSource="Pictures/Darts-Home-Page.jpg" Stretch="UniformToFill"/>
+        </DockPanel.Background>
+        <StackPanel>
+            <StackPanel>
+                <DockPanel Background="Black">
+                    <DockPanel HorizontalAlignment="Left">
+                        <Button x:Name="btnHomeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Content="Home" FontSize="24" Margin="10,0,0,0" Click="btnHomeButton_Click"/>
+                    </DockPanel>
+                    <DockPanel HorizontalAlignment="Right">
+                        <Button x:Name="btnMinimizeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="-" Click="btnMinimizeButton_Click"/>
+                        <Button x:Name="btnMaximizeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="[]" Click="btnMaximizeButton_Click"/>
+                        <Button x:Name="btnCloseButton" Style="{DynamicResource SecondaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="x" Click="btnCloseButton_Click"/>
+                    </DockPanel>
+                </DockPanel>
+            </StackPanel>
+            <DockPanel>
+                <Label Content="Nieuw spel" Foreground="White" HorizontalAlignment="Left" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
+                <Label Content="SPELINSTELLINGEN" Foreground="White" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Button x:Name="btnWedstrijd" Style="{DynamicResource DartsMainScreenButtonStyle}" Height="32" HorizontalContentAlignment="Left" BorderThickness="0" Content="   Wedstrijd" FontSize="18" Width="200" Click="btnWedstrijd_Click"/>
+                <ComboBox x:Name="cmbWedstrijdTotalPoints" Width="100" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="cmbWedstrijdTotalPoints_MouseEnter">
+                    <ComboBoxItem Content="301" IsSelected="True"/>
+                    <ComboBoxItem Content="501"/>
+                    <ComboBoxItem Content="701"/>
+                </ComboBox>
+                <ComboBox x:Name="cmbWedstrijdBestFirstOf" Width="100" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <ComboBoxItem Content="BEST OF" IsSelected="True"/>
+                    <ComboBoxItem Content="FIRST OF"/>
+                </ComboBox>
+                <ComboBox x:Name="cmbWedstrijdOneToTen" Width="50" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="cmbWedstrijdOneToTen_MouseEnter">
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5" IsSelected="True"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="9"/>
+                    <ComboBoxItem Content="10"/>
+                </ComboBox>
+                <ComboBox x:Name="cmbWedstrijdSetsOrLegs" Width="100" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <ComboBoxItem Content="SETS" IsSelected="True"/>
+                    <ComboBoxItem Content="LEGS"/>
+                </ComboBox>
+                <ComboBox x:Name="cmbWedstrijdIn" Width="120" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="cmbWedstrijdIn_MouseEnter">
+                    <ComboBoxItem Content="STRAIGHT IN" IsSelected="True"/>
+                    <ComboBoxItem Content="DOUBLE IN"/>
+                    <ComboBoxItem Content="MASTER IN"/>
+                </ComboBox>
+                <ComboBox x:Name="cmbWedstrijdOut" Width="120" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="cmbWedstrijdOut_MouseEnter">
+                    <ComboBoxItem Content="DOUBLE OUT" IsSelected="True"/>
+                    <ComboBoxItem Content="MASTER OUT"/>
+                    <ComboBoxItem Content="STRAIGHT OUT"/>
+                </ComboBox>
+                <Label x:Name="lblWedstrijdExtraInfo" Content="Here comes extra informatie" Margin="25,0,0,0" Foreground="White" FontSize="16"/>
+                <Button x:Name="btnStartSpelWedstrijd" HorizontalAlignment="Right" FontSize="18" Width="150" Content="START SPEL" Style="{DynamicResource DartsStartSpelButtonStyle}" VerticalContentAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Button x:Name="btnCricket" Style="{DynamicResource DartsMainScreenButtonStyle}" Height="32" HorizontalAlignment="Left" HorizontalContentAlignment="Left" BorderThickness="0" Content="   Cricket" FontSize="18" Width="200" Click="btnCricket_Click"/>
+                <Label x:Name="lblCricket" Margin="25,0,0,0" Foreground="White" FontSize="16" Content="De bedoeling van Cricket is om alle getallen van 15 t.e.m 20 dicht te gooien. Dit doe je door elk getal 3 keer te raken. Single = 1, Double = 2, Triple = 3"/>
+                <Button x:Name="btnStartSpelCricket" HorizontalAlignment="Right" FontSize="18" Width="150" Content="START SPEL" Style="{DynamicResource DartsStartSpelButtonStyle}"/>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Button x:Name="btnTactics" Style="{DynamicResource DartsMainScreenButtonStyle}" Height="32" HorizontalAlignment="Left" HorizontalContentAlignment="Left" BorderThickness="0" Content="   Tactics" FontSize="18" Width="200" Click="btnTactics_Click"/>
+                <Label x:Name="lblTactics" Margin="25,0,0,0" Foreground="White" FontSize="16" Content="De bedoeling van Tactics is om alle getallen van 10 t.e.m 20 dicht te gooien. Dit doe je door elk getal 3 keer te raken. Single = 1, Double = 2, Triple = 3"/>
+                <Button x:Name="btnStartSpelTactics" HorizontalAlignment="Right" FontSize="18" Width="150" Content="START SPEL" Style="{DynamicResource DartsStartSpelButtonStyle}"/>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Button x:Name="btnSingleTraining" Style="{DynamicResource DartsMainScreenButtonStyle}" Height="32" HorizontalAlignment="Left" HorizontalContentAlignment="Left" BorderThickness="0" Content="   Singles training" FontSize="18" Width="200" Click="btnSingleTraining_Click"/>
+                <ComboBox x:Name="cmbSingleTrainingKeuze" Width="160" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <ComboBoxItem Content="LAAG NAAR HOOG" IsSelected="True"/>
+                    <ComboBoxItem Content="HOOG NAAR LAAG"/>
+                    <ComboBoxItem Content="WILLEKEURIG"/>
+                </ComboBox>
+                <Label x:Name="lblSingleTraining" Margin="25,0,0,0" Foreground="White" FontSize="16" Content="Gooi elke beurt 3 pijlen op het getoonde getal. Single = 1, Double = 2, Triple = 3"/>
+                <Button x:Name="btnStartSpelSingleTraining" HorizontalAlignment="Right" FontSize="18" Width="150" Content="START SPEL" Style="{DynamicResource DartsStartSpelButtonStyle}"/>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Button x:Name="btnDoublesTraining" Style="{DynamicResource DartsMainScreenButtonStyle}" Height="32" HorizontalAlignment="Left" HorizontalContentAlignment="Left" BorderThickness="0" Content="   Double training" FontSize="18" Width="200" Click="btnDoublesTraining_Click"/>
+                <ComboBox x:Name="cmbDoubleTrainingKeuze" Width="160" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <ComboBoxItem Content="LAAG NAAR HOOG" IsSelected="True"/>
+                    <ComboBoxItem Content="HOOG NAAR LAAG"/>
+                    <ComboBoxItem Content="WILLEKEURIG"/>
+                </ComboBox>
+                <Label x:Name="lblDoubleTraining" Margin="25,0,0,0" Foreground="White" FontSize="16" Content="Gooi elke beurt op de getoonde dubbel. Wanneer je de dubbel hebt geraakt is je beurt voorbij en ga je door naar de volgende dubbel"/>
+                <Button x:Name="btnStartSpelDoublesTraining" HorizontalAlignment="Right" FontSize="18" Width="150" Content="START SPEL" Style="{DynamicResource DartsStartSpelButtonStyle}"/>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Button x:Name="btnBobs27" Style="{DynamicResource DartsMainScreenButtonStyle}" Height="32" HorizontalAlignment="Left" HorizontalContentAlignment="Left" BorderThickness="0" Content="   Bob's 27" FontSize="18" Width="200" Click="btnBobs27_Click"/>
+                <ComboBox x:Name="cmbBobs27" Width="100" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <ComboBoxItem Content="MAKKELIJK" IsSelected="True"/>
+                    <ComboBoxItem Content="MOEILIJK"/>
+                </ComboBox>
+                <Label x:Name="lblBobs27" Margin="25,0,0,0" Foreground="White" FontSize="16" Content="Bij bob's 27 begin je met 27 punten. Gooi elke beurt 3 pijlen op de double die in beeld staat. Makkelijke modus mag score onder nul komen"/>
+                <Button x:Name="btnStartSpelBobs27" HorizontalAlignment="Right" FontSize="18" Width="150" Content="START SPEL" Style="{DynamicResource DartsStartSpelButtonStyle}"/>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Button x:Name="btnScoreTraining" Style="{DynamicResource DartsMainScreenButtonStyle}" Height="32" HorizontalAlignment="Left" HorizontalContentAlignment="Left" BorderThickness="0" Content="   Score training" FontSize="18" Width="200" Click="btnScoreTraining_Click"/>
+                <Label x:Name="lblScoreTraining" Margin="25,0,0,0" Foreground="White" FontSize="16" Content="Hoeveel beurten:"/>
+                <ComboBox x:Name="cmbScoreTrainingNumbers" Width="50" Margin="25,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="9"/>
+                    <ComboBoxItem Content="10" IsSelected="True"/>
+                    <ComboBoxItem Content="11"/>
+                    <ComboBoxItem Content="12"/>
+                    <ComboBoxItem Content="13"/>
+                    <ComboBoxItem Content="14"/>
+                    <ComboBoxItem Content="15"/>
+                    <ComboBoxItem Content="16"/>
+                    <ComboBoxItem Content="17"/>
+                    <ComboBoxItem Content="18"/>
+                    <ComboBoxItem Content="19"/>
+                    <ComboBoxItem Content="20"/>
+                </ComboBox>
+                <Label x:Name="lblScoreTraining2" Margin="25,0,0,0" Foreground="White" FontSize="16" Content="Probeer elke beurt een zo hoog mogelijke score te gooien"/>
+                <Button x:Name="btnStartSpelScoreTraining" HorizontalAlignment="Right" FontSize="18" Width="150" Content="START SPEL" Style="{DynamicResource DartsStartSpelButtonStyle}" Click="btnStartSpelScoreTraining_Click"/>
+            </DockPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>

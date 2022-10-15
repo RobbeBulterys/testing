@@ -1,0 +1,98 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0-windows7.0": {
+      "Domein/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Domein.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domein.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Domein/1.0.0": {
+      "type": "project",
+      "path": "../Domein/Domein.csproj",
+      "msbuildProject": "../Domein/Domein.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0-windows7.0": [
+      "Domein >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Robbe Bulterys\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Robbe Bulterys\\Desktop\\school 2021-2022\\eigen project\\Project2022\\GUI\\GUI.csproj",
+      "projectName": "GUI",
+      "projectPath": "C:\\Users\\Robbe Bulterys\\Desktop\\school 2021-2022\\eigen project\\Project2022\\GUI\\GUI.csproj",
+      "packagesPath": "C:\\Users\\Robbe Bulterys\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Robbe Bulterys\\Desktop\\school 2021-2022\\eigen project\\Project2022\\GUI\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Robbe Bulterys\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0-windows7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "projectReferences": {
+            "C:\\Users\\Robbe Bulterys\\Desktop\\school 2021-2022\\eigen project\\Project2022\\Domein\\Domein.csproj": {
+              "projectPath": "C:\\Users\\Robbe Bulterys\\Desktop\\school 2021-2022\\eigen project\\Project2022\\Domein\\Domein.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

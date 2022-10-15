@@ -1,0 +1,78 @@
+﻿<Window x:Class="GUI.StatistiekenMainScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="StatistiekenMainScreen" Height="450" Width="800"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        >
+    <DockPanel>
+        <Grid Background="Gray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Background="Black" Height="50" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel HorizontalAlignment="Left" Grid.Column="0">
+                    <Button x:Name="btnHomeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Content="Home" FontSize="24" Margin="10,0,0,0" Click="btnHomeButton_Click"/>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" Grid.Column="1">
+                    <Label Content="STATISTIEKEN" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24"/>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Right" Grid.Column="2">
+                    <Button x:Name="btnMinimizeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="-" Click="btnMinimizeButton_Click"/>
+                    <Button x:Name="btnMaximizeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="[]" Click="btnMaximizeButton_Click"/>
+                    <Button x:Name="btnCloseButton" Style="{DynamicResource SecondaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="x" Click="btnCloseButton_Click"/>
+                </DockPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="cmbStatistieken" Grid.Column="0" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="cmbStatistieken_SelectionChanged">
+                            <ComboBoxItem Content="Wedstrijd" IsSelected="True"/>
+                            <ComboBoxItem Content="Cricket"/>
+                            <ComboBoxItem Content="Tactics"/>
+                            <ComboBoxItem Content="Single Training"/>
+                            <ComboBoxItem Content="Double Training"/>
+                            <ComboBoxItem Content="Bob's 27"/>
+                            <ComboBoxItem Content="Score Training"/>
+                        </ComboBox>
+                        <Label x:Name="lblUsername" FontSize="24" Content="Username" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ListView x:Name="lstvDartsScoreTraining" ItemsSource="{Binding Statistieken}" Visibility="Hidden">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="TotalPoints" Width="120" DisplayMemberBinding="{Binding TotalPoints}"/>
+                                    <GridViewColumn Header="AveragePoints" Width="120" DisplayMemberBinding="{Binding AveragePoints}"/>
+                                    <GridViewColumn Header="TotalOfTurns" Width="120" DisplayMemberBinding="{Binding TotalOfTurns}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>

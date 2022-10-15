@@ -1,0 +1,287 @@
+﻿<Window x:Class="GUI.DartsScoreTraining"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="DartsScoreTraining" Height="450" Width="800"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        >
+    <DockPanel>
+        <Grid Background="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Background="Black" Height="50" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel HorizontalAlignment="Left" Grid.Column="0">
+                    <Button x:Name="btnHomeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Content="Home" FontSize="24" Margin="10,0,0,0" Click="btnHomeButton_Click"/>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" Grid.Column="1">
+                    <Label Content="SCORE TRAINING" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24"/>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Right" Grid.Column="2">
+                    <Button x:Name="btnMinimizeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="-" Click="btnMinimizeButton_Click"/>
+                    <Button x:Name="btnMaximizeButton" Style="{DynamicResource PrimaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="[]" Click="btnMaximizeButton_Click"/>
+                    <Button x:Name="btnCloseButton" Style="{DynamicResource SecondaryButtonStyle}" BorderThickness="0" Foreground="White" Width="40" FontSize="24" Content="x" Click="btnCloseButton_Click"/>
+                </DockPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Background="LightGray">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="DarkSlateGray">
+                        <Label x:Name="lblUsername" Content="Username" FontWeight="Bold" Foreground="White" FontSize="24" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="LightGray">
+                        <Label x:Name="lblAverage" Content="0.00" FontWeight="Bold" Foreground="Black" FontSize="24" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Background="LightGray">
+                        <Label x:Name="lbl3DartGem" Content="3-dart gem." Foreground="Black" FontSize="16" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Background="LightGray">
+                        <Label x:Name="lblTotalScore" Content="0" FontWeight="Bold" Foreground="Black" FontSize="24" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Background="LightGray">
+                        <Label x:Name="lblTotaleScoreContext" Content="Totalescore" Foreground="Black" FontSize="16" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="5" Background="LightGray">
+                        <Label x:Name="lblAantalBeurten" Content="0" FontWeight="Bold" Foreground="Black" FontSize="24" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="6" Background="LightGray">
+                        <Label x:Name="lblBeurtenOver" Content="beurten over" Foreground="Black" FontSize="16" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1" Background="DarkSlateGray">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Button x:Name="btnNumpad" Content="numpad" Foreground="White" Background="CadetBlue" Style="{DynamicResource PrimaryButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnNumpad_Click"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnScore" Content="score" Foreground="White" Style="{DynamicResource PrimaryButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnScore_Click"/>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="GridNumpad" Grid.Row="1" Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Button x:Name="btnPrevious" Background="Red" Style="{DynamicResource NumpadButtonStyle}" Content="left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnPrevious_Click"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Label x:Name="lblScore" Background="White" Content="score" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button x:Name="btnNext" Background="CadetBlue" Style="{DynamicResource NumpadButtonStyle}" Content="right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnNext_Click"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Button x:Name="btn1" Content="1" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn1_Click"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button x:Name="btn2" Content="2" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn2_Click"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button x:Name="btn3" Content="3" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn3_Click"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Button x:Name="btn4" Content="4" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn4_Click"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button x:Name="btn5" Content="5" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn5_Click"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button x:Name="btn6" Content="6" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn6_Click"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Button x:Name="btn7" Content="7" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn7_Click"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button x:Name="btn8" Content="8" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn8_Click"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button x:Name="btn9" Content="9" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn9_Click"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1">
+                                <Button x:Name="btn0" Content="0" Style="{DynamicResource NumpadButtonStyle}" Background="SlateGray" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn0_Click"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button x:Name="btnNumpadLeft" Content="left" Style="{DynamicResource PrimaryButtonStyle}" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnNumpadLeft_Click"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="GridScore" Grid.Row="1" Background="DarkSlateGray" Visibility="Hidden">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblFirstArrow" Grid.Column="0" Background="Gray" Foreground="White" FontSize="24" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                <Image x:Name="ImageDartsFirstArrow" Source="Pictures/darts-arrows-symbol.png" Stretch="Fill"/>
+                            </Label>
+                            <Label x:Name="lblSecondArrow" Grid.Column="1" Background="Gray" Foreground="White" FontSize="24" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                <Image x:Name="ImageDartsSecondArrow" Source="Pictures/darts-arrows-symbol.png" Stretch="Fill"/>
+                            </Label>
+                            <Label x:Name="lblthirdArrow" Grid.Column="2" Background="Gray" Foreground="White" FontSize="24" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                <Image x:Name="ImageDartsThirdArrow" Source="Pictures/darts-arrows-symbol.png" Stretch="Fill"/>
+                            </Label>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnSingle" Grid.Column="0" Background="LightGray" Foreground="Blue" Style="{DynamicResource PrimaryButtonStyle}" Content="SINGLE" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnSingle_Click"/>
+                            <Button x:Name="btnDouble" Grid.Column="1" Foreground="White" Style="{DynamicResource PrimaryButtonStyle}" Content="DUBBEL" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnDouble_Click"/>
+                            <Button x:Name="btnTriple" Grid.Column="2" Foreground="White" Style="{DynamicResource PrimaryButtonStyle}" Content="TRIPLE" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnTriple_Click"/>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnGridScore1" Content="1" Grid.Column="0" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore2" Content="2" Grid.Column="1" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore3" Content="3" Grid.Column="2" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore4" Content="4" Grid.Column="3" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore5" Content="5" Grid.Column="4" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnGridScore6" Content="6" Grid.Column="0" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore7" Content="7" Grid.Column="1" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore8" Content="8" Grid.Column="2" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore9" Content="9" Grid.Column="3" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore10" Content="10" Grid.Column="4" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnGridScore11" Content="11" Grid.Column="0" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore12" Content="12" Grid.Column="1" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore13" Content="13" Grid.Column="2" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore14" Content="14" Grid.Column="3" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore15" Content="15" Grid.Column="4" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnGridScore16" Content="16" Grid.Column="0" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore17" Content="17" Grid.Column="1" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore18" Content="18" Grid.Column="2" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore19" Content="19" Grid.Column="3" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScore20" Content="20" Grid.Column="4" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                        </Grid>
+                        <Grid Grid.Row="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnGridScoreLeft" Background="Red" Content="Back" Grid.Column="0" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScoreLeft_Click"/>
+                            <Button x:Name="btnGridScore25" Content="25" Grid.Column="1" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScoreBull" Content="Bull" Grid.Column="2" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScoreMis" Content="Mis" Grid.Column="3" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScore1_Click"/>
+                            <Button x:Name="btnGridScoreRight" Background="Blue" Content="Next" Grid.Column="4" Style="{DynamicResource NumpadButtonStyle}" FontSize="16" Click="btnGridScoreRight_Click"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
