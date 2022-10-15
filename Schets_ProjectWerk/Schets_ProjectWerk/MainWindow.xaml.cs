@@ -47,8 +47,7 @@ namespace Schets_ProjectWerk
                     TopSecondDP.Background = Brushes.Gray;
                     WerknemersBtn.Opacity = 1;
                     WerknemerToevoegenBtn.Opacity = 1;
-                    WerknemerVerwijderenBtn.Opacity = 1;
-                    WerknemerAanpassenBtn.Opacity = 1;
+                    WerknemerOpzoekenBtn.Opacity = 1;
                 }
                 else if (button.Name == "BezoekersBtn")
                 {
@@ -56,8 +55,7 @@ namespace Schets_ProjectWerk
                     TopSecondDP.Background = Brushes.Gray;
                     BezoekersBtn.Opacity = 1;
                     BezoekerToevoegenBtn.Opacity = 1;
-                    BezoekerVerwijderenBtn.Opacity = 1;
-                    BezoekerAanpassenBtn.Opacity = 1;
+                    BezoekerOpzoekenBtn.Opacity = 1;
                 }
             }
         }
@@ -71,6 +69,10 @@ namespace Schets_ProjectWerk
             BezoekerPanel.Visibility = Visibility.Hidden;
             BedrijfToevoegenGridPanel.Visibility = Visibility.Collapsed;
             BedrijfOpzoekenGridPanel.Visibility = Visibility.Collapsed;
+            WerknemerToevoegenGridPanel.Visibility = Visibility.Collapsed;
+            WerknemerOpzoekenGridPanel.Visibility = Visibility.Collapsed;
+            BezoekerToevoegenGridPanel.Visibility = Visibility.Collapsed;
+            BezoekerOpzoekenGridPanel.Visibility = Visibility.Collapsed;
             TopSecondDP.Background = Brushes.LightGray;
         }
         private void TopRowBedrijfBtn_Click(object sender, RoutedEventArgs e)
@@ -94,17 +96,25 @@ namespace Schets_ProjectWerk
                 else if (button.Name == "ContractOpzoekenBtn")
                     ContractOpzoekenBtn.Opacity = 1;
                 else if (button.Name == "WerknemerToevoegenBtn")
+                {
+                    WerknemerToevoegenGridPanel.Visibility = Visibility.Visible;
                     WerknemerToevoegenBtn.Opacity = 1;
-                else if (button.Name == "WerknemerVerwijderenBtn")
-                    WerknemerVerwijderenBtn.Opacity = 1;
-                else if (button.Name == "WerknemerAanpassenBtn")
-                    WerknemerAanpassenBtn.Opacity = 1;
+                }
+                else if (button.Name == "WerknemerOpzoekenBtn")
+                {
+                    WerknemerOpzoekenGridPanel.Visibility = Visibility.Visible;
+                    WerknemerOpzoekenBtn.Opacity = 1;
+                }
                 else if (button.Name == "BezoekerToevoegenBtn")
+                {
+                    BezoekerToevoegenGridPanel.Visibility = Visibility.Visible;
                     BezoekerToevoegenBtn.Opacity = 1;
-                else if (button.Name == "BezoekerVerwijderenBtn")
-                    BezoekerVerwijderenBtn.Opacity = 1;
-                else if (button.Name == "BezoekerAanpassenBtn")
-                    BezoekerAanpassenBtn.Opacity = 1;
+                }
+                else if (button.Name == "BezoekerOpzoekenBtn")
+                {
+                    BezoekerOpzoekenGridPanel.Visibility = Visibility.Visible;
+                    BezoekerOpzoekenBtn.Opacity = 1;
+                }
             }
         }
         private void TopRowBedrijfBtnExtras()
@@ -118,12 +128,14 @@ namespace Schets_ProjectWerk
             ContractOpzoekenBtn.Opacity = 0.5;
 
             WerknemerToevoegenBtn.Opacity = 0.5;
-            WerknemerVerwijderenBtn.Opacity = 0.5;
-            WerknemerAanpassenBtn.Opacity = 0.5;
+            WerknemerOpzoekenBtn.Opacity = 0.5;
+            WerknemerToevoegenGridPanel.Visibility = Visibility.Collapsed;
+            WerknemerOpzoekenGridPanel.Visibility = Visibility.Collapsed;
 
             BezoekerToevoegenBtn.Opacity = 0.5;
-            BezoekerVerwijderenBtn.Opacity = 0.5;
-            BezoekerAanpassenBtn.Opacity = 0.5;
+            BezoekerOpzoekenBtn.Opacity = 0.5;
+            BezoekerToevoegenGridPanel.Visibility = Visibility.Collapsed;
+            BezoekerOpzoekenGridPanel.Visibility = Visibility.Collapsed;
         }
     }
 }

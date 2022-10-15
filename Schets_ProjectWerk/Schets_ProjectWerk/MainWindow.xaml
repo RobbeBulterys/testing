@@ -103,7 +103,6 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button x:Name="WerknemerToevoegenBtn" Content="Werknemer Toevoegen" Grid.Column="0" Margin="5" Click="TopRowBedrijfBtn_Click">
                                 <Button.Resources>
@@ -112,14 +111,7 @@
                                     </Style>
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="WerknemerVerwijderenBtn" Content="Werknemer Verwijderen" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
-                                <Button.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="10"/>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-                            <Button x:Name="WerknemerAanpassenBtn" Content="Werknemer Aanpassen" Grid.Column="2" Margin="5" Click="TopRowBedrijfBtn_Click">
+                            <Button x:Name="WerknemerOpzoekenBtn" Content="Werknemer Opzoeken" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -134,7 +126,6 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button x:Name="BezoekerToevoegenBtn" Content="Bezoeker Toevoegen" Grid.Column="0" Margin="5" Click="TopRowBedrijfBtn_Click">
                                 <Button.Resources>
@@ -143,14 +134,7 @@
                                     </Style>
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="BezoekerVerwijderenBtn" Content="Bezoeker Verwijderen" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
-                                <Button.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="10"/>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-                            <Button x:Name="BezoekerAanpassenBtn" Content="Bezoeker Aanpassen" Grid.Column="2" Margin="5" Click="TopRowBedrijfBtn_Click">
+                            <Button x:Name="BezoekerOpzoekenBtn" Content="Bezoeker Opzoeken" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -209,7 +193,7 @@
                             <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2"/>
                             <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2"/>
 
-                            <Button x:Name="BedrijfToefoegenToevoegBtn" Content="Bedrijf Toevoegen" Grid.Column="4" Grid.Row="7" Margin="5" 
+                            <Button x:Name="BedrijfToevoegenToevoegBtn" Content="Bedrijf Toevoegen" Grid.Column="4" Grid.Row="7" Margin="5" 
                                     BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
@@ -299,6 +283,272 @@
                                 </Button.Resources>
                             </Button>
                             <Button x:Name="BedrijfOpvragenAanpassenBtn" Content="Bedrijf Aanpassen" Grid.Column="3" Grid.Row="8" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Werknemer toevoegen scherm-->
+                    <DockPanel x:Name="WerknemerToevoegenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" MinWidth="200" MaxWidth="300"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Naam en Voornaam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
+                            <TextBlock Text="Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1"/>
+                            <TextBlock Text="Bedrijf Id:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2"/>
+                            <TextBlock Text="Bedrijf Functie:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="3"/>
+
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4"/>
+
+                            <Button x:Name="WerknemerToevoegenToevoegBtn" Content="Werknemer Toevoegen" Grid.Column="4" Grid.Row="4" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Werknemer aanpassen scherm-->
+                    <DockPanel x:Name="WerknemerOpzoekenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*" MinWidth="200" MaxWidth="300"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.6*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Filters:      " FontWeight="Bold" FontSize="24" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
+                                
+                                <TextBlock Text="Naam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="0"/>
+                                
+                                <TextBlock Text="VoorNaam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="0"/>
+                                
+                                <TextBlock Text="Bedrijf Id:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="5" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="6" Grid.Row="0"/>
+
+                                <TextBlock Text="Bedrijf Functie:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="9" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="10" Grid.Row="0"/>
+
+                                <TextBlock Text="Email:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="7" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="8" Grid.Row="0"/>
+                                
+                                <Button x:Name="WerknemerOpvragenFilterBtn" Content="filter" Grid.Column="11" Grid.Row="0" Margin="5" Height="40" Padding="10,0,10,0"
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                    <Button.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </Grid>
+
+                            <ListBox Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18">
+                                <ListBoxItem Content="Test"/>
+                            </ListBox>
+                            <TextBlock Text="Naam en Voornaam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock Text="Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2"/>
+                            <TextBlock Text="Bedrijf Id:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="3"/>
+                            <TextBlock Text="Bedrijf Functie:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="4"/>
+
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="1"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"/>
+
+                            <Button x:Name="WerknemerOpvragenVerwijderenBtn" Content="Werknemer Verwijderen" Grid.Column="4" Grid.Row="5" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="WerknemerOpvragenAanpassenBtn" Content="Werknemer Aanpassen" Grid.Column="3" Grid.Row="5" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Bezoeker toevoegen scherm-->
+                    <DockPanel x:Name="BezoekerToevoegenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" MinWidth="200" MaxWidth="300"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Naam en Voornaam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
+                            <TextBlock Text="Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1"/>
+                            <TextBlock Text="Bedrijf Naam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2"/>
+
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4"/>
+
+                            <Button x:Name="BezoekerToevoegenToevoegBtn" Content="Werknemer Toevoegen" Grid.Column="4" Grid.Row="3" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Bezoeker aanpassen scherm-->
+                    <DockPanel x:Name="BezoekerOpzoekenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*" MinWidth="200" MaxWidth="300"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.6*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Filters:      " FontWeight="Bold" FontSize="24" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
+
+                                <TextBlock Text="Naam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="0"/>
+
+                                <TextBlock Text="VoorNaam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="0"/>
+
+                                <TextBlock Text="Persoon Id:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="5" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="6" Grid.Row="0"/>
+
+                                <TextBlock Text="Bedrijf Naam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="9" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="10" Grid.Row="0"/>
+
+                                <TextBlock Text="Email:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="7" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="8" Grid.Row="0"/>
+
+                                <Button x:Name="BezoekerOpvragenFilterBtn" Content="filter" Grid.Column="11" Grid.Row="0" Margin="5" Height="40" Padding="10,0,10,0"
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                    <Button.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </Grid>
+
+                            <ListBox Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18">
+                                <ListBoxItem Content="Test"/>
+                            </ListBox>
+                            <TextBlock Text="Naam en Voornaam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock Text="Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2"/>
+                            <TextBlock Text="Bedrijf Naam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="3"/>
+
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="1"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"/>
+
+                            <Button x:Name="BezoekerOpvragenVerwijderenBtn" Content="Werknemer Verwijderen" Grid.Column="4" Grid.Row="4" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="BezoekerOpvragenAanpassenBtn" Content="Werknemer Aanpassen" Grid.Column="3" Grid.Row="4" Margin="5" 
                                     BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
