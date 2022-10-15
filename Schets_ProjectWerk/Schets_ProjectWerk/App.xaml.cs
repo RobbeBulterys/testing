@@ -13,5 +13,11 @@ namespace Schets_ProjectWerk
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            window.WindowState = WindowState.Maximized;
+            window.Show();
+        }
     }
 }

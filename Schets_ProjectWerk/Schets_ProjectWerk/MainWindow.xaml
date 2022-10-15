@@ -8,13 +8,15 @@
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top" Height="35" Background="Gray">
+            <!--Grid: Keuzescherm (Bedrijf/Werknemer/Bezoeker)-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="BedrijvenBtn" Content="Bedrijven" Grid.Column="0" Margin="5" Click="TopRowBtn_Click" 
+                <!--Button: Keuzescherm (Bedrijf)-->
+                <Button x:Name="BedrijvenBtn" Content="Bedrijf" Grid.Column="0" Margin="5" Click="TopRowBtn_Click" 
                         BorderBrush="Black" Background="LightBlue" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -22,7 +24,8 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="WerknemersBtn" Content="Werknemers" Grid.Column="1" Margin="5" Click="TopRowBtn_Click"
+                <!--Button: Keuzescherm (Werknemer)-->
+                <Button x:Name="WerknemersBtn" Content="Werknemer" Grid.Column="1" Margin="5" Click="TopRowBtn_Click"
                         BorderBrush="Black" Background="LightBlue" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -30,7 +33,8 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="BezoekersBtn" Content="Bezoekers" Grid.Column="2" Margin="5" Click="TopRowBtn_Click"
+                <!--Button: Keuzescherm (Bezoeker)-->
+                <Button x:Name="BezoekersBtn" Content="Bezoeker" Grid.Column="2" Margin="5" Click="TopRowBtn_Click"
                         BorderBrush="Black" Background="LightBlue" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -41,91 +45,269 @@
             </Grid>
         </DockPanel>
         <DockPanel x:Name="TopSecondDP" Background="LightGray">
-            <DockPanel x:Name="BedrijfPanel" DockPanel.Dock="Top" Height="30" Visibility="Hidden">
+            <DockPanel DockPanel.Dock="Top" Height="30" Visibility="Visible">
                 <Grid>
+                    <!--Grid definitie-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="BedrijfToevoegenBtn" Content="Bedrijf Toevoegen" Grid.Column="0" Margin="5" Click="TopRowBedrijfBtn_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Button x:Name="BedrijfVerwijderenBtn" Content="Bedrijf Verwijderen" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Button x:Name="BedrijfAanpassenBtn" Content="Bedrijf Aanpassen" Grid.Column="2" Margin="5" Click="TopRowBedrijfBtn_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Button x:Name="ContractToevoegenBtn" Content="Contract Toevoegen" Grid.Column="3" Margin="5" Click="TopRowBedrijfBtn_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Button x:Name="ContractVerwijderenBtn" Content="Contract Verwijderen" Grid.Column="4" Margin="5" Click="TopRowBedrijfBtn_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Button x:Name="ContractAanpassenBtn" Content="Contract Aanpassen" Grid.Column="5" Margin="5" Click="TopRowBedrijfBtn_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                </Grid>
-            </DockPanel>
-            <DockPanel  Background="LightGray">
-                <Grid x:Name="BedrijfToevoegenGridPanel" Visibility="Hidden">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Bedrijfs Naam:" FontWeight="Bold" FontSize="14" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
-                    <TextBlock Text="Bedrijfs BTW-Nummer:" FontWeight="Bold" FontSize="14" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1"/>
-                    <TextBlock Text="Bedrijfs Telefoon:" FontWeight="Bold" FontSize="14" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2"/>
-                    <TextBlock Text="Bedrijfs Email:" FontWeight="Bold" FontSize="14" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="3"/>
-                    <TextBlock Text="Bedrijfs Land:" FontWeight="Bold" FontSize="14" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="4"/>
-                    <TextBlock Text="Bedrijfs Straat en nr:" FontWeight="Bold" FontSize="14" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="5"/>
-                    <TextBlock Text="Bedrijfs Postcode en Plaats:" FontWeight="Bold" FontSize="14" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="6"/>
+                    <!--DockPanel: Bedrijf top buttons-->
+                    <DockPanel x:Name="BedrijfPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--Button: nieuw bedrijf toevoegen scherm (Bedrijf)-->
+                            <Button x:Name="BedrijfToevoegenBtn" Content="Bedrijf Toevoegen" Grid.Column="0" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <!--Button: bedrijf opzoeken scherm (Bedrijf)-->
+                            <Button x:Name="BedrijfOpzoekenBtn" Content="Bedrijf Opzoeken" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <!--Button: nieuw contract toevoegen scherm (Contract)-->
+                            <Button x:Name="ContractToevoegenBtn" Content="Contract Toevoegen" Grid.Column="2" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <!--Button: contract opzoeken scherm (Contract)-->
+                            <Button x:Name="ContractOpzoekenBtn" Content="Contract Opzoeken" Grid.Column="3" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Werknemer top buttons-->
+                    <DockPanel x:Name="WerknemerPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="WerknemerToevoegenBtn" Content="Werknemer Toevoegen" Grid.Column="0" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="WerknemerVerwijderenBtn" Content="Werknemer Verwijderen" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="WerknemerAanpassenBtn" Content="Werknemer Aanpassen" Grid.Column="2" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Bezoeker top buttons-->
+                    <DockPanel x:Name="BezoekerPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="BezoekerToevoegenBtn" Content="Bezoeker Toevoegen" Grid.Column="0" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="BezoekerVerwijderenBtn" Content="Bezoeker Verwijderen" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="BezoekerAanpassenBtn" Content="Bezoeker Aanpassen" Grid.Column="2" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                </Grid>
+            </DockPanel>
+            <DockPanel Background="LightGray">
+                <Grid>
+                    <!--Grid definitie--> 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--DockPanel: Bedrijf toevoegen scherm-->
+                    <DockPanel x:Name="BedrijfToevoegenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" MinWidth="200" MaxWidth="300"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Bedrijfs Naam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
+                            <TextBlock Text="Bedrijfs BTW-Nummer:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1"/>
+                            <TextBlock Text="Bedrijfs Telefoon:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2"/>
+                            <TextBlock Text="Bedrijfs Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="3"/>
+                            <TextBlock Text="Bedrijfs Land:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="4"/>
+                            <TextBlock Text="Bedrijfs Straat en nr:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="5"/>
+                            <TextBlock Text="Bedrijfs Postcode en Plaats:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="6"/>
 
-                    <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="0,0,10,0" Height="25" Grid.Column="1" Grid.Row="0"/>
-                    <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="0,0,10,0" Height="25" Grid.Column="1" Grid.Row="1"/>
-                    <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="0,0,10,0" Height="25" Grid.Column="1" Grid.Row="2"/>
-                    <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="0,0,10,0" Height="25" Grid.Column="1" Grid.Row="3"/>
-                    <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="0,0,10,0" Height="25" Grid.Column="1" Grid.Row="4"/>
-                    <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="0,0,10,0" Height="25" Grid.Column="1" Grid.Row="5"/>
-                    <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="0,0,10,0" Height="25" Grid.Column="1" Grid.Row="6"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2"/>
+
+                            <Button x:Name="BedrijfToefoegenToevoegBtn" Content="Bedrijf Toevoegen" Grid.Column="4" Grid.Row="7" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Bedrijf aanpassen scherm-->
+                    <DockPanel x:Name="BedrijfOpzoekenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*" MinWidth="200" MaxWidth="300"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.6*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Filters:      " FontWeight="Bold" FontSize="24" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="Bedrijfs Naam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="0"/>
+                                <TextBlock Text="Bedrijfs BTW-Nummer:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="0"/>
+                                <TextBlock Text="Bedrijfs Id:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="5" Grid.Row="0"/>
+                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="6" Grid.Row="0"/>
+                                <Button x:Name="BedrijfOpvragenFilterBtn" Content="filter" Grid.Column="7" Grid.Row="0" Margin="5" Height="40" Padding="10,0,10,0"
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                    <Button.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </Grid>
+
+                            <ListBox Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18">
+                                <ListBoxItem Content="Test"/>
+                            </ListBox>
+                            <TextBlock Text="Bedrijfs Naam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock Text="Bedrijfs BTW-Nummer:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2"/>
+                            <TextBlock Text="Bedrijfs Telefoon:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="3"/>
+                            <TextBlock Text="Bedrijfs Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="4"/>
+                            <TextBlock Text="Bedrijfs Land:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="5"/>
+                            <TextBlock Text="Bedrijfs Straat en nr:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="6"/>
+                            <TextBlock Text="Bedrijfs Postcode en Plaats:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="7"/>
+
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="6"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="7"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2"/>
+                            <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2"/>
+
+                            <Button x:Name="BedrijfOpvragenVerwijderenBtn" Content="Bedrijf Verwijderen" Grid.Column="4" Grid.Row="8" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="BedrijfOpvragenAanpassenBtn" Content="Bedrijf Aanpassen" Grid.Column="3" Grid.Row="8" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
                 </Grid>
             </DockPanel>
         </DockPanel>

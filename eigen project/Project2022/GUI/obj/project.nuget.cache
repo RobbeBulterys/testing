@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "3L6WUk21jHmmSWS7tJSK9Br1VU50uzqCESwekg41BieUPU+u7hinDaCAFn2h7fE4+4u2J+UyPhhAVCkkDy9bQA==",
+  "dgSpecHash": "HDoYSX1bA3PGj2ugfuVCP5ddFokIovw+okeuza9B2hLqCn7sz+n73Z+lb/YETbPDHCiqO+CfH6oeeaG2k0xGFw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Robbe Bulterys\\Desktop\\school 2021-2022\\eigen project\\Project2022\\GUI\\GUI.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "E:\\programming\\github repos\\testing\\eigen project\\Project2022\\GUI\\GUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

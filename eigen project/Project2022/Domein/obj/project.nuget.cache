@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "FMNY8N7yMD/LJkJSDCGZf4uZf7DA48HUq+oRFGUoF79oK4CqQDaUiU4nnIJvGtj4o78of+IG7FqaayHS9SBcBg==",
+  "dgSpecHash": "zjlr3vHQfjbtmo22DebO1rYNynbswfEcKfhLi70pZDJC3Cb2eLbpmoxnvOhL8z8roJbl8Z4w9R/AirsY3uMCPg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Robbe Bulterys\\Desktop\\school 2021-2022\\eigen project\\Project2022\\Domein\\Domein.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "E:\\programming\\github repos\\testing\\eigen project\\Project2022\\Domein\\Domein.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
