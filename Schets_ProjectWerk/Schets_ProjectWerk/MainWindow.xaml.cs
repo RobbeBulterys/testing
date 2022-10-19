@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -24,7 +28,190 @@ namespace Schets_ProjectWerk
         {
             InitializeComponent();
         }
-
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            WindowCheckHeight(13, 25);
+            if (this.ActualHeight != 450)
+            {
+                if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WindowCheckHeight(20, 40);
+            }
+        }
+        private void WindowCheckHeight(double TextBlock, double TextBox)
+        {
+            #region Bedrijf Toevoegen
+            BedrijfToevoegenTextBlockNaam.FontSize = TextBlock;
+            BedrijfToevoegenTextBlockBTW.FontSize = TextBlock;
+            BedrijfToevoegenTextBlockTelefoon.FontSize = TextBlock;
+            BedrijfToevoegenTextBlockEmail.FontSize = TextBlock;
+            BedrijfToevoegenTextBlockLand.FontSize = TextBlock;
+            BedrijfToevoegenTextBlockstraat.FontSize = TextBlock;
+            BedrijfToevoegenTextBlockPostcode.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxNaam.Height = TextBox;
+            BedrijfToevoegenTextBoxBTW.Height = TextBox;
+            BedrijfToevoegenTextBoxTelefoon.Height = TextBox;
+            BedrijfToevoegenTextBoxEmail.Height = TextBox;
+            BedrijfToevoegenTextBoxLand.Height = TextBox;
+            BedrijfToevoegenTextBoxstraat.Height = TextBox;
+            BedrijfToevoegenTextBoxNr.Height = TextBox;
+            BedrijfToevoegenTextBoxPostcode.Height = TextBox;
+            BedrijfToevoegenTextBoxPlaats.Height = TextBox;
+            BedrijfToevoegenTextBoxNaam.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxBTW.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxTelefoon.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxEmail.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxLand.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxstraat.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxNr.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxPostcode.FontSize = TextBlock;
+            BedrijfToevoegenTextBoxPlaats.FontSize = TextBlock;
+            BedrijfToevoegenToevoegBtn.FontSize = TextBlock;
+            BedrijfToevoegenToevoegBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BedrijfToevoegenToevoegBtn.Height = 50;
+            #endregion
+            #region Bedrijf Opzoeken
+            BedrijfOpzoekenTextBlockNaam.FontSize = TextBlock;
+            BedrijfOpzoekenTextBlockBTW.FontSize = TextBlock;
+            BedrijfOpzoekenTextBlockTelefoon.FontSize = TextBlock;
+            BedrijfOpzoekenTextBlockEmail.FontSize = TextBlock;
+            BedrijfOpzoekenTextBlockLand.FontSize = TextBlock;
+            BedrijfOpzoekenTextBlockStraat.FontSize = TextBlock;
+            BedrijfOpzoekenTextBlockPostcode.FontSize = TextBlock;
+            BedrijfOpzoekenGridPanelColumn0.Width = new GridLength(250);
+            BedrijfOpzoekenGridPanelColumn1.Width = new GridLength(200);
+            BedrijfOpzoekenTextBoxNaam.Height = TextBox;
+            BedrijfOpzoekenTextBoxBTW.Height = TextBox;
+            BedrijfOpzoekenTextBoxTelefoon.Height = TextBox;
+            BedrijfOpzoekenTextBoxEmail.Height = TextBox;
+            BedrijfOpzoekenTextBoxLand.Height = TextBox;
+            BedrijfOpzoekenTextBoxStraat.Height = TextBox;
+            BedrijfOpzoekenTextBoxPostcode.Height = TextBox;
+            BedrijfOpzoekenTextBoxNr.Height = TextBox;
+            BedrijfOpzoekenTextBoxPlaats.Height = TextBox;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900)
+            {
+                BedrijfOpzoekenGridPanelColumn0.Width = new GridLength(500);
+                BedrijfOpzoekenGridPanelColumn1.Width = new GridLength(300);
+            }
+            BedrijfOpzoekenTextBoxNaam.FontSize = TextBlock;
+            BedrijfOpzoekenTextBoxBTW.FontSize = TextBlock;
+            BedrijfOpzoekenTextBoxTelefoon.FontSize = TextBlock;
+            BedrijfOpzoekenTextBoxEmail.FontSize = TextBlock;
+            BedrijfOpzoekenTextBoxLand.FontSize = TextBlock;
+            BedrijfOpzoekenTextBoxStraat.FontSize = TextBlock;
+            BedrijfOpzoekenTextBoxPostcode.FontSize = TextBlock;
+            BedrijfOpzoekenTextBoxNr.FontSize = TextBlock;
+            BedrijfOpzoekenTextBoxPlaats.FontSize = TextBlock;
+            BedrijfOpvragenVerwijderenBtn.FontSize = TextBlock;
+            BedrijfOpvragenVerwijderenBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BedrijfOpvragenVerwijderenBtn.Height = 50;
+            BedrijfOpvragenAanpassenBtn.FontSize = TextBlock;
+            BedrijfOpvragenAanpassenBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BedrijfOpvragenAanpassenBtn.Height = 50;
+            BedrijfOpvragenFilterBtn.FontSize = TextBlock;
+            BedrijfOpvragenFilterBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BedrijfOpvragenFilterBtn.Height = 50;
+            #endregion
+            #region Werknemer Toevoegen
+            WerknemerToevoegenTextBlockNaam.FontSize = TextBlock;
+            WerknemerToevoegenTextBlockEmail.FontSize = TextBlock;
+            WerknemerToevoegenTextBlockId.FontSize = TextBlock;
+            WerknemerToevoegenTextBlockFunctie.FontSize = TextBlock;
+            WerknemerToevoegenGridPanelColumn0.Width = new GridLength(150);
+            WerknemerToevoegenTextBoxNaam.FontSize = TextBlock;
+            WerknemerToevoegenTextBoxVoornaam.FontSize = TextBlock;
+            WerknemerToevoegenTextBoxEmail.FontSize = TextBlock;
+            WerknemerToevoegenTextBoxId.FontSize = TextBlock;
+            WerknemerToevoegenTextBoxFunctie.FontSize = TextBlock;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerToevoegenGridPanelColumn0.Width = new GridLength(200);
+            WerknemerToevoegenTextBoxNaam.Height = TextBox;
+            WerknemerToevoegenTextBoxVoornaam.Height = TextBox;
+            WerknemerToevoegenTextBoxEmail.Height = TextBox;
+            WerknemerToevoegenTextBoxId.Height = TextBox;
+            WerknemerToevoegenTextBoxFunctie.Height = TextBox;
+            WerknemerToevoegenToevoegBtn.FontSize = TextBlock;
+            WerknemerToevoegenToevoegBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerToevoegenToevoegBtn.Height = 50;
+            #endregion
+            #region Werknemer Opzoeken
+            WerknemerOpzoekenTextBlockNaam.FontSize = TextBlock;
+            WerknemerOpzoekenTextBlockEmail.FontSize = TextBlock;
+            WerknemerOpzoekenTextBlockId.FontSize = TextBlock;
+            WerknemerOpzoekenTextBlockFunctie.FontSize = TextBlock;
+            WerknemerOpzoekenGridPanelColumn0.Width = new GridLength(200);
+            WerknemerOpzoekenGridPanelColumn1.Width = new GridLength(150);
+            WerknemerOpzoekenTextBoxNaam.FontSize = TextBlock;
+            WerknemerOpzoekenTextBoxVoornaam.FontSize = TextBlock;
+            WerknemerOpzoekenTextBoxEmail.FontSize = TextBlock;
+            WerknemerOpzoekenTextBoxId.FontSize = TextBlock;
+            WerknemerOpzoekenTextBoxFunctie.FontSize = TextBlock;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900)
+            {
+                WerknemerOpzoekenGridPanelColumn0.Width = new GridLength(500);
+                WerknemerOpzoekenGridPanelColumn1.Width = new GridLength(300);
+            }
+            WerknemerOpzoekenTextBoxNaam.Height = TextBox;
+            WerknemerOpzoekenTextBoxVoornaam.Height = TextBox;
+            WerknemerOpzoekenTextBoxEmail.Height = TextBox;
+            WerknemerOpzoekenTextBoxId.Height = TextBox;
+            WerknemerOpzoekenTextBoxFunctie.Height = TextBox;
+            WerknemerOpvragenVerwijderenBtn.FontSize = TextBlock;
+            WerknemerOpvragenVerwijderenBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerOpvragenVerwijderenBtn.Height = 50;
+            WerknemerOpvragenAanpassenBtn.FontSize = TextBlock;
+            WerknemerOpvragenAanpassenBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerOpvragenAanpassenBtn.Height = 50;
+            WerknemerOpvragenFilterBtn.FontSize = TextBlock;
+            WerknemerOpvragenFilterBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerOpvragenFilterBtn.Height = 50;
+            #endregion
+            #region Bezoeker Toevoegen
+            BezoekerToevoegenTextBlockNaam.FontSize = TextBlock;
+            BezoekerToevoegenTextBlockEmail.FontSize = TextBlock;
+            BezoekerToevoegenTextBlockBedrijfNaam.FontSize = TextBlock;
+            BezoekerToevoegenGridPanelColumn0.Width = new GridLength(150);
+            BezoekerToevoegenTextBoxNaam.FontSize = TextBlock;
+            BezoekerToevoegenTextBoxVoornaam.FontSize = TextBlock;
+            BezoekerToevoegenTextBoxEmail.FontSize = TextBlock;
+            BezoekerToevoegenTextBoxBedrijfNaam.FontSize = TextBlock;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerToevoegenGridPanelColumn0.Width = new GridLength(200);
+            BezoekerToevoegenTextBoxNaam.Height = TextBox;
+            BezoekerToevoegenTextBoxVoornaam.Height = TextBox;
+            BezoekerToevoegenTextBoxEmail.Height = TextBox;
+            BezoekerToevoegenTextBoxBedrijfNaam.Height = TextBox;
+            BezoekerToevoegenToevoegBtn.FontSize = TextBlock;
+            BezoekerToevoegenToevoegBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerToevoegenToevoegBtn.Height = 50;
+            #endregion
+            #region Bezoeker Opzoeken
+            BezoekerOpzoekenTextBlockNaam.FontSize = TextBlock;
+            BezoekerOpzoekenTextBlockEmail.FontSize = TextBlock;
+            BezoekerOpzoekenTextBlockBedrijfNaam.FontSize = TextBlock;
+            BezoekerOpzoekenGridPanelColumn0.Width = new GridLength(200);
+            BezoekerOpzoekenGridPanelColumn1.Width = new GridLength(150);
+            BezoekerOpzoekenTextBoxNaam.FontSize = TextBlock;
+            BezoekerOpzoekenTextBoxVoornaam.FontSize = TextBlock;
+            BezoekerOpzoekenTextBoxEmail.FontSize = TextBlock;
+            BezoekerOpzoekenTextBoxBedrijfNaam.FontSize = TextBlock;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900)
+            {
+                BezoekerOpzoekenGridPanelColumn0.Width = new GridLength(500);
+                BezoekerOpzoekenGridPanelColumn1.Width = new GridLength(250);
+            }
+            BezoekerOpzoekenTextBoxNaam.Height = TextBox;
+            BezoekerOpzoekenTextBoxVoornaam.Height = TextBox;
+            BezoekerOpzoekenTextBoxEmail.Height = TextBox;
+            BezoekerOpzoekenTextBoxBedrijfNaam.Height = TextBox;
+            BezoekerOpvragenVerwijderenBtn.FontSize = TextBlock;
+            BezoekerOpvragenVerwijderenBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerOpvragenVerwijderenBtn.Height = 50;
+            BezoekerOpvragenAanpassenBtn.FontSize = TextBlock;
+            BezoekerOpvragenAanpassenBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerOpvragenAanpassenBtn.Height = 50;
+            BezoekerOpvragenFilterBtn.FontSize = TextBlock;
+            BezoekerOpvragenFilterBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerOpvragenFilterBtn.Height = 50;
+            #endregion
+        }
         private void TopRowBtn_Click(object sender, RoutedEventArgs e)
         {
             if (sender.GetType() == typeof(Button))

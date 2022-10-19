@@ -16,7 +16,7 @@ namespace Schets_ProjectWerk
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MainWindow window = new MainWindow();
-            window.WindowState = WindowState.Maximized;
+            window.WindowState = WindowState.Normal;
             window.Show();
         }
     }
