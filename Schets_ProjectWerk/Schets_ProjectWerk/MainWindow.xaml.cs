@@ -34,6 +34,7 @@ namespace Schets_ProjectWerk
             if (this.ActualHeight != 450)
             {
                 if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WindowCheckHeight(20, 40);
+                if (this.ActualHeight > 790 && this.ActualWidth > 1500) WindowCheckHeight(16, 32);
             }
         }
         private void WindowCheckHeight(double TextBlock, double TextBox)
