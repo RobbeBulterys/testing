@@ -14,6 +14,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <!--Button: Keuzescherm (Bedrijf)-->
                 <Button x:Name="BedrijvenBtn" Content="Bedrijf" Grid.Column="0" Margin="5" Click="TopRowBtn_Click" 
@@ -35,6 +36,15 @@
                 </Button>
                 <!--Button: Keuzescherm (Bezoeker)-->
                 <Button x:Name="BezoekersBtn" Content="Bezoeker" Grid.Column="2" Margin="5" Click="TopRowBtn_Click"
+                        BorderBrush="Black" Background="LightBlue" BorderThickness="2">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <!--Button: Keuzescherm (Bezoeken)-->
+                <Button x:Name="BezoekenBtn" Content="Bezoek" Grid.Column="3" Margin="5" Click="TopRowBtn_Click"
                         BorderBrush="Black" Background="LightBlue" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -135,6 +145,29 @@
                                 </Button.Resources>
                             </Button>
                             <Button x:Name="BezoekerOpzoekenBtn" Content="Bezoeker Opzoeken" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Bezoeker top buttons-->
+                    <DockPanel x:Name="BezoekenPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="BezoekenToevoegenBtn" Content="Bezoek Toevoegen" Grid.Column="0" Margin="5" Click="TopRowBedrijfBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="BezoekenOpzoekenBtn" Content="Bezoek Opzoeken" Grid.Column="1" Margin="5" Click="TopRowBedrijfBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -544,6 +577,48 @@
                                 </Button.Resources>
                             </Button>
                             <Button x:Name="BezoekerOpvragenAanpassenBtn" Content="Aanpassen" Grid.Column="3" Grid.Row="4" Margin="5" 
+                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Bezoeker toevoegen scherm-->
+                    <DockPanel x:Name="BezoekToevoegenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" x:Name="BezoekToevoegenGridPanelColumn0"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150" x:Name="BezoekToevoegenGridPanelColumn1"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockEmail" Text="Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockNaam" Text="Naam en Voornaam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockBedrijfNaam" Text="Bedrijf Naam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockContactPersson" Text="Contact Persoon:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="2"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockBedrijfNaamBezoeker" Text="Bedrijf Naam Bezoeker:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="3"/>
+
+                            <TextBox x:Name="BezoekToevoegenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4"/>
+                            <TextBox x:Name="BezoekToevoegenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="BezoekToevoegenTextBoxVoornaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"/>
+                            <ComboBox x:Name="BezoekToevoegenComboBoxBedrijfNaam" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
+                            <ComboBox x:Name="BezoekToevoegenComboBoxContactPersoon" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="5" Grid.Row="2"/>
+                            <TextBox x:Name="BezoekToevoegenTextBoxBedrijfNaamBezoeker" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4"/>
+
+                            <Button x:Name="BezoekToevoegenToevoegBtn" Content="Toevoegen" Grid.Column="4" Grid.Row="6" Margin="5" 
                                     BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">

@@ -212,6 +212,32 @@ namespace Schets_ProjectWerk
             BezoekerOpvragenFilterBtn.Height = 25;
             if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerOpvragenFilterBtn.Height = 50;
             #endregion
+            #region Bezoek Toevoegen
+            BezoekToevoegenTextBlockEmail.FontSize = TextBlock;
+            BezoekToevoegenTextBlockNaam.FontSize = TextBlock;
+            BezoekToevoegenTextBlockBedrijfNaam.FontSize = TextBlock;
+            BezoekToevoegenTextBlockContactPersson.FontSize = TextBlock;
+            BezoekToevoegenTextBlockBedrijfNaamBezoeker.FontSize = TextBlock;
+            BezoekToevoegenGridPanelColumn0.Width = new GridLength(160);
+            BezoekToevoegenGridPanelColumn1.Width = new GridLength(150);
+            BezoekToevoegenTextBoxEmail.FontSize = TextBlock;
+            BezoekToevoegenTextBoxNaam.FontSize = TextBlock;
+            BezoekToevoegenTextBoxVoornaam.FontSize = TextBlock;
+            BezoekToevoegenComboBoxBedrijfNaam.FontSize = TextBlock;
+            BezoekToevoegenComboBoxContactPersoon.FontSize = TextBlock;
+            BezoekToevoegenTextBoxBedrijfNaamBezoeker.FontSize = TextBlock;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekToevoegenGridPanelColumn0.Width = new GridLength(250);
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekToevoegenGridPanelColumn1.Width = new GridLength(250);
+            BezoekToevoegenTextBoxEmail.Height = TextBox;
+            BezoekToevoegenTextBoxNaam.Height = TextBox;
+            BezoekToevoegenTextBoxVoornaam.Height = TextBox;
+            BezoekToevoegenComboBoxBedrijfNaam.Height = TextBox;
+            BezoekToevoegenComboBoxContactPersoon.Height = TextBox;
+            BezoekToevoegenTextBoxBedrijfNaamBezoeker.Height = TextBox;
+            BezoekToevoegenToevoegBtn.FontSize = TextBlock;
+            BezoekToevoegenToevoegBtn.Height = 25;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekToevoegenToevoegBtn.Height = 50;
+            #endregion
         }
         private void TopRowBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -245,6 +271,14 @@ namespace Schets_ProjectWerk
                     BezoekerToevoegenBtn.Opacity = 1;
                     BezoekerOpzoekenBtn.Opacity = 1;
                 }
+                else if (button.Name == "BezoekenBtn")
+                {
+                    BezoekenPanel.Visibility = Visibility.Visible;
+                    TopSecondDP.Background = Brushes.Gray;
+                    BezoekenBtn.Opacity = 1;
+                    BezoekenToevoegenBtn.Opacity = 1;
+                    BezoekenOpzoekenBtn.Opacity = 1;
+                }
             }
         }
         private void TopRowBtnExtras()
@@ -252,9 +286,11 @@ namespace Schets_ProjectWerk
             BedrijvenBtn.Opacity = 0.5;
             WerknemersBtn.Opacity = 0.5;
             BezoekersBtn.Opacity = 0.5;
+            BezoekenBtn.Opacity = 0.5;
             BedrijfPanel.Visibility = Visibility.Hidden;
             WerknemerPanel.Visibility = Visibility.Hidden;
             BezoekerPanel.Visibility = Visibility.Hidden;
+            BezoekenPanel.Visibility = Visibility.Hidden;
             BedrijfToevoegenGridPanel.Visibility = Visibility.Collapsed;
             BedrijfOpzoekenGridPanel.Visibility = Visibility.Collapsed;
             WerknemerToevoegenGridPanel.Visibility = Visibility.Collapsed;
@@ -303,6 +339,15 @@ namespace Schets_ProjectWerk
                     BezoekerOpzoekenGridPanel.Visibility = Visibility.Visible;
                     BezoekerOpzoekenBtn.Opacity = 1;
                 }
+                else if (button.Name == "BezoekenToevoegenBtn")
+                {
+                    BezoekToevoegenGridPanel.Visibility = Visibility.Visible;
+                    BezoekenToevoegenBtn.Opacity = 1;
+                }
+                else if (button.Name == "BezoekenOpzoekenBtn")
+                {
+                    BezoekenOpzoekenBtn.Opacity = 1;
+                }
             }
         }
         private void TopRowBedrijfBtnExtras()
@@ -324,6 +369,10 @@ namespace Schets_ProjectWerk
             BezoekerOpzoekenBtn.Opacity = 0.5;
             BezoekerToevoegenGridPanel.Visibility = Visibility.Collapsed;
             BezoekerOpzoekenGridPanel.Visibility = Visibility.Collapsed;
+
+            BezoekenToevoegenBtn.Opacity = 0.5;
+            BezoekenOpzoekenBtn.Opacity = 0.5;
+            BezoekToevoegenGridPanel.Visibility = Visibility.Collapsed;
         }
     }
 }
