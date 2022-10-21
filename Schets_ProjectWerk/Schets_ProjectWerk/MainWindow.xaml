@@ -592,7 +592,6 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150" x:Name="BezoekToevoegenGridPanelColumn0"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="150" x:Name="BezoekToevoegenGridPanelColumn1"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
@@ -608,14 +607,14 @@
                             <TextBlock x:Name="BezoekToevoegenTextBlockEmail" Text="Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
                             <TextBlock x:Name="BezoekToevoegenTextBlockNaam" Text="Naam en Voornaam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1"/>
                             <TextBlock x:Name="BezoekToevoegenTextBlockBedrijfNaam" Text="Bedrijf Naam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2"/>
-                            <TextBlock x:Name="BezoekToevoegenTextBlockContactPersson" Text="Contact Persoon:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="2"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockContactPersson" Text="Contact Persoon:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="2" Grid.Row="2"/>
                             <TextBlock x:Name="BezoekToevoegenTextBlockBedrijfNaamBezoeker" Text="Bedrijf Naam Bezoeker:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="3"/>
 
                             <TextBox x:Name="BezoekToevoegenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4"/>
                             <TextBox x:Name="BezoekToevoegenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
                             <TextBox x:Name="BezoekToevoegenTextBoxVoornaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"/>
-                            <ComboBox x:Name="BezoekToevoegenComboBoxBedrijfNaam" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
-                            <ComboBox x:Name="BezoekToevoegenComboBoxContactPersoon" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="5" Grid.Row="2"/>
+                            <ComboBox x:Name="BezoekToevoegenComboBoxBedrijfNaam" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2"/>
+                            <ComboBox x:Name="BezoekToevoegenComboBoxContactPersoon" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="2"/>
                             <TextBox x:Name="BezoekToevoegenTextBoxBedrijfNaamBezoeker" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4"/>
 
                             <Button x:Name="BezoekToevoegenToevoegBtn" Content="Toevoegen" Grid.Column="4" Grid.Row="6" Margin="5" 

@@ -68,6 +68,7 @@ namespace Schets_ProjectWerk
             BedrijfToevoegenToevoegBtn.FontSize = TextBlock;
             BedrijfToevoegenToevoegBtn.Height = 25;
             if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BedrijfToevoegenToevoegBtn.Height = 50;
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500) BedrijfToevoegenToevoegBtn.Height = 50;
             #endregion
             #region Bedrijf Opzoeken
             BedrijfOpzoekenTextBlockNaam.FontSize = TextBlock;
@@ -93,6 +94,11 @@ namespace Schets_ProjectWerk
                 BedrijfOpzoekenGridPanelColumn0.Width = new GridLength(500);
                 BedrijfOpzoekenGridPanelColumn1.Width = new GridLength(300);
             }
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500)
+            {
+                BedrijfOpzoekenGridPanelColumn0.Width = new GridLength(400);
+                BedrijfOpzoekenGridPanelColumn1.Width = new GridLength(225);
+            }
             BedrijfOpzoekenTextBoxNaam.FontSize = TextBlock;
             BedrijfOpzoekenTextBoxBTW.FontSize = TextBlock;
             BedrijfOpzoekenTextBoxTelefoon.FontSize = TextBlock;
@@ -104,13 +110,22 @@ namespace Schets_ProjectWerk
             BedrijfOpzoekenTextBoxPlaats.FontSize = TextBlock;
             BedrijfOpvragenVerwijderenBtn.FontSize = TextBlock;
             BedrijfOpvragenVerwijderenBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BedrijfOpvragenVerwijderenBtn.Height = 50;
             BedrijfOpvragenAanpassenBtn.FontSize = TextBlock;
             BedrijfOpvragenAanpassenBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BedrijfOpvragenAanpassenBtn.Height = 50;
             BedrijfOpvragenFilterBtn.FontSize = TextBlock;
             BedrijfOpvragenFilterBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BedrijfOpvragenFilterBtn.Height = 50;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900)
+            {
+                BedrijfOpvragenVerwijderenBtn.Height = 50;
+                BedrijfOpvragenAanpassenBtn.Height = 50;
+                BedrijfOpvragenFilterBtn.Height = 50;
+            }
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500)
+            {
+                BedrijfOpvragenVerwijderenBtn.Height = 50;
+                BedrijfOpvragenAanpassenBtn.Height = 50;
+                BedrijfOpvragenFilterBtn.Height = 50;
+            }
             #endregion
             #region Werknemer Toevoegen
             WerknemerToevoegenTextBlockNaam.FontSize = TextBlock;
@@ -124,6 +139,7 @@ namespace Schets_ProjectWerk
             WerknemerToevoegenTextBoxId.FontSize = TextBlock;
             WerknemerToevoegenTextBoxFunctie.FontSize = TextBlock;
             if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerToevoegenGridPanelColumn0.Width = new GridLength(200);
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500) WerknemerToevoegenGridPanelColumn0.Width = new GridLength(200);
             WerknemerToevoegenTextBoxNaam.Height = TextBox;
             WerknemerToevoegenTextBoxVoornaam.Height = TextBox;
             WerknemerToevoegenTextBoxEmail.Height = TextBox;
@@ -132,6 +148,7 @@ namespace Schets_ProjectWerk
             WerknemerToevoegenToevoegBtn.FontSize = TextBlock;
             WerknemerToevoegenToevoegBtn.Height = 25;
             if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerToevoegenToevoegBtn.Height = 50;
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500) WerknemerToevoegenToevoegBtn.Height = 50;
             #endregion
             #region Werknemer Opzoeken
             WerknemerOpzoekenTextBlockNaam.FontSize = TextBlock;
@@ -150,6 +167,11 @@ namespace Schets_ProjectWerk
                 WerknemerOpzoekenGridPanelColumn0.Width = new GridLength(500);
                 WerknemerOpzoekenGridPanelColumn1.Width = new GridLength(300);
             }
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500)
+            {
+                WerknemerOpzoekenGridPanelColumn0.Width = new GridLength(400);
+                WerknemerOpzoekenGridPanelColumn1.Width = new GridLength(200);
+            }
             WerknemerOpzoekenTextBoxNaam.Height = TextBox;
             WerknemerOpzoekenTextBoxVoornaam.Height = TextBox;
             WerknemerOpzoekenTextBoxEmail.Height = TextBox;
@@ -157,13 +179,22 @@ namespace Schets_ProjectWerk
             WerknemerOpzoekenTextBoxFunctie.Height = TextBox;
             WerknemerOpvragenVerwijderenBtn.FontSize = TextBlock;
             WerknemerOpvragenVerwijderenBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerOpvragenVerwijderenBtn.Height = 50;
             WerknemerOpvragenAanpassenBtn.FontSize = TextBlock;
             WerknemerOpvragenAanpassenBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerOpvragenAanpassenBtn.Height = 50;
             WerknemerOpvragenFilterBtn.FontSize = TextBlock;
             WerknemerOpvragenFilterBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) WerknemerOpvragenFilterBtn.Height = 50;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900)
+            {
+                WerknemerOpvragenFilterBtn.Height = 50;
+                WerknemerOpvragenAanpassenBtn.Height = 50;
+                WerknemerOpvragenVerwijderenBtn.Height = 50;
+            }
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500)
+            {
+                WerknemerOpvragenFilterBtn.Height = 50;
+                WerknemerOpvragenAanpassenBtn.Height = 50;
+                WerknemerOpvragenVerwijderenBtn.Height = 50;
+            }
             #endregion
             #region Bezoeker Toevoegen
             BezoekerToevoegenTextBlockNaam.FontSize = TextBlock;
@@ -175,6 +206,7 @@ namespace Schets_ProjectWerk
             BezoekerToevoegenTextBoxEmail.FontSize = TextBlock;
             BezoekerToevoegenTextBoxBedrijfNaam.FontSize = TextBlock;
             if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerToevoegenGridPanelColumn0.Width = new GridLength(200);
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500) BezoekerToevoegenGridPanelColumn0.Width = new GridLength(175);
             BezoekerToevoegenTextBoxNaam.Height = TextBox;
             BezoekerToevoegenTextBoxVoornaam.Height = TextBox;
             BezoekerToevoegenTextBoxEmail.Height = TextBox;
@@ -182,6 +214,7 @@ namespace Schets_ProjectWerk
             BezoekerToevoegenToevoegBtn.FontSize = TextBlock;
             BezoekerToevoegenToevoegBtn.Height = 25;
             if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerToevoegenToevoegBtn.Height = 50;
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500) BezoekerToevoegenToevoegBtn.Height = 50;
             #endregion
             #region Bezoeker Opzoeken
             BezoekerOpzoekenTextBlockNaam.FontSize = TextBlock;
@@ -198,19 +231,33 @@ namespace Schets_ProjectWerk
                 BezoekerOpzoekenGridPanelColumn0.Width = new GridLength(500);
                 BezoekerOpzoekenGridPanelColumn1.Width = new GridLength(250);
             }
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500)
+            {
+                BezoekerOpzoekenGridPanelColumn0.Width = new GridLength(400);
+                BezoekerOpzoekenGridPanelColumn1.Width = new GridLength(200);
+            }
             BezoekerOpzoekenTextBoxNaam.Height = TextBox;
             BezoekerOpzoekenTextBoxVoornaam.Height = TextBox;
             BezoekerOpzoekenTextBoxEmail.Height = TextBox;
             BezoekerOpzoekenTextBoxBedrijfNaam.Height = TextBox;
             BezoekerOpvragenVerwijderenBtn.FontSize = TextBlock;
             BezoekerOpvragenVerwijderenBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerOpvragenVerwijderenBtn.Height = 50;
             BezoekerOpvragenAanpassenBtn.FontSize = TextBlock;
             BezoekerOpvragenAanpassenBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerOpvragenAanpassenBtn.Height = 50;
             BezoekerOpvragenFilterBtn.FontSize = TextBlock;
             BezoekerOpvragenFilterBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekerOpvragenFilterBtn.Height = 50;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900)
+            {
+                BezoekerOpvragenFilterBtn.Height = 50;
+                BezoekerOpvragenAanpassenBtn.Height = 50;
+                BezoekerOpvragenVerwijderenBtn.Height = 50;
+            }
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500)
+            {
+                BezoekerOpvragenFilterBtn.Height = 50;
+                BezoekerOpvragenAanpassenBtn.Height = 50;
+                BezoekerOpvragenVerwijderenBtn.Height = 50;
+            }
             #endregion
             #region Bezoek Toevoegen
             BezoekToevoegenTextBlockEmail.FontSize = TextBlock;
@@ -226,8 +273,16 @@ namespace Schets_ProjectWerk
             BezoekToevoegenComboBoxBedrijfNaam.FontSize = TextBlock;
             BezoekToevoegenComboBoxContactPersoon.FontSize = TextBlock;
             BezoekToevoegenTextBoxBedrijfNaamBezoeker.FontSize = TextBlock;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekToevoegenGridPanelColumn0.Width = new GridLength(250);
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekToevoegenGridPanelColumn1.Width = new GridLength(250);
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900)
+            {
+                BezoekToevoegenGridPanelColumn0.Width = new GridLength(250);
+                BezoekToevoegenGridPanelColumn1.Width = new GridLength(250);
+            }
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500)
+            {
+                BezoekToevoegenGridPanelColumn0.Width = new GridLength(200);
+                BezoekToevoegenGridPanelColumn1.Width = new GridLength(150);
+            } 
             BezoekToevoegenTextBoxEmail.Height = TextBox;
             BezoekToevoegenTextBoxNaam.Height = TextBox;
             BezoekToevoegenTextBoxVoornaam.Height = TextBox;
@@ -236,7 +291,9 @@ namespace Schets_ProjectWerk
             BezoekToevoegenTextBoxBedrijfNaamBezoeker.Height = TextBox;
             BezoekToevoegenToevoegBtn.FontSize = TextBlock;
             BezoekToevoegenToevoegBtn.Height = 25;
-            if (this.ActualHeight > 1000 && this.ActualWidth > 1900) BezoekToevoegenToevoegBtn.Height = 50;
+            if (this.ActualHeight > 1000 && this.ActualWidth > 1900)            BezoekToevoegenToevoegBtn.Height = 50;
+            if (this.ActualHeight > 790 && this.ActualWidth > 1500)
+              BezoekToevoegenToevoegBtn.Height = 50;
             #endregion
         }
         private void TopRowBtn_Click(object sender, RoutedEventArgs e)
@@ -297,6 +354,7 @@ namespace Schets_ProjectWerk
             WerknemerOpzoekenGridPanel.Visibility = Visibility.Collapsed;
             BezoekerToevoegenGridPanel.Visibility = Visibility.Collapsed;
             BezoekerOpzoekenGridPanel.Visibility = Visibility.Collapsed;
+            BezoekToevoegenGridPanel.Visibility = Visibility.Collapsed;
             TopSecondDP.Background = Brushes.LightGray;
         }
         private void TopRowBedrijfBtn_Click(object sender, RoutedEventArgs e)
