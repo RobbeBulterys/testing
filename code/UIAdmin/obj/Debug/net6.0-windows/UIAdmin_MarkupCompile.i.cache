@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\programming\github repos\testing\code\UIAdmin\obj\Debug\net6.0-windows\
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\
 UIAdmin
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-E:\programming\github repos\testing\code\UIAdmin\App.xaml
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\App.xaml
 41922067302
 
 5-370429422
-2081900536102
+2081233862859
 MainWindow.xaml;Theme\MenuButtonTheme.xaml;Theme\StandardTextboxTheme.xaml;Theme\TextboxTheme.xaml;
 
-False
+True
 

@@ -18,3 +18,11 @@ E:\programming\github repos\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Proj
 E:\programming\github repos\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.dll
 E:\programming\github repos\testing\code\BL-Projectwerk\obj\Debug\net6.0\refint\BL-Projectwerk.dll
 E:\programming\github repos\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.pdb
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.csproj.AssemblyReference.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.AssemblyInfoInputs.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.AssemblyInfo.cs
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.csproj.CoreCompileInputs.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\BL-Projectwerk\obj\Debug\net6.0\refint\BL-Projectwerk.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\BL-Projectwerk\obj\Debug\net6.0\BL-Projectwerk.pdb

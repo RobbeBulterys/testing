@@ -82,3 +82,45 @@ E:\programming\github repos\testing\code\UIAdmin\obj\Debug\net6.0-windows\refint
 E:\programming\github repos\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.pdb
 E:\programming\github repos\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.genruntimeconfig.cache
 E:\programming\github repos\testing\code\UIAdmin\obj\Debug\net6.0-windows\ref\UIAdmin.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\UIAdmin.exe
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\UIAdmin.deps.json
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\UIAdmin.runtimeconfig.json
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\UIAdmin.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\UIAdmin.pdb
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.WsTrust.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.Saml.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Xml.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\System.Private.ServiceModel.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\System.ServiceModel.Duplex.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\System.ServiceModel.Federation.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\System.ServiceModel.Http.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\System.ServiceModel.NetTcp.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\System.ServiceModel.Primitives.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\System.ServiceModel.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\System.ServiceModel.Security.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\TriggerMe.VATChecker.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\BL-Projectwerk.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\bin\Debug\net6.0-windows\BL-Projectwerk.pdb
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.csproj.AssemblyReference.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\Theme\MenuButtonTheme.baml
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\Theme\StandardTextboxTheme.baml
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\Theme\TextboxTheme.baml
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin_MarkupCompile.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin_MarkupCompile.lref
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\App.baml
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.g.resources
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.AssemblyInfoInputs.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.AssemblyInfo.cs
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.csproj.CoreCompileInputs.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.csproj.CopyComplete
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\refint\UIAdmin.dll
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.pdb
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\UIAdmin.genruntimeconfig.cache
+C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIAdmin\obj\Debug\net6.0-windows\ref\UIAdmin.dll
