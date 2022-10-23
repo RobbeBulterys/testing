@@ -1,0 +1,723 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfsNaamTextbox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <!--Background="White" => kleur van de achtergrond-->
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <!--Text="{TemplateBinding Text}" => text die je schrijft-->
+                            <!--Foreground="Black" => kleur van de context-->
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <!--Text="naam" => text die je ziet-->
+                            <!--Foreground="Black" => kleur van de text-->
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Naam"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfsBtwNummerTextbox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="BTW-Nummer"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfsIdTextbox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Id nummer"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxNaam">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Bedrijf Naam"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxBTW">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="BTW-Nummer"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxTelefoon">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Telefoon Nummer"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxEmail">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Email"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxLand">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Land"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxStraat">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Straat"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxPostcode">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Postcode"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxNr">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Nummer"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="BedrijfOpzoekenTextBoxPlaats">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Plaats"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerNaamTextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Naam"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerVoornaamTextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Voornaam"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerBedrijfIdTextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Bedrijf Id nummer"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerEmailTextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Email"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerBedrijfFunctieTextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Functie"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerToevoegenTextBoxNaam">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Naam"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerToevoegenTextBoxVoornaam">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Voornaam"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerToevoegenTextBoxEmail">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Email"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerToevoegenTextBoxId">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Bedrijf Id"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="WerknemerToevoegenTextBoxFunctie">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Functie"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="BezoekerOpzoekenTextBoxPersoonId">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10" Background="LightGray">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBlock IsHitTestVisible="False" 
+                                       Text="Persoon Id"
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10,0,0,0"
+                                       Foreground="Black" Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
