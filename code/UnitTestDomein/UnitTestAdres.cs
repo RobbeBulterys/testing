@@ -10,7 +10,7 @@ namespace UnitTestDomein {
         [InlineData(2)]
         [InlineData(999)]
         public void ZetId_Valid(int id) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             a.ZetId(id);
 
@@ -22,7 +22,7 @@ namespace UnitTestDomein {
         [InlineData(-1)]
         [InlineData(-999)]
         public void ZetId_InValid(int id) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             Assert.Throws<AdresException>(() => a.ZetId(id));
         }
@@ -33,7 +33,7 @@ namespace UnitTestDomein {
         [InlineData("           Nieuwstraat")]
         [InlineData("     Statio   nstraat    ")]
         public void ZetStraat_Valid(string straatnaam) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             a.ZetStraat(straatnaam);
 
@@ -46,7 +46,7 @@ namespace UnitTestDomein {
         [InlineData("        ")]
         [InlineData(null)]
         public void ZetStraat_InValid(string straatnaam) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             Assert.Throws<AdresException>(() => a.ZetStraat(straatnaam));
         }
@@ -58,7 +58,7 @@ namespace UnitTestDomein {
         [InlineData("9B")]
         [InlineData("9B bus 3")]
         public void ZetNummer_Valid(string nr) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             a.ZetNummer(nr);
 
@@ -76,7 +76,7 @@ namespace UnitTestDomein {
         [InlineData(null)]
         [InlineData("9B Wereldbus")]
         public void ZetNummer_InValid(string nr) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             Assert.Throws<ControleException>(() => a.ZetNummer(nr));
         }
@@ -87,7 +87,7 @@ namespace UnitTestDomein {
         [InlineData("               Brugge")]
         [InlineData("       Brussel       ")]
         public void ZetPlaats_Valid(string plaats) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             a.ZetPlaats(plaats);
 
@@ -100,18 +100,18 @@ namespace UnitTestDomein {
         [InlineData("        ")]
         [InlineData(null)]
         public void ZetPlaats_InValid(string plaats) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             Assert.Throws<AdresException>(() => a.ZetPlaats(plaats));
         }
 
         [Theory]
-        [InlineData("Belgi�")]
+        [InlineData("België")]
         [InlineData("Nederland            ")]
         [InlineData("            Frankrijk")]
         [InlineData("      Duitsland      ")]
         public void ZetLand_Valid(string land) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             a.ZetLand(land);
 
@@ -125,7 +125,7 @@ namespace UnitTestDomein {
         [InlineData(null)]
 
         public void ZetLand_InValid(string land) {
-            Adres a = new Adres();
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             Assert.Throws<AdresException>(() => a.ZetLand(land));
         }

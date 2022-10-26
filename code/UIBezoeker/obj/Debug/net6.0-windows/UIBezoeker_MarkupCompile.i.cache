@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIBezoeker\obj\Debug\net6.0-windows\
+E:\programming\github repos\ProjectWerk\Code\UIBezoeker\obj\Debug\net6.0-windows\
 UIBezoeker
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\UIBezoeker\App.xaml
+E:\programming\github repos\ProjectWerk\Code\UIBezoeker\App.xaml
 3-593206745
 
 72002329232
-194-1103864946
+194618410957
 view\CheckInWindow.xaml;view\CheckOutWindow.xaml;view\MainWindow.xaml;
 
-False
+True
 

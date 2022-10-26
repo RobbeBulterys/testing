@@ -1,5 +1,4 @@
 ﻿using BL_Projectwerk.Exceptions;
-using BL_Projectwerk.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,7 +90,8 @@ namespace BL_Projectwerk.Domein {
             EindTijd = eindtijd;
         }
 
-        public bool IsDezelfde(Bezoek bezoek) {
+        public bool IsDezelfde(Bezoek bezoek)
+        {
             return BezoekId == bezoek.BezoekId &&
                    bezoek.Bezoeker.IsDezelfde(Bezoeker) &&
                    bezoek.Bedrijf.IsDezelfde(Bedrijf) &&

@@ -37,7 +37,7 @@ namespace BL_Projectwerk.Managers
                 _bezoekRepo.VerwijderBezoek(bezoek);
             } catch (Exception ex)
             {
-                throw new BezoekManagerException("VerwijderBezoeker", ex);
+                throw new BezoekManagerException("VerwijderBezoek", ex);
             } 
         }
 
@@ -48,11 +48,11 @@ namespace BL_Projectwerk.Managers
 
                 if (bezoek == null) { throw new BezoekManagerException("UpdateBezoek - Geen aanpasbare bezoek ingegeven"); }
                 Bezoek dbBezoek = _bezoekRepo.GeefBezoek(bezoek.BezoekId);
-                if (dbBezoek.HeeftZelfdeProperties(bezoek)) throw new BezoekManagerException("UpdateBezoek - bezoek heeft dezelfde properties");
+                if (dbBezoek.IsDezelfde(bezoek)) throw new BezoekManagerException("UpdateBezoek - bezoek heeft dezelfde properties");
                 _bezoekRepo.UpdateBezoek(bezoek);
             } catch (Exception ex)
             {
-                throw new BezoekManagerException("VerwijderBezoeker", ex);
+                throw new BezoekManagerException("UpdateBezoek", ex);
             }     
         }
 

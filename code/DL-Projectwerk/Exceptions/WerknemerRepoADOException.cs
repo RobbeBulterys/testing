@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DL_Projectwerk.Exceptions
 {
-    internal class WerknemerRepoADOException
-    {
+    public class WerknemerRepoADOException : Exception {
+        public WerknemerRepoADOException(string? message) : base(message) {
+        }
+
+        public WerknemerRepoADOException(string? message, Exception? innerException) : base(message, innerException) {
+        }
     }
 }

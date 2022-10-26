@@ -15,7 +15,7 @@ namespace BL_Projectwerk.Domein {
             ZetNaam(naam);
             ZetVoorNaam(voornaam);
         }
-
+        /*
         protected Persoon(int persoonId, string naam, string voornaam, string email) {
             // persoon uit databank
             ZetId(persoonId);
@@ -23,20 +23,20 @@ namespace BL_Projectwerk.Domein {
             ZetVoorNaam(voornaam);
             ZetEmail(email);
         }
-
+        */
         protected Persoon(string naam, string voornaam) {
             // nieuw persoon voor databank
             ZetNaam(naam);
             ZetVoorNaam(voornaam);
         }
-
+        /*
         protected Persoon(string naam, string voornaam, string email) {
             // nieuw persoon voor databank
             ZetNaam(naam);
             ZetVoorNaam(voornaam);
             ZetEmail(email);
         }
-
+        */
         public int PersoonId { get; private set; }
         public string Naam { get; set; }
         public string Voornaam { get; set; }

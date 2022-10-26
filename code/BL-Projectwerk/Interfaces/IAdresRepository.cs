@@ -5,9 +5,12 @@ namespace BL_Projectwerk.Interfaces
 {
     public interface IAdresRepository
     {
-        bool BestaatAdres(Adres adres);
-        void UpdateAdres(Adres adres);
-        void VerwijderAdres(Adres adres);
-        void VoegAdresToe(Adres adres);
+        bool BestaatAdresZonderId(Adres adres);
+        bool BestaatAdresMetId(int id);
+
+        void UpdateAdres(int id, string? straat, string? nummer, string? postcode, string? plaats, string? land);
+        void VerwijderAdres(int id);
+        Adres VoegAdresToe(Adres adres);
+        Adres GeefAdresMetId(Adres adres);
     }
 }

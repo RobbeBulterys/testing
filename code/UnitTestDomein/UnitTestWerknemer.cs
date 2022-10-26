@@ -5,7 +5,8 @@ using BL_Projectwerk.Exceptions;
 namespace UnitTestDomein {
     public class UnitTestWerknemer {
         private static readonly Bedrijf b_Bosteels = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
-        private static readonly Werknemer werknemer_Josh = new Werknemer(10, "Baetens", "Josh", b_Bosteels, "programmer", "info@example.com");
+        private static readonly Werknemer werknemer_Josh = new Werknemer(10, "Baetens", "Josh", b_Bosteels, "programmer");
+        
 
         [Theory]
         [InlineData(1)]

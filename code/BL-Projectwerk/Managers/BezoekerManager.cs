@@ -46,7 +46,7 @@ namespace BL_Projectwerk.Managers
         {
             if (bezoeker == null) throw new BezoekerManagerException("UpdateBezoeker - Geen bezoeker ingevuld");
             Bezoeker dbBezoeker = _bezoekerRepo.GeefBezoeker(bezoeker.PersoonId);
-            if (dbBezoeker.HeefZelfdeProperties(bezoeker)) throw new BezoekerManagerException("UpdateBezoeker - Bezoeker bestaat reeds");
+            if (dbBezoeker.IsDezelfde(bezoeker)) throw new BezoekerManagerException("UpdateBezoeker - Bezoeker bestaat reeds");
             _bezoekerRepo.UpdateBezoeker(bezoeker);
         }
 

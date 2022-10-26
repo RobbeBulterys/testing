@@ -8,19 +8,20 @@ namespace BL_Projectwerk.Managers
     public class AdresManager
     {
         private IAdresRepository adresRepo;
+        private IBedrijfRepository bedrijfRepo;
 
         public AdresManager(IAdresRepository adresRepo)
         {
             this.adresRepo = adresRepo;
         }
 
-        public void VoegAdresToe(Adres adres)
+        public Adres VoegAdresToe(Adres adres)
         {
             try
             {
                 if (adres == null) throw new AdresManagerException("VoegAdresToe");
-                if (adresRepo.BestaatAdres(adres)) throw new AdresManagerException("VoegAdresToe - adres bestaat al");
-                adresRepo.VoegAdresToe(adres);
+                if (!adresRepo.BestaatAdresZonderId(adres)) return adresRepo.VoegAdresToe(adres);
+                else return adresRepo.GeefAdresMetId(adres); 
             }
             catch (Exception ex)
             {
@@ -28,15 +29,19 @@ namespace BL_Projectwerk.Managers
             }
         }
 
-        public void VerwijderAdres(Adres adres)
+        public void VerwijderAdres(int id)
         {
             try
             {
-                if (!adresRepo.BestaatAdres(adres))
+                if (!adresRepo.BestaatAdresMetId(id))
                 {
                     throw new AdresManagerException("VerwijderAdres - Onbestaand Adres");
                 }
-                else adresRepo.VerwijderAdres(adres);
+                else if (bedrijfRepo.BedrijvenOpAdresAanwezig(id))
+                {
+                    throw new AdresManagerException("VerwijderAdres - bedrijven aanwezig op dit adres");
+                }
+                else adresRepo.VerwijderAdres(id);
             }
             catch(Exception ex)
             {
@@ -44,19 +49,21 @@ namespace BL_Projectwerk.Managers
             }
         }
 
-        public void UpdateAdres(Adres adres)
+        public void UpdateAdres(int id,string? straat,string? nummer,string? postcode,string? plaats, string? land)
         {
             try
             {
-                if (adres == null) throw new AdresManagerException("UpdateAdres");
-                if (adresRepo.BestaatAdres(adres)) throw new AdresManagerException("UpdateAdres - adres is dezelfde");
+                
+                //if (adres == null) throw new AdresManagerException("UpdateAdres");
+                if (!adresRepo.BestaatAdresMetId(id)) throw new AdresManagerException("UpdateAdres - adres bestaat niet");
 
-                adresRepo.UpdateAdres(adres);
+                adresRepo.UpdateAdres(id,straat,nummer,postcode,plaats,land);
             }
             catch (Exception ex)
             {
                 throw new AdresManagerException("UpdateAdres", ex);
             }
         }
+
     }
 }

@@ -10,14 +10,16 @@ namespace BL_Projectwerk.Domein
 {
     public class Bezoeker : Persoon
     {
-        public Bezoeker(string naam, string voornaam, string email, string bedrijf) : base(naam, voornaam, email)
+        public Bezoeker(string naam, string voornaam, string email, string bedrijf) : base(naam, voornaam)
         {
             ZetBedrijf(bedrijf);
+            ZetEmail(email);
         }
 
-        public Bezoeker(int bezoekerId, string naam, string voornaam, string email, string bedrijf) : base(bezoekerId, naam, voornaam, email) 
+        public Bezoeker(int bezoekerId, string naam, string voornaam, string email, string bedrijf) : base(bezoekerId, naam, voornaam) 
         {
             ZetBedrijf(bedrijf);
+            ZetEmail(email);
         }
         public string Bedrijf { get; set; }
         public void ZetBedrijf(string bedrijf)
@@ -55,6 +57,15 @@ namespace BL_Projectwerk.Domein
         internal bool HeefZelfdeProperties(Bezoeker bezoeker)
         {
             throw new NotImplementedException();
+        }
+        public bool IsDezelfde(Bezoeker bezoeker)
+        {
+            if (PersoonId != bezoeker.PersoonId ) return false;
+            if (Naam != bezoeker.Naam) return false;
+            if (Voornaam != bezoeker.Voornaam) return false;
+            if (Email != bezoeker.Email) return false;
+            if (Bedrijf != bezoeker.Bedrijf) return false;
+            return true;
         }
     }
 }

@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace DL_Projectwerk.Exceptions
 {
-    internal class AdresRepoADOException
+    public class AdresRepoADOException : Exception
+
     {
+        public AdresRepoADOException(string? message) : base(message)
+        {
+        }
+
+        public AdresRepoADOException(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
     }
 }

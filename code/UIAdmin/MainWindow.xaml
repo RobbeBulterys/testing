@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UIAdmin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" SizeChanged="Window_SizeChanged">
+        Title="MainWindow" Height="600" Width="1200" SizeChanged="Window_SizeChanged">
     <DockPanel>
+        <!--DockPanel: Keuzescherm (Bedrijf/Werknemer/Bezoeker/Bezoek)-->
         <DockPanel DockPanel.Dock="Top" Height="35" Background="Gray">
-            <!--Grid: Keuzescherm (Bedrijf/Werknemer/Bezoeker)-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -22,6 +22,7 @@
                 <RadioButton x:Name="BezoekenBtn" Content="Bezoek" Grid.Column="3" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Checked="TopRowBtn_Click"/>
             </Grid>
         </DockPanel>
+        <!--DockPanel: Extra Keuzescherm naargelang (Bedrijf/Werknemer/Bezoeker/Bezoek)-->
         <DockPanel x:Name="TopSecondDP" Background="#0c1c33">
             <DockPanel DockPanel.Dock="Top" Height="35" Visibility="Visible">
                 <Grid>
@@ -69,7 +70,7 @@
                             <RadioButton x:Name="BezoekerOpzoekenBtn" Content="Bezoeker Opzoeken" Grid.Column="1" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Checked="TopRowBedrijfBtn_Click"/>
                         </Grid>
                     </DockPanel>
-                    <!--DockPanel: Bezoeker top buttons-->
+                    <!--DockPanel: Bezoek top buttons-->
                     <DockPanel x:Name="BezoekenPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -82,6 +83,7 @@
                     </DockPanel>
                 </Grid>
             </DockPanel>
+            <!--DockPanel: Alle keuze schermen-->
             <DockPanel Background="#0c1c33">
                 <Grid>
                     <!--Grid definitie-->
@@ -94,6 +96,7 @@
                     <!--DockPanel: Bedrijf toevoegen scherm-->
                     <DockPanel x:Name="BedrijfToevoegenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
                         <Grid>
+                            <!--Grid definitie-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200" x:Name="BedrijfToevoegenGridPanelColumn0"/>
                                 <ColumnDefinition Width="*"/>
@@ -112,6 +115,7 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition MinHeight="50" MaxHeight="75"/>
                             </Grid.RowDefinitions>
+                            <!--TextBlock: Lijst van alle textblocken voor het screen "Bedrijf Toevoegen"-->
                             <TextBlock x:Name="BedrijfToevoegenTextBlockNaam" Text="Bedrijfs Naam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0" Foreground="#e3b304"/>
                             <TextBlock x:Name="BedrijfToevoegenTextBlockBTW" Text="BTW-Nummer:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1" Foreground="#e3b304"/>
                             <TextBlock x:Name="BedrijfToevoegenTextBlockTelefoon" Text="Telefoon Nr:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2" Foreground="#e3b304"/>
@@ -119,19 +123,172 @@
                             <TextBlock x:Name="BedrijfToevoegenTextBlockLand" Text="Land:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="4" Foreground="#e3b304"/>
                             <TextBlock x:Name="BedrijfToevoegenTextBlockstraat" Text="Straat en nr:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="5" Foreground="#e3b304"/>
                             <TextBlock x:Name="BedrijfToevoegenTextBlockPostcode" Text="Postcode en Plaats:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="6" Foreground="#e3b304"/>
-
-                            <TextBox x:Name="BedrijfToevoegenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxNaam}"/>
-                            <TextBox x:Name="BedrijfToevoegenTextBoxBTW" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxBTW}"/>
-                            <TextBox x:Name="BedrijfToevoegenTextBoxTelefoon" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxTelefoon}"/>
-                            <TextBox x:Name="BedrijfToevoegenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxEmail}"/>
-                            <TextBox x:Name="BedrijfToevoegenTextBoxLand" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxLand}"/>
-                            <TextBox x:Name="BedrijfToevoegenTextBoxstraat" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxStraat}"/>
-                            <TextBox x:Name="BedrijfToevoegenTextBoxPostcode" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxPostcode}"/>
-                            <TextBox x:Name="BedrijfToevoegenTextBoxNr" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxNr}"/>
-                            <TextBox x:Name="BedrijfToevoegenTextBoxPlaats" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxPlaats}"/>
-
+                            <!--Border: Lijst van alle textboxen en hun styles voor het screen "Bedrijf Toevoegen"-->
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxBTW" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="BTW-nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxBTW}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxTelefoon" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Telefoon nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxTelefoon}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxEmail" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxEmail}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxLand" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Land" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxLand}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxstraat" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Straat" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxstraat}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxPostcode" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Postcode" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxPostcode}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxNr" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxNr}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfToevoegenTextBoxPlaats" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfToevoegenTextBoxPlaats}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <!--Button: Voor het toevoegen van een bedrijf voor het screen "Bedrijf Toevoegen"-->
                             <Button x:Name="BedrijfToevoegenToevoegBtn" Content="Toevoegen" Grid.Column="4" Grid.Row="8" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BedrijfToevoegenToevoegBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -143,6 +300,7 @@
                     <!--DockPanel: Bedrijf aanpassen scherm-->
                     <DockPanel x:Name="BedrijfOpzoekenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
                         <Grid>
+                            <!--Grid definitie-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="300" x:Name="BedrijfOpzoekenGridPanelColumn0"/>
                                 <ColumnDefinition Width="200" x:Name="BedrijfOpzoekenGridPanelColumn1"/>
@@ -163,6 +321,7 @@
                                 <RowDefinition MinHeight="50" MaxHeight="75"/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5">
+                                <!--Grid definitie-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
@@ -173,15 +332,69 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
+                                <!--TextBlock: Lijst van alle filter textblocken voor het screen "Bedrijf Opzoeken"-->
                                 <TextBlock Text="Filters:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0" Foreground="#e3b304"/>
                                 <TextBlock Text="Naam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource BedrijfsNaamTextbox}"/>
                                 <TextBlock Text="BTW-Nummer:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource BedrijfsBtwNummerTextbox}"/>
                                 <TextBlock Text="Id:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="5" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="6" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource BedrijfsIdTextbox}"/>
+                                <!--Border: Lijst van alle filter textboxen en hun styles voor het screen "Bedrijf Opzoeken"-->
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenFilterTextBoxNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenFilterTextBoxNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="4" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenFilterTextBoxBTW" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="BTW-nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenFilterTextBoxBTW}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="6" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenFilterTextBoxId" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Id nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenFilterTextBoxId}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <!--Button: Voor het filteren van alle bedrijven voor het screen "Bedrijf Opzoeken"-->
                                 <Button x:Name="BedrijfOpvragenFilterBtn" Content="filter" Grid.Column="7" Grid.Row="0" Margin="5" Height="40" Padding="5,0,5,0"
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="20" VerticalAlignment="Center" Click="WerknemerOpvragenFilterBtn_Click">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="20" VerticalAlignment="Center" Click="BedrijfOpvragenFilterBtn_Click">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10"/>
@@ -189,8 +402,26 @@
                                     </Button.Resources>
                                 </Button>
                             </Grid>
-
-                            <ListView x:Name="ListviewBedrijfOpzoeken" Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18" ItemsSource="{Binding werknemersList}" SelectionChanged="ListviewWerknemerOpzoeken_SelectionChanged">
+                            <!--ListView: Voor het weergeven van alle bedrijven voor het screen "Bedrijf Opzoeken"-->
+                            <ListView x:Name="ListviewBedrijfOpzoeken" Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18" ItemsSource="{Binding werknemersList}" SelectionChanged="ListviewWerknemerOpzoeken_SelectionChanged" Background="Gray">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Foreground" Value="#e3b304"/>
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderThickness" Value="2"/>
+                                                <Setter Property="BorderBrush" Value="#e3b304"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Gray"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Foreground" Value="#e3b304"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Id" Width="auto" DisplayMemberBinding="{Binding Id}"/>
@@ -201,6 +432,7 @@
                                     </GridView>
                                 </ListView.View>
                             </ListView>
+                            <!--TextBlock: Lijst van alle onderstaande textblocken voor het screen "Bedrijf Opzoeken"-->
                             <TextBlock x:Name="BedrijfOpzoekenTextBlockNaam" Text="Bedrijf Naam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
                             <TextBlock x:Name="BedrijfOpzoekenTextBlockBTW" Text="BTW-Nummer:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
                             <TextBlock x:Name="BedrijfOpzoekenTextBlockTelefoon" Text="Telefoon Nr:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="3" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
@@ -208,27 +440,181 @@
                             <TextBlock x:Name="BedrijfOpzoekenTextBlockLand" Text="Land:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="5" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
                             <TextBlock x:Name="BedrijfOpzoekenTextBlockStraat" Text="Straat en nr:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="6" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
                             <TextBlock x:Name="BedrijfOpzoekenTextBlockPostcode" Text="Postcode en Plaats:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="7" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxNaam}"/>
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxBTW" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxBTW}"/>
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxTelefoon" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxTelefoon}"/>
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxEmail}"/>
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxLand" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxLand}"/>
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxStraat" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="6" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxStraat}"/>
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxPostcode" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="7" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxPostcode}"/>
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxNr" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxNr}"/>
-                            <TextBox x:Name="BedrijfOpzoekenTextBoxPlaats" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxPlaats}"/>
-
+                            <!--Border: Lijst van alle onderstaande textboxen en hun styles voor het screen "Bedrijf Opzoeken"-->
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxBTW" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="BTW-nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxBTW}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxTelefoon" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Telefoon nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxTelefoon}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxEmail" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxEmail}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxLand" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Land" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxLand}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="6" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxStraat" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Straatnaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxStraat}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="7" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxPostcode" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Postcode" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxPostcode}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxNr" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxNr}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfOpzoekenTextBoxPlaats" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Plaats" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BedrijfOpzoekenTextBoxPlaats}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <!--Button: Voor het verwijderen van een bedrijf voor het screen "Bedrijf Opzoeken"-->
                             <Button x:Name="BedrijfOpvragenVerwijderenBtn" Content="Verwijderen" Grid.Column="4" Grid.Row="9" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BedrijfOpvragenVerwijderenBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
                                     </Style>
                                 </Button.Resources>
                             </Button>
+                            <!--Button: Voor het aanpassen van een bedrijf voor het screen "Bedrijf Opzoeken"-->
                             <Button x:Name="BedrijfOpvragenAanpassenBtn" Content="Aanpassen" Grid.Column="3" Grid.Row="9" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BedrijfOpvragenAanpassenBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -240,6 +626,7 @@
                     <!--DockPanel: Werknemer toevoegen scherm-->
                     <DockPanel x:Name="WerknemerToevoegenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
                         <Grid>
+                            <!--Grid definitie-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200" x:Name="WerknemerToevoegenGridPanelColumn0"/>
                                 <ColumnDefinition Width="*"/>
@@ -257,23 +644,67 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition  MinHeight="50" MaxHeight="75"/>
                             </Grid.RowDefinitions>
+                            <!--TextBlock: Lijst van alle textblocken voor het screen "Werknemer Toevoegen"-->
                             <TextBlock x:Name="WerknemerToevoegenTextBlockNaam" Text="Naam en Voornaam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
                             <TextBlock x:Name="WerknemerToevoegenTextBlockEmail" Text="Email:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-                            <TextBlock x:Name="WerknemerToevoegenTextBlockId" Text="Bedrijf Id:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-                            <TextBlock x:Name="WerknemerToevoegenTextBlockFunctie" Text="Bedrijf Functie:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="3" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-                            <TextBlock x:Name="WerknemerToevoegenTextBlockId2" Text="Bedrijf Id:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="4" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-                            <TextBlock x:Name="WerknemerToevoegenTextBlockFunctie2" Text="Bedrijf Functie:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="5" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-
-                            <TextBox x:Name="WerknemerToevoegenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxNaam}"/>
-                            <TextBox x:Name="WerknemerToevoegenTextBoxVoornaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxVoornaam}"/>
-                            <TextBox x:Name="WerknemerToevoegenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxEmail}"/>
-                            <TextBox x:Name="WerknemerToevoegenTextBoxId" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxId}"/>
-                            <TextBox x:Name="WerknemerToevoegenTextBoxFunctie" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxFunctie}"/>
-                            <TextBox x:Name="WerknemerToevoegenTextBoxId2" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxId}"/>
-                            <TextBox x:Name="WerknemerToevoegenTextBoxFunctie2" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxFunctie}"/>
-
+                            <!--Border: Lijst van alle textboxen en hun styles voor het screen "Werknemer Toevoegen"-->
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerToevoegenTextBoxNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=WerknemerToevoegenTextBoxNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerToevoegenTextBoxVoornaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=WerknemerToevoegenTextBoxVoornaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerToevoegenTextBoxEmail" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=WerknemerToevoegenTextBoxEmail}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <!--Button: Voor het toevoegen van een werknemer voor het screen "Werknemer Toevoegen"-->
                             <Button x:Name="WerknemerToevoegenToevoegBtn" Content="Toevoegen" Grid.Column="4" Grid.Row="7" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="WerknemerToevoegenToevoegBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -285,6 +716,7 @@
                     <!--DockPanel: Werknemer aanpassen scherm-->
                     <DockPanel x:Name="WerknemerOpzoekenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
                         <Grid>
+                            <!--Grid definitie-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="300" x:Name="WerknemerOpzoekenGridPanelColumn0"/>
                                 <ColumnDefinition Width="200"/>
@@ -304,6 +736,7 @@
                                 <RowDefinition MinHeight="50" MaxHeight="75"/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5">
+                                <!--Grid definitie-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
@@ -318,23 +751,105 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
+                                <!--TextBlock: Lijst van alle filter textblocken voor het screen "Werknemer Opzoeken"-->
                                 <TextBlock Text="Filters:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0" Foreground="#e3b304"/>
-
                                 <TextBlock Text="Naam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource WerknemerNaamTextBox}"/>
-
                                 <TextBlock Text="VoorNaam:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource WerknemerVoornaamTextBox}"/>
-
                                 <TextBlock Text="Bedrijf Id:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="5" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="6" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource WerknemerBedrijfIdTextBox}"/>
-
                                 <TextBlock Text="Email:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="1" VerticalContentAlignment="Center" Style="{StaticResource WerknemerEmailTextBox}"/>
-
                                 <TextBlock Text="Bedrijf Functie:" FontWeight="Bold" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="1" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="1" VerticalContentAlignment="Center" Style="{StaticResource WerknemerBedrijfFunctieTextBox}"/>
-
+                                <!--Border: Lijst van alle filter textboxen en hun styles voor het screen "Werknemer Opzoeken"-->
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerOpzoekenFilterTextBoxNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=WerknemerOpzoekenFilterTextBoxNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="4" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerOpzoekenFilterTextBoxVoorNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=WerknemerOpzoekenFilterTextBoxVoorNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="6" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerOpzoekenFilterTextBoxBedrijfId" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Bedrijf Id nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=WerknemerOpzoekenFilterTextBoxBedrijfId}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="1" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerOpzoekenFilterTextBoxEmail" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=WerknemerOpzoekenFilterTextBoxEmail}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="4" Grid.Row="1" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerOpzoekenFilterTextBoxFunctie" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Functie" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=WerknemerOpzoekenFilterTextBoxFunctie}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <!--Button: Voor het filteren van alle werknemers voor het screen "Werknemer Opzoeken"-->
                                 <Button x:Name="WerknemerOpvragenFilterBtn" Content="filter" Grid.Column="11" Grid.Row="0" Margin="5" Height="40" Padding="10,0,10,0"
                                     BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Grid.RowSpan="2" VerticalAlignment="Center" Click="WerknemerOpvragenFilterBtn_Click">
                                     <Button.Resources>
@@ -344,8 +859,26 @@
                                     </Button.Resources>
                                 </Button>
                             </Grid>
-
-                            <ListView x:Name="ListviewWerknemerOpzoeken" Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18" ItemsSource="{Binding werknemersList}" SelectionChanged="ListviewWerknemerOpzoeken_SelectionChanged">
+                            <!--ListView: Voor het weergeven van alle werknemers voor het screen "Werknemer Opzoeken"-->
+                            <ListView x:Name="ListviewWerknemerOpzoeken" Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18" ItemsSource="{Binding werknemersList}" SelectionChanged="ListviewWerknemerOpzoeken_SelectionChanged" Background="Gray">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Foreground" Value="#e3b304"/>
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderThickness" Value="2"/>
+                                                <Setter Property="BorderBrush" Value="#e3b304"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Gray"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Foreground" Value="#e3b304"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Id" Width="auto" DisplayMemberBinding="{Binding PersoonId}"/>
@@ -355,31 +888,76 @@
                                     </GridView>
                                 </ListView.View>
                             </ListView>
+                            <!--TextBlock: Lijst van alle onderstaande textblocken voor het screen "Werknemer Opzoeken"-->
                             <TextBlock x:Name="WerknemerOpzoekenTextBlockNaam" Text="Naam en Voornaam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
                             <TextBlock x:Name="WerknemerOpzoekenTextBlockEmail" Text="Email:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-                            <TextBlock x:Name="WerknemerOpzoekenTextBlockId" Text="Bedrijf Id:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="3" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-                            <TextBlock x:Name="WerknemerOpzoekenTextBlockFunctie" Text="Bedrijf Functie:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="4" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-                            <TextBlock x:Name="WerknemerOpzoekenTextBlockId2" Text="Bedrijf Id:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="5" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-                            <TextBlock x:Name="WerknemerOpzoekenTextBlockFunctie2" Text="Bedrijf Functie:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="6" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-
-                            <TextBox x:Name="WerknemerOpzoekenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="1" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxNaam}"/>
-                            <TextBox x:Name="WerknemerOpzoekenTextBoxVoornaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxVoornaam}"/>
-                            <TextBox x:Name="WerknemerOpzoekenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxEmail}"/>
-                            <TextBox x:Name="WerknemerOpzoekenTextBoxId" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxId}"/>
-                            <TextBox x:Name="WerknemerOpzoekenTextBoxFunctie" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxFunctie}"/>
-                            <TextBox x:Name="WerknemerOpzoekenTextBoxId2" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxId}"/>
-                            <TextBox x:Name="WerknemerOpzoekenTextBoxFunctie2" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxFunctie}"/>
-
+                            <!--Border: Lijst van alle onderstaande textboxen en hun styles voor het screen "Werknemer Opzoeken"-->
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="1" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerOpzoekenTextBoxNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=WerknemerOpzoekenTextBoxNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerOpzoekenTextBoxVoornaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=WerknemerOpzoekenTextBoxVoornaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerOpzoekenTextBoxEmail" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=WerknemerOpzoekenTextBoxEmail}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <!--Button: Voor het verwijderen van een werknemer voor het screen "Werknemer Opzoeken"-->
                             <Button x:Name="WerknemerOpvragenVerwijderenBtn" Content="Verwijderen" Grid.Column="4" Grid.Row="8" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="WerknemerOpvragenVerwijderenBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
                                     </Style>
                                 </Button.Resources>
                             </Button>
+                            <!--Button: Voor het aanpassen van een werknemer voor het screen "Werknemer Opzoeken"-->
                             <Button x:Name="WerknemerOpvragenAanpassenBtn" Content="Aanpassen" Grid.Column="3" Grid.Row="8" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="WerknemerOpvragenAanpassenBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -391,6 +969,7 @@
                     <!--DockPanel: Bezoeker toevoegen scherm-->
                     <DockPanel x:Name="BezoekerToevoegenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
                         <Grid>
+                            <!--Grid definitie-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200" x:Name="BezoekerToevoegenGridPanelColumn0"/>
                                 <ColumnDefinition Width="*"/>
@@ -405,17 +984,86 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition MinHeight="50" MaxHeight="75"/>
                             </Grid.RowDefinitions>
+                            <!--TextBlock: Lijst van alle textblocken voor het screen "Bezoeker Toevoegen"-->
                             <TextBlock x:Name="BezoekerToevoegenTextBlockNaam" Text="Naam en Voornaam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
                             <TextBlock x:Name="BezoekerToevoegenTextBlockEmail" Text="Email:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
                             <TextBlock x:Name="BezoekerToevoegenTextBlockBedrijfNaam" Text="Bedrijf Naam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
-
-                            <TextBox x:Name="BezoekerToevoegenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxNaam}"/>
-                            <TextBox x:Name="BezoekerToevoegenTextBoxVoornaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxVoornaam}"/>
-                            <TextBox x:Name="BezoekerToevoegenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerToevoegenTextBoxEmail}"/>
-                            <TextBox x:Name="BezoekerToevoegenTextBoxBedrijfNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BedrijfOpzoekenTextBoxNaam}"/>
-
+                            <!--Border: Lijst van alle textboxen en hun styles voor het screen "Bezoeker Toevoegen"-->
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerToevoegenTextBoxNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekerToevoegenTextBoxNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerToevoegenTextBoxVoornaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekerToevoegenTextBoxVoornaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerToevoegenTextBoxEmail" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekerToevoegenTextBoxEmail}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerToevoegenTextBoxBedrijfNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekerToevoegenTextBoxBedrijfNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <!--Button: Voor het toevoegen van een bezoeker voor het screen "Bezoeker Toevoegen"-->
                             <Button x:Name="BezoekerToevoegenToevoegBtn" Content="Toevoegen" Grid.Column="4" Grid.Row="4" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BezoekerToevoegenToevoegBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -427,6 +1075,7 @@
                     <!--DockPanel: Bezoeker aanpassen scherm-->
                     <DockPanel x:Name="BezoekerOpzoekenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
                         <Grid>
+                            <!--Grid definitie-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150" x:Name="BezoekerOpzoekenGridPanelColumn0"/>
                                 <ColumnDefinition Width="200"/>
@@ -443,6 +1092,7 @@
                                 <RowDefinition MinHeight="50" MaxHeight="75"/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5">
+                                <!--Grid definitie-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
@@ -457,25 +1107,107 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
+                                <!--TextBlock: Lijst van alle filter textblocken voor het screen "Bezoeker Opzoeken"-->
                                 <TextBlock Text="Filters:" FontSize="24" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0" Foreground="#e3b304"/>
-
                                 <TextBlock Text="Naam:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource WerknemerNaamTextBox}"/>
-
                                 <TextBlock Text="VoorNaam:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource WerknemerVoornaamTextBox}"/>
-
                                 <TextBlock Text="Persoon Id:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="5" Grid.Row="0" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="6" Grid.Row="0" VerticalContentAlignment="Center" Style="{StaticResource BezoekerOpzoekenTextBoxPersoonId}"/>
-
                                 <TextBlock Text="Bedrijf Naam:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="1" VerticalContentAlignment="Center" Style="{StaticResource BedrijfOpzoekenTextBoxNaam}"/>
-
                                 <TextBlock Text="Email:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="1" Foreground="#e3b304"/>
-                                <TextBox TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="1" VerticalContentAlignment="Center" Style="{StaticResource WerknemerEmailTextBox}"/>
-
+                                <!--Border: Lijst van alle filter textboxen en hun styles voor het screen "Bezoeker Opzoeken"-->
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenFilterTextBoxNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenFilterTextBoxNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="4" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenFilterTextBoxVoorNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenFilterTextBoxVoorNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="6" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenFilterTextBoxPersoonId" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Persoon Id" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenFilterTextBoxPersoonId}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="1" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenFilterTextBoxBedrijfNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenFilterTextBoxBedrijfNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="4" Grid.Row="1" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenFilterTextBoxEmail" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenFilterTextBoxEmail}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <!--Button: Voor het filteren van alle bezoekers voor het screen "Bezoeker Opzoeken"-->
                                 <Button x:Name="BezoekerOpvragenFilterBtn" Content="filter" Grid.Column="11" Grid.Row="0" Margin="5" Height="40" Padding="10,0,10,0"
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Grid.RowSpan="2" VerticalAlignment="Center" Click="WerknemerOpvragenFilterBtn_Click">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Grid.RowSpan="2" VerticalAlignment="Center" Click="BezoekerOpvragenFilterBtn_Click">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10"/>
@@ -483,8 +1215,26 @@
                                     </Button.Resources>
                                 </Button>
                             </Grid>
-
-                            <ListView x:Name="ListviewBezoekerOpzoeken" Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18" ItemsSource="{Binding werknemersList}" SelectionChanged="ListviewWerknemerOpzoeken_SelectionChanged">
+                            <!--ListView: Voor het weergeven van alle bezoekers voor het screen "Bezoeker Opzoeken"-->
+                            <ListView x:Name="ListviewBezoekerOpzoeken" Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18" ItemsSource="{Binding werknemersList}" SelectionChanged="ListviewWerknemerOpzoeken_SelectionChanged" Background="Gray">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Foreground" Value="#e3b304"/>
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderThickness" Value="2"/>
+                                                <Setter Property="BorderBrush" Value="#e3b304"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Gray"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Foreground" Value="#e3b304"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Id" Width="auto" DisplayMemberBinding="{Binding PersoonId}"/>
@@ -495,25 +1245,95 @@
                                     </GridView>
                                 </ListView.View>
                             </ListView>
+                            <!--TextBlock: Lijst van alle onderstaande textblocken voor het screen "Bezoeker Opzoeken"-->
                             <TextBlock x:Name="BezoekerOpzoekenTextBlockNaam" Text="Naam en Voornaam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Foreground="#e3b304"/>
                             <TextBlock x:Name="BezoekerOpzoekenTextBlockEmail" Text="Email:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2" Foreground="#e3b304"/>
                             <TextBlock x:Name="BezoekerOpzoekenTextBlockBedrijfNaam" Text="Bedrijf Naam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="3" Foreground="#e3b304"/>
-
-                            <TextBox x:Name="BezoekerOpzoekenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="1" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerNaamTextBox}"/>
-                            <TextBox x:Name="BezoekerOpzoekenTextBoxVoornaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerVoornaamTextBox}"/>
-                            <TextBox x:Name="BezoekerOpzoekenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource WerknemerEmailTextBox}"/>
-                            <TextBox x:Name="BezoekerOpzoekenTextBoxBedrijfNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" VerticalContentAlignment="Center" MinHeight="40" MaxHeight="60" Style="{StaticResource BezoekerOpzoekenTextBoxPersoonId}"/>
-
+                            <!--Border: Lijst van alle onderstaande textboxen en hun styles voor het screen "Bezoeker Opzoeken"-->
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="1" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenTextBoxNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenTextBoxNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenTextBoxVoornaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenTextBoxVoornaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenTextBoxEmail" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenTextBoxEmail}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerOpzoekenTextBoxBedrijfNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekerOpzoekenTextBoxBedrijfNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <!--Button: Voor het verwijderen van een bezoeker voor het screen "Bezoeker Opzoeken"-->
                             <Button x:Name="BezoekerOpvragenVerwijderenBtn" Content="Verwijderen" Grid.Column="4" Grid.Row="5" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BezoekerOpvragenVerwijderenBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
                                     </Style>
                                 </Button.Resources>
                             </Button>
+                            <!--Button: Voor het aanpassen van een bezoeker voor het screen "Bezoeker Opzoeken"-->
                             <Button x:Name="BezoekerOpvragenAanpassenBtn" Content="Aanpassen" Grid.Column="3" Grid.Row="5" Margin="5" 
-                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24">
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BezoekerOpvragenAanpassenBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -525,36 +1345,383 @@
                     <!--DockPanel: Bezoek toevoegen scherm-->
                     <DockPanel x:Name="BezoekToevoegenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
                         <Grid>
+                            <!--Grid definitie-->
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" x:Name="BezoekToevoegenGridPanelColumn0"/>
+                                <ColumnDefinition Width="225"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="150" x:Name="BezoekToevoegenGridPanelColumn1"/>
+                                <ColumnDefinition Width="175"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
                             </Grid.RowDefinitions>
-                            <TextBlock x:Name="BezoekToevoegenTextBlockEmail" Text="Email:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0"/>
-                            <TextBlock x:Name="BezoekToevoegenTextBlockNaam" Text="Naam en Voornaam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1"/>
-                            <TextBlock x:Name="BezoekToevoegenTextBlockBedrijfNaam" Text="Bedrijf Naam:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2"/>
-                            <TextBlock x:Name="BezoekToevoegenTextBlockContactPersson" Text="Contact Persoon:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="2" Grid.Row="2"/>
-                            <TextBlock x:Name="BezoekToevoegenTextBlockBedrijfNaamBezoeker" Text="Bedrijf Naam Bezoeker:" FontWeight="Bold" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="3"/>
-
-                            <TextBox x:Name="BezoekToevoegenTextBoxEmail" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" VerticalContentAlignment="Center"/>
-                            <TextBox x:Name="BezoekToevoegenTextBoxNaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center"/>
-                            <TextBox x:Name="BezoekToevoegenTextBoxVoornaam" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center"/>
-                            <ComboBox x:Name="BezoekToevoegenComboBoxBedrijfNaam" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2"/>
-                            <ComboBox x:Name="BezoekToevoegenComboBoxContactPersoon" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="2"/>
-                            <TextBox x:Name="BezoekToevoegenTextBoxBedrijfNaamBezoeker" TextAlignment="left" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" VerticalContentAlignment="Center"/>
-
-                            <Button x:Name="BezoekToevoegenToevoegBtn" Content="Toevoegen" Grid.Column="4" Grid.Row="6" Margin="5" 
-                                    BorderBrush="Black" Background="Gray" BorderThickness="2" FontSize="24">
+                            <!--TextBlock: Lijst van alle textblocken voor het screen "Bezoek Toevoegen"-->
+                            <TextBlock x:Name="BezoekToevoegenTextBlockEmail" Text="Email:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockNaam" Text="Naam en Voornaam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="1" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockBedrijfNaam" Text="Bedrijf Naam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="2" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockContactPersson" Text="Contact Persoon:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="2" Grid.Row="2" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <TextBlock x:Name="BezoekToevoegenTextBlockBedrijfNaamBezoeker" Text="Bedrijf Naam Bezoeker:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="3" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <!--Border: Lijst van alle textboxen en hun styles voor het screen "Bezoek Toevoegen"-->
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekToevoegenTextBoxEmail" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekToevoegenTextBoxEmail}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekToevoegenTextBoxNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekToevoegenTextBoxNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekToevoegenTextBoxVoornaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekToevoegenTextBoxVoornaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekToevoegenTextBoxBedrijfNaamBezoeker" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekToevoegenTextBoxBedrijfNaamBezoeker}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <!--ComboBox: Voor het weergeven van alle bedrijven voor het screen "Bezoek Toevoegen"-->
+                            <ComboBox x:Name="BezoekToevoegenComboBoxBedrijfNaam" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="1" Grid.Row="2" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest2}" FontSize="20" Foreground="#e3b304"/>
+                            <!--ComboBox: Voor het weergeven van alle werknemers voor het screen "Bezoek Toevoegen"-->
+                            <ComboBox x:Name="BezoekToevoegenComboBoxContactPersoon" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="3" Grid.Row="2" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest2}" FontSize="20" Foreground="#e3b304"/>
+                            <!--Button: Voor het toevoegen van een bezoek voor het screen "Bezoek Toevoegen"-->
+                            <Button x:Name="BezoekToevoegenToevoegBtn" Content="Toevoegen" Grid.Column="4" Grid.Row="6" Margin="5" BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BezoekToevoegenToevoegBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </DockPanel>
+                    <!--DockPanel: Bezoek opzoeken scherm-->
+                    <DockPanel x:Name="BezoekOpzoekenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                        <Grid>
+                            <!--Grid definitie-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300" x:Name="BezoekOpzoekenGridPanelColumn0"/>
+                                <ColumnDefinition Width="225"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="175"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition MinHeight="50" MaxHeight="75"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6">
+                                <!--Grid definitie-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <!--TextBlock: Lijst van alle filter textblocken voor het screen "Bezoek Opzoeken"-->
+                                <TextBlock Text="Filters:" FontSize="24" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="0" Grid.Row="0" Foreground="#e3b304"/>
+                                <TextBlock Text="Naam:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" Foreground="#e3b304"/>
+                                <TextBlock Text="VoorNaam:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="0" Foreground="#e3b304"/>
+                                <TextBlock Text="Persoon Id:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="5" Grid.Row="0" Foreground="#e3b304"/>
+                                <TextBlock Text="Bedrijf Naam:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Foreground="#e3b304"/>
+                                <TextBlock Text="Email:" FontSize="16" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="1" Foreground="#e3b304"/>
+                                <!--Border: Lijst van alle filter textboxen en hun styles voor het screen "Bezoek Opzoeken"-->
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenFilterTextBoxNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenFilterTextBoxNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="4" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenFilterTextBoxVoorNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenFilterTextBoxVoorNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="6" Grid.Row="0" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenFilterTextBoxPersoonId" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Persoon Id" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenFilterTextBoxPersoonId}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="1" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenFilterTextBoxBedrijfNaam" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenFilterTextBoxBedrijfNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" Background="LightGray" Grid.Column="4" Grid.Row="1" Height="30" Margin="5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenFilterTextBoxEmail" FontSize="14"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenFilterTextBoxEmail}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <!--Button: Voor het filteren van alle bezoeken voor het screen "Bezoek Opzoeken"-->
+                                <Button x:Name="BezoekOpvragenFilterBtn" Content="filter" Grid.Column="11" Grid.Row="0" Margin="5" Height="40" Padding="10,0,10,0"
+                                    BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Grid.RowSpan="2" VerticalAlignment="Center" Click="BezoekOpvragenFilterBtn_Click">
+                                    <Button.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </Grid>
+                            <!--TextBlock: Lijst van alle onderstaande textblocken voor het screen "Bezoek Opzoeken"-->
+                            <TextBlock x:Name="BezoekOpzoekenTextBlockEmail" Text="Email:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <TextBlock x:Name="BezoekOpzoekenTextBlockNaam" Text="Naam en Voornaam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <TextBlock x:Name="BezoekOpzoekenTextBlockBedrijfNaam" Text="Bedrijf Naam:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="3" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <TextBlock x:Name="BezoekOpzoekenTextBlockContactPersson" Text="Contact Persoon:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="3" Grid.Row="3" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <TextBlock x:Name="BezoekOpzoekenTextBlockBedrijfNaamBezoeker" Text="Bedrijf Naam Bezoeker:" FontSize="20" TextAlignment="left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="4" MinHeight="40" MaxHeight="60" Foreground="#e3b304"/>
+                            <!--ListView: Voor het weergeven van alle bezoeken voor het screen "Bezoek Opzoeken"-->
+                            <ListView x:Name="ListviewBezoekOpzoeken" Grid.RowSpan="9" Grid.Column="0" Grid.Row="1" FontSize="18" ItemsSource="{Binding werknemersList}" SelectionChanged="ListviewWerknemerOpzoeken_SelectionChanged" Background="Gray">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Foreground" Value="#e3b304"/>
+                                                <Setter Property="Background" Value="Gray"/>
+                                                <Setter Property="BorderThickness" Value="2"/>
+                                                <Setter Property="BorderBrush" Value="#e3b304"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Gray"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Foreground" Value="#e3b304"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Bezoeker" Width="auto" DisplayMemberBinding="{Binding Bezoeker.Naam}"/>
+                                        <GridViewColumn Header="Bedrijf" Width="auto" DisplayMemberBinding="{Binding Bedrijf.Naam}"/>
+                                        <GridViewColumn Header="StartDatum" Width="auto" DisplayMemberBinding="{Binding StartTijd}"/>
+                                        <GridViewColumn Header="EindDatum" Width="auto" DisplayMemberBinding="{Binding EindTijd}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <!--Border: Lijst van alle onderstaande textboxen en hun styles voor het screen "Bezoek Opzoeken"-->
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenTextBoxEmail" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenTextBoxEmail}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenTextBoxNaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenTextBoxNaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenTextBoxVoornaam" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Voornaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenTextBoxVoornaam}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" Background="LightGray" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4" Height="40" Margin="5">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekOpzoekenTextBoxBedrijfNaamBezoeker" FontSize="16"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Bedrijf naam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BezoekOpzoekenTextBoxBedrijfNaamBezoeker}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <!--ComboBox: Voor het weergeven van alle bedrijven voor het screen "Bezoek Opzoeken"-->
+                            <ComboBox x:Name="BezoekOpzoekenComboBoxBedrijfNaam" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="2" Grid.Row="3" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest2}" FontSize="20" Foreground="#e3b304"/>
+                            <!--ComboBox: Voor het weergeven van alle werknemers voor het screen "Bezoek Opzoeken"-->
+                            <ComboBox x:Name="BezoekOpzoekenComboBoxContactPersoon" VerticalAlignment="Center" Margin="5,0,5,0" Height="25" Grid.Column="4" Grid.Row="3" MinHeight="40" MaxHeight="60" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxTest2}" FontSize="20" Foreground="#e3b304"/>
+                            <!--Button: Voor het verwijderen van een bezoek voor het screen "Bezoek Opzoeken"-->
+                            <Button x:Name="BezoekOpzoekenVerwijderenBtn" Content="Verwijderen" Grid.Column="4" Grid.Row="7" Margin="5" BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BezoekOpzoekenVerwijderenBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <!--Button: Voor het aanpassen van een bezoek voor het screen "Bezoek Opzoeken"-->
+                            <Button x:Name="BezoekOpzoekenAanpassenBtn" Content="Aanpassen" Grid.Column="5" Grid.Row="7" Margin="5" BorderBrush="Black" Background="#e3b304" BorderThickness="2" FontSize="24" Click="BezoekOpzoekenAanpassenBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>

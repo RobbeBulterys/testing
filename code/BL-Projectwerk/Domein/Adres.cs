@@ -33,9 +33,6 @@ namespace BL_Projectwerk.Domein
             ZetLand(land);
         }
         */
-        public Adres()
-        {
-        }
 
         public int Id { get; set; }
         public string Straat { get; set; }
@@ -87,6 +84,11 @@ namespace BL_Projectwerk.Domein
                    Postcode == adres.Postcode &&
                    Plaats == adres.Plaats &&
                    Land == adres.Land;
+        }
+
+        public override string ToString()
+        {
+            return $"{Id} - {Straat} - {Nummer} - {Postcode} - {Plaats} - {Land}";
         }
 
         public override int GetHashCode()

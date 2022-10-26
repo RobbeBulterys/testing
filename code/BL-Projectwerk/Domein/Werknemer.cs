@@ -8,7 +8,9 @@ using System.Text.RegularExpressions;
 
 namespace BL_Projectwerk.Domein {
     public class Werknemer : Persoon {
+        
         public Werknemer(int persoonId, string naam, string voornaam, string functie) : base(persoonId, naam, voornaam)
+            // to do moet weg nadat dummies weg zijn
         {
             ZetFunctie(functie);
         }
@@ -23,20 +25,20 @@ namespace BL_Projectwerk.Domein {
             ZetFunctie(functie);
             ZetBedrijf(bedrijf);
         }
-
+        /*
         public Werknemer(string naam, string voornaam, Bedrijf bedrijf, string functie, string email) : base(naam, voornaam, email) {
             // nieuwe werknemer met email
             ZetFunctie(functie);
             ZetBedrijf(bedrijf);
             // TODO: kijken naar non-nullable warnings
         }
-
+        
         public Werknemer(int persoonId, string naam, string voornaam, Bedrijf bedrijf, string functie, string email) : base(persoonId, naam, voornaam, email) {
             // werknemer uit DB met email
             ZetFunctie(functie);
             ZetBedrijf(bedrijf);
         }
-
+        */
         public string Functie { get; set; }
         public Bedrijf Bedrijf { get; set; }
 

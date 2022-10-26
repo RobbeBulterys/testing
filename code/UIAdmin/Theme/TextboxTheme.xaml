@@ -231,7 +231,7 @@
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
                             <TextBlock IsHitTestVisible="False" 
-                                       Text="Land"
+                                       Text="Landen"
                                        VerticalAlignment="Center" 
                                        HorizontalAlignment="Left" 
                                        Margin="10,0,0,0"
