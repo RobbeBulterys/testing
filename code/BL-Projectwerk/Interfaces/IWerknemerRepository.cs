@@ -9,12 +9,14 @@ namespace BL_Projectwerk.Interfaces
 {
     public interface IWerknemerRepository
     {
-        bool BestaatWerknemer(Werknemer werknemer);
+        bool BestaatWerknemer(int id);
+
+        bool BestaatWerknemer(string naam, string voornaam);
         Werknemer GeefWerknemer(int persoonId);
-        Werknemer GeefWerknemers();
-        IEnumerable<Werknemer> GeefWerknemers(string? naam, string? voornaam, Bedrijf? bedrijf, string? functie, string? email);
-        void UpdateKlant(Werknemer werknemer);
-        void VerwijderWerknemer(Werknemer werknemer);
+        List<Werknemer> GeefWerknemers();
+        IEnumerable<Werknemer> GeefWerknemers(string? naam, string? voornaam);
+        void UpdateWerknemer(int werknemerId, string? naam, string? voornaam);
+        void VerwijderWerknemer(int WerknemerId);
         void VoegWerknemerToe(Werknemer werknemer);
     }
 }

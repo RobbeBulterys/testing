@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 E:\programming\github repos\ProjectWerk\Code\UIAdmin\App.xaml
-41922067302
-
-3-1233169557
-2081352931498
-MainWindow.xaml;Theme\MenuButtonTheme.xaml;Theme\StandardTextboxTheme.xaml;Theme\TextboxTheme.xaml;
+142126810899
+10-1608995731
+12722839784
+210663291165
+MainWindow.xaml;Theme\ButtonsList.xaml;Theme\DataGridList.xaml;Theme\MenuButtonTheme.xaml;Theme\StandardTextboxTheme.xaml;Theme\TextboxTheme.xaml;view\AddBedrijfScreen.xaml;view\AddBezoekerScreen.xaml;view\AddBezoekScreen.xaml;view\AddWerknemerScreen.xaml;view\EditBedrijfScreen.xaml;view\EditBezoekerScreen.xaml;view\EditWerknemerScreen.xaml;view\MainScreen.xaml;
 
 False
 

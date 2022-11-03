@@ -11,11 +11,11 @@ namespace BL_Projectwerk.Interfaces
     {
         public bool BestaatBezoeker(Bezoeker bezoeker);
         bool BestaatBezoeker(int value);
-        Bezoeker GeefBezoeker();
         Bezoeker GeefBezoeker(int persoonId);
-        Bezoeker GeefBezoekers();
+        List<Bezoeker> GeefBezoekers();
         IEnumerable<Bezoeker> GeefBezoekers(string? naam, string? voornaam, string? email, string? bedrijf);
-        void UpdateBezoeker(Bezoeker bezoeker);
+        void UpdateBezoeker(int bezoekerid, string? naam, string? voornaam, string? email, string? bedrijf);
+        void VerwijderBezoeker(Bezoeker bezoeker);
         void VoegBezoekerToe(Bezoeker bezoeker);
     }
 }

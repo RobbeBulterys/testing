@@ -7,10 +7,11 @@ namespace BL_Projectwerk.Interfaces
     {
         bool BestaatBezoek(Bezoek bezoek);
         Bezoek GeefBezoek(int bezoekId);
-        Bezoek GeefBezoeken();
-        Bezoek GeefBezoeken(Bezoeker? bezoeker, Bedrijf? bedrijf, Werknemer? contactpersoon);
+        List<Bezoek> GeefBezoeken();
+        List<Bezoek> GeefBezoeken(Bezoeker? bezoeker, Bedrijf? bedrijf, Werknemer? contactpersoon, string? StartTijd);
         void UpdateBezoek(Bezoek bezoek);
         void VerwijderBezoek(Bezoek bezoek);
         void VoegBezoekToe(Bezoek bezoek);
+        void LogoutBezoek(string Email);
     }
 }

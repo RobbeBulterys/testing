@@ -2,207 +2,221 @@
 using BL_Projectwerk.Domein;
 using BL_Projectwerk.Exceptions;
 
-namespace UnitTestDomein {
+namespace UnitTestDomein
+{
 
-    public class UnitTestBezoek {
-        private readonly static Bedrijf _bosteels = new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be");
-        private readonly static Werknemer _werknemerTomZonderId = new Werknemer("tom", "vdw", new Bedrijf("hogent", "BE0456456456", "i@kd.be"), "lector");
-        private readonly static Werknemer _werknemerBertZonderId = new Werknemer("Bert", "Bertens", _bosteels, "luierik");
-        private readonly static Bezoeker _bezoekerMikeZonderId = new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent");
-        private readonly static Bezoeker _bezoekerNielsZonderId = new Bezoeker("Niels", "Nelson", "nn@nn.na", "hogent");
-        private readonly Bezoek _bezoek1 = new Bezoek(2, _bezoekerMikeZonderId, _werknemerBertZonderId.Bedrijf, _werknemerBertZonderId, DateTime.Today, DateTime.Today.AddHours(8));
-        //private readonly static Bezoek _bezoek1anderAdres = new Bezoek(2, _mike, _bert.Bedrijf, _bert, DateTime.Today, DateTime.Today.AddHours(8));
-
+    public class UnitTestBezoek
+    {
         [Theory]
         [InlineData(1)]
-        [InlineData(299)]
-        public void ZetId_Valid(int id) {
-            // Fact is infeite voldoende: randwaarde 1 tot +oneindig
-            Bezoek b = _bezoek1;
+        [InlineData(2)]
+        [InlineData(999)]
+        public void ZetId_Valid(int id)
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            b.ZetId(id);
+            _bezoek1.ZetId(id);
 
-            Assert.Equal(id, b.BezoekId);
+            Assert.Equal(id, _bezoek1.BezoekId);
         }
 
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
-        public void ZetId_InValid(int id) {
-            Bezoek b = _bezoek1;
+        [InlineData(-999)]
+        public void ZetId_InValid(int id)
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            Assert.Throws<BezoekException>(() => b.ZetId(id));
+            Assert.Throws<BezoekException>(() => _bezoek1.ZetId(id));
         }
 
         [Fact]
-        public void ZetBezoeker_Valid() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_bezoekerMikeZonderId, b.Bezoeker);
+        public void ZetBezoeker_Valid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            b.ZetBezoeker(_bezoekerNielsZonderId);
+            _bezoek1.ZetBezoeker(new Bezoeker("Niels", "Nelson", "nn@nn.na", "hogent"));
 
-            Assert.Equal(_bezoekerNielsZonderId, b.Bezoeker);
+            Assert.Equal(new Bezoeker("Niels", "Nelson", "nn@nn.na", "hogent"), _bezoek1.Bezoeker);
         }
 
         [Fact]
-        public void ZetBezoeker_InValid() {
-            Bezoek b = _bezoek1;
+        public void ZetBezoeker_InValid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            Assert.Throws<BezoekException>(() => b.ZetBezoeker(null));
-        }
-
-
-        [Fact]
-        public void ZetContactpersoon_Valid() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_werknemerBertZonderId, b.Contactpersoon);
-            
-
-            b.ZetContactpersoon(_werknemerTomZonderId);
-
-            Assert.Equal(_werknemerTomZonderId, b.Contactpersoon);
+            Assert.Throws<BezoekException>(() => _bezoek1.ZetBezoeker(null));
         }
 
         [Fact]
-        public void ZetContactpersoon_InValid() {
-            Bezoek b = _bezoek1;
+        public void ZetContactpersoon_Valid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            Assert.Throws<BezoekException>(() => b.ZetBezoeker(null));
+            _bezoek1.ZetContactpersoon(new Werknemer("tom", "vdw", "lector"));
+
+            Assert.Equal(new Werknemer("tom", "vdw", "lector"), _bezoek1.Contactpersoon);
         }
 
         [Fact]
-        public void ZetBedrijf_Valid() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_bosteels, b.Bedrijf);
+        public void ZetContactpersoon_InValid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            Assert.Throws<BezoekException>(() => _bezoek1.ZetBezoeker(null));
+        }
+
+        [Fact]
+        public void ZetBedrijf_Valid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
             Bedrijf bedrijf = new Bedrijf(3, "Bosteels brewery", "BE0123123123", "info@example.com");
-            b.ZetBedrijf(bedrijf);
+            _bezoek1.ZetBedrijf(bedrijf);
 
-            Assert.Equal(bedrijf, b.Bedrijf);
+            Assert.Equal(bedrijf, _bezoek1.Bedrijf);
         }
 
         [Fact]
-        public void ZetBedrijf_InValid() {
-            Bezoek b = _bezoek1;
+        public void ZetBedrijf_InValid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            Assert.Throws<BezoekException>(() => b.ZetBedrijf(null));
+            Assert.Throws<BezoekException>(() => _bezoek1.ZetBedrijf(null));
         }
 
         [Theory]
         [InlineData("2023/03/21 05:23:12")]
-        [InlineData("22 januari 2022")]
         [InlineData("22/5/2001")]
-        public void ZetStartTijd_Valid(string startTijd) {
-            Bezoek b = _bezoek1;
-            Assert.NotEqual(DateTime.Parse(startTijd), b.StartTijd);
-            b.ZetStartTijd(DateTime.Parse(startTijd));
+        public void ZetStartTijd_Valid(string startTijd)
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            Assert.Equal(DateTime.Parse(startTijd), b.StartTijd);
+            _bezoek1.ZetStartTijd(DateTime.Parse(startTijd));
+
+            Assert.Equal(DateTime.Parse(startTijd), _bezoek1.StartTijd);
         }
 
         [Theory]
         [InlineData("")]
         [InlineData("\n")]
         [InlineData(" qdf  ")]
-        public void ZetStartTijd_InValidFormat(string startTijd) {
-            Bezoek b = _bezoek1;
-            // DateTime
+        public void ZetStartTijd_InValidFormat(string startTijd)
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            Assert.Throws<FormatException>(() => b.ZetStartTijd(DateTime.Parse(startTijd)));
+            Assert.Throws<FormatException>(() => _bezoek1.ZetStartTijd(DateTime.Parse(startTijd)));
         }
 
         [Fact]
-        public void ZetEindTijd_Valid() {
+        public void ZetEindTijd_Valid()
+        {
             string startTijd = "2023/03/21 05:23:12";
             string eindTijd = "2023/03/23 05:24:12";
 
-            Bezoek b = _bezoek1;
-            
-            b.ZetEindTijd(DateTime.Parse(eindTijd), DateTime.Parse(startTijd));
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            Assert.Equal(DateTime.Parse(eindTijd), b.EindTijd);
+            _bezoek1.ZetEindTijd(DateTime.Parse(eindTijd), DateTime.Parse(startTijd));
+
+            Assert.Equal(DateTime.Parse(eindTijd), _bezoek1.EindTijd);
         }
 
         [Theory]
         [InlineData("2023/03/21 05:23:12", "2023/03/19 05:23:12")]
-        [InlineData("2023/03/21 05:23:12", "2022/03/19 05:23:12")]
-        public void ZetEindTijd_InValid(string startTijd, string eindTijd) {
-            Bezoek b = _bezoek1;
+        public void ZetEindTijd_InValid(string startTijd, string eindTijd)
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker("Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
-            Assert.Throws<BezoekException>(() => b.ZetEindTijd(DateTime.Parse(eindTijd), DateTime.Parse(startTijd)));
+            Assert.Throws<BezoekException>(() => _bezoek1.ZetEindTijd(DateTime.Parse(eindTijd), DateTime.Parse(startTijd)));
 
         }
 
         [Fact]
-        public void VeranderBezoeker_Valid() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_bezoekerMikeZonderId, b.Bezoeker);
-            b.VeranderBezoeker(_bezoekerNielsZonderId);
-            Assert.Equal(_bezoekerNielsZonderId, b.Bezoeker);
+        public void VeranderBezoeker_Valid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            _bezoek1.VeranderBezoeker(new Bezoeker(2, "Niels", "Nelson", "nn@nn.na", "hogent"));
+
+            Assert.Equal(new Bezoeker(2, "Niels", "Nelson", "nn@nn.na", "hogent"), _bezoek1.Bezoeker);
         }
 
         [Fact]
-        public void VeranderBezoeker_Invalid_DezelfdeBezoeker() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_bezoekerMikeZonderId, b.Bezoeker);
-            Assert.Throws<BezoekException>(() => b.VeranderBezoeker(_bezoekerMikeZonderId));
-        }
-        [Fact]
-        public void VeranderBezoeker_Invalid_null() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_bezoekerMikeZonderId, b.Bezoeker);
-            Assert.Throws<BezoekException>(() => b.VeranderBezoeker(null));
+        public void VeranderBezoeker_Invalid_DezelfdeBezoeker()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            Assert.Throws<BezoekException>(() => _bezoek1.VeranderBezoeker(new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent")));
         }
 
         [Fact]
-        public void VeranderBedrijf_Valid() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_bosteels, b.Bedrijf);
+        public void VeranderBezoeker_Invalid_null()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
 
+            Assert.Throws<BezoekException>(() => _bezoek1.VeranderBezoeker(null));
+        }
+
+        [Fact]
+        public void VeranderBedrijf_Valid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
             Bedrijf bedrijf = new Bedrijf("hogent", "BE0231231231", "info@hogent.be");
-            b.VeranderBedrijf(bedrijf);
-            Assert.Equal(bedrijf, b.Bedrijf);
+
+            _bezoek1.VeranderBedrijf(bedrijf);
+
+            Assert.Equal(bedrijf, _bezoek1.Bedrijf);
         }
 
         [Fact]
-        public void VeranderBedrijf_Invalid_HetzelfdeBedrijf() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_bosteels, b.Bedrijf);
-            Assert.Throws<BezoekException>(() => b.VeranderBedrijf(_bosteels));
-        }
-        [Fact]
-        public void VeranderBedrijf_Invalid_null() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_bosteels, b.Bedrijf);
-            Assert.Throws<BezoekException>(() => b.VeranderBedrijf(null));
+        public void VeranderBedrijf_Invalid_HetzelfdeBedrijf()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            Assert.Throws<BezoekException>(() => _bezoek1.VeranderBedrijf(new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be")));
         }
 
         [Fact]
-        public void VeranderContacpersoon_Valid() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_werknemerBertZonderId, b.Contactpersoon);
-            b.VeranderContactpersoon(_werknemerTomZonderId);
-            Assert.Equal(_werknemerTomZonderId, b.Contactpersoon);
+        public void VeranderBedrijf_Invalid_null()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            Assert.Throws<BezoekException>(() => _bezoek1.VeranderBedrijf(null));
         }
 
         [Fact]
-        public void VeranderContactpersoon_Invalid_HetzelfdeContactpersoon() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_werknemerBertZonderId, b.Contactpersoon);
-            Assert.Throws<BezoekException>(() => b.VeranderContactpersoon(_werknemerBertZonderId));
-        }
-        [Fact]
-        public void VeranderContactpersoon_Invalid_null() {
-            Bezoek b = _bezoek1;
-            Assert.Equal(_werknemerBertZonderId, b.Contactpersoon);
-            Assert.Throws<BezoekException>(() => b.VeranderBezoeker(null));
+        public void VeranderContacpersoon_Valid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            _bezoek1.VeranderContactpersoon(new Werknemer("tom", "vdw", "lector"));
+
+            Assert.Equal(new Werknemer("tom", "vdw", "lector"), _bezoek1.Contactpersoon);
         }
 
         [Fact]
-        public void HeeftDezelfdeProperties_valid() {
-            // Bezoek 1 en 2 hebben dezelfde properties
-            Bezoek b1 = _bezoek1;
-            Bezoek b2 = new Bezoek(2, _bezoekerMikeZonderId, _werknemerBertZonderId.Bedrijf, _werknemerBertZonderId, DateTime.Today, DateTime.Today.AddHours(8));
-            Assert.True(b1.IsDezelfde(b2));
+        public void VeranderContactpersoon_Invalid_HetzelfdeContactpersoon()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            Assert.Throws<BezoekException>(() => _bezoek1.VeranderContactpersoon(new Werknemer("Bert", "Bertens", "luierik")));
+        }
+
+        [Fact]
+        public void VeranderContactpersoon_Invalid_null()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            Assert.Throws<BezoekException>(() => _bezoek1.VeranderBezoeker(null));
+        }
+
+        [Fact]
+        public void HeeftDezelfdeProperties_valid()
+        {
+            Bezoek _bezoek1 = new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8));
+
+            Assert.True(_bezoek1.IsDezelfde(new Bezoek(8, new Bezoeker(1, "Mike", "Mikes", "mm@mm.me", "hogent"), new Bedrijf("Bosteels Brewery", "BE0461231231", "info@kwak.karmeliet.be"), new Werknemer("Bert", "Bertens", "luierik"), DateTime.Today, DateTime.Today.AddHours(8))));
         }
     }
 }

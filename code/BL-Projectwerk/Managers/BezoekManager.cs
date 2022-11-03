@@ -60,8 +60,7 @@ namespace BL_Projectwerk.Managers
         {
             try
             {
-                List<Bezoek> bezoeken = new List<Bezoek>();
-                bezoeken.Add(_bezoekRepo.GeefBezoeken());
+                List<Bezoek> bezoeken = _bezoekRepo.GeefBezoeken().ToList();
                 return bezoeken;
             } catch (Exception ex)
             {
@@ -70,14 +69,14 @@ namespace BL_Projectwerk.Managers
         }
 
         //TODO: Filteren perfectioneren
-        public IReadOnlyList<Bezoek> ZoekBezoeken(Bezoeker? bezoeker, Bedrijf? bedrijf, Werknemer? contactpersoon)
+        public IReadOnlyList<Bezoek> ZoekBezoeken(Bezoeker? bezoeker, Bedrijf? bedrijf, Werknemer? contactpersoon, string? Starttijd)
         {
             try
             {
                 List<Bezoek> bezoeken = new List<Bezoek>();
-                if (bezoeker != null || bedrijf != null || contactpersoon != null )
+                if (bezoeker != null || bedrijf != null || contactpersoon != null || Starttijd != null)
                 {
-                    bezoeken.Add(_bezoekRepo.GeefBezoeken(bezoeker, bedrijf, contactpersoon));
+                    bezoeken = _bezoekRepo.GeefBezoeken(bezoeker, bedrijf, contactpersoon, Starttijd);
                 } else
                 {
                     throw new BezoekManagerException("ZoekBezoeker - Geen veld ingevuld");
@@ -89,5 +88,18 @@ namespace BL_Projectwerk.Managers
             }
         }
 
+        public void LogoutBezoek(string email)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(email)) { throw new BezoekManagerException("LogoutBezoek - Geen email ingevuld"); }
+                if (!Controle.IsGoedeEmailSyntax(email)) { throw new BezoekerManagerException("LogoutBezoek - ongeldige email");  }
+                _bezoekRepo.LogoutBezoek(email);
+            } 
+            catch (Exception ex)
+            {
+                throw new BezoekManagerException("LogoutBezoek", ex);
+            }
+        }
     }
 }

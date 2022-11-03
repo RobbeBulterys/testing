@@ -54,7 +54,7 @@ namespace UnitTestDomein
         [Theory]
         [InlineData("ATU01234567")]
         [InlineData("BE0012345678")]
-        [InlineData("PL0123456789")]
+        [InlineData("NL012345678B01")]
         public void IsBestaandBTWnummer_Valid(string btwNummer)
         {
             Assert.True(Controle.IsBestaandBTWnummer(btwNummer));

@@ -53,7 +53,7 @@ namespace UIBezoeker.view {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UIBezoeker;component/view/checkinwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UIBezoeker;V1.0.0.0;component/view/checkinwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\view\CheckInWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -8,7 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/checkin.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/checkout.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/background.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-home-page-64.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-login-64.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-logout-64.png")]
 
 

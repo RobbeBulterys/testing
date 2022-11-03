@@ -25,6 +25,12 @@ namespace UIBezoeker
             InitializeComponent();
         }
 
+        public void StartUpCollection()
+        {
+            BedrijfSelectie.ItemsSource = null;
+            ContactPersoonSelectie.ItemsSource = null;
+        }
+
 
         private void Login_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

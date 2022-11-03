@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace DL_Projectwerk.Exceptions
 {
-    internal class BedrijfRepoADOException
+    public class BedrijfRepoADOException : Exception
     {
+        public BedrijfRepoADOException(string? message) : base(message)
+        {
+        }
+
+        public BedrijfRepoADOException(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
     }
 }

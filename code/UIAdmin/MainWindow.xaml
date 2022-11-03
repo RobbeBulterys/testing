@@ -1455,7 +1455,7 @@
                         </Grid>
                     </DockPanel>
                     <!--DockPanel: Bezoek opzoeken scherm-->
-                    <DockPanel x:Name="BezoekOpzoekenGridPanel" Visibility="Collapsed" Grid.Column="0" Grid.Row="0">
+                    <DockPanel x:Name="BezoekOpzoekenGridPanel" Visibility="Visible" Grid.Column="0" Grid.Row="0">
                         <Grid>
                             <!--Grid definitie-->
                             <Grid.ColumnDefinitions>

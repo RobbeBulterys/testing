@@ -2,41 +2,47 @@
 using BL_Projectwerk.Domein;
 using BL_Projectwerk.Exceptions;
 
-namespace UnitTestDomein {
-    public class UnitTestWerknemer {
-        private static readonly Bedrijf b_Bosteels = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
-        private static readonly Werknemer werknemer_Josh = new Werknemer(10, "Baetens", "Josh", b_Bosteels, "programmer");
-        
+namespace UnitTestDomein
+{
+    public class UnitTestWerknemer
+    {
+        //private static readonly Bedrijf b_Bosteels = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
+        //private static readonly Werknemer werknemer_Josh = new Werknemer(10, "Baetens", "Josh", b_Bosteels, "programmer");
+
 
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
+        [InlineData(999)]
         public void ZetId_Valid(int id)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer werknemer_Josh = new Werknemer(10, "Baetens", "Josh", "programmer");
 
-            w.ZetId(id);
+            werknemer_Josh.ZetId(id);
 
-            Assert.Equal(id, w.PersoonId);
+            Assert.Equal(id, werknemer_Josh.PersoonId);
         }
 
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
+        [InlineData(-999)]
         public void ZetId_InValid(int id)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer werknemer_Josh = new Werknemer(10, "Baetens", "Josh", "programmer");
 
-            Assert.Throws<PersoonException>(() => w.ZetId(id));
+            Assert.Throws<PersoonException>(() => werknemer_Josh.ZetId(id));
         }
 
         [Theory]
         [InlineData("Hozee")]
         [InlineData("Jantje    ")]
         [InlineData("     Zjeff")]
+        [InlineData("     Zjeff    ")]
+        [InlineData("     Zj   eff    ")]
         public void ZetNaam_Valid(string naam)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             w.ZetNaam(naam);
 
@@ -47,10 +53,9 @@ namespace UnitTestDomein {
         [InlineData("")]
         [InlineData("        ")]
         [InlineData(null)]
-        [InlineData("jos     ke")]
         public void ZetNaam_InValid(string naam)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             Assert.Throws<PersoonException>(() => w.ZetNaam(naam));
         }
@@ -59,9 +64,10 @@ namespace UnitTestDomein {
         [InlineData("Hozee")]
         [InlineData("Jantje    ")]
         [InlineData("     Zjeff")]
+        [InlineData("     Zjeff    ")]
         public void ZetVoorNaam_Valid(string voornaam)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             w.ZetVoorNaam(voornaam);
 
@@ -77,17 +83,19 @@ namespace UnitTestDomein {
         [InlineData(null)]
         public void ZetVoorNaam_InValid(string voornaam)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             Assert.Throws<PersoonException>(() => w.ZetVoorNaam(voornaam));
         }
 
         [Theory]
         [InlineData("Jantje.Hozee@gmail.com")]
-        [InlineData("   JantjeZjeff@hotmail.be    ")]
+        [InlineData("Jantje.Hozee@gmail.com    ")]
+        [InlineData("    Jantje.Hozee@gmail.com")]
+        [InlineData("    JantjeZjeff@hotmail.be    ")]
         public void ZetEmail_Valid(string email)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             w.ZetEmail(email);
 
@@ -100,7 +108,7 @@ namespace UnitTestDomein {
         [InlineData(null)]
         public void ZetEmail_InValid(string email)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             Assert.Throws<PersoonException>(() => w.ZetEmail(email));
         }
@@ -110,17 +118,20 @@ namespace UnitTestDomein {
         [InlineData("   JantjeZjeff@hotmailbe    ")]
         public void ZetEmail_InValidSyntax(string email)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             Assert.Throws<PersoonException>(() => w.ZetEmail(email));
         }
 
         [Theory]
         [InlineData("Programmer")]
-        [InlineData("Boss")]
+        [InlineData("    Boss")]
+        [InlineData("Programmer    ")]
+        [InlineData("    Programmer    ")]
+        [InlineData("Progr    ammer")]
         public void ZetFunctie_Valid(string functie)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             w.ZetFunctie(functie);
 
@@ -133,39 +144,9 @@ namespace UnitTestDomein {
         [InlineData(null)]
         public void ZetFunctie_InValid(string functie)
         {
-            Werknemer w = werknemer_Josh;
+            Werknemer w = new Werknemer(10, "Baetens", "Josh", "programmer");
 
             Assert.Throws<WerknemerException>(() => w.ZetFunctie(functie));
-        }
-
-        [Fact]
-        public void ZetBedrijf_Valid()
-        {
-            Werknemer w = werknemer_Josh;
-            Bedrijf bedrijf = new Bedrijf(3, "Bosteels brewery", "BE0123123123", "info@example.com");
-            w.ZetBedrijf(bedrijf);
-
-            Assert.Equal(bedrijf, w.Bedrijf);
-        }
-
-        [Fact]
-        public void ZetBedrijf_InValid()
-        {
-            Werknemer w = werknemer_Josh;
-
-            Assert.Throws<WerknemerException>(() => w.ZetBedrijf(null));
-        }
-
-        [Fact]
-        public void VeranderBedrijf_Valid()
-        {
-            Werknemer w = werknemer_Josh;
-            Bedrijf bedrijf = new Bedrijf(3, "Bosteels brewery", "BE0123123123", "info@example.com");
-            Bedrijf bedrijf1 = new Bedrijf(4, "brewery", "BE0123123189", "info.brewery@hotmail.com");
-            w.ZetBedrijf(bedrijf);
-            w.VeranderBedrijf(bedrijf1);
-
-            Assert.True(w.Bedrijf.IsDezelfde(bedrijf1));
         }
     }
 }

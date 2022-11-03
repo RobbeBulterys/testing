@@ -66,21 +66,48 @@ namespace UnitTestDomein {
         }
 
         [Theory]
-        [InlineData("B")]
-        [InlineData("hallo")]
-        [InlineData("CCC")]
         [InlineData("")]
         [InlineData(" ")]
         [InlineData("\n")]
         [InlineData("   \r   ")]
         [InlineData(null)]
+        public void ZetNummer_InValid_AdresException(string nr)
+        {
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
+
+            Assert.Throws<AdresException>(() => a.ZetNummer(nr));
+        }
+
+        [Theory]
+        [InlineData("B")]
+        [InlineData("hallo")]
+        [InlineData("CCC")]
         [InlineData("9B Wereldbus")]
-        public void ZetNummer_InValid(string nr) {
+        public void ZetNummer_InValid_ControleException(string nr) {
             Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
             Assert.Throws<ControleException>(() => a.ZetNummer(nr));
         }
+        [Theory]
+        [InlineData("9000")]
+        [InlineData("10  00")]
+        [InlineData("    8300")]
+        public void ZetPostcode_Valid(string postcode)
+        {
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
 
+            a.ZetPostcode(postcode);
+
+            Assert.Equal(postcode, a.Postcode);
+        }
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("      ")]
+        public void ZetPostcode_InValid(string postcode)
+        {
+
+        }
         [Theory]
         [InlineData("Gent")]
         [InlineData("Antwerpen            ")]
@@ -130,5 +157,20 @@ namespace UnitTestDomein {
             Assert.Throws<AdresException>(() => a.ZetLand(land));
         }
 
+        [Fact]
+        public void IsDezelfde_InValid()
+        {
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
+
+            Assert.False(a.IsDezelfde(new Adres(1, "Kompasplein", "159", "9000", "Gent", "België")));
+        }
+
+        [Fact]
+        public void IsDezelfde_IsValid()
+        {
+            Adres a = new Adres(1, "Kompasplein", "19", "9000", "Gent", "België");
+
+            Assert.True(a.IsDezelfde(new Adres(1, "Kompasplein", "19", "9000", "Gent", "België")));
+        }
     }
 }

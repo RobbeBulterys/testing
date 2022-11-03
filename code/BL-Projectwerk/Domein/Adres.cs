@@ -1,4 +1,5 @@
 ﻿using BL_Projectwerk.Exceptions;
+using System.IO;
 
 namespace BL_Projectwerk.Domein
 {
@@ -22,17 +23,6 @@ namespace BL_Projectwerk.Domein
             ZetPlaats(plaats);
             ZetLand(land);
         }
-        /*
-        public Adres(string straat, string nummer, string postcode, string plaats, string land)
-        {
-            // Nieuw adres zonder databank id
-            ZetStraat(straat);
-            ZetNummer(nummer);
-            ZetPostcode(postcode);
-            ZetPlaats(plaats);
-            ZetLand(land);
-        }
-        */
 
         public int Id { get; set; }
         public string Straat { get; set; }
@@ -54,13 +44,15 @@ namespace BL_Projectwerk.Domein
 
         public void ZetNummer(string nummer)
         {
+            if (string.IsNullOrWhiteSpace(nummer)) { throw new AdresException("Adres - ZetNummer - geen nummer ingevuld"); }
             if (!Controle.IsGoedeAdresNummerSyntax(nummer)) { throw new AdresException("Adres - ZetNummer - geen geldige nummer ingevuld"); }
-            Nummer = nummer;
+            Nummer = nummer.Trim();
         }
 
         public void ZetPostcode(string postcode)
         {
-            Postcode = postcode;
+            if (string.IsNullOrWhiteSpace(postcode)) { throw new AdresException("Adres - ZetPostcode - geen postcode ingevuld"); }
+            Postcode = postcode.Trim();
         }
 
         public void ZetPlaats(string plaats)

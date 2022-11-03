@@ -41,3 +41,11 @@ E:\programming\github repos\ProjectWerk\Code\Test\obj\Debug\net6.0\refint\Test.d
 E:\programming\github repos\ProjectWerk\Code\Test\obj\Debug\net6.0\Test.pdb
 E:\programming\github repos\ProjectWerk\Code\Test\obj\Debug\net6.0\Test.genruntimeconfig.cache
 E:\programming\github repos\ProjectWerk\Code\Test\obj\Debug\net6.0\ref\Test.dll
+E:\programming\github repos\ProjectWerk\Code\Test\bin\Debug\net6.0\System.Data.SqlClient.dll
+E:\programming\github repos\ProjectWerk\Code\Test\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+E:\programming\github repos\ProjectWerk\Code\Test\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+E:\programming\github repos\ProjectWerk\Code\Test\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+E:\programming\github repos\ProjectWerk\Code\Test\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\programming\github repos\ProjectWerk\Code\Test\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\programming\github repos\ProjectWerk\Code\Test\bin\Debug\net6.0\DL-Projectwerk.dll
+E:\programming\github repos\ProjectWerk\Code\Test\bin\Debug\net6.0\DL-Projectwerk.pdb

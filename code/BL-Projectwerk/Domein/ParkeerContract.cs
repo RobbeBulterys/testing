@@ -27,20 +27,20 @@ namespace BL_Projectwerk.Domein
 
         public void ZetContractNummer(int contractNummer)
         {
-            if (contractNummer == 0) { throw new ContractException("Contract - ZetContractNummer - geen contractnummer"); }
+            if (contractNummer == 0) { throw new ParkeercontractException("Contract - ZetContractNummer - geen contractnummer"); }
             ContractNummer = contractNummer;
         }
 
         public void ZetStartDatum(DateOnly startDatum)
         {
-            if (string.IsNullOrEmpty(startDatum.ToString())) { throw new ContractException("Contact - ZetStartDatum - Geen datum ingevoerd"); }
+            if (string.IsNullOrEmpty(startDatum.ToString())) { throw new ParkeercontractException("Contact - ZetStartDatum - Geen datum ingevoerd"); }
             StartDatum = startDatum;
         }
 
         public void ZetEindDatum(DateOnly eindDatum, DateOnly startDatum)
         {
-            if (eindDatum.GetHashCode() == 0) { throw new ContractException("Contact - ZetStartDatum - Geen datum ingevoerd"); }
-            if (startDatum > eindDatum) { throw new ContractException("Contract - ZetEindDatum - Einddatum kan niet voor de startdatum vallen"); }
+            if (eindDatum.GetHashCode() == 0) { throw new ParkeercontractException("Contact - ZetStartDatum - Geen datum ingevoerd"); }
+            if (startDatum > eindDatum) { throw new ParkeercontractException("Contract - ZetEindDatum - Einddatum kan niet voor de startdatum vallen"); }
             EindDatum = eindDatum;
         }
     }

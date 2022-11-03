@@ -5,55 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Diagnostics.Contracts;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BL_Projectwerk.Domein {
     public class Werknemer : Persoon {
-        
-        public Werknemer(int persoonId, string naam, string voornaam, string functie) : base(persoonId, naam, voornaam)
-            // to do moet weg nadat dummies weg zijn
+
+        public Werknemer(int persoonId, string naam, string voornaam) : base(persoonId, naam, voornaam)
         {
-            ZetFunctie(functie);
-        }
-        public Werknemer(string naam, string voornaam, Bedrijf bedrijf, string functie) : base(naam, voornaam) {
-            // nieuwe werknemer
-            ZetFunctie(functie);
-            ZetBedrijf(bedrijf);
         }
 
-        public Werknemer(int persoonId, string naam, string voornaam, Bedrijf bedrijf, string functie) : base(persoonId, naam, voornaam) {
-            // werknemer uit DB
-            ZetFunctie(functie);
-            ZetBedrijf(bedrijf);
-        }
-        /*
-        public Werknemer(string naam, string voornaam, Bedrijf bedrijf, string functie, string email) : base(naam, voornaam, email) {
-            // nieuwe werknemer met email
-            ZetFunctie(functie);
-            ZetBedrijf(bedrijf);
-            // TODO: kijken naar non-nullable warnings
-        }
-        
-        public Werknemer(int persoonId, string naam, string voornaam, Bedrijf bedrijf, string functie, string email) : base(persoonId, naam, voornaam, email) {
-            // werknemer uit DB met email
-            ZetFunctie(functie);
-            ZetBedrijf(bedrijf);
-        }
-        */
-        public string Functie { get; set; }
-        public Bedrijf Bedrijf { get; set; }
-
-        public void ZetFunctie(string functie) {
-            if (string.IsNullOrWhiteSpace(functie)) { throw new WerknemerException("Werknemer - ZetFunctie - geen functie ingevuld"); }
-            Functie = functie.Trim();
-        }
-        public void VeranderBedrijf(Bedrijf bedrijf) {
-            if (bedrijf == null) { throw new WerknemerException("Werknemer - VeranderBedrijf - geen bedrijf ingevuld"); }
-            if (this.Bedrijf.Equals(bedrijf)) { throw new WerknemerException("Werknemer - VeranderBedrijf - werknemer werkt al voor dit bedrijf"); }
-            this.Bedrijf = bedrijf;
-        }
-        public void ZetBedrijf(Bedrijf bedrijf) {
-            if (bedrijf == null) { throw new WerknemerException("Werknemer - ZetBedrijf - geen bedrijf ingevuld"); }
-            Bedrijf = bedrijf;
+        public Werknemer(string naam, string voornaam) : base(naam, voornaam) {
         }
 
         public override int GetHashCode() {
@@ -61,25 +23,45 @@ namespace BL_Projectwerk.Domein {
         }
 
         public bool IsDezelfde(Werknemer werknemer) {
-            return PersoonId == werknemer.PersoonId &&
-                   Naam == werknemer.Naam &&
-                   Voornaam == werknemer.Voornaam &&
-                   Email == werknemer.Email &&
-                   Functie == werknemer.Functie &&
-                   Bedrijf.Equals(werknemer.Bedrijf);
+            if (PersoonId != werknemer.PersoonId) return false;
+            if (Naam != werknemer.Naam) return false; 
+            if (Voornaam != werknemer.Voornaam) return false;
+            return true;
         }
 
-        public override bool Equals(object? obj) {
-            if (obj is Werknemer werknemer) {
-                if (PersoonId == werknemer.PersoonId) {
-                    if (PersoonId == 0) { // Id 0 Mike, Id 0 Niels zijn niet hetzelfde
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Werknemer werknemer)
+            {
+                if (PersoonId == werknemer.PersoonId)
+                {
+                    if (PersoonId == 0)
+                    { // Id 0 Mike, Id 0 Niels zijn niet hetzelfde
                         return IsDezelfde(werknemer); // true or false
-                    } else {
+                    }
+                    else
+                    {
                         return true;
                     }
                 }
             }
             return false;
+        }
+
+        //internal bool BevatContractMetBedrijf(Bedrijf bedrijf) { // Mag internal blijven, omdat UI of DL niet van deze method hoeft te weten.
+        //    foreach (Werknemercontract wc in Contracten)
+        //    {
+        //        if (wc.Bedrijf.Equals(bedrijf))
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        public override string ToString() {
+            return $"Werknemer: {base.ToString()}";
         }
     }
 }

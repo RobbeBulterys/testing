@@ -2,13 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:UIAdmin"
-             Startup="Application_Startup">
+             Startup="Application_Startup"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/StandardTextboxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonsList.xaml"/>
+                <ResourceDictionary Source="Theme/DataGridList.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

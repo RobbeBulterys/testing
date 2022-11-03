@@ -87,7 +87,6 @@ namespace DL_Projectwerk
                     conn.Close();
                 }
             }
-
         }
 
         public void UpdateAdres(int id,string? straat, string? nummer, string? postcode, string? plaats, string? land)
@@ -177,7 +176,7 @@ namespace DL_Projectwerk
             }
         }
 
-        public Adres VoegAdresToe(Adres adres)
+        public int VoegAdresToe(Adres adres)
         {
             SqlConnection conn = GetConnection();
             string query = @"INSERT INTO dbo.Adres (Land,Postcode,Plaats,Straat,Nummer) output Inserted.AdresId VALUES (@Land,@Postcode,@Plaats,@Straat,@Nummer)";
@@ -203,8 +202,7 @@ namespace DL_Projectwerk
 
 
                     int nieuwId = (int)cmd.ExecuteScalar();
-                    Adres nieuwAdres = new Adres(nieuwId, adres.Straat, adres.Nummer, adres.Postcode, adres.Plaats, adres.Land); //TODO ZETID
-                    return nieuwAdres;
+                    return nieuwId;
                 }
                 catch (Exception ex)
                 {
@@ -217,7 +215,7 @@ namespace DL_Projectwerk
             }
         }
 
-        public Adres GeefAdresMetId(Adres adres)
+        public int GeefAdresId(Adres adres)
         {
             SqlConnection conn = GetConnection();
             string query = @"SELECT AdresId FROM dbo.Adres WHERE "
@@ -242,8 +240,7 @@ namespace DL_Projectwerk
                     cmd.Parameters["@Nummer"].Value = adres.Nummer;
 
                     int id = (int)cmd.ExecuteScalar();
-                    Adres a = new Adres(id, adres.Straat, adres.Nummer, adres.Postcode, adres.Plaats, adres.Land);
-                    return a;
+                    return id;
                 }
                 catch (Exception ex)
                 {

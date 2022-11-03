@@ -10,18 +10,19 @@ namespace BL_Projectwerk.Managers
         private IAdresRepository adresRepo;
         private IBedrijfRepository bedrijfRepo;
 
-        public AdresManager(IAdresRepository adresRepo)
+        public AdresManager(IAdresRepository adresRepo, IBedrijfRepository bedrijfRepo)
         {
             this.adresRepo = adresRepo;
+            this.bedrijfRepo = bedrijfRepo;
         }
 
-        public Adres VoegAdresToe(Adres adres)
+        public int VoegAdresToe(Adres adres)
         {
             try
             {
                 if (adres == null) throw new AdresManagerException("VoegAdresToe");
                 if (!adresRepo.BestaatAdresZonderId(adres)) return adresRepo.VoegAdresToe(adres);
-                else return adresRepo.GeefAdresMetId(adres); 
+                else return adresRepo.GeefAdresId(adres); 
             }
             catch (Exception ex)
             {
@@ -37,7 +38,7 @@ namespace BL_Projectwerk.Managers
                 {
                     throw new AdresManagerException("VerwijderAdres - Onbestaand Adres");
                 }
-                else if (bedrijfRepo.BedrijvenOpAdresAanwezig(id))
+                else if (!bedrijfRepo.BedrijvenOpAdresAanwezig(id))
                 {
                     throw new AdresManagerException("VerwijderAdres - bedrijven aanwezig op dit adres");
                 }

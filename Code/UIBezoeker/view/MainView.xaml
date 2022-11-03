@@ -1,0 +1,328 @@
+﻿<Window x:Class="UIBezoeker.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UIBezoeker"
+        mc:Ignorable="d"
+        Height="800" Width="1130" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+    <Border CornerRadius="50">
+        <Border.Background>
+            <ImageBrush ImageSource="/img/background.png"/>
+        </Border.Background>
+
+        <Border  CornerRadius="50" Opacity="0.90">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,4">
+                    <GradientStop Color="#003566" Offset="0.0"/>
+                    <GradientStop Color="#004487" Offset="0.15"/>
+                    <GradientStop Color="white" Offset="0.85"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--Left Menu-->
+                <Grid  Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="1" CornerRadius="0 30 0 40" Background="#002242" Opacity="100">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Menu" Grid.Row="0" Foreground="White" Margin="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
+                            <Separator Margin="25 0 25 0" Height="1" Background="White" Grid.Row="1"/>
+                            <Border x:Name="MenuButton" Grid.Row="2" Margin="0,0,0,0">
+
+                            </Border>
+                            <StackPanel Grid.Row="2">
+                                <Border x:Name ="Login" Margin="0,10,0,0" Width="252" Height="135" MouseLeftButtonDown="Login_MouseLeftButtonDown" >
+                                    <Border.Style>
+                                        <Style>
+                                            <Setter Property="Border.Background" Value="#002242"/>
+                                            <Setter Property="Border.Width" Value="300" />
+                                            <Setter Property="Border.Height" Value="200" />
+                                            <Setter Property="TextBlock.Foreground" Value="White"/>
+                                        </Style>
+                                    </Border.Style>
+                                    <StackPanel>
+                                        <TextBlock Name="LoginText" Text="Aanmelden" Margin="0,10,0,0" FontSize="25" FontWeight="Bold" ForceCursor="True" FontFamily="fonts/Gilroy-ExtraBold.ttf" HorizontalAlignment="Center" ></TextBlock>
+                                        <Image Source="/img/icons8-login-64.png" MaxWidth="80" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                <Separator Margin="25 10 25 0" Height="1" Background="White" Grid.Row="1"/>
+                                <Border x:Name ="Logout" Margin="0,10,0,0" Width="251" Height="135" MouseLeftButtonDown="Logout_MouseLeftButtonDown">
+                                    <Border.Style>
+                                        <Style>
+                                            <Setter Property="Border.Background" Value="#002242"/>
+                                            <Setter Property="Border.Width" Value="300" />
+
+                                            <Setter Property="Border.Height" Value="200" />
+                                            <Setter Property="TextBlock.Foreground" Value="white"/>
+                                        </Style>
+                                    </Border.Style>
+                                    <StackPanel>
+                                        <TextBlock Name="LogoutText" Text="Afmelden" Margin="00,10,00,0" FontSize="25" FontWeight="Bold" ForceCursor="True" FontFamily="fonts/Gilroy-ExtraBold.ttf" HorizontalAlignment="Center" ></TextBlock>
+                                        <Image Source="/img/icons8-logout-64.png" MaxWidth="80" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                <Separator Margin="25 10 25 0" Height="1" Background="White" Grid.Row="1"/>
+                                <Border x:Name ="Home" Margin="0,10,0,0" Width="251" Height="135" MouseLeftButtonDown="Home_MouseLeftButtonDown" Opacity="1.0">
+                                    <Border.Style>
+                                        <Style>
+                                            <Setter Property="Border.Background" Value="#002242"/>
+                                            <Setter Property="Border.Width" Value="300" />
+
+                                            <Setter Property="Border.Height" Value="200" />
+                                            <Setter Property="TextBlock.Foreground" Value="white"/>
+                                        </Style>
+                                    </Border.Style>
+                                    <StackPanel>
+                                        <TextBlock Name="HomeText" Text="Home" Margin="00,10,00,0" FontSize="25" FontWeight="Bold" ForceCursor="True" FontFamily="fonts/Gilroy-ExtraBold.ttf" HorizontalAlignment="Center" ></TextBlock>
+                                        <Image Source="/img/icons8-home-page-64.png" MaxWidth="80" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Main Menu-->
+                <Grid Grid.Column="1">
+                    <DockPanel x:Name="LoginBorder" Visibility="Collapsed">
+                        <Border Margin="25">
+                            <Grid Margin="0,120,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="420"/>
+                                    <ColumnDefinition Width="420"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock x:Name ="naam" Text="Naam"  Grid.Column="1" Grid.Row="0" FontSize="20" FontWeight="SemiBold" Margin="35,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="white"/>
+                                <TextBlock x:Name ="Voornaam" Text="Voornaam" Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="SemiBold" Margin="35,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="white"/>
+                                <TextBlock x:Name ="Email" Text="Email"  Grid.Column="0" Grid.Row="2" FontSize="20" FontWeight="SemiBold" Margin="35,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="white"/>
+                                <TextBlock x:Name ="BedrijfVanBezoeker" Text="Bedrijf van bezoeker"  Grid.Column="1" Grid.Row="2" FontSize="20" FontWeight="SemiBold" Margin="35,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="white"/>
+                                <TextBlock x:Name ="BedrijfAfspraak" Text="Bedrijf afspraak"  Grid.Column="0" Grid.Row="4" FontSize="20" FontWeight="SemiBold" Margin="35,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="white"/>
+                                <ComboBox x:Name="ComboBoxBedrijf" HorizontalAlignment="left" VerticalAlignment="Center" Margin="20,0,0,0" Height="40" Grid.Column="0" Width="770" Grid.Row="5" Grid.ColumnSpan="2" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest4}" FontSize="20" Foreground="Black" BorderBrush="Black" BorderThickness="1.5" SelectionChanged="ComboBoxBedrijf_SelectionChanged"/>
+                                <TextBlock x:Name ="Contactpersoon" Text="Contactpersoon"  Grid.Column="0" Grid.Row="6" FontSize="20" FontWeight="SemiBold" Margin="35,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="white" />
+                                <ComboBox x:Name="ComboBoxContactpersoon" HorizontalAlignment="left" VerticalAlignment="Center" Margin="20,0,0,0" Height="40" Grid.Column="0" Width="770" Grid.Row="7" Grid.ColumnSpan="2" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest4}" FontSize="20" Foreground="Black" BorderBrush="Black" BorderThickness="1.5" SelectionChanged="ComboBoxContactPersoon_SelectionChanged"/>
+
+
+                                <Border CornerRadius="5" Background="White" Grid.Column="0" Grid.Row="1" Height="40" Width="350" Margin="20,0,0,0" HorizontalAlignment="left" BorderBrush="Black" BorderThickness="1.5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxVoornaam" FontSize="16"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Bv: Thomas" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=TextBoxVoornaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+
+                                <Border CornerRadius="5" Background="White" Grid.Column="1" Grid.Row="1" Height="40" Width="350" Margin="20,0,0,0" HorizontalAlignment="left" BorderBrush="Black" BorderThickness="1.5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxNaam" FontSize="16"/>
+                                        <TextBlock IsHitTestVisible="true" Text="Bv: Jansenss" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=TextBoxNaam}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+
+                                <Border CornerRadius="5" Background="White" Grid.Column="0" Grid.Row="3" Height="40" Width="350" Margin="20,0,0,0" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1.5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="black" x:Name="TextBoxEmailLogin" FontSize="16"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Bv: thomas.jansenss@gmail.com" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=TextBoxEmailLogin}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+
+                                <Border CornerRadius="5" Background="White" Grid.Column="1" Grid.Row="3" Height="40" Width="350" Margin="20,0,0,0" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1.5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="black" x:Name="TextBoxBedrijfVanBezoeker" FontSize="16"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Bv: Allphi" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=TextBoxBedrijfVanBezoeker}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+
+                                <Button x:Name="LoginButton" Content="Aanmelden" FontSize="20" FontWeight="SemiBold" Foreground="White" Grid.Column="1" Grid.Row="9" Width="180" Height="50" HorizontalAlignment="Left" BorderThickness="0" Margin="190,0,0,0" MouseLeftButtonDown="LoginButton_MouseLeftButtonDown">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="#30D5C8"/>
+                                        </Style>
+                                    </Button.Style>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="LoginButtonEffect" Width="180" Height="50" Grid.Row="9" Grid.Column="1"  MouseLeftButtonDown="LoginButtonEffect_MouseLeftButtonDown"
+                                                    CornerRadius="5" BorderBrush="white" BorderThickness="1.5"
+                                                    Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="center"/>
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+
+                                </Button>
+
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="LogoutBorder" Visibility="Collapsed">
+                        <Border Margin="25">
+                            <Grid Margin="0,120,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="420"/>
+                                    <ColumnDefinition Width="420"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock x:Name ="EmailLogout" Text="Email"  Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="SemiBold" Margin="35,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="white"/>
+
+
+                                <Border CornerRadius="5" Background="White" Grid.Column="0" Grid.Row="1" Height="40" Width="350" Margin="20,0,0,0" HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1.5">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"/>
+                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="black" x:Name="TextBoxEmailLogout" FontSize="16"/>
+                                        <TextBlock IsHitTestVisible="False" Text="Bv: thomas.jansenss@gmail.com" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Text, ElementName=TextBoxEmailLogout}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+
+                                <Button x:Name="LogoutButton" Content="Afmelden" FontSize="20" FontWeight="SemiBold" Foreground="White" Grid.Column="1" Grid.Row="9" Width="180" Height="50" HorizontalAlignment="Left" BorderThickness="0" Margin="190,0,0,0" MouseLeftButtonDown="LoginButton_MouseLeftButtonDown">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="#30D5C8"/>
+                                        </Style>
+                                    </Button.Style>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="LogoutButtonEffect" Width="180" Height="50" Grid.Row="9" Grid.Column="1"  MouseLeftButtonDown="LogoutButtonEffect_MouseLeftButtonDown"
+                                                    CornerRadius="5" BorderBrush="white" BorderThickness="1.5"
+                                                    Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="center"/>
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="WelkomBorder" Visibility="Visible">
+                        <Border Margin="25">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock x:Name="Titel" Text="Welkom Op het bedrijvenpark" Grid.Row="1" FontSize="32" FontFamily="fonts/Gilroy-ExtraBold.ttf" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Center" Foreground="white"/>
+
+                                <Separator Foreground="White" Background="white" Margin="10 10 10 0" Height="1" Grid.Row="2"/>
+
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                    </DockPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
+

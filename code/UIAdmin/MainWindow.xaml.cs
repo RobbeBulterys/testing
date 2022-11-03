@@ -25,17 +25,19 @@ namespace UIAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AdresManager _adresManager;
         private ObservableCollection<Werknemer> werknemersList = new ObservableCollection<Werknemer>();
         private ObservableCollection<Bedrijf> bedrijven = new ObservableCollection<Bedrijf>();
         private ObservableCollection<Bezoeker> bezoekers = new ObservableCollection<Bezoeker>();
         private ObservableCollection<Bezoek> bezoeken = new ObservableCollection<Bezoek>();
         private ObservableCollection<string> BedrijfNamen = new ObservableCollection<string>();
         private ObservableCollection<string> WerknemersNamen = new ObservableCollection<string>();
-        public MainWindow()
+        public MainWindow(AdresManager adresManager)
         {
             InitializeComponent();
 
             OnStartupCollections();
+            _adresManager = adresManager;
 
             //Testinghere(null, "Pollarestraat", null, null, null);
         }
@@ -328,65 +330,38 @@ namespace UIAdmin
                 }
                 else if (radioButton.Name == "BezoekenToevoegenBtn")
                 {
-                    BezoekToevoegenGridPanel.Visibility = Visibility.Visible;
-                    BezoekenToevoegenBtn.Opacity = 1;
-                    List<Bedrijf> bedrijfs = new List<Bedrijf>();
-                    Bedrijf bedrijf1 = new Bedrijf(1, "Bosteels brewery", "BE0123123123", "info@example.com");
-                    bedrijf1.ZetAdres(new Adres(1, "Bijvoegstraat", "20", "9530", "Eigem", "Belgie"));
-                    bedrijf1.ZetTelefoon("0491732014");
-                    bedrijfs.Add(bedrijf1);
-                    Bedrijf bedrijf2 = new Bedrijf(2, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
-                    bedrijf2.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
-                    bedrijf2.ZetTelefoon("0491732123");
-                    bedrijfs.Add(bedrijf2);
-                    BedrijfNamen.Clear();
-                    bedrijfs.ForEach(c => BedrijfNamen.Add(c.Naam));
-                    List<Werknemer> werknemers = new List<Werknemer>();
-                    Werknemer werknemer1 = new Werknemer(1, "Jonssen", "Robrecht", "Hr Consultent");
-                    werknemer1.ZetEmail("info@example.com");
-                    werknemers.Add(werknemer1);
-                    werknemers.Add(new Werknemer(2, "Janssen", "Jan", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(3, "Meenens", "Hozee", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(4, "David", "Achmed", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(5, "DeMaire", "Pieter", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(6, "Jonssen", "Robrecht", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(7, "Janssen", "Jan", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(8, "Meenens", "Hozee", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(9, "David", "Achmed", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(10, "DeMaire", "Pieter", "Hr Consultent"));
-                    WerknemersNamen.Clear();
-                    werknemers.ForEach(c => WerknemersNamen.Add($"{c.Naam}, {c.Voornaam}"));
+                    //BezoekToevoegenGridPanel.Visibility = Visibility.Visible;
+                    //BezoekenToevoegenBtn.Opacity = 1;
+                    //List<Bedrijf> bedrijfs = new List<Bedrijf>();
+                    //Bedrijf bedrijf1 = new Bedrijf(1, "Bosteels brewery", "BE0123123123", "info@example.com");
+                    //bedrijf1.ZetAdres(new Adres(1, "Bijvoegstraat", "20", "9530", "Eigem", "Belgie"));
+                    //bedrijf1.ZetTelefoon("0491732014");
+                    //bedrijfs.Add(bedrijf1);
+                    //Bedrijf bedrijf2 = new Bedrijf(2, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
+                    //bedrijf2.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
+                    //bedrijf2.ZetTelefoon("0491732123");
+                    //bedrijfs.Add(bedrijf2);
+                    //BedrijfNamen.Clear();
+                    //bedrijfs.ForEach(c => BedrijfNamen.Add(c.Naam));
+                    //List<Werknemer> werknemers = new List<Werknemer>();
+                    //Werknemer werknemer1 = new Werknemer(1, "Jonssen", "Robrecht");
+                    //werknemer1.ZetEmail("info@example.com");
+                    //werknemers.Add(werknemer1);
+                    //werknemers.Add(new Werknemer(2, "Janssen", "Jan"));
+                    //werknemers.Add(new Werknemer(3, "Meenens", "Hozee"));
+                    //werknemers.Add(new Werknemer(4, "David", "Achmed"));
+                    //werknemers.Add(new Werknemer(5, "DeMaire", "Pieter"));
+                    //werknemers.Add(new Werknemer(6, "Jonssen", "Robrecht"));
+                    //werknemers.Add(new Werknemer(7, "Janssen", "Jan"));
+                    //werknemers.Add(new Werknemer(8, "Meenens", "Hozee"));
+                    //werknemers.Add(new Werknemer(9, "David", "Achmed"));
+                    //werknemers.Add(new Werknemer(10, "DeMaire", "Pieter"));
+                    //WerknemersNamen.Clear();
+                    //werknemers.ForEach(c => WerknemersNamen.Add($"{c.Naam}, {c.Voornaam}"));
                 }
                 else if (radioButton.Name == "BezoekenOpzoekenBtn")
                 {
-                    BezoekenOpzoekenBtn.Opacity = 1;
-                    BezoekOpzoekenGridPanel.Visibility = Visibility.Visible;
-                    List<Bedrijf> bedrijfs = new List<Bedrijf>();
-                    Bedrijf bedrijf1 = new Bedrijf(1, "Bosteels brewery", "BE0123123123", "info@example.com");
-                    bedrijf1.ZetAdres(new Adres(1, "Bijvoegstraat", "20", "9530", "Eigem", "Belgie"));
-                    bedrijf1.ZetTelefoon("0491732014");
-                    bedrijfs.Add(bedrijf1);
-                    Bedrijf bedrijf2 = new Bedrijf(2, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
-                    bedrijf2.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
-                    bedrijf2.ZetTelefoon("0491732123");
-                    bedrijfs.Add(bedrijf2);
-                    BedrijfNamen.Clear();
-                    bedrijfs.ForEach(c => BedrijfNamen.Add(c.Naam));
-                    List<Werknemer> werknemers = new List<Werknemer>();
-                    Werknemer werknemer1 = new Werknemer(1, "Jonssen", "Robrecht", "Hr Consultent");
-                    werknemer1.ZetEmail("info@example.com");
-                    werknemers.Add(werknemer1);
-                    werknemers.Add(new Werknemer(2, "Janssen", "Jan", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(3, "Meenens", "Hozee", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(4, "David", "Achmed", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(5, "DeMaire", "Pieter", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(6, "Jonssen", "Robrecht", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(7, "Janssen", "Jan", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(8, "Meenens", "Hozee", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(9, "David", "Achmed", "Hr Consultent"));
-                    werknemers.Add(new Werknemer(10, "DeMaire", "Pieter", "Hr Consultent"));
-                    WerknemersNamen.Clear();
-                    werknemers.ForEach(c => WerknemersNamen.Add($"{c.Naam}, {c.Voornaam}"));
+
                 }
             }
         }
@@ -537,9 +512,7 @@ namespace UIAdmin
             if (ListviewBedrijfOpzoeken.SelectedItems.Count == 1)
             {
                 Bedrijf bedrijf = (Bedrijf)ListviewBedrijfOpzoeken.SelectedItem;
-                //TODO bedrijf verwijderen
                 MessageBox.Show($"BedrijfId => {bedrijf.Id}");
-                //TODO bedrijven lijst leegmaken en nieuwe data ophalen uit de databank.
                 bedrijven.Clear();
                 BedrijfOpzoekenTextBoxNaam.Text = "";
                 BedrijfOpzoekenTextBoxBTW.Text = "";
@@ -654,40 +627,7 @@ namespace UIAdmin
                 Button button = (Button)sender;
                 if (button.Name == "WerknemerOpvragenFilterBtn")
                 {
-                    string? naam = null;
-                    string? voornaam = null;
-                    string? bedrijfId = null;
-                    string? email = null;
-                    string? functie = null;
-                    if (!string.IsNullOrWhiteSpace(WerknemerOpzoekenFilterTextBoxNaam.Text)) { naam = WerknemerOpzoekenFilterTextBoxNaam.Text; }
-                    if (!string.IsNullOrWhiteSpace(WerknemerOpzoekenFilterTextBoxVoorNaam.Text)) { voornaam = WerknemerOpzoekenFilterTextBoxVoorNaam.Text; }
-                    if (!string.IsNullOrWhiteSpace(WerknemerOpzoekenFilterTextBoxBedrijfId.Text)) { bedrijfId = WerknemerOpzoekenFilterTextBoxBedrijfId.Text; }
-                    if (!string.IsNullOrWhiteSpace(WerknemerOpzoekenFilterTextBoxEmail.Text)) { email = WerknemerOpzoekenFilterTextBoxEmail.Text; }
-                    if (!string.IsNullOrWhiteSpace(WerknemerOpzoekenFilterTextBoxFunctie.Text)) { functie = WerknemerOpzoekenFilterTextBoxFunctie.Text; }
-                    MessageBox.Show($"naam => {naam}\nvoornaam => {voornaam}\nbedrijfId => {bedrijfId}\nemail => {email}\nfunctie => {functie}");
-                    werknemersList.Clear();
-                    Werknemer werknemer1 = new Werknemer(1, "Jonssen", "Robrecht", "Hr Consultent");
-                    werknemer1.ZetEmail("info@example.com");
-                    werknemersList.Add(werknemer1);
-                    werknemersList.Add(new Werknemer(2, "Janssen", "Jan", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(3, "Meenens", "Hozee", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(4, "David", "Achmed", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(5, "DeMaire", "Pieter", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(6, "Jonssen", "Robrecht", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(7, "Janssen", "Jan", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(8, "Meenens", "Hozee", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(9, "David", "Achmed", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(10, "DeMaire", "Pieter", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(11, "Jonssen", "Robrecht", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(12, "Janssen", "Jan", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(13, "Meenens", "Hozee", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(14, "David", "Achmed", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(15, "DeMaire", "Pieter", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(16, "Jonssen", "Robrecht", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(17, "Janssen", "Jan", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(18, "Meenens", "Hozee", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(19, "David", "Achmed", "Hr Consultent"));
-                    werknemersList.Add(new Werknemer(20, "DeMaire", "Pieter", "Hr Consultent"));
+
                 }
             }
         }
@@ -696,9 +636,7 @@ namespace UIAdmin
             if (ListviewWerknemerOpzoeken.SelectedItems.Count == 1)
             {
                 Werknemer werknemer = (Werknemer)ListviewWerknemerOpzoeken.SelectedItem;
-                //TODO bedrijf verwijderen
                 MessageBox.Show($"werknemerId => {werknemer.PersoonId}");
-                //TODO bedrijven lijst leegmaken en nieuwe data ophalen uit de databank.
                 werknemersList.Clear();
                 WerknemerOpzoekenTextBoxNaam.Text = "";
                 WerknemerOpzoekenTextBoxVoornaam.Text = "";
@@ -789,9 +727,7 @@ namespace UIAdmin
             if (ListviewBezoekerOpzoeken.SelectedItems.Count == 1)
             {
                 Bezoeker bezoeker = (Bezoeker)ListviewBezoekerOpzoeken.SelectedItem;
-                //TODO bedrijf verwijderen
                 MessageBox.Show($"bezoekerId => {bezoeker.PersoonId}");
-                //TODO bedrijven lijst leegmaken en nieuwe data ophalen uit de databank.
                 bezoekers.Clear();
                 BezoekerOpzoekenTextBoxNaam.Text = "";
                 BezoekerOpzoekenTextBoxVoornaam.Text = "";
@@ -874,12 +810,12 @@ namespace UIAdmin
                     Bedrijf bedrijf1 = new Bedrijf(1, "Bosteels brewery", "BE0123123123", "info@example.com");
                     bedrijf1.ZetAdres(new Adres(1, "Bijvoegstraat", "20", "9530", "Eigem", "Belgie"));
                     bedrijf1.ZetTelefoon("0491732014");
-                    Bezoek bezoek1 = new Bezoek(1, new Bezoeker(1, "Geeroms", "Jantje", "Jantje.Geeroms@hotmail.com", "allphi"), bedrijf1, new Werknemer(2, "Janssen", "Jan", "Hr Consultent"), new DateTime(2022, 10, 24), new DateTime(2022, 10, 24));
+                    Bezoek bezoek1 = new Bezoek(1, new Bezoeker(1, "Geeroms", "Jantje", "Jantje.Geeroms@hotmail.com", "allphi"), bedrijf1, new Werknemer(2, "Janssen", "Jan"), new DateTime(2022, 10, 24), new DateTime(2022, 10, 24));
                     bezoeken.Add(bezoek1);
                     Bedrijf bedrijf2 = new Bedrijf(2, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
                     bedrijf2.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
                     bedrijf2.ZetTelefoon("0491732123");
-                    Bezoek bezoek2 = new Bezoek(2, new Bezoeker(2, "Stanton", "Rumaysa", "Rumaysa.Stanton@hotmail.com", "allphi"), bedrijf2, new Werknemer(6, "Jonssen", "Robrecht", "Hr Consultent"), new DateTime(2022, 10, 20), new DateTime(2022, 10, 20));
+                    Bezoek bezoek2 = new Bezoek(2, new Bezoeker(2, "Stanton", "Rumaysa", "Rumaysa.Stanton@hotmail.com", "allphi"), bedrijf2, new Werknemer(6, "Jonssen", "Robrecht"), new DateTime(2022, 10, 20), new DateTime(2022, 10, 20));
                     bezoeken.Add(bezoek2);
                 }
             }
@@ -889,9 +825,7 @@ namespace UIAdmin
             if (ListviewBezoekOpzoeken.SelectedItems.Count == 1)
             {
                 Bezoek bezoek = (Bezoek)ListviewBezoekOpzoeken.SelectedItem;
-                //TODO bedrijf verwijderen
                 MessageBox.Show($"bezoekId => {bezoek.BezoekId}");
-                //TODO bedrijven lijst leegmaken en nieuwe data ophalen uit de databank.
                 bezoeken.Clear();
                 BezoekOpzoekenTextBoxEmail.Text = "";
                 BezoekOpzoekenTextBoxNaam.Text = "";

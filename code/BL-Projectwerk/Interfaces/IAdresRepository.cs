@@ -10,7 +10,7 @@ namespace BL_Projectwerk.Interfaces
 
         void UpdateAdres(int id, string? straat, string? nummer, string? postcode, string? plaats, string? land);
         void VerwijderAdres(int id);
-        Adres VoegAdresToe(Adres adres);
-        Adres GeefAdresMetId(Adres adres);
+        int VoegAdresToe(Adres adres);
+        int GeefAdresId(Adres adres);
     }
 }

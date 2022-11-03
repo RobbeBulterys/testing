@@ -9,8 +9,8 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
+        
         AllowsTransparency="True">
-
 
     <Border Background="#02142A"
             CornerRadius="15"
@@ -26,45 +26,19 @@
                         
                         HorizontalAlignment="Center" Width="330">
 
-                <Border Name ="Login"
-                        Margin="0,180,0,40" 
-                        CornerRadius="20"
-                        
-                        MouseLeftButtonDown="Login_MouseLeftButtonDown" MouseLeftButtonUp="Login_MouseLeftButtonUp">
-
-
-
-
+                <Border Name ="Login" Margin="0,180,0,40"  CornerRadius="20" MouseLeftButtonDown="Login_MouseLeftButtonDown" MouseLeftButtonUp="Login_MouseLeftButtonUp">
                     <Border.Style>
                         <Style>
                             <Setter Property="Border.Background" Value="#FFF017"/>
                             <Setter Property="Border.Width" Value="300" />
                             <Setter Property="Border.Height" Value="200" />
                             <Setter Property="TextBlock.Foreground" Value="Black"/>
-
-
-                            <Style.Triggers>
-                                <Trigger Property="Border.IsMouseOver" Value="True">
-                                    <Setter Property="Border.Background" Value="#FF5BC3FF" />
-                                    <Setter Property="Border.Height" Value="200" />
-                                    <Setter Property="TextBlock.Foreground" Value="White"/>
-                                </Trigger>
-                            </Style.Triggers>
-
                         </Style>
                     </Border.Style>
                     <StackPanel>
-                        <TextBlock Name="LoginText"
-                               Margin="60,20,40,40"
-                               FontSize="35"
-                               FontWeight="Bold"
-                               ForceCursor="True"
-                               FontFamily="fonts/Gilroy-ExtraBold.ttf" HorizontalAlignment="Center">
-                               
-                        Aanmelden</TextBlock>
+                        <TextBlock Name="LoginText" Margin="60,20,40,40" FontSize="35" FontWeight="Bold" ForceCursor="True" FontFamily="fonts/Gilroy-ExtraBold.ttf" HorizontalAlignment="Center">Aanmelden</TextBlock>
                         <Image Source="../img/Login.png" Height="84" Width="80" Margin="140,10,0,0"/>
                     </StackPanel>
-
                 </Border>
                 <Border Name = "Logout"
                         Margin="0,0,0,150"
@@ -75,46 +49,20 @@
                             <Setter Property="Border.Width" Value="300" />
                             <Setter Property="Border.Height" Value="200" />
                             <Setter Property="TextBlock.Foreground" Value="Black"/>
-
-                            <Style.Triggers>
-                                <Trigger Property="Border.IsMouseOver" Value="True">
-                                    <Setter Property="Border.Background" Value="#FF5BC3FF" />
-                                    <Setter Property="Border.Height" Value="200" />
-                                    <Setter Property="TextBlock.Foreground" Value="White"/>
-                                </Trigger>
-                            </Style.Triggers>
-
                         </Style>
                     </Border.Style>
                     <StackPanel>
-                    <TextBlock Name="LogoutText"
-                               Margin="40,40,40,40"
-                               FontSize="35"
-                               FontWeight="Bold"
-                               FontFamily="./fonts/Gilroy-light.otf" HorizontalAlignment="Center">
-                               
-                        Afmelden</TextBlock>
+                        <TextBlock Name="LogoutText" Margin="40,40,40,40" FontSize="35" FontWeight="Bold" FontFamily="./fonts/Gilroy-light.otf" HorizontalAlignment="Center">Afmelden</TextBlock>
                         <Image/>
                     </StackPanel>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <StackPanel Grid.Row="1" Height="110">
-                    <TextBlock Name= "welcome"
-                            Text="Welkom op het bedrijvenpark"
-                           HorizontalAlignment="Center"
-                           Foreground="#FFF017"
-                           FontSize="45"
-                           Margin="0,30,0,10"
-                           FontWeight="Bold"
-                           FontFamily="fonts/Gilroy-ExtraBold.ttf"/>
-
-
-
+                    <TextBlock Name= "welcome" Text="Welkom op het bedrijvenpark" HorizontalAlignment="Center" Foreground="#FFF017" FontSize="45" Margin="0,30,0,10" FontWeight="Bold" FontFamily="fonts/Gilroy-ExtraBold.ttf"/>
                 </StackPanel>
+
                 <StackPanel Grid.Row="2" Height="690">
-
-
                     <Grid Name="LoginView" Visibility="Visible" Height="702">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
@@ -123,23 +71,16 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1"
                         HorizontalAlignment="Left" Width="420">
-                            <TextBlock x:Name="Email"
-                                       Width="400"
-                                       Height="30"
-                                       FontSize="25"
-                                       FontWeight="DemiBold"
-                                       FontFamily="fonts/Gilroy-Black.ttf"
-                                       Margin="5,30,0,10"
-                                       Foreground="#FFF017"><Run Text="E-Mail"/></TextBlock>
-                            <TextBox Width="400"
-                                    Height="45"
-                                    Background="#3d495c"
-                                    BorderThickness="2"
-                                    Margin="10,-5,0,10"
-                                    FontSize="20"
-                                    TextAlignment="Justify"
-                                    VerticalAlignment="Bottom"
-                                    Foreground="#e3b304" HorizontalAlignment="Left">
+                            <TextBlock x:Name="Email" Width="400" Height="30" FontSize="25" FontWeight="DemiBold" FontFamily="fonts/Gilroy-Black.ttf" Margin="5,30,0,10" Foreground="#FFF017"><Run Text="E-Mail"/></TextBlock>
+                            <TextBox Width="400" Height="45" Background="#3d495c" BorderThickness="2" Margin="10,-5,0,10" FontSize="20" TextAlignment="Justify" VerticalAlignment="Bottom" Foreground="#e3b304" HorizontalAlignment="Left">
+                                <TextBox.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+                            <TextBlock x:Name="Naam" Width="400" Height="30" FontSize="25" FontWeight="DemiBold" FontFamily="fonts/Gilroy-Black.ttf" Margin="5,5,0,10" Foreground="#FFF017"><Run Text="Naam"/></TextBlock>
+                            <TextBox Width="400" Height="45" Background="#3d495c" BorderThickness="2" Margin="10,-5,0,10" FontSize="20" TextAlignment="Justify" VerticalAlignment="Bottom" Foreground="#e3b304" HorizontalAlignment="Left">
 
                                 <TextBox.Resources>
                                     <Style TargetType="{x:Type Border}">
@@ -147,110 +88,18 @@
                                     </Style>
                                 </TextBox.Resources>
                             </TextBox>
-                            <TextBlock x:Name="Naam"
-                                       Width="400"
-                                       Height="30"
-                                       FontSize="25"
-                                       FontWeight="DemiBold"
-                                       FontFamily="fonts/Gilroy-Black.ttf"
-                                       Margin="5,5,0,10"
-                                       Foreground="#FFF017"><Run Text="Naam"/></TextBlock>
-                            <TextBox Width="400"
-                                    Height="45"
-                                    Background="#3d495c"
-                                    BorderThickness="2"
-                                    Margin="10,-5,0,10"
-                                    FontSize="20"
-                                    TextAlignment="Justify"
-                                    VerticalAlignment="Bottom"
-                                    Foreground="#e3b304" HorizontalAlignment="Left">
-
+                            <TextBlock x:Name="Voornaam" Width="400" Height="30" FontSize="25" Margin="5,5,0,10" Text="Voornaam" FontFamily="fonts/Gilroy-Black.ttf" FontWeight="DemiBold" Foreground="#FFF017"/>
+                            <TextBox Width="400" Height="45" Background="#3d495c" BorderThickness="2" Margin="10,-5,0,10" FontSize="20" TextAlignment="Justify" VerticalAlignment="Bottom" Foreground="#e3b304" HorizontalAlignment="Left">
                                 <TextBox.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
                                     </Style>
                                 </TextBox.Resources>
                             </TextBox>
-                            <TextBlock x:Name="Voornaam"
-                                       Width="400"
-                                       Height="30"
-                                       FontSize="25"
-                                       Margin="5,5,0,10"
-                                       Text="Voornaam"
-                                       FontFamily="fonts/Gilroy-Black.ttf"
-                                       FontWeight="DemiBold"
-                                       Foreground="#FFF017"/>
-                            <TextBox Width="400"
-                                    Height="45"
-                                    Background="#3d495c"
-                                    BorderThickness="2"
-                                    Margin="10,-5,0,10"
-                                    FontSize="20"
-                                    TextAlignment="Justify"
-                                    VerticalAlignment="Bottom"
-                                    Foreground="#e3b304" HorizontalAlignment="Left">
-
-                                <TextBox.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="10"/>
-                                    </Style>
-                                </TextBox.Resources>
-                            </TextBox>
-                            <TextBlock x:Name="Bedrijf"
-                                       Width="400"
-                                       Height="30"
-                                       FontSize="25"
-                                       FontWeight="DemiBold"
-                                       FontFamily="fonts/Gilroy-Black.ttf"
-                                       Margin="5,5,0,10"
-                                       Foreground="#FFF017"><Run Text="Bedrijf"/></TextBlock>
-                            <ListBox Width="400"
-                                     Height="50"
-                                     Background="#3d495c"
-                                     BorderThickness="2"
-                                     Margin="0,-5,0,10"
-                                     
-                                     FontSize="20"
-                                     Foreground="#e3b304">
-                                <ListBox.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="10"/>
-                                    </Style>
-                                </ListBox.Resources>
-                                <ListBoxItem Content="Bedrijf"/>
-                            </ListBox>
-                            <TextBlock x:Name="Contactpersoon"
-                                       Width="400"
-                                       Height="30"
-                                       FontSize="25"
-                                       FontWeight="DemiBold"
-                                       FontFamily="fonts/Gilroy-Black.ttf"
-                                       Margin="5,5,0,10"
-                                       Foreground="#FFF017"><Run Text="Contactpersoon"/></TextBlock>
-                            <ComboBox Name="ContactPersonen" Width="400"
-                                     Height="50"
-                                     BorderThickness="2"
-                                     FontSize="20"
-                                     Foreground="#FFF017"
-                                     
-                                     BorderBrush="#FF3D495C" IsEditable="True"
-                                      >
-                                <ComboBox.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="4"/>
-                                        <Setter Property="BorderThickness" Value="15"/>
-                                    </Style>
-                                </ComboBox.Resources>
-                                <ComboBox.ItemContainerStyle>
-                                    <Style TargetType="{x:Type ComboBoxItem}">
-                                        <Setter Property="Background" Value="#3d495c"/>
-                                        <Setter Property="BorderBrush" Value="#3d495c"/>
-                                    </Style>
-                                </ComboBox.ItemContainerStyle>
-                                <ComboBox.OpacityMask>
-                                    <SolidColorBrush Color="#FF3D495C" Opacity="1"/>
-                                </ComboBox.OpacityMask>
-
+                            <TextBlock x:Name="Bedrijf" Width="400" Height="30" FontSize="25" FontWeight="DemiBold" FontFamily="fonts/Gilroy-Black.ttf" Margin="5,5,0,10" Foreground="#FFF017"><Run Text="Bedrijf"/></TextBlock>
+                            <ComboBox x:Name="BedrijfSelectie" VerticalAlignment="Center" Margin="10,-5,10,10" Height="45" Grid.Column="2" Grid.Row="3" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest3}" FontSize="25" Foreground="#e3b304"/>
+                            <TextBlock x:Name="Contactpersoon" Width="400" Height="30" FontSize="25" FontWeight="DemiBold" FontFamily="fonts/Gilroy-Black.ttf" Margin="5,5,0,10" Foreground="#FFF017"><Run Text="Contactpersoon"/></TextBlock>
+                            <ComboBox x:Name="ContactPersoonSelectie" VerticalAlignment="Center" Margin="10,-5,10,10" Height="45" Grid.Column="2" Grid.Row="3" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest3}" FontSize="25" Foreground="#e3b304">
                                 <ComboBoxItem Background="#FF3D495C"/>
                                 <ComboBoxItem Content="Alice"/>
                                 <ComboBoxItem Content="Bob"/>
@@ -265,31 +114,17 @@
                         Background="#FFF017"
                         CornerRadius="15"
                         Margin="0,0,10,0" MouseLeftButtonDown="MeldAan_MouseLeftButtonDown" MouseLeftButtonUp="MeldAan_MouseLeftButtonUp_1">
-                                <TextBlock Text="Meld aan"
-                               Foreground="#0c1c33"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               FontFamily="Gilroy-ExtraBold.ttf"/>
+                                <TextBlock Text="Meld aan" Foreground="#0c1c33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" FontFamily="Gilroy-ExtraBold.ttf"/>
                             </Border>
                             <Border x:Name="AnnuleerMeldAan" Height="50"
                         Width="150"
                         Background="#FFF017"
                         CornerRadius="15"
                         MouseLeftButtonDown="AnnuleerMeldAan_MouseLeftButtonDown" MouseLeftButtonUp="AnnuleerMeldAan_MouseLeftButtonUp">
-                                <TextBlock Text="Annuleer"
-                               Foreground="#0c1c33"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontSize="25"
-                               FontWeight="Bold"            
-                               FontFamily="Gilroy-ExtraBold.ttf"/>
+                                <TextBlock Text="Annuleer" Foreground="#0c1c33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" FontFamily="Gilroy-ExtraBold.ttf"/>
                             </Border>
                         </StackPanel>
                     </Grid>
-
-
 
 
                     <Grid Name="LogoutView" Margin="0,-800,0,0" Height="760" Visibility="Hidden">
@@ -300,65 +135,41 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1"
                         HorizontalAlignment="Left" Width="420">
-                            <TextBlock x:Name="EmailLogout"
-                                       Width="400"
-                                       Height="30"
-                                       FontSize="25"
-                                       FontWeight="DemiBold"
-                                       FontFamily="fonts/Gilroy-Black.ttf"
-                                       Margin="5,30,0,10"
-                                       Foreground="#FFF017"><Run Text="E-Mail"/></TextBlock>
-                            <TextBox Width="400"
-                                    Height="45"
-                                    Background="#3d495c"
-                                    BorderThickness="2"
-                                    Margin="10,-5,0,10"
-                                    FontSize="20"
-                                    TextAlignment="Justify"
-                                    VerticalAlignment="Bottom"
-                                    Foreground="#e3b304" HorizontalAlignment="Left">
-
+                            <TextBlock x:Name="EmailLogout" Width="400" Height="30" FontSize="25" FontWeight="DemiBold" FontFamily="fonts/Gilroy-Black.ttf" Margin="5,30,0,10" Foreground="#FFF017"><Run Text="E-Mail"/></TextBlock>
+                            <TextBox x:Name="EmailLogoutText" Width="400" Height="45" Background="#3d495c" BorderThickness="2" Margin="10,-5,0,10" FontSize="20" TextAlignment="Justify" VerticalAlignment="Bottom" Foreground="#e3b304" HorizontalAlignment="Left">
                                 <TextBox.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
                                     </Style>
                                 </TextBox.Resources>
                             </TextBox>
+
                         </StackPanel>
-                        <StackPanel Grid.Row="2"
-                        Orientation="Horizontal"
+                        <StackPanel Grid.Row="2" Orientation="Horizontal"
                         HorizontalAlignment="Left" Margin="520,0,0,0" Width="330">
-                            <Border Name="MeldAf" Height="50"
-                        Width="150"
-                        Background="#FFF017"
-                        CornerRadius="15"
-                        Margin="0,0,10,0" MouseLeftButtonDown="MeldAf_MouseLeftButtonDown" MouseLeftButtonUp="MeldAf_MouseLeftButtonUp">
-                                <TextBlock Text="Meld Af"
-                               Foreground="#0c1c33"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               FontFamily="Gilroy-ExtraBold.ttf"/>
+                            <Border Name="MeldAf" Height="50" Width="150" Background="#FFF017" CornerRadius="15" Margin="0,0,10,0" MouseLeftButtonDown="MeldAf_MouseLeftButtonDown" MouseLeftButtonUp="MeldAf_MouseLeftButtonUp">
+                                <TextBlock Text="Meld Af" Foreground="#0c1c33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" FontFamily="Gilroy-ExtraBold.ttf"/>
                             </Border>
-                            <Border Name="AnnuleerMeldAf" Height="50"
-                        Width="150"
-                        Background="#FFF017"
-                        CornerRadius="15"
-                        Margin="0,0,20,0" MouseLeftButtonDown="AnnuleerMeldAf_MouseLeftButtonDown" MouseLeftButtonUp="AnnuleerMeldAf_MouseLeftButtonUp">
-                                <TextBlock Text="Annuleer"
-                               Foreground="#0c1c33"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontSize="25"
-                               FontWeight="Bold"            
-                               FontFamily="Gilroy-ExtraBold.ttf"/>
+                            <Border Name="AnnuleerMeldAf" Height="50" Width="150" Background="#FFF017" CornerRadius="15" Margin="0,0,20,0" MouseLeftButtonDown="AnnuleerMeldAf_MouseLeftButtonDown" MouseLeftButtonUp="AnnuleerMeldAf_MouseLeftButtonUp">
+                                <TextBlock Text="Annuleer" Foreground="#0c1c33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" FontFamily="Gilroy-ExtraBold.ttf"/>
                             </Border>
                         </StackPanel>
+
                     </Grid>
+                    <Image Margin="0,-600,0,0" HorizontalAlignment="Left" Width="828" Source="/view/PngItem_410478.png" RenderTransformOrigin="0.5,0.5" StretchDirection="UpOnly" Grid.Column="1" Height="1234" OpacityMask="#FF630B0B">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="-0.007"/>
+                                <RotateTransform Angle="-0.067"/>
+                                <TranslateTransform X="-0.029"/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
                 </StackPanel>
 
             </StackPanel>
+
         </Grid>
     </Border>
 

@@ -8,8 +8,39 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\background.png" />
+    <None Remove="img\icons8-home-page-64.png" />
+    <None Remove="img\icons8-login-64.png" />
+    <None Remove="img\icons8-logout-64.png" />
+    <None Remove="view\15823.jpg" />
+    <None Remove="view\8203.jpg" />
+    <None Remove="view\PngItem_410478.png" />
+    <None Remove="view\PngItem_52186.png" />
+    <None Remove="view\—Pngtree—abstract lines vector background design_5878485.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="core\" />
-    <Folder Include="img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BL-Projectwerk\BL-Projectwerk.csproj" />
+    <ProjectReference Include="..\DL-Projectwerk\DL-Projectwerk.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="img\background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\icons8-home-page-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\icons8-login-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\icons8-logout-64.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

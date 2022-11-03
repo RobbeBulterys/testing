@@ -5,38 +5,41 @@ using System.Numerics;
 
 namespace UnitTestDomein {
     public class UnitTestBezoeker {
-        private static readonly Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
-        private static readonly Bezoeker _josMetIdDezelfdeAnderAdres = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
-        private static readonly Bezoeker _fredMetId = new Bezoeker(9, "Fred", "je", "fredje@fred.com", "Camping");
-        private static readonly Bezoeker _LisaZonderId = new Bezoeker("Lisa", "Kep", "lisa@dmqklsf.com", "RS");
-        private static readonly Bezoeker _LisaZonderIdDezelfdeAnderAdres = new Bezoeker("Lisa", "Kep", "lisa@dmqklsf.com", "RS");
-        private static readonly Bezoeker _TianaZonderId = new Bezoeker("Tiana", "Roel", "tr@tr.me", "RS");
-        private static readonly Bezoeker[] _bezoekers = new Bezoeker[] { _josMetId, _josMetIdDezelfdeAnderAdres, _fredMetId, _LisaZonderId, _TianaZonderId };
-
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
+        [InlineData(999)]
         public void ZetId_Valid(int id) {
-            Assert.NotEqual(id, _josMetId.PersoonId);
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
             _josMetId.ZetId(id);
+
             Assert.Equal(id, _josMetId.PersoonId);
         }
+
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
+        [InlineData(-999)]
         public void ZetId_InValid(int id) {
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
             Assert.Throws<PersoonException>(() => _josMetId.ZetId(id)); ;
         }
 
         [Theory]
-        [InlineData("Dirk", "Dirk")]
-        [InlineData("Dirk-Dirksen", "Dirk-Dirksen")]
-        [InlineData("    Dirk   ", "Dirk")]
-        [InlineData("    Dirk", "Dirk")]
-        [InlineData("Dirk   ", "Dirk")]
-        public void ZetNaam_Valid(string naamIn, string naamUit) {
+        [InlineData("Dirk")]
+        [InlineData("Dirk-Dirksen")]
+        [InlineData("    Dirk   ")]
+        [InlineData("    Dirk")]
+        [InlineData("Dirk   ")]
+        [InlineData("Dirk Dirksen")]
+        public void ZetNaam_Valid(string naamIn) {
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
             _josMetId.ZetNaam(naamIn);
-            Assert.Equal(naamUit, _josMetId.Naam);
+
+            Assert.Equal(naamIn.Trim(), _josMetId.Naam);
         }
 
         [Theory]
@@ -45,20 +48,24 @@ namespace UnitTestDomein {
         [InlineData("\n")]
         [InlineData("   \r   ")]
         [InlineData(null)]
-        [InlineData("Mike   Niels Joshua Robbe Miel")] // spaties mag vb "De Decker", dus dan is de controle maar aangepast op dubbele spatie.
         public void ZetNaam_Invalid(string naam) {
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
             Assert.Throws<PersoonException>(() => _josMetId.ZetNaam(naam));
         }
 
         [Theory]
-        [InlineData("Dirk", "Dirk")]
-        [InlineData("Dirk-Dirksen", "Dirk-Dirksen")]
-        [InlineData("    Dirk   ", "Dirk")]
-        [InlineData("    Dirk", "Dirk")]
-        [InlineData("Dirk   ", "Dirk")]
-        public void ZetVoorNaam_Valid(string naamIn, string naamUit) {
+        [InlineData("Dirk")]
+        [InlineData("Dirk-Dirksen")]
+        [InlineData("    Dirk   ")]
+        [InlineData("    Dirk")]
+        [InlineData("Dirk   ")]
+        public void ZetVoorNaam_Valid(string naamIn) {
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
             _josMetId.ZetNaam(naamIn);
-            Assert.Equal(naamUit, _josMetId.Naam);
+            
+            Assert.Equal(naamIn.Trim(), _josMetId.Naam);
         }
 
         [Theory]
@@ -67,16 +74,25 @@ namespace UnitTestDomein {
         [InlineData("\n")]
         [InlineData("   \r   ")]
         [InlineData(null)]
-        [InlineData("Mike   Niels Joshua Robbe Miel")] // spaties mag vb "De Decker", dus dan is de controle maar aangepast op dubbele spatie.
+        [InlineData("Mike   Niels Joshua Robbe Miel")]
         public void ZetVoorNaam_Invalid(string naam) {
-            Assert.Throws<PersoonException>(() => _josMetId.ZetNaam(naam));
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
+            Assert.Throws<PersoonException>(() => _josMetId.ZetVoorNaam(naam));
         }
 
-        [Fact]
-        public void ZetEmail_Valid() {
-            Bezoeker b = _fredMetId.Clone();
-            b.ZetEmail("random.email@email.com");
-            Assert.Equal("random.email@email.com", b.Email);
+        [Theory]
+        [InlineData("random.email@email.com")]
+        [InlineData("    random.email@email.com")]
+        [InlineData("random.email@email.com    ")]
+        [InlineData("    random.email@email.com    ")]
+        public void ZetEmail_Valid(string email)
+        {
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
+            _josMetId.ZetEmail(email);
+
+            Assert.Equal(email.Trim(), _josMetId.Email);
         }
 
         [Theory]
@@ -92,58 +108,63 @@ namespace UnitTestDomein {
         [InlineData("mike@.be")]
         public void ZetEmail_Invalid(string email) {
             Bezoeker b = new Bezoeker(3, "De Decker", "Mike", "ik@gmail.com", "Hogent");
+
             Assert.Throws<PersoonException>(() => b.ZetEmail(email));
         }
 
-        [Fact]
-        public void ZetBedrijf_Valid() {
-            Bezoeker b = _josMetId;
-            string bedrijf = "Hogent brewery";
-            Assert.NotEqual(bedrijf, b.Bedrijf);
-            b.ZetBedrijf(bedrijf);
+        [Theory]
+        [InlineData("Telenet")]
+        [InlineData("    Telenet")]
+        [InlineData("Telenet    ")]
+        [InlineData("    Telenet    ")]
+        public void ZetBedrijf_Valid(string bedrijf) {
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
 
-            Assert.Equal(bedrijf, b.Bedrijf);
+            _josMetId.ZetBedrijf(bedrijf);
+
+            Assert.Equal(bedrijf.Trim(), _josMetId.Bedrijf);
         }
 
         [Fact]
         public void ZetBedrijf_InValid() {
-            Bezoeker b = _josMetId;
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
 
-            Assert.Throws<BezoekerException>(() => b.ZetBedrijf(null));
+            Assert.Throws<BezoekerException>(() => _josMetId.ZetBedrijf(null));
         }
 
-        [Fact]
-        public void VeranderBedrijf_Valid() {
-            Bezoeker b = _josMetId;
-            string bedrijf = "hogent jajaja";
-            Assert.NotEqual(bedrijf, b.Bedrijf);
+        [Theory]
+        [InlineData("Telenet")]
+        [InlineData("    Telenet")]
+        [InlineData("Telenet    ")]
+        [InlineData("    HoGent    ")]
+        public void VeranderBedrijf_Valid(string bedrijf) {
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
 
-            b.VeranderBedrijf(bedrijf);
-            Assert.Equal(bedrijf, b.Bedrijf);
+            _josMetId.VeranderBedrijf(bedrijf);
+
+            Assert.Equal(bedrijf.Trim(), _josMetId.Bedrijf);
         }
 
         [Fact]
         public void VeranderBedrijf_Invalid_HetzelfdeBedrijf() {
-            Bezoeker b = _josMetId;
-            string bedrijf1 = "hogent";
-            string bedrijf2 = "hogent";
-            b.ZetBedrijf(bedrijf1);
-            Assert.Equal(bedrijf1, b.Bedrijf);
-            Assert.Throws<BezoekerException>(() => b.VeranderBedrijf(bedrijf2));
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
+            Assert.Throws<BezoekerException>(() => _josMetId.VeranderBedrijf("Bosteels"));
         }
 
         [Fact]
-        public void IsDezelfde_Valid_MetId() {
-            Bezoeker bezoeker1 = _josMetId;
-            Bezoeker bezoeker2 = _josMetId.Clone();
-            Assert.True(bezoeker1.IsDezelfde(bezoeker2));
+        public void IsDezelfde_Valid_MetId()
+        {
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
+            Assert.True(_josMetId.IsDezelfde(new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels")));
         }
 
         [Fact]
         public void IsDezelfde_Valid_ZonderId() {
-            Bezoeker bezoeker1 = _LisaZonderId;
-            Bezoeker bezoeker2 = _LisaZonderIdDezelfdeAnderAdres;
-            Assert.True(bezoeker1.IsDezelfde(bezoeker2));
+            Bezoeker _josMetId = new Bezoeker("Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+
+            Assert.True(_josMetId.IsDezelfde(new Bezoeker("Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels")));
         }
 
         [Theory] 
@@ -164,35 +185,16 @@ namespace UnitTestDomein {
 
         [Fact]
         public void Equals_valid_BezoekerMetId() {
-            Bezoeker bezoeker1 = _josMetId;
-            Bezoeker bezoeker2 = _josMetIdDezelfdeAnderAdres;
-            Assert.True(bezoeker1.Equals(bezoeker2));
+            Bezoeker _josMetId = new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
+            
+            Assert.True(_josMetId.Equals(new Bezoeker(8, "Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels")));
         }
 
         [Fact]
         public void Equals_valid_BezoekerZonderId() {
-            Bezoeker bezoeker1 = _LisaZonderId;
-            Bezoeker bezoeker2 = _LisaZonderIdDezelfdeAnderAdres;
-            Assert.True(bezoeker1.Equals(bezoeker2));
-        }
+            Bezoeker _josMetId = new Bezoeker("Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels");
 
-        [Fact]
-        public void Equals_Invalid_GeenBezoeker() {
-            Assert.False(_josMetId.Equals(null));
-            Assert.False(_fredMetId.Equals(new Werknemer("Jansens", "Jan", new Bedrijf("Bosteels", "BE0123123123", "info@info.info"), "FLM Brouwzaal")));
-            Assert.False(_LisaZonderId.Equals("strings"));
-        }
-
-        // Constructors, Clone, check of alles van persoon getest is
-        [Fact]
-        public void Clone_valid() {
-            Bezoeker bezoeker = _TianaZonderId;
-            Bezoeker tianaClone = bezoeker.Clone();
-            Assert.True(tianaClone.IsDezelfde(bezoeker));
-
-            Bezoeker bezoekerMetid = _fredMetId;
-            Bezoeker fredClone = bezoekerMetid.Clone();
-            Assert.True(fredClone.IsDezelfde(bezoekerMetid));
+            Assert.True(_josMetId.Equals(new Bezoeker("Joskens", "Jos", "jjjjjjj@mm.com", "Bosteels")));
         }
 
         [Fact]

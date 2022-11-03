@@ -35,6 +35,7 @@ namespace BL_Projectwerk.Managers
             {
                 if (bezoeker == null) { throw new BezoekerManagerException("VerwijderBezoeker - Geen bezoeker ingevuld"); }
                 if (!_bezoekerRepo.BestaatBezoeker(bezoeker)) { throw new BezoekerManagerException("VerwijderBezoeker - Bezoeker dat je wil verwijderen bestaat niet"); }
+                _bezoekerRepo.VerwijderBezoeker(bezoeker);
             } 
             catch (Exception ex)
             {
@@ -42,25 +43,22 @@ namespace BL_Projectwerk.Managers
             }
         }
 
-        public void UpdateBezoeker(Bezoeker bezoeker)
+        public void UpdateBezoeker(int bezoekerid, string? naam, string? voornaam, string? email, string? bedrijf)
         {
-            if (bezoeker == null) throw new BezoekerManagerException("UpdateBezoeker - Geen bezoeker ingevuld");
-            Bezoeker dbBezoeker = _bezoekerRepo.GeefBezoeker(bezoeker.PersoonId);
-            if (dbBezoeker.IsDezelfde(bezoeker)) throw new BezoekerManagerException("UpdateBezoeker - Bezoeker bestaat reeds");
-            _bezoekerRepo.UpdateBezoeker(bezoeker);
+            if (bezoekerid == 0) throw new BezoekerManagerException("UpdateBezoeker - Geen ID ingevuld");
+            //Bezoeker bezoeker = new Bezoeker(naam, voornaam, email, bedrijf);
+            //Bezoeker dbBezoeker = _bezoekerRepo.GeefBezoeker(bezoekerid);
+            //if (dbBezoeker.IsDezelfde(bezoeker)) throw new BezoekerManagerException("UpdateBezoeker - Bezoeker bestaat reeds");
+            _bezoekerRepo.UpdateBezoeker(bezoekerid, naam, voornaam, email, bedrijf);
         }
 
-        public Bezoeker GeefDetailsBezoeker()
-        {
-            return _bezoekerRepo.GeefBezoeker();
-        }
 
         public IReadOnlyList<Bezoeker> GeefBezoekers()
         {
             List<Bezoeker> bezoekers = new List<Bezoeker>();
             try
             {
-                bezoekers.Add(_bezoekerRepo.GeefBezoekers());
+                bezoekers = _bezoekerRepo.GeefBezoekers();
                 return bezoekers;
             }
             catch (Exception ex)
@@ -68,14 +66,15 @@ namespace BL_Projectwerk.Managers
                 throw new BezoekerManagerException("AlleBezoekers", ex);
             }
         }
-        //TODO: perfectioneren
+
+
         public IReadOnlyList<Bezoeker> ZoekBezoekers(string? naam, string? voornaam, string? email, string? bedrijf)
         {
             List<Bezoeker> bezoekers = new List<Bezoeker>();
 
             try
             {
-                if (!string.IsNullOrEmpty(naam) || !string.IsNullOrEmpty(voornaam) || !string.IsNullOrEmpty(email) || string.IsNullOrEmpty(bedrijf))
+                if (!string.IsNullOrEmpty(naam) || !string.IsNullOrEmpty(voornaam) || !string.IsNullOrEmpty(email) || !string.IsNullOrEmpty(bedrijf) )
                 {
                     bezoekers.AddRange(_bezoekerRepo.GeefBezoekers(naam, voornaam, email, bedrijf));
                 }
@@ -89,6 +88,11 @@ namespace BL_Projectwerk.Managers
             {
                 throw new BezoekerManagerException("ZoekBezoekers", ex);
             }
+        }
+
+        public bool BestaatBezoeker(Bezoeker bezoeker)
+        {
+            return _bezoekerRepo.BestaatBezoeker(bezoeker);
         }
     }
 }

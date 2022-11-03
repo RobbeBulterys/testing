@@ -46,14 +46,14 @@ namespace BL_Projectwerk.Domein {
             if (id < 1) { throw new PersoonException("Persoon - ZetId - Id ongeldig; kleiner dan 1"); }
             PersoonId = id;
         }
-        public void ZetNaam(string naam) {
+        public void ZetNaam(string naam)
+        { //een naam kan een spatie bevatten
             if (string.IsNullOrWhiteSpace(naam)) { throw new PersoonException("Persoon - ZetNaam - geen naam ingevuld"); }
-            naam = naam.Trim();
-            if (naam.Contains("  ")) { throw new PersoonException("Persoon - ZetNaam - naam mag spaties bevatten"); }
-            Naam = naam;
+            Naam = naam.Trim();
         }
 
-        public void ZetVoorNaam(string voornaam) {
+        public void ZetVoorNaam(string voornaam)
+        { 
             if (string.IsNullOrWhiteSpace(voornaam)) { throw new PersoonException("Persoon - ZetVoorNaam - geen voornaam ingevuld"); }
             voornaam = voornaam.Trim();
             if (voornaam.Contains(' ')) { throw new PersoonException("Persoon - ZetVoorNaam - naam mag spaties bevatten"); }
@@ -69,6 +69,10 @@ namespace BL_Projectwerk.Domein {
             } catch (Exception ex) {
                 throw new PersoonException("Persoon - ZetEmail", ex);
             }
+        }
+
+        public override string ToString() {
+            return $"{Naam}, {Voornaam}, {Email}";
         }
     }
 }

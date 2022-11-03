@@ -7,7 +7,39 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="view\AddBedrijfScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\AddBezoekerScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\AddBezoekScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\AddWerknemerScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\EditBedrijfScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\EditBezoekerScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\EditWerknemerScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\MainScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\ButtonsList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\DataGridList.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Theme\MenuButtonTheme.xaml">
@@ -17,6 +49,30 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Theme\TextboxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\AddBedrijfScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\AddBezoekerScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\AddBezoekScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\AddWerknemerScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\EditBedrijfScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\EditBezoekerScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\EditWerknemerScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\MainScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

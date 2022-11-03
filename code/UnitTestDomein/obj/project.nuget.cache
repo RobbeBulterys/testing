@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2KCHvGj94+SElpOwwHnF0dBsasu0gm6sie+OABOleuh6S5RjQ4B3kibhizJULI53/t+Gc0a6UkTBI6dCDuF2gg==",
+  "dgSpecHash": "MzQ0PToGtsfcCYn+7wKzX6rojbPv8dAN6V5A+1aw+ftH3v8tHM7velnTgZanRjUUUGpRLV/LSi9gOsjlh8sLwg==",
   "success": true,
   "projectFilePath": "E:\\programming\\github repos\\ProjectWerk\\Code\\UnitTestDomein\\UnitTestDomein.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.net.test.sdk\\17.1.0\\microsoft.net.test.sdk.17.1.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.qualitytools.testing.fakes\\16.11.230815\\microsoft.qualitytools.testing.fakes.16.11.230815.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.1.0\\microsoft.testplatform.objectmodel.17.1.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.testplatform.testhost\\17.1.0\\microsoft.testplatform.testhost.17.1.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
@@ -67,7 +68,7 @@
     "C:\\Users\\robbe\\.nuget\\packages\\system.private.servicemodel\\4.8.1\\system.private.servicemodel.4.8.1.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.reflection.dispatchproxy\\4.7.1\\system.reflection.dispatchproxy.4.7.1.nupkg.sha512",
-    "C:\\Users\\robbe\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

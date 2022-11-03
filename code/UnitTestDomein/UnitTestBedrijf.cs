@@ -42,7 +42,7 @@ namespace UnitTestDomein
 
             b.ZetNaam(naam);
 
-            Assert.Equal(naam, b.Naam);
+            Assert.Equal(naam.Trim(), b.Naam);
         }
 
         [Theory]
@@ -59,7 +59,7 @@ namespace UnitTestDomein
         [Theory]
         [InlineData("ATU01234567")]
         [InlineData("BE0012345678")]
-        [InlineData("PL0123456789")]
+        [InlineData("NL012345678B12")]
         public void ZetBtwNummer_Valid(string btwNummer)
         {
             Bedrijf b = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
@@ -93,15 +93,15 @@ namespace UnitTestDomein
 
         [Theory]
         [InlineData("information@example.com")]
-        [InlineData("info.Brewery@example.com")]
-        [InlineData("customerService@example.be")]
+        [InlineData("   info.Brewery@example.com")]
+        [InlineData("   customerService@example.be   ")]
         public void ZetEmail_Valid(string email)
         {
             Bedrijf b = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
 
             b.ZetEmail(email);
 
-            Assert.Equal(email, b.Email);
+            Assert.Equal(email.Trim(), b.Email);
         }
 
         [Theory]
@@ -146,7 +146,6 @@ namespace UnitTestDomein
             Assert.Throws<BedrijfException>(() => b.ZetAdres(adres));
         }
 
-        //verander adres controles
         [Theory]
         [InlineData(null)]
         public void VeranderAdres_InValid_BedrijfIsNull(Adres nieuwAdres)
@@ -198,7 +197,7 @@ namespace UnitTestDomein
         public void VoegWerknemerToe_InValid_WerknemerBestaatAl()
         {
             Bedrijf b = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
-            Werknemer w = new Werknemer(1, "Jan", "Baetens", b, "programmer");
+            Werknemer w = new Werknemer(1, "Jan", "Baetens", "programmer");
 
             b.VoegWerknemerToe(w);
 
@@ -209,7 +208,7 @@ namespace UnitTestDomein
         public void VoegWerknemerToe_Valid()
         {
             Bedrijf b = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
-            Werknemer w = new Werknemer(1, "Jan", "Baetens", b, "programmer");
+            Werknemer w = new Werknemer(1, "Jan", "Baetens", "programmer");
 
             b.VoegWerknemerToe(w);
 
@@ -231,7 +230,7 @@ namespace UnitTestDomein
         public void VerwijderWerknemer_InValid_WerknemerBestaatNiet()
         {
             Bedrijf b = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
-            Werknemer w = new Werknemer(2, "Jan", "Baetens", b, "programmer");
+            Werknemer w = new Werknemer(2, "Jan", "Baetens", "programmer");
 
             Assert.Throws<BedrijfException>(() => b.VerwijderWerknemer(w.PersoonId));
         }
@@ -240,7 +239,7 @@ namespace UnitTestDomein
         public void VerwijderWerknemer_Valid()
         {
             Bedrijf b = new Bedrijf(10, "Bosteels brewery", "BE0123123123", "info@example.com");
-            Werknemer w = new Werknemer(1, "Jan", "Baetens", b, "programmer");
+            Werknemer w = new Werknemer(1, "Jan", "Baetens", "programmer");
 
             b.VoegWerknemerToe(w);
 

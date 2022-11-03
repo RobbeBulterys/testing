@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QFHOJdSeWFdDLxe+LCkZdLvVdUOUQZ9PN9hX5ezKuTNiWIy6WWjeIoMwuZwdpqIMyzBfYnYQRIzMrk0e6rxqXQ==",
+  "dgSpecHash": "LCSa1Xbjw6XyVg346eUVBJlcxeEDCeRds6KmfyF1pFn5oE0VzAvKQ0tvs8EtKG6zMBspmiHWpw8cuZLjZbHshA==",
   "success": true,
   "projectFilePath": "E:\\programming\\github repos\\ProjectWerk\\Code\\UIAdmin\\UIAdmin.csproj",
   "expectedPackageFiles": [
@@ -12,8 +12,14 @@
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.identitymodel.xml\\6.8.0\\microsoft.identitymodel.xml.6.8.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
