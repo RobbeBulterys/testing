@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UIAdmin.view"
         mc:Ignorable="d"
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
-    <Border Background="LightGray" CornerRadius="50" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border x:Name="MainBorder" Background="LightGray" CornerRadius="50" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -18,7 +18,7 @@
                     <RowDefinition Height="150"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="1" CornerRadius="0 50 0 40" Background="#623ed0">
+                <Border x:Name="LeftMenuBorder" Grid.Row="1" CornerRadius="0 50 0 40" Background="#623ed0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"/>
@@ -323,6 +323,7 @@
                                         <ComboBox x:Name="BezoekSearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}">
                                             <ComboBoxItem Content="Bedrijf" IsSelected="True"/>
                                             <ComboBoxItem Content="Today"/>
+                                            <ComboBoxItem Content="This week"/>
                                         </ComboBox>
                                     </Border>
                                     <Grid Grid.Column="1">

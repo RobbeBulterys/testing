@@ -4,6 +4,7 @@ using BL_Projectwerk.Managers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,8 @@ namespace UIAdmin.view
             _werknemerManager = werknemerManager;
             _bezoekManager = bezoekManager;
             _werknemercontractManager = werknemercontract;
+            LeftMenuBorder.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(ConfigurationManager.AppSettings.Get("BackgroundLeftMenu"));
+            MainBorder.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(ConfigurationManager.AppSettings.Get("BackgroundMainScreen"));
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
