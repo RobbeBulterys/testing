@@ -18,23 +18,24 @@ namespace BL_Projectwerk.Managers
         {
             try
             {
-                if (bezoeker == null) { throw new BezoekerManagerException("VoegBezoekerToe - Geen Bezoeker gegeven"); }
-                if (_bezoekerRepo.BestaatBezoeker(bezoeker)) { throw new BezoekerManagerException("VoegBezoekerToe - Bezoeker Bestaat al"); }
-                _bezoekerRepo.VoegBezoekerToe(bezoeker);
+                if (!_bezoekerRepo.BestaatBezoeker(bezoeker))
+                {
+                    if (bezoeker == null) { throw new BezoekerManagerException("BezoekerManager - VoegBezoekerToe - Bezoeker is null"); }
+                    _bezoekerRepo.VoegBezoekerToe(bezoeker);
+                }
             }
             catch (Exception ex)
             {
                 throw new BezoekerManagerException("VoegBezoekerToe", ex);
             }
-
         }
 
         public void VerwijderBezoeker(Bezoeker bezoeker)
         {
             try
             {
-                if (bezoeker == null) { throw new BezoekerManagerException("VerwijderBezoeker - Geen bezoeker ingevuld"); }
-                if (!_bezoekerRepo.BestaatBezoeker(bezoeker)) { throw new BezoekerManagerException("VerwijderBezoeker - Bezoeker dat je wil verwijderen bestaat niet"); }
+                if (bezoeker == null) { throw new BezoekerManagerException("BezoekerManager - VerwijderBezoeker - Geen bezoeker ingevuld"); }
+                if (!_bezoekerRepo.BestaatBezoeker(bezoeker)) { throw new BezoekerManagerException("BezoekerManager - VerwijderBezoeker - Onbestaande bezoeker"); }
                 _bezoekerRepo.VerwijderBezoeker(bezoeker);
             } 
             catch (Exception ex)
@@ -45,13 +46,12 @@ namespace BL_Projectwerk.Managers
 
         public void UpdateBezoeker(int bezoekerid, string? naam, string? voornaam, string? email, string? bedrijf)
         {
-            if (bezoekerid == 0) throw new BezoekerManagerException("UpdateBezoeker - Geen ID ingevuld");
+            if (bezoekerid == 0) throw new BezoekerManagerException("BezoekerManager - UpdateBezoeker - Geen ID ingevuld");
             //Bezoeker bezoeker = new Bezoeker(naam, voornaam, email, bedrijf);
             //Bezoeker dbBezoeker = _bezoekerRepo.GeefBezoeker(bezoekerid);
             //if (dbBezoeker.IsDezelfde(bezoeker)) throw new BezoekerManagerException("UpdateBezoeker - Bezoeker bestaat reeds");
             _bezoekerRepo.UpdateBezoeker(bezoekerid, naam, voornaam, email, bedrijf);
         }
-
 
         public IReadOnlyList<Bezoeker> GeefBezoekers()
         {
@@ -63,15 +63,13 @@ namespace BL_Projectwerk.Managers
             }
             catch (Exception ex)
             {
-                throw new BezoekerManagerException("AlleBezoekers", ex);
+                throw new BezoekerManagerException("GeefBezoekers", ex);
             }
         }
-
 
         public IReadOnlyList<Bezoeker> ZoekBezoekers(string? naam, string? voornaam, string? email, string? bedrijf)
         {
             List<Bezoeker> bezoekers = new List<Bezoeker>();
-
             try
             {
                 if (!string.IsNullOrEmpty(naam) || !string.IsNullOrEmpty(voornaam) || !string.IsNullOrEmpty(email) || !string.IsNullOrEmpty(bedrijf) )
@@ -80,7 +78,7 @@ namespace BL_Projectwerk.Managers
                 }
                 else
                 {
-                    throw new BezoekerManagerException("ZoekBezoekers- Geen velden ingevuld");
+                    throw new BezoekerManagerException("BezoekerManager - ZoekBezoekers - Geen velden ingevuld");
                 }
                 return bezoekers;
             }

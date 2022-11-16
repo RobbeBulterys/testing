@@ -49,8 +49,6 @@ namespace UIAdmin.view
             BedrijfNamen.Clear();
             bedrijven = _bedrijfManager.GeefBedrijven().ToList();
             bedrijven.ForEach(b => BedrijfNamen.Add(b.Naam));
-            for(int i = 1; i < 25; i++) ComboBoxHour.Items.Add(i);
-            for (int i = 0; i < 60; i += 5) ComboBoxMinutes.Items.Add(i);
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -84,23 +82,13 @@ namespace UIAdmin.view
                     string? email = null;
                     string? bedrijfnaam = null;
                     string? contactPersoon = null;
-                    int timeYear = 0;
-                    int timeMonth = 0;
-                    int timeDay = 0;
-                    int timeHour = 0;
-                    int timeMinutes = 0;
                     string message = "";
                     if (!string.IsNullOrWhiteSpace(TextBoxBezoekerNaam.Text)) { naam = TextBoxBezoekerNaam.Text; message += $"naam => {naam}\n"; }
                     if (!string.IsNullOrWhiteSpace(TextBoxBezoekerVoornaam.Text)) { voornaam = TextBoxBezoekerVoornaam.Text; message += $"voornaam => {voornaam}\n"; }
                     if (!string.IsNullOrWhiteSpace(TextBoxBezoekerEmail.Text)) { email = TextBoxBezoekerEmail.Text; message += $"email => {email}\n"; }
                     if (ComboBoxBedrijf.SelectedItem != null) { bedrijfnaam = ComboBoxBedrijf.SelectedItem.ToString(); message += $"bedrijfnaam => {bedrijfnaam}\n"; }
                     if (ComboBoxWerknemer.SelectedItem != null) { contactPersoon = ComboBoxWerknemer.SelectedItem.ToString(); message += $"contactPersoon => {contactPersoon}\n"; }
-                    if (DatePickerStartDate.SelectedDate != null) { timeYear = DatePickerStartDate.SelectedDate.Value.Year; }
-                    if (DatePickerStartDate.SelectedDate != null) { timeMonth = DatePickerStartDate.SelectedDate.Value.Month; }
-                    if (DatePickerStartDate.SelectedDate != null) { timeDay = DatePickerStartDate.SelectedDate.Value.Day; }
-                    if (ComboBoxHour.SelectedItem != null) { timeHour = (int)ComboBoxHour.SelectedItem; }
-                    if (ComboBoxMinutes.SelectedItem != null) { timeMinutes = (int)ComboBoxMinutes.SelectedItem; }
-                    if (naam == null || voornaam == null || email == null || bedrijfnaam == null) MessageBox.Show("Alle velden moeten worden ingevuld!");
+                    if (naam == null || voornaam == null || email == null || bedrijfnaam == null || contactPersoon == null) MessageBox.Show("Alle velden moeten worden ingevuld!");
                     else
                     {
                         Bezoeker bezoeker = _bezoekerManager.ZoekBezoekers(naam, voornaam, email, null).ToList()[0];
@@ -108,13 +96,19 @@ namespace UIAdmin.view
                         Werknemer werknemerSelected = null;
                         foreach (Bedrijf bedrijf in bedrijven) { if (bedrijf.Naam == bedrijfnaam) { bedrijfSelected = bedrijf; break; } }
                         foreach (Werknemer werknemer in werknemersList) { if ($"{werknemer.Naam}, {werknemer.Voornaam}" == contactPersoon) { werknemerSelected = werknemer; break; } }
-                        Bezoek b = new Bezoek(bezoeker, bedrijfSelected, werknemerSelected, new DateTime(timeYear, timeMonth, timeDay, timeHour, timeMinutes, 0));
-                        _bezoekManager.VoegBezoekToe(b);
+                        Bezoek b = new Bezoek(bezoeker, bedrijfSelected, werknemerSelected, DateTime.Now);
+                        try
+                        {
+                            _bezoekManager.VoegBezoekToe(b);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"error! {ex}");
+                        }
                     }
                 }
             }
         }
-
         private void ComboBoxBedrijf_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             werknemersList.Clear();
@@ -129,6 +123,64 @@ namespace UIAdmin.view
             }
             werker.ForEach(w => werknemersList.Add(w.Werknemer));
             werknemersList.ForEach(c => WerknemersNamen.Add($"{c.Naam}, {c.Voornaam}"));
+        }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SaveBtn.IsEnabled = true;
+            SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
+            BorderNaam.BorderBrush = colorBrush;
+            TBNaam.Text = "";
+            TBNaam.Foreground = Brushes.Black;
+            BorderVoornaam.BorderBrush = colorBrush;
+            TBVoornaam.Text = "";
+            TBVoornaam.Foreground = Brushes.Black;
+            BorderEmail.BorderBrush = colorBrush;
+            TBEmail.Text = "";
+            TBEmail.Foreground = Brushes.Black;
+            string? naam = null;
+            string? voornaam = null;
+            string? email = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxBezoekerNaam.Text)) { naam = TextBoxBezoekerNaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxBezoekerVoornaam.Text)) { voornaam = TextBoxBezoekerVoornaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxBezoekerEmail.Text)) { email = TextBoxBezoekerEmail.Text; }
+            if (naam == null)
+            {
+                BorderNaam.BorderBrush = Brushes.Red;
+                TBNaam.Text = "Naam: mag niet leeg zijn!";
+                TBNaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (voornaam == null)
+            {
+                BorderVoornaam.BorderBrush = Brushes.Red;
+                TBVoornaam.Text = "Voornaam: mag niet leeg zijn!";
+                TBVoornaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (email == null)
+            {
+                BorderEmail.BorderBrush = Brushes.Red;
+                TBEmail.Text = "Email: mag niet leeg zijn!";
+                TBEmail.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (email != null)
+            {
+                try
+                {
+                    if (Controle.IsGoedeEmailSyntax(email)) { }
+                }
+                catch (Exception ex)
+                {
+                    SaveBtn.IsEnabled = false;
+                    if (ex.Message == "Controle - IsGoedeEmailSyntax - ongeldige email")
+                    {
+                        BorderEmail.BorderBrush = Brushes.Red;
+                        TBEmail.Text += "ongeldige syntacs!";
+                        TBEmail.Foreground = Brushes.Red;
+                    }
+                }
+            }
         }
     }
 }

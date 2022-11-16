@@ -8,11 +8,14 @@ namespace UnitTestDomein
     {
         [Theory]
         [InlineData("")]
-        [InlineData("        ")]
+        [InlineData(" ")]
+        [InlineData("\n")]
+        [InlineData("   \r   ")]
         [InlineData(null)]
         public void IsGoedeEmailSyntax_InValid_EmailIsNull(string email)
         {
-            Assert.Throws<ControleException>(() => Controle.IsGoedeEmailSyntax(email));
+            var ex = Assert.Throws<ControleException>(() => Controle.IsGoedeEmailSyntax(email));
+            Assert.Equal("Controle - IsGoedeEmailSyntax - Geen email ingevuld", ex.Message);
         }
 
         [Theory]
@@ -21,7 +24,8 @@ namespace UnitTestDomein
         [InlineData("customerService@examplebe")]
         public void IsGoedeEmailSyntax_InValid(string email)
         {
-            Assert.Throws<ControleException>(() => Controle.IsGoedeEmailSyntax(email));
+            var ex = Assert.Throws<ControleException>(() => Controle.IsGoedeEmailSyntax(email));
+            Assert.Equal("Controle - IsGoedeEmailSyntax - Ongeldige email", ex.Message);
         }
 
         [Theory]
@@ -35,11 +39,14 @@ namespace UnitTestDomein
 
         [Theory]
         [InlineData("")]
-        [InlineData("        ")]
+        [InlineData(" ")]
+        [InlineData("\n")]
+        [InlineData("   \r   ")]
         [InlineData(null)]
         public void IsBestaandBTWnummer_InValid_BtwNummerIsNull(string btwNummer)
         {
-            Assert.Throws<ControleException>(() => Controle.IsBestaandBTWnummer(btwNummer));
+            var ex = Assert.Throws<ControleException>(() => Controle.IsBestaandBTWnummer(btwNummer));
+            Assert.Equal("Controle - IsBestaandBTWnummer - Geen BTWNummer ingevuld", ex.Message);
         }
 
         [Theory]
@@ -48,7 +55,8 @@ namespace UnitTestDomein
         [InlineData("PL50123456789")]
         public void IsBestaandBTWnummer_InValid(string btwNummer)
         {
-            Assert.Throws<ControleException>(() => Controle.IsBestaandBTWnummer(btwNummer));
+            var ex = Assert.Throws<ControleException>(() => Controle.IsBestaandBTWnummer(btwNummer));
+            Assert.Equal("Controle - IsBestaandBTWnummer - Ongeldig BTW Nummer", ex.Message);
         }
 
         [Theory]
@@ -62,11 +70,14 @@ namespace UnitTestDomein
 
         [Theory]
         [InlineData("")]
-        [InlineData("        ")]
+        [InlineData(" ")]
+        [InlineData("\n")]
+        [InlineData("   \r   ")]
         [InlineData(null)]
         public void IsGoedeAdresNummerSyntax_InValid_nummerIsNull(string nummer)
         {
-            Assert.Throws<ControleException>(() => Controle.IsGoedeAdresNummerSyntax(nummer));
+            var ex = Assert.Throws<ControleException>(() => Controle.IsGoedeAdresNummerSyntax(nummer));
+            Assert.Equal("Controle - IsGoedeAdresNummerSyntax - Geen nummer ingevuld", ex.Message);
         }
 
         [Theory]
@@ -75,7 +86,8 @@ namespace UnitTestDomein
         [InlineData("hallo")]
         public void IsGoedeAdresNummerSyntax_InValid_NoGigit(string nummer)
         {
-            Assert.Throws<ControleException>(() => Controle.IsGoedeAdresNummerSyntax(nummer));
+            var ex = Assert.Throws<ControleException>(() => Controle.IsGoedeAdresNummerSyntax(nummer));
+            Assert.Equal("Controle - IsGoedeAdresNummerSyntax - Geen geldig nummer ingevuld", ex.Message);
         }
 
         [Theory]
@@ -85,9 +97,10 @@ namespace UnitTestDomein
         [InlineData("1b bus")]
         [InlineData("589g bus")]
         [InlineData("20 bus")]
-        public void IsGoedeAdresNummerSyntax_InValid_NotGoodSyntax(string nummer)
+        public void IsGoedeAdresNummerSyntax_InValid_NotGoodSyntax_GeenBus(string nummer)
         {
-            Assert.Throws<ControleException>(() => Controle.IsGoedeAdresNummerSyntax(nummer));
+            var ex = Assert.Throws<ControleException>(() => Controle.IsGoedeAdresNummerSyntax(nummer));
+            Assert.Equal("Controle - IsGoedeAdresNummerSyntax - Geen geldige syntax ingevuld", ex.Message);
         }
 
         [Theory]

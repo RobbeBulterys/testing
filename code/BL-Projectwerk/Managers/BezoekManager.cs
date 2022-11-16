@@ -2,6 +2,7 @@
 using BL_Projectwerk.Domein;
 using BL_Projectwerk.Exceptions;
 using BL_Projectwerk.Interfaces;
+using System.ServiceModel.Channels;
 
 namespace BL_Projectwerk.Managers
 {
@@ -18,13 +19,14 @@ namespace BL_Projectwerk.Managers
         {
             try
             {
-                if (bezoek == null)  throw new BezoekerManagerException("is al bezoek wollah"); 
-                if (_bezoekRepo.BestaatBezoek(bezoek))  throw new BezoekerManagerException("VoegBezoekToe - bezoek bestaat al"); 
-
+                if (bezoek == null)  throw new BezoekManagerException("BezoekManager - VoegBezoek - Bezoek is null"); 
+                if (_bezoekRepo.BestaatBezoek(bezoek))  throw new BezoekManagerException("BezoekManager - VoegBezoekToe - Bezoek bestaat al");
+                if (_bezoekRepo.IsLoggedIn(bezoek.Bezoeker.Email)) throw new BezoekManagerException("VoegBezoekToe - VoegBezoekToe - Bezoeker is reeds ingelogd");
                 _bezoekRepo.VoegBezoekToe(bezoek);
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)
             {
-                throw new BezoekManagerException("VoegBezoekToe", ex);
+                throw;
             }
         }
 
@@ -32,10 +34,11 @@ namespace BL_Projectwerk.Managers
         {
             try
             {
-                if (bezoek == null)  throw new BezoekManagerException("VerwijderBezoek - Geen verwijderbaar bezoek ingegeven"); 
-                if (!_bezoekRepo.BestaatBezoek(bezoek))  throw new BezoekManagerException("VerwijderBezoek - Bezoek bestaat niet"); 
+                if (bezoek == null)  throw new BezoekManagerException("BezoekManager - VerwijderBezoek - Bezoek is null"); 
+                if (!_bezoekRepo.BestaatBezoek(bezoek))  throw new BezoekManagerException("BezoekManager - VerwijderBezoek - Onbestaand bezoek"); 
                 _bezoekRepo.VerwijderBezoek(bezoek);
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)
             {
                 throw new BezoekManagerException("VerwijderBezoek", ex);
             } 
@@ -46,11 +49,12 @@ namespace BL_Projectwerk.Managers
             try
             {
 
-                if (bezoek == null) { throw new BezoekManagerException("UpdateBezoek - Geen aanpasbare bezoek ingegeven"); }
+                if (bezoek == null) { throw new BezoekManagerException("BezoekManager - UpdateBezoek - Bezoek is null"); }
                 Bezoek dbBezoek = _bezoekRepo.GeefBezoek(bezoek.BezoekId);
-                if (dbBezoek.IsDezelfde(bezoek)) throw new BezoekManagerException("UpdateBezoek - bezoek heeft dezelfde properties");
+                if (dbBezoek.IsDezelfde(bezoek)) throw new BezoekManagerException("BezoekManager - UpdateBezoek - Bezoek is dezelfde");
                 _bezoekRepo.UpdateBezoek(bezoek);
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)
             {
                 throw new BezoekManagerException("UpdateBezoek", ex);
             }     
@@ -62,7 +66,8 @@ namespace BL_Projectwerk.Managers
             {
                 List<Bezoek> bezoeken = _bezoekRepo.GeefBezoeken().ToList();
                 return bezoeken;
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)
             {
                 throw new BezoekManagerException("GeefBezoeken", ex);
             }
@@ -79,10 +84,11 @@ namespace BL_Projectwerk.Managers
                     bezoeken = _bezoekRepo.GeefBezoeken(bezoeker, bedrijf, contactpersoon, Starttijd);
                 } else
                 {
-                    throw new BezoekManagerException("ZoekBezoeker - Geen veld ingevuld");
+                    throw new BezoekManagerException("BezoekManager - ZoekBezoeker - Geen veld ingevuld");
                 }
                 return bezoeken;
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)
             {
                 throw new BezoekManagerException("ZoekBezoeken", ex);
             }
@@ -92,13 +98,23 @@ namespace BL_Projectwerk.Managers
         {
             try
             {
-                if (string.IsNullOrEmpty(email)) { throw new BezoekManagerException("LogoutBezoek - Geen email ingevuld"); }
-                if (!Controle.IsGoedeEmailSyntax(email)) { throw new BezoekerManagerException("LogoutBezoek - ongeldige email");  }
+                if (string.IsNullOrEmpty(email)) { throw new BezoekManagerException("Geen email ingevuld"); }
+                if (!Controle.IsGoedeEmailSyntax(email)) { throw new BezoekManagerException("Ongeldige email");  }
+                if (!_bezoekRepo.IsLoggedIn(email)) { throw new BezoekManagerException("not logged in"); }
                 _bezoekRepo.LogoutBezoek(email);
             } 
-            catch (Exception ex)
+            catch (BezoekManagerException)
             {
-                throw new BezoekManagerException("LogoutBezoek", ex);
+                throw;
+            }
+            
+        }
+
+        public bool IsLoggedIn(string email) {
+            try {
+                return _bezoekRepo.IsLoggedIn(email);
+            } catch (Exception) {
+                throw;
             }
         }
     }

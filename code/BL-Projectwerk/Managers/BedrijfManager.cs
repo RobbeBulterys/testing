@@ -11,6 +11,7 @@ namespace BL_Projectwerk.Managers
         private IBedrijfRepository bedrijfRepo;
         private AdresManager AM = null;
         private WerknemercontractManager WCM = null;
+
         public BedrijfManager(IBedrijfRepository bedrijfRepo, AdresManager am, WerknemercontractManager wCM)
         {
             this.bedrijfRepo = bedrijfRepo;
@@ -18,23 +19,22 @@ namespace BL_Projectwerk.Managers
             WCM = wCM;  
         }
 
-
         public void VoegBedrijfToe(string btwnummer, string naam, string email, string? telefoon,string? land, string? straat, string? nummer, string? postcode,string? plaats)
         {
             int? adresId = null;
             try
             {
-                
-                if (!(AM == null)) 
+                if ((AM != null)) 
                 {
                     if (!string.IsNullOrWhiteSpace(land) && !string.IsNullOrWhiteSpace(straat) && !string.IsNullOrWhiteSpace(nummer) && !string.IsNullOrWhiteSpace(postcode) && !string.IsNullOrWhiteSpace(plaats))
                     {
                         Adres adresZonderId = new Adres(straat, nummer, postcode, plaats, land);
                         adresId = AM.VoegAdresToe(adresZonderId);
+                        adresZonderId.ZetId(adresId.Value);
                     }
                 }
                 Bedrijf bedrijf = new Bedrijf(naam, btwnummer, email);
-                if (bedrijfRepo.BestaatBedrijfZonderId(btwnummer,naam,email)) throw new BedrijfManagerException("VoegBedrijfToe - bedrijf bestaat al");
+                if (bedrijfRepo.BestaatBedrijfZonderId(btwnummer,naam,email)) throw new BedrijfManagerException("BedrijfManager - VoegBedrijfToe - Bedrijf bestaat al");
                 bedrijfRepo.VoegBedrijfToe(btwnummer,naam,email,telefoon,adresId);
             }
             catch (Exception ex)
@@ -43,13 +43,13 @@ namespace BL_Projectwerk.Managers
             }
         }
 
-        public void VerwijderBedrijf(Bedrijf bedrijf, int? adresid) // alle contracten verwijderen, adres verwijderen
-        {// TODO WerknemerContractManager.VerwijderContraten controle
+        public void VerwijderBedrijf(Bedrijf bedrijf, int? adresid) 
+        {
             try
             {
                 if (!bedrijfRepo.BestaatBedrijfMetId(bedrijf.Id))
                 {
-                    throw new AdresManagerException("VerwijderBedrijf - Onbestaand Bedrijf");
+                    throw new BedrijfManagerException("BedrijfManager - VerwijderBedrijf - Onbestaand bedrijf");
                 }
                 else 
                 {
@@ -71,13 +71,12 @@ namespace BL_Projectwerk.Managers
             }
 
         }
+
         public void UpdateBedrijf(int id,string? btwnummer, string? naam, string? email, string? telefoon)
         {
             try
             {
-                //if (bedrijf == null) throw new AdresManagerException("UpdateBedrijf");
-                if (!bedrijfRepo.BestaatBedrijfMetId(id)) throw new AdresManagerException("UpdateBedrijf - bedrijf is dezelfde");
-
+                if (!bedrijfRepo.BestaatBedrijfMetId(id)) throw new BedrijfManagerException("BedrijfManager - UpdateBedrijf - Bedrijf is dezelfde");
                 bedrijfRepo.UpdateBedrijf(id,btwnummer,naam,email,telefoon);
             }
             catch (Exception ex)
@@ -85,13 +84,12 @@ namespace BL_Projectwerk.Managers
                 throw new BedrijfManagerException("UpdateBedrijf", ex);
             }
         }
+
         public void UpdateBedrijfAdres(int id, int adresId)
         {
             try
             {
-                //if (bedrijf == null) throw new AdresManagerException("UpdateBedrijf");
-                if (!bedrijfRepo.BestaatBedrijfMetId(id)) throw new AdresManagerException("UpdateBedrijf - bedrijf is dezelfde");
-
+                if (!bedrijfRepo.BestaatBedrijfMetId(id)) throw new BedrijfManagerException("BedrijfManager - UpdateBedrijf - Bedrijf is dezelfde");
                 bedrijfRepo.UpdateBedrijfAdres(id, adresId);
             }
             catch (Exception ex)
@@ -99,6 +97,7 @@ namespace BL_Projectwerk.Managers
                 throw new BedrijfManagerException("UpdateBedrijfAdres", ex);
             }
         }
+
         public IReadOnlyList<Bedrijf> GeefBedrijven()
         {
             List<Bedrijf> Bedrijven = new List<Bedrijf>();
@@ -109,19 +108,17 @@ namespace BL_Projectwerk.Managers
             }
             catch (Exception ex)
             {
-                throw new BezoekerManagerException("AlleBezoekers", ex);
+                throw new BedrijfManagerException("GeefBedrijven", ex);
             }
         }
+
         public IReadOnlyList<Bedrijf> ZoekBedrijven(string? btwnummer, string? naam, string? email, string? telefoon)
         {
             List<Bedrijf> Bedrijven = new List<Bedrijf>();
             //List<Bedrijf> Bedrijven2 = new List<Bedrijf>();
             try
             {
-                if (!string.IsNullOrWhiteSpace(btwnummer) || !string.IsNullOrWhiteSpace(naam) || !string.IsNullOrWhiteSpace(email) || !string.IsNullOrWhiteSpace(telefoon))
-                {
-                    Bedrijven.AddRange(bedrijfRepo.ZoekBedrijven(btwnummer, naam, email, telefoon));
-                }
+                Bedrijven.AddRange(bedrijfRepo.ZoekBedrijven(btwnummer, naam, email, telefoon));
                 //foreach (Bedrijf bedrijf in Bedrijven)
                 //{
                 //    Bedrijven2.Add(bedrijfRepo.GeefBedrijfOpId(bedrijf.Id));
@@ -130,7 +127,7 @@ namespace BL_Projectwerk.Managers
             }
             catch (Exception ex)
             {
-                throw new BezoekerManagerException("AlleBezoekers", ex);
+                throw new BedrijfManagerException("ZoekBedrijven", ex);
             }
         }
     }

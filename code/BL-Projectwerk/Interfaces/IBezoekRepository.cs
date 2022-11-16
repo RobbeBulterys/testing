@@ -13,5 +13,6 @@ namespace BL_Projectwerk.Interfaces
         void VerwijderBezoek(Bezoek bezoek);
         void VoegBezoekToe(Bezoek bezoek);
         void LogoutBezoek(string Email);
+        bool IsLoggedIn(string email);
     }
 }

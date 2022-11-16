@@ -1,11 +1,14 @@
 ﻿using BL_Projectwerk.Domein;
+using BL_Projectwerk.Exceptions;
 using BL_Projectwerk.Interfaces;
 using BL_Projectwerk.Managers;
-using DL_Projectwerk;
+using DL_Projectwerk.Exceptions;
+using DL_Projectwerk.repoADO;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,12 +31,12 @@ namespace UIBezoeker
     {
 
 
-        private static string connectionstring = "Server=tcp:bezoekerregistratiesysteem.database.windows.net,1433;Initial Catalog=bezoekerregistratiesysteemdb;Persist Security Info=False;User ID=Hackerman;Password=RootRoot!69;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        //private static string connectionstringAzure = "Server=tcp:bezoekerregistratiesysteem.database.windows.net,1433;Initial Catalog=bezoekerregistratiesysteemdb;Persist Security Info=False;User ID=Hackerman;Password=RootRoot!69;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+        private static string connectionstring = "Server=ID367284_VRS.db.webhosting.be;User ID=ID367284_VRS;Password=RootRoot!69;Database=ID367284_VRS";
 
         private static IBezoekerRepository bezoekerRepo = new BezoekerRepoADO(connectionstring);
         private BezoekerManager _bezoekerManager = new BezoekerManager(bezoekerRepo);
-
-
 
         private static IAdresRepository adresRepo = new AdresRepoADO(connectionstring);
         private static AdresManager _adresManager = new AdresManager(adresRepo, bedrijfRepo);
@@ -53,6 +56,7 @@ namespace UIBezoeker
 
         static private Bedrijf _bedrijf;
         static private Werknemer _werknemer;
+        
         static private Bezoek _bezoek;
         static private Bezoeker _bezoeker;
         static private Werknemercontract _werknemercontract;
@@ -61,14 +65,18 @@ namespace UIBezoeker
         public MainView()
         {
             InitializeComponent();
-            //ComboBoxBedrijf.ItemsSource = bedrijven;
-            IReadOnlyList<Bedrijf> bedrijven = _bedrijfManager.GeefBedrijven();
 
-            IEnumerable<Bedrijf> bedrijfEnum = _bedrijfManager.GeefBedrijven();
-
-            ComboBoxBedrijf.ItemsSource = bedrijfEnum;
+            ComboBoxBedrijf.ItemsSource = _bedrijfManager.GeefBedrijven();
             
         }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
 
         private void Login_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -77,6 +85,7 @@ namespace UIBezoeker
             LoginBorder.Visibility = Visibility.Visible;
             LogoutBorder.Visibility = Visibility.Collapsed;
             Titel.Text = "Aanmelden";
+            ClearTextBoxLogin();
         }
 
         private void Logout_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -87,7 +96,7 @@ namespace UIBezoeker
             LoginBorder.Visibility = Visibility.Collapsed;
             LogoutBorder.Visibility = Visibility.Visible;
             Titel.Text = "Afmelden";
-
+            ClearTextBoxLogin();
         }
 
         private void Home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -97,36 +106,7 @@ namespace UIBezoeker
             LoginBorder.Visibility = Visibility.Collapsed;
             LogoutBorder.Visibility= Visibility.Collapsed;
             ClearTextBoxLogin();
-            ClearTextBoxLogout();
             Titel.Text = "Welkom op het bedrijvenpark";
-
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton==MouseButtonState.Pressed)
-            {           
-                DragMove();
-            }
-        }
-
-        private void ClearTextBoxLogin()
-        {
-            TextBoxNaam.Clear();
-            TextBoxVoornaam.Clear();
-            TextBoxEmailLogin.Clear();
-            TextBoxEmailLogout.Clear();
-            TextBoxBedrijfVanBezoeker.Clear();
-            ComboBoxContactpersoon.ItemsSource = null;
-            ComboBoxBedrijf.SelectedIndex = -1;
-            _werknemer = null;
-            _bedrijf = null;
-
-
-        }
-        private void ClearTextBoxLogout()
-        {
-
         }
 
         private void ComboBoxBedrijf_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -145,11 +125,6 @@ namespace UIBezoeker
         {
 
             _werknemercontract = ComboBoxContactpersoon.SelectedItem as Werknemercontract;
-            
-        }
-
-        private void LoginButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
 
         }
 
@@ -157,50 +132,77 @@ namespace UIBezoeker
         {
             try
             {
-                if (TextBoxNaam.Text == "" || TextBoxVoornaam.Text == "" || TextBoxEmailLogin.Text == "" || TextBoxBedrijfVanBezoeker.Text == "" || ComboBoxBedrijf.SelectedIndex == -1 || ComboBoxContactpersoon.SelectedIndex == -1)
+                //TODO: Exceptionhandling WPF
+                LoginCheck();
+                _bezoeker = new Bezoeker(TextBoxNaam.Text, TextBoxVoornaam.Text, TextBoxEmailLogin.Text, TextBoxBedrijfVanBezoeker.Text);
+                if (_bezoekManager.IsLoggedIn(_bezoeker.Email)) throw new Exception("Bezoeker is reeds ingelogd");
+                _bezoekerManager.VoegBezoekerToe(_bezoeker);
+                _bezoeker = _bezoekerManager.ZoekBezoekers(_bezoeker.Naam, _bezoeker.Voornaam, _bezoeker.Email, _bezoeker.Bedrijf).ToList()[0];
+                _bezoek = new Bezoek(_bezoeker, _bedrijf, _werknemercontract.Werknemer, DateTime.Now);
+                if (MessageBox.Show($"Zijn deze gegevens correct? \nNaam: {TextBoxNaam.Text} {TextBoxVoornaam.Text} \nEmail: {TextBoxEmailLogin.Text} \nBedrijf van afkomst:{TextBoxBedrijfVanBezoeker.Text} \nBedrijf met afspraak:{_bedrijf.Naam} \nContactpersoon: {_werknemercontract.Werknemer.Naam} {_werknemercontract.Werknemer.Voornaam}", "Controle", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    MessageBox.Show("Melding: U heeft niet alle velden ingevuld");
+                    _bezoekManager.VoegBezoekToe(_bezoek);
+                    ClearTextBoxLogin();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Equals("Bezoeker is reeds ingelogd"))
+                {
+                    MessageBox.Show("U bent al reeds aangemeld, gelieve u eerst af te melden");
+                    Logout_MouseLeftButtonDown(sender, e);
                 }
                 else
                 {
-                    _werknemer = (Werknemer)_werknemercontract.Werknemer;
-                    _bezoeker = new Bezoeker(TextBoxNaam.Text, TextBoxVoornaam.Text, TextBoxEmailLogin.Text, TextBoxBedrijfVanBezoeker.Text);
-                    if (!_bezoekerManager.BestaatBezoeker(_bezoeker))
-                    {
-                        _bezoekerManager.VoegBezoekerToe(_bezoeker);
-                    }
-                    else
-                    {
-                        List<Bezoeker> bezoekers = _bezoekerManager.ZoekBezoekers(_bezoeker.Naam, _bezoeker.Voornaam, _bezoeker.Email, _bezoeker.Bedrijf).ToList();
-                        _bezoeker = bezoekers[0];
-                    }
-                        
-
-                        
-                    
-                    if (MessageBox.Show($"Zijn deze gegevens correct: \nNaam: {_bezoeker.Naam} {_bezoeker.Voornaam} \nEmail: {_bezoeker.Email} \nBedrijf van afkomst:{_bezoeker.Bedrijf} \nBedrijf met afspraak:{_bedrijf.Naam} \nContactpersoon: {_werknemer.Naam} {_werknemer.Voornaam}","Controle",MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
-                        _bezoek = new Bezoek(_bezoeker, _bedrijf, _werknemer, DateTime.Now);
-                        _bezoekManager.VoegBezoekToe(_bezoek);
-                        ClearTextBoxLogin();
-                    }
+                    MessageBox.Show("Error: " + ex.Message);
                 }
-            } catch (Exception ex)
-            {
-                throw new Exception("Fout Toevoegen", ex);
+
             }
         }
 
         private void LogoutButtonEffect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string email = TextBoxEmailLogout.Text;
-
-            
-
-            if (MessageBox.Show($"Zeker dat u zich wilt afmelden?", "Controle", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            try
             {
-                _bezoekManager.LogoutBezoek(email);
+                _bezoekManager.LogoutBezoek(TextBoxEmailLogout.Text);
+                MessageBox.Show("Succesvol Afgemeld");
                 TextBoxEmailLogout.Clear();
             }
+            catch (Exception ex)
+            {
+                if (ex.Message.Equals("not logged in"))
+                {
+                    MessageBox.Show("U bent nog niet aangemeld, gelieve u eerst aan te melden");
+                    Login_MouseLeftButtonDown(sender, e);
+                } else
+                {
+                    MessageBox.Show(ex.Message);
+                }            
+            }
         }
+
+        private void LoginCheck()
+        {
+            if (TextBoxVoornaam.Text == "") throw new Exception("Geen voornaam ingevuld");
+            if (TextBoxNaam.Text == "") throw new Exception("Geen naam ingevuld");
+            if (TextBoxEmailLogin.Text == "") throw new Exception("Geen Email ingevuld");
+            if (ComboBoxBedrijf.SelectedIndex == -1) throw new Exception("Geen bedrijf geselecteerd");
+            if (ComboBoxContactpersoon.SelectedIndex == -1) throw new Exception("Geen contactpersoon geselecteerd");
+        }
+
+        private void ClearTextBoxLogin()
+        {
+            TextBoxNaam.Clear();
+            TextBoxVoornaam.Clear();
+            TextBoxEmailLogin.Clear();
+            TextBoxEmailLogout.Clear();
+            TextBoxBedrijfVanBezoeker.Clear();
+            ComboBoxContactpersoon.ItemsSource = null;
+            ComboBoxBedrijf.SelectedIndex = -1;
+            _werknemer = null;
+            _bedrijf = null;
+        }
+
     }
 }

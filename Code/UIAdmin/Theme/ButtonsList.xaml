@@ -26,7 +26,7 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="GridEditButton" TargetType="Button">
-        <Setter Property="Background" Value="LightGreen"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="LightGreen"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -34,7 +34,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="5" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5" Margin="1" Padding="5" BorderThickness="2" BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -47,7 +47,7 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="GridRemoveButton" TargetType="Button" BasedOn="{StaticResource GridEditButton}">
-        <Setter Property="Background" Value="Red"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Red"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -77,6 +77,23 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#623ed0"/>
                 <Setter Property="Foreground" Value="LightBlue"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="nextAndPreviewButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#623ed0"/>
+                <Setter Property="Foreground" Value="White"/>
             </Trigger>
         </Style.Triggers>
     </Style>

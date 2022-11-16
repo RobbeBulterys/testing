@@ -1,0 +1,20 @@
+﻿UIAdmin
+1.0.0.0
+
+winexe
+C#
+.cs
+E:\programming\github repos\ProjectWerk\Code\UIAdmin\obj\Release\net6.0-windows\
+UIAdmin
+none
+false
+TRACE;RELEASE;NET;NET6_0;NETCOREAPP
+E:\programming\github repos\ProjectWerk\Code\UIAdmin\App.xaml
+142126810899
+13-989916918
+14-2085445230
+211-1142813954
+MainWindow.xaml;Theme\ButtonsList.xaml;Theme\DataGridList.xaml;Theme\MenuButtonTheme.xaml;Theme\StandardTextboxTheme.xaml;Theme\TextboxTheme.xaml;view\AddBedrijfScreen.xaml;view\AddBezoekerScreen.xaml;view\AddBezoekScreen.xaml;view\AddWerknemerScreen.xaml;view\EditBedrijfScreen.xaml;view\EditBezoekerScreen.xaml;view\EditWerknemerScreen.xaml;view\MainScreen.xaml;
+
+True
+

@@ -28,7 +28,7 @@ namespace UIAdmin.view
         private BezoekerManager _bezoekerManager;
         private BezoekManager _bezoekManager;
         private Bezoeker _bezoeker;
-        private ObservableCollection<ContractVoorLijst> contracts = new ObservableCollection<ContractVoorLijst>();
+        private ObservableCollection<BezoekAdmin> contracts = new ObservableCollection<BezoekAdmin>();
         public EditBezoekerScreen(BezoekerManager bezoekerManager, BezoekManager bezoekManager, Bezoeker bezoeker)
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace UIAdmin.view
             List<Bezoek> b = _bezoekManager.ZoekBezoeken(_bezoeker, null, null, null).ToList();
             foreach (Bezoek bezoek in b)
             {
-                contracts.Add(new ContractVoorLijst(bezoek));
+                contracts.Add(new BezoekAdmin(bezoek));
             }
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -93,6 +93,76 @@ namespace UIAdmin.view
                     else
                     {
                         _bezoekerManager.UpdateBezoeker(_bezoeker.PersoonId, naam, voornaam, email, bedrijfnaam);
+                    }
+                }
+            }
+        }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SaveBtn.IsEnabled = true;
+            SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
+            BorderNaam.BorderBrush = colorBrush;
+            TBNaam.Text = "";
+            TBNaam.Foreground = Brushes.Black;
+            BorderVoornaam.BorderBrush = colorBrush;
+            TBVoornaam.Text = "";
+            TBVoornaam.Foreground = Brushes.Black;
+            BorderEmail.BorderBrush = colorBrush;
+            TBEmail.Text = "";
+            TBEmail.Foreground = Brushes.Black;
+            BorderBedrijfNaam.BorderBrush = colorBrush;
+            TBBedrijfNaam.Text = "";
+            TBBedrijfNaam.Foreground = Brushes.Black;
+            string? naam = null;
+            string? voornaam = null;
+            string? email = null;
+            string? bedrijfNaam = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxBezoekerNaam.Text)) { naam = TextBoxBezoekerNaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { email = TextBoxEmail.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfNaam = TextBoxBedrijfNaam.Text; }
+            if (naam == null)
+            {
+                BorderNaam.BorderBrush = Brushes.Red;
+                TBNaam.Text = "Naam: mag niet leeg zijn!";
+                TBNaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (voornaam == null)
+            {
+                BorderVoornaam.BorderBrush = Brushes.Red;
+                TBVoornaam.Text = "Voornaam: mag niet leeg zijn!";
+                TBVoornaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (email == null)
+            {
+                BorderEmail.BorderBrush = Brushes.Red;
+                TBEmail.Text = "Email: mag niet leeg zijn!";
+                TBEmail.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (bedrijfNaam == null)
+            {
+                BorderBedrijfNaam.BorderBrush = Brushes.Red;
+                TBBedrijfNaam.Text = "Bedrijfsnaam: mag niet leeg zijn!";
+                TBBedrijfNaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (email != null)
+            {
+                try
+                {
+                    if (Controle.IsGoedeEmailSyntax(email)) { }
+                }
+                catch (Exception ex)
+                {
+                    SaveBtn.IsEnabled = false;
+                    if (ex.Message == "Controle - IsGoedeEmailSyntax - ongeldige email")
+                    {
+                        BorderEmail.BorderBrush = Brushes.Red;
+                        TBEmail.Text += "ongeldige syntax!";
+                        TBEmail.Foreground = Brushes.Red;
                     }
                 }
             }

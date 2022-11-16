@@ -20,7 +20,7 @@ namespace BL_Projectwerk.Managers
         {
             try
             {
-                if (adres == null) throw new AdresManagerException("VoegAdresToe");
+                if (adres == null) throw new AdresManagerException("AdresManager - VoegAdresToe - Adres is null");
                 if (!adresRepo.BestaatAdresZonderId(adres)) return adresRepo.VoegAdresToe(adres);
                 else return adresRepo.GeefAdresId(adres); 
             }
@@ -30,19 +30,19 @@ namespace BL_Projectwerk.Managers
             }
         }
 
-        public void VerwijderAdres(int id)
+        public void VerwijderAdres(int adresId)
         {
             try
             {
-                if (!adresRepo.BestaatAdresMetId(id))
+                if (!adresRepo.BestaatAdresMetId(adresId))
                 {
-                    throw new AdresManagerException("VerwijderAdres - Onbestaand Adres");
+                    throw new AdresManagerException("AdresManager - VerwijderAdres - Onbestaand Adres");
                 }
-                else if (!bedrijfRepo.BedrijvenOpAdresAanwezig(id))
+                else if (!bedrijfRepo.BedrijvenOpAdresAanwezig(adresId))
                 {
-                    throw new AdresManagerException("VerwijderAdres - bedrijven aanwezig op dit adres");
+                    throw new AdresManagerException("AdresManager - VerwijderAdres - Kan geen adres verwijderen waar er nog steeds bedrijven aanwezig zijn");
                 }
-                else adresRepo.VerwijderAdres(id);
+                else adresRepo.VerwijderAdres(adresId);
             }
             catch(Exception ex)
             {
@@ -54,10 +54,8 @@ namespace BL_Projectwerk.Managers
         {
             try
             {
-                
                 //if (adres == null) throw new AdresManagerException("UpdateAdres");
-                if (!adresRepo.BestaatAdresMetId(id)) throw new AdresManagerException("UpdateAdres - adres bestaat niet");
-
+                if (!adresRepo.BestaatAdresMetId(id)) throw new AdresManagerException("AdresManager - UpdateAdres - Adres bestaat niet");
                 adresRepo.UpdateAdres(id,straat,nummer,postcode,plaats,land);
             }
             catch (Exception ex)
@@ -65,6 +63,5 @@ namespace BL_Projectwerk.Managers
                 throw new AdresManagerException("UpdateAdres", ex);
             }
         }
-
     }
 }

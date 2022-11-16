@@ -1,0 +1,73 @@
+
+<div id="sidetoggle">
+  <div>
+    <div class="sidefilter">
+      <form class="toc-filter">
+        <span class="glyphicon glyphicon-filter filter-icon"></span>
+        <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
+        <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+      </form>
+    </div>
+    <div class="sidetoc">
+      <div class="toc" id="toc">
+          
+          <ul class="nav level1">
+                <li>
+                    <span class="expand-stub"></span>
+                    <a href="UIAdmin.html" name="" title="UIAdmin">UIAdmin</a>
+                    
+                    <ul class="nav level2">
+                          <li>
+                              <a href="UIAdmin.App.html" name="" title="App">App</a>
+                          </li>
+                          <li>
+                              <a href="UIAdmin.MainWindow.html" name="" title="MainWindow">MainWindow</a>
+                          </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="expand-stub"></span>
+                    <a href="UIAdmin.Domein.html" name="" title="UIAdmin.Domein">UIAdmin.Domein</a>
+                    
+                    <ul class="nav level2">
+                          <li>
+                              <a href="UIAdmin.Domein.ContractVoorLijst.html" name="" title="ContractVoorLijst">ContractVoorLijst</a>
+                          </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="expand-stub"></span>
+                    <a href="UIAdmin.view.html" name="" title="UIAdmin.view">UIAdmin.view</a>
+                    
+                    <ul class="nav level2">
+                          <li>
+                              <a href="UIAdmin.view.AddBedrijfScreen.html" name="" title="AddBedrijfScreen">AddBedrijfScreen</a>
+                          </li>
+                          <li>
+                              <a href="UIAdmin.view.AddBezoekerScreen.html" name="" title="AddBezoekerScreen">AddBezoekerScreen</a>
+                          </li>
+                          <li>
+                              <a href="UIAdmin.view.AddBezoekScreen.html" name="" title="AddBezoekScreen">AddBezoekScreen</a>
+                          </li>
+                          <li>
+                              <a href="UIAdmin.view.AddWerknemerScreen.html" name="" title="AddWerknemerScreen">AddWerknemerScreen</a>
+                          </li>
+                          <li>
+                              <a href="UIAdmin.view.EditBedrijfScreen.html" name="" title="EditBedrijfScreen">EditBedrijfScreen</a>
+                          </li>
+                          <li>
+                              <a href="UIAdmin.view.EditBezoekerScreen.html" name="" title="EditBezoekerScreen">EditBezoekerScreen</a>
+                          </li>
+                          <li>
+                              <a href="UIAdmin.view.EditWerknemerScreen.html" name="" title="EditWerknemerScreen">EditWerknemerScreen</a>
+                          </li>
+                          <li>
+                              <a href="UIAdmin.view.MainScreen.html" name="" title="MainScreen">MainScreen</a>
+                          </li>
+                    </ul>
+                </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>

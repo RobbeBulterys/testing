@@ -1,0 +1,15 @@
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\bin\Release\net6.0\DL-Projectwerk.deps.json
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\bin\Release\net6.0\DL-Projectwerk.dll
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\bin\Release\net6.0\DL-Projectwerk.pdb
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\bin\Release\net6.0\BL-Projectwerk.dll
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\bin\Release\net6.0\BL-Projectwerk.pdb
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\DL-Projectwerk.csproj.AssemblyReference.cache
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\DL-Projectwerk.GeneratedMSBuildEditorConfig.editorconfig
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\DL-Projectwerk.AssemblyInfoInputs.cache
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\DL-Projectwerk.AssemblyInfo.cs
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\DL-Projectwerk.csproj.CoreCompileInputs.cache
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\DL-Projectwerk.csproj.CopyComplete
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\DL-Projectwerk.dll
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\refint\DL-Projectwerk.dll
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\DL-Projectwerk.pdb
+E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Release\net6.0\ref\DL-Projectwerk.dll

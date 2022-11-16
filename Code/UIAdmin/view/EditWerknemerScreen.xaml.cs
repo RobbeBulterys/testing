@@ -29,8 +29,8 @@ namespace UIAdmin.view
         private BezoekManager _bezoekManager;
         private WerknemercontractManager _werknemercontractManager;
         private ObservableCollection<Werknemercontract> werknemercontracts = new ObservableCollection<Werknemercontract>();
-        private ObservableCollection<ContractVoorLijst> contracts = new ObservableCollection<ContractVoorLijst>();
-        public EditWerknemerScreen(WerknemerManager werknemerManager, WerknemercontractManager werknemercontractManager, BezoekManager bezoekManager, Werknemer werknemer)
+        private ObservableCollection<BezoekAdmin> contracts = new ObservableCollection<BezoekAdmin>();
+        public EditWerknemerScreen(WerknemerManager werknemerManager, WerknemercontractManager werknemercontractManager, BezoekManager bezoekManager, Werknemer werknemer, string screen)
         {
             InitializeComponent();
             _werknemerManager = werknemerManager;
@@ -39,17 +39,18 @@ namespace UIAdmin.view
             _werknemer = werknemer;
             WerknemerContractDataGrid.ItemsSource = werknemercontracts;
             BezoekenDataGrid.ItemsSource = contracts;
-            InitializeWerknemer(werknemer);
+            InitializeWerknemer(werknemer, screen);
         }
-        private void InitializeWerknemer(Werknemer werknemer)
+        private void InitializeWerknemer(Werknemer werknemer, string screen)
         {
+            if (screen == "Worker") { WerknemerBtn.IsChecked = true; }
+            if (screen == "Visits") { BezoekenBtn.IsChecked = true; }
             TextBoxNaam.Text = werknemer.Naam;
             TextBoxVoorNaam.Text = werknemer.Voornaam;
             WerknemerIdAanpassen.Text = $"{werknemer.Naam} {werknemer.Voornaam}";
             WerknemerIdAanpassenBezoeken.Text = $"{werknemer.Naam} {werknemer.Voornaam}";
             TextBlockIdWerknemer.Text = $"Id: {werknemer.PersoonId}";
             WerknemerBtn.Content = $"{werknemer.Naam}";
-            WerknemerBtn.IsChecked = true;
             werknemercontracts.Clear();
             List<Werknemercontract> werknemercontracten = new List<Werknemercontract>();
             werknemercontracten.AddRange(_werknemercontractManager.GeefContractenVanWerknemer(werknemer).ToList());
@@ -122,8 +123,37 @@ namespace UIAdmin.view
                 List<Bezoek> b = _bezoekManager.ZoekBezoeken(null, null, _werknemer, null).ToList();
                 foreach (Bezoek bezoek in b)
                 {
-                    contracts.Add(new ContractVoorLijst(bezoek));
+                    contracts.Add(new BezoekAdmin(bezoek));
                 }
+            }
+        }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SaveBtn.IsEnabled = true;
+            SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
+            BorderNaam.BorderBrush = colorBrush;
+            TBNaam.Text = "";
+            TBNaam.Foreground = Brushes.Black;
+            BorderVoornaam.BorderBrush = colorBrush;
+            TBVoornaam.Text = "";
+            TBVoornaam.Foreground = Brushes.Black;
+            string? naam = null;
+            string? voornaam = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxNaam.Text)) { naam = TextBoxNaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; }
+            if (naam == null)
+            {
+                BorderNaam.BorderBrush = Brushes.Red;
+                TBNaam.Text = "Naam: mag niet leeg zijn!";
+                TBNaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (voornaam == null)
+            {
+                BorderVoornaam.BorderBrush = Brushes.Red;
+                TBVoornaam.Text = "Voornaam: mag niet leeg zijn!";
+                TBVoornaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
             }
         }
     }

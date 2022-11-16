@@ -55,13 +55,32 @@ namespace UIAdmin.view
                 Button button = (Button)sender;
                 if (button.Name == "SaveBtn")
                 {
+                    SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
+                    BorderNaam.BorderBrush = colorBrush;
+                    TBNaam.Text = "";
+                    TBNaam.Foreground = Brushes.Black;
+                    BorderVoornaam.BorderBrush = colorBrush;
+                    TBVoornaam.Text = "";
+                    TBVoornaam.Foreground = Brushes.Black;
                     string? naam = null;
                     string? voornaam = null;
-                    string message = "";
-                    if (!string.IsNullOrWhiteSpace(TextBoxNaam.Text)) { naam = TextBoxNaam.Text; message += $"naam => {naam}\n"; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; message += $"voornaam => {voornaam}\n"; }
-                    if (naam == null || voornaam == null) MessageBox.Show("Alle velden moeten worden ingevuld!");
-                    else
+                    if (!string.IsNullOrWhiteSpace(TextBoxNaam.Text)) { naam = TextBoxNaam.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; }
+                    if (naam == null)
+                    {
+                        BorderNaam.BorderBrush = Brushes.Red;
+                        TBNaam.Text = "Naam: mag niet leeg zijn!";
+                        TBNaam.Foreground = Brushes.Red;
+                        SaveBtn.IsEnabled = false;
+                    }
+                    if (voornaam == null)
+                    {
+                        BorderVoornaam.BorderBrush = Brushes.Red;
+                        TBVoornaam.Text = "Voornaam: mag niet leeg zijn!";
+                        TBVoornaam.Foreground = Brushes.Red;
+                        SaveBtn.IsEnabled = false;
+                    }
+                    if (naam != null && voornaam != null)
                     {
                         try
                         {
@@ -75,6 +94,35 @@ namespace UIAdmin.view
                         }
                     }
                 }
+            }
+        }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SaveBtn.IsEnabled = true;
+            SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
+            BorderNaam.BorderBrush = colorBrush;
+            TBNaam.Text = "";
+            TBNaam.Foreground = Brushes.Black;
+            BorderVoornaam.BorderBrush = colorBrush;
+            TBVoornaam.Text = "";
+            TBVoornaam.Foreground = Brushes.Black;
+            string? naam = null;
+            string? voornaam = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxNaam.Text)) { naam = TextBoxNaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; }
+            if (naam == null)
+            {
+                BorderNaam.BorderBrush = Brushes.Red;
+                TBNaam.Text = "Naam: mag niet leeg zijn!";
+                TBNaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (voornaam == null)
+            {
+                BorderVoornaam.BorderBrush = Brushes.Red;
+                TBVoornaam.Text = "Voornaam: mag niet leeg zijn!";
+                TBVoornaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
             }
         }
     }

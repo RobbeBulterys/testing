@@ -76,82 +76,121 @@
                                     <RowDefinition Height="50"/>
 
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="Bezoeker naam:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <TextBlock Text="Bezoeker voornaam:" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <Border CornerRadius="10" Background="White" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Margin="5">
-                                    <Grid>
-                                        <Rectangle StrokeThickness="1"/>
-                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxBezoekerNaam" FontSize="16"/>
-                                        <TextBlock IsHitTestVisible="False" Text="Bezoeker naam..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                <TextBlock x:Name="TBNaam" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBVoornaam" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                                    <Border x:Name="BorderNaam" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                        <Grid>
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxBezoekerNaam" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBlock IsHitTestVisible="False" Text="Naam*" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxBezoekerNaam}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Grid Height="15" Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent">
+                                        <TextBlock IsHitTestVisible="False" Text=" Naam* " Foreground="Black" FontSize="10" Margin="2 0 2 0">
                                             <TextBlock.Style>
                                                 <Style TargetType="{x:Type TextBlock}">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Text, ElementName=TextBoxBezoekerNaam}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                            <Setter Property="Visibility" Value="Hidden"/>
+                                                            <Setter Property="Background" Value="Transparent"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
-                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Setter Property="Background" Value="LightGray"/>
                                                 </Style>
                                             </TextBlock.Style>
                                         </TextBlock>
                                     </Grid>
-                                </Border>
-                                <Border CornerRadius="10" Background="White" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Margin="5">
-                                    <Grid>
-                                        <Rectangle StrokeThickness="1"/>
-                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxBezoekerVoornaam" FontSize="16"/>
-                                        <TextBlock IsHitTestVisible="False" Text="Bezoeker voornaam..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                </Grid>
+                                <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
+                                    <Border x:Name="BorderVoornaam" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                        <Grid>
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxBezoekerVoornaam" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBlock IsHitTestVisible="False" Text="Voornaam*" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxBezoekerVoornaam}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Grid Height="15" Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent">
+                                        <TextBlock IsHitTestVisible="False" Text=" Voornaam* " Foreground="Black" FontSize="10" Margin="2 0 2 0">
                                             <TextBlock.Style>
                                                 <Style TargetType="{x:Type TextBlock}">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Text, ElementName=TextBoxBezoekerVoornaam}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                            <Setter Property="Visibility" Value="Hidden"/>
+                                                            <Setter Property="Background" Value="Transparent"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
-                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Setter Property="Background" Value="LightGray"/>
                                                 </Style>
                                             </TextBlock.Style>
                                         </TextBlock>
                                     </Grid>
-                                </Border>
-                                <TextBlock Text="Bezoeker Email:" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <Border CornerRadius="10" Background="White" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Height="40" Margin="5">
-                                    <Grid>
-                                        <Rectangle StrokeThickness="1"/>
-                                        <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxBezoekerEmail" FontSize="16"/>
-                                        <TextBlock IsHitTestVisible="False" Text="Bezoeker email..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1">
+                                </Grid>
+                                <TextBlock x:Name="TBEmail" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4">
+                                    <Border x:Name="BorderEmail" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                        <Grid>
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxBezoekerEmail" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBlock IsHitTestVisible="False" Text="Email*" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxBezoekerEmail}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Grid Height="15" Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent">
+                                        <TextBlock IsHitTestVisible="False" Text=" Email* " Foreground="Black" FontSize="10" Margin="2 0 2 0">
                                             <TextBlock.Style>
                                                 <Style TargetType="{x:Type TextBlock}">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Text, ElementName=TextBoxBezoekerEmail}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                            <Setter Property="Visibility" Value="Hidden"/>
+                                                            <Setter Property="Background" Value="Transparent"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
-                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Setter Property="Background" Value="LightGray"/>
                                                 </Style>
                                             </TextBlock.Style>
                                         </TextBlock>
                                     </Grid>
-                                </Border>
+                                </Grid>
                                 <TextBlock Text="Bedrijf:" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
                                 <TextBlock Text="Contact persoon:" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
                                 <ComboBox x:Name="ComboBoxBedrijf" VerticalAlignment="Center" Margin="5" Height="40" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest3}" FontSize="20" Foreground="Black" SelectionChanged="ComboBoxBedrijf_SelectionChanged"/>
                                 <ComboBox x:Name="ComboBoxWerknemer" VerticalAlignment="Center" Margin="5" Height="40" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" MinHeight="40" MaxHeight="60" Style="{StaticResource ComboBoxTest3}" FontSize="20" Foreground="Black"/>
-                                <TextBlock Text="Begin datum:" Grid.Row="9" Grid.Column="0" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <TextBlock Text="Begin tijd:" Grid.Row="9" Grid.Column="1" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <DatePicker Grid.Row="10" Grid.Column="0" x:Name="DatePickerStartDate" SelectedDateFormat="Short" Margin="5"/>
-                                <Grid Grid.Row="10" Grid.Column="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="H" Grid.Column="1" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    <TextBlock Text="Min" Grid.Column="3" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    <ComboBox x:Name="ComboBoxHour" Margin="5" Grid.Column="0" FontSize="15" Foreground="Black" Style="{StaticResource ComboBoxTest4}"/>
-                                    <ComboBox x:Name="ComboBoxMinutes" Margin="5" Grid.Column="2" FontSize="15" Foreground="Black" Style="{StaticResource ComboBoxTest4}"/>
-                                </Grid>
                                 <Button x:Name="CancelBtn" Grid.Column="2" Grid.Row="15" Content="Cancel" FontSize="23" Style="{StaticResource BedrijfToevoegenButtons}" Click="CancelBtn_Click"/>
                                 <Button x:Name="SaveBtn" Grid.Column="3" Grid.Row="15" Content="Save" FontSize="23" Style="{StaticResource BedrijfToevoegenButtons}" Click="SaveBtn_Click"/>
                             </Grid>

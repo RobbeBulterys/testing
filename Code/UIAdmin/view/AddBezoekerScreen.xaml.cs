@@ -64,11 +64,80 @@ namespace UIAdmin.view
                     if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; message += $"voornaam => {voornaam}\n"; }
                     if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { email = TextBoxEmail.Text; message += $"email => {email}\n"; }
                     if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfnaam = TextBoxBedrijfNaam.Text; message += $"bedrijfnaam => {bedrijfnaam}\n"; }
-                    if (naam == null || voornaam == null || email == null || bedrijfnaam == null) MessageBox.Show("Alle velden moeten worden ingevuld!");
-                    else
+                    if (naam != null && voornaam != null && email != null && bedrijfnaam != null)
                     {
                         _bezoekerManager.VoegBezoekerToe(new Bezoeker(naam, voornaam, email, bedrijfnaam));
                         this.Close();
+                    }
+                }
+            }
+        }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SaveBtn.IsEnabled = true;
+            SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
+            BorderNaam.BorderBrush = colorBrush;
+            TBNaam.Text = "";
+            TBNaam.Foreground = Brushes.Black;
+            BorderVoornaam.BorderBrush = colorBrush;
+            TBVoornaam.Text = "";
+            TBVoornaam.Foreground = Brushes.Black;
+            BorderEmail.BorderBrush = colorBrush;
+            TBEmail.Text = "";
+            TBEmail.Foreground = Brushes.Black;
+            BorderBedrijfNaam.BorderBrush = colorBrush;
+            TBBedrijfNaam.Text = "";
+            TBBedrijfNaam.Foreground = Brushes.Black;
+            string? naam = null;
+            string? voornaam = null;
+            string? email = null;
+            string? bedrijfNaam = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxBezoekerNaam.Text)) { naam = TextBoxBezoekerNaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { email = TextBoxEmail.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfNaam = TextBoxBedrijfNaam.Text; }
+            if (naam == null)
+            {
+                BorderNaam.BorderBrush = Brushes.Red;
+                TBNaam.Text = "Naam: mag niet leeg zijn!";
+                TBNaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (voornaam == null)
+            {
+                BorderVoornaam.BorderBrush = Brushes.Red;
+                TBVoornaam.Text = "Voornaam: mag niet leeg zijn!";
+                TBVoornaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (email == null)
+            {
+                BorderEmail.BorderBrush = Brushes.Red;
+                TBEmail.Text = "Email: mag niet leeg zijn!";
+                TBEmail.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (bedrijfNaam == null)
+            {
+                BorderBedrijfNaam.BorderBrush = Brushes.Red;
+                TBBedrijfNaam.Text = "Bedrijfsnaam: mag niet leeg zijn!";
+                TBBedrijfNaam.Foreground = Brushes.Red;
+                SaveBtn.IsEnabled = false;
+            }
+            if (email != null)
+            {
+                try
+                {
+                    if (Controle.IsGoedeEmailSyntax(email)) { }
+                }
+                catch (Exception ex)
+                {
+                    SaveBtn.IsEnabled = false;
+                    if (ex.Message == "Controle - IsGoedeEmailSyntax - ongeldige email")
+                    {
+                        BorderEmail.BorderBrush = Brushes.Red;
+                        TBEmail.Text += "ongeldige syntax!";
+                        TBEmail.Foreground = Brushes.Red;
                     }
                 }
             }

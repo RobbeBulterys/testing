@@ -10,7 +10,6 @@ namespace BL_Projectwerk.Interfaces
     public interface IWerknemerRepository
     {
         bool BestaatWerknemer(int id);
-
         bool BestaatWerknemer(string naam, string voornaam);
         Werknemer GeefWerknemer(int persoonId);
         List<Werknemer> GeefWerknemers();

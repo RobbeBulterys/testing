@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UIAdmin.view"
         mc:Ignorable="d"
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
-    <Border x:Name="MainBorder" Background="LightGray" CornerRadius="50" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Background="LightGray" CornerRadius="50" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -18,7 +18,7 @@
                     <RowDefinition Height="150"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border x:Name="LeftMenuBorder" Grid.Row="1" CornerRadius="0 50 0 40" Background="#623ed0">
+                <Border Grid.Row="1" CornerRadius="0 50 0 40" Background="#623ed0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"/>
@@ -29,20 +29,20 @@
                         <TextBlock Text="Menu" Grid.Row="0" Foreground="White" Margin="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
                         <Separator Margin="25 0 25 0" Height="1" Background="White" Grid.Row="1"/>
                         <StackPanel Grid.Row="2">
-                            <RadioButton x:Name="HomeBtn" Content="Home" Style="{StaticResource MenuButtonHome}" Checked="MenuButtonsBtn_Checked"/>
-                            <RadioButton x:Name="BedrijvenBtn" Content="Bedrijf" Style="{StaticResource MenuButtonBedrijf}" Checked="MenuButtonsBtn_Checked"/>
-                            <RadioButton x:Name="WerknemersBtn" Content="Werknemer" Style="{StaticResource MenuButtonWerknemer}" Checked="MenuButtonsBtn_Checked"/>
-                            <RadioButton x:Name="BezoekersBtn" Content="Bezoeker" Style="{StaticResource MenuButtonBezoeker}" Checked="MenuButtonsBtn_Checked"/>
-                            <RadioButton x:Name="BezoekenBtn" Content="Bezoek" Style="{StaticResource MenuButtonBezoek}" Checked="MenuButtonsBtn_Checked"/>
+                            <RadioButton x:Name="HomeBtn" Content="Start pagina" Style="{StaticResource MenuButtonHome}" Checked="MenuButtonsBtn_Checked"/>
+                            <RadioButton x:Name="CompanyBtn" Content="Bedrijf" Style="{StaticResource MenuButtonBedrijf}" Checked="MenuButtonsBtn_Checked"/>
+                            <RadioButton x:Name="EmployeeBtn" Content="Werknemer" Style="{StaticResource MenuButtonWerknemer}" Checked="MenuButtonsBtn_Checked"/>
+                            <RadioButton x:Name="VisitorBtn" Content="Bezoeker" Style="{StaticResource MenuButtonBezoeker}" Checked="MenuButtonsBtn_Checked"/>
+                            <RadioButton x:Name="VisitBtn" Content="Bezoek" Style="{StaticResource MenuButtonBezoek}" Checked="MenuButtonsBtn_Checked"/>
                         </StackPanel>
-                        <Button x:Name="LogoutBtn" Content="Logout" Style="{StaticResource MenuButtonTheme3}" Grid.Row="3" Height="40" VerticalAlignment="Top" Click="LogoutBtn_Click"/>
+                        <Button x:Name="LogoutBtn" Content="Afmelden" Style="{StaticResource MenuButtonTheme3}" Grid.Row="3" Height="40" VerticalAlignment="Top" Click="LogoutBtn_Click"/>
                     </Grid>
                 </Border>
             </Grid>
 
             <!--Main Menu-->
             <Grid Grid.Column="1">
-                <DockPanel x:Name="BedrijfBorder" Visibility="Collapsed">
+                <DockPanel x:Name="CompanyBorder" Visibility="Collapsed">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -50,75 +50,92 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="25"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Border Grid.Row="3" CornerRadius="10" Background="WhiteSmoke" Width="350" HorizontalAlignment="Right" Height="40" Margin="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="5*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Border Grid.Column="0">
-                                        <ComboBox x:Name="BedrijfSearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}">
-                                            <ComboBoxItem Content="Bedrijfsnaam" IsSelected="True"/>
-                                            <ComboBoxItem Content="BTW-nummer"/>
-                                            <ComboBoxItem Content="Telefoon"/>
-                                            <ComboBoxItem Content="Email"/>
-                                        </ComboBox>
-                                    </Border>
-                                    <Grid Grid.Column="1">
-                                        <Rectangle StrokeThickness="1"/>
-                                        <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BedrijfSearchBox" FontSize="18"/>
-                                        <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
-                                            <TextBlock.Style>
-                                                <Style TargetType="{x:Type TextBlock}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Text, ElementName=BedrijfSearchBox}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                    <Setter Property="Visibility" Value="Hidden"/>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
+                            <DockPanel Grid.Row="3">
+                                <Border x:Name="CompanySearchBorder" DockPanel.Dock="Right" CornerRadius="10" Background="WhiteSmoke" Width="55" Height="40" Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" x:Name="CompanySearchGrid1"/>
+                                            <ColumnDefinition Width="0" x:Name="CompanySearchGrid2"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0">
+                                            <ComboBox x:Name="CompanySearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}" SelectionChanged="CompanySearchComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="All" IsSelected="True"/>
+                                                <ComboBoxItem Content="Bedrijfsnaam"/>
+                                                <ComboBoxItem Content="BTW-nummer"/>
+                                                <ComboBoxItem Content="Telefoon"/>
+                                                <ComboBoxItem Content="Email"/>
+                                            </ComboBox>
+                                        </Border>
+                                        <Grid Grid.Column="1">
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="CompanySearchBox" FontSize="18" SelectionChanged="CompanySearchBox_SelectionChanged"/>
+                                            <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=CompanySearchBox}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
                                     </Grid>
-                                    <Button x:Name="BedrijfSearchBtn" Content="Search" Grid.Column="2" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Click="BedrijfSearchBtn_Click"/>
-                                </Grid>
-                            </Border>
+                                </Border>
+                                <Border DockPanel.Dock="Right" CornerRadius="10" Background="WhiteSmoke" Height="40" Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Bedrijven per pagina: " Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                                        <Border Grid.Column="1">
+                                            <ComboBox x:Name="CompanyItemsPerPageComboBox" VerticalContentAlignment="Center" Margin="5" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxListPerPage}" SelectionChanged="CompanyItemsPerPageComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="5"/>
+                                                <ComboBoxItem Content="10"/>
+                                                <ComboBoxItem Content="20" IsSelected="True"/>
+                                                <ComboBoxItem Content="25"/>
+                                                <ComboBoxItem Content="50"/>
+                                            </ComboBox>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <Border DockPanel.Dock="Right"/>
+                            </DockPanel>
                             <TextBlock Text="Bedrijven" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
-                            <Button x:Name="BedrijfAddBedrijf" Grid.Row="1" Style="{StaticResource addButton}" Click="BedrijfAddBedrijf_Click">
+                            <Button x:Name="AddCompany" Grid.Row="1" Style="{StaticResource addButton}" Click="AddCompany_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Add New Bedrijf"/>
+                                    <TextBlock Text="Nieuw Bedrijf"/>
                                 </StackPanel>
                             </Button>
                             <Separator Margin="10 10 10 0" Height="1" Background="Gray" Grid.Row="2"/>
-                            <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="BedrijvenDataGrid" SelectionChanged="BedrijvenDataGrid_SelectionChanged">
+                            <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="CompanyDataGrid">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Id}"/>
-
-                                    <DataGridTemplateColumn Header="Naam" IsReadOnly="True" Width="auto">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding Naam}" VerticalAlignment="Center"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-
+                                    <DataGridTextColumn Header="Naam" IsReadOnly="True" Width="auto" Binding="{Binding Naam}"/>
                                     <DataGridTextColumn Header="BTW-nummer" IsReadOnly="True" Width="auto" Binding="{Binding BTWNummer}"/>
                                     <DataGridTextColumn Header="Telefoon" IsReadOnly="True" Width="auto" Binding="{Binding Telefoon}"/>
                                     <DataGridTextColumn Header="Email" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
 
-                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="180">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource GridEditButton}" x:Name="BedrijfGridEditButton" Click="BedrijfGridEditButton_Click">
-                                                        <Image Source="../img/icons8-pencil-50.png" Height="20" Width="20"/>
+                                                    <Button Style="{StaticResource GridEditButton}" x:Name="CompanyEditButton1" Click="CompanyGridEditButton_Click">
+                                                        <Image Source="../img/icons8-factory-50.png" Height="20" Width="20"/>
                                                     </Button>
-                                                    <Button Style="{StaticResource GridRemoveButton}" x:Name="BedrijfGridRemoveButton" Click="BedrijfGridRemoveButton_Click">
+                                                    <Button Style="{StaticResource GridEditButton}" x:Name="CompanyEditButton2" Click="CompanyGridEditButton_Click">
+                                                        <Image Source="../img/icons8-engineer-80.png" Height="20" Width="20"/>
+                                                    </Button>
+                                                    <Button Style="{StaticResource GridEditButton}" x:Name="CompanyEditButton3" Click="CompanyGridEditButton_Click">
+                                                        <Image Source="../img/icons8-calendar-50.png" Height="20" Width="20"/>
+                                                    </Button>
+                                                    <Button Style="{StaticResource GridRemoveButton}" x:Name="BedrijfGridRemoveButton" Click="CompanyGridRemoveButton_Click">
                                                         <Image Source="../img/icons8-trash-50.png" Height="20" Width="20"/>
                                                     </Button>
                                                 </StackPanel>
@@ -127,10 +144,27 @@
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
+                            <Border Grid.Row="4" HorizontalAlignment="Right" CornerRadius="10" Width="150" Background="#623ed0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="CompanyDataGridPreviewPage" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Foreground="White" Grid.Column="0" Width="auto" Style="{DynamicResource nextAndPreviewButton}" Click="CompanyDataGridPreviewPage_Click">
+                                        <Image Source="../img/icons8-back-arrow-50.png" Height="20" Width="20"/>
+                                    </Button>
+                                    <Button x:Name="CompanyDataGridNextPage" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Foreground="White" Grid.Column="2" Width="auto" Style="{DynamicResource nextAndPreviewButton}" Click="CompanyDataGridNextPage_Click">
+                                        <Image Source="../img/icons8-circled-right-50.png" Height="20" Width="20"/>
+                                    </Button>
+                                    <ComboBox x:Name="CompanyDataGridComboBox" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Grid.Column="1" Style="{StaticResource ComboBoxListPage}" Foreground="White" HorizontalContentAlignment="Center" SelectionChanged="CompanyDataGridComboBox_SelectionChanged">
+                                    </ComboBox>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Border>
                 </DockPanel>
-                <DockPanel x:Name="BezoekerBorder" Visibility="Collapsed">
+                <DockPanel x:Name="VisitorBorder" Visibility="Collapsed">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -138,75 +172,104 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="25"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Border Grid.Row="3" CornerRadius="10" Background="WhiteSmoke" Width="350" HorizontalAlignment="Right" Height="40" Margin="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="5*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Border Grid.Column="0">
-                                        <ComboBox x:Name="BezoekerSearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}">
-                                            <ComboBoxItem Content="Naam" IsSelected="True"/>
-                                            <ComboBoxItem Content="Voornaam"/>
-                                            <ComboBoxItem Content="Bedrijfsnaam"/>
-                                            <ComboBoxItem Content="Email"/>
-                                        </ComboBox>
-                                    </Border>
-                                    <Grid Grid.Column="1">
-                                        <Rectangle StrokeThickness="1"/>
-                                        <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekerSearchBox" FontSize="18"/>
-                                        <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
-                                            <TextBlock.Style>
-                                                <Style TargetType="{x:Type TextBlock}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekerSearchBox}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                    <Setter Property="Visibility" Value="Hidden"/>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
+                            <DockPanel Grid.Row="3">
+                                <Border x:Name="VisitorSearchBorder" DockPanel.Dock="Right" CornerRadius="10" Background="WhiteSmoke" Width="55" Height="40" Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" x:Name="VisitorSearchGrid1"/>
+                                            <ColumnDefinition Width="0" x:Name="VisitorSearchGrid2"/>
+                                            <ColumnDefinition Width="0" x:Name="VisitorSearchGrid3"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0">
+                                            <ComboBox x:Name="VisitorSearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}" SelectionChanged="VisitorSearchComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="All" IsSelected="True"/>
+                                                <ComboBoxItem Content="Naam en Voornaam"/>
+                                                <ComboBoxItem Content="Naam"/>
+                                                <ComboBoxItem Content="Voornaam"/>
+                                                <ComboBoxItem Content="Bedrijfsnaam"/>
+                                                <ComboBoxItem Content="Email"/>
+                                            </ComboBox>
+                                        </Border>
+                                        <Grid Grid.Column="1">
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="VisitorSearchBox1" FontSize="18" SelectionChanged="VisitorSearchBox_SelectionChanged"/>
+                                            <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=VisitorSearchBox1}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                        <Grid Grid.Column="2">
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="VisitorSearchBox2" FontSize="18" SelectionChanged="VisitorSearchBox_SelectionChanged"/>
+                                            <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=VisitorSearchBox2}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
                                     </Grid>
-                                    <Button x:Name="BezoekerSearchBtn" Content="Search" Grid.Column="2" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Click="BezoekerSearchBtn_Click"/>
-                                </Grid>
-                            </Border>
+                                </Border>
+                                <Border DockPanel.Dock="Right" CornerRadius="10" Background="WhiteSmoke" Height="40" Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Bezoekers per pagina: " Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                                        <Border Grid.Column="1">
+                                            <ComboBox x:Name="VisitorItemsPerPageComboBox" VerticalContentAlignment="Center" Margin="5" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxListPerPage}" SelectionChanged="VisitorItemsPerPageComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="5"/>
+                                                <ComboBoxItem Content="10"/>
+                                                <ComboBoxItem Content="20" IsSelected="True"/>
+                                                <ComboBoxItem Content="25"/>
+                                                <ComboBoxItem Content="50"/>
+                                            </ComboBox>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <Border DockPanel.Dock="Right"/>
+                            </DockPanel>
                             <TextBlock Text="Bezoekers" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
-                            <Button x:Name="BezoekerAddBezoeker" Grid.Row="1" Style="{StaticResource addButton}" Click="BezoekerAddBezoeker_Click">
+                            <Button x:Name="AddVisitor" Grid.Row="1" Style="{StaticResource addButton}" Click="AddVisitor_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Add New Bezoeker"/>
+                                    <TextBlock Text="Nieuwe Bezoeker"/>
                                 </StackPanel>
                             </Button>
                             <Separator Margin="10 10 10 0" Height="1" Background="Gray" Grid.Row="2"/>
-                            <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="BezoekerDataGrid" SelectionChanged="BedrijvenDataGrid_SelectionChanged">
+                            <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="VisitorDataGrid">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding PersoonId}"/>
-
-                                    <DataGridTemplateColumn Header="Naam" IsReadOnly="True" Width="auto">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding Naam}" VerticalAlignment="Center"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-
+                                    <DataGridTextColumn Header="Naam" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Naam}"/>
                                     <DataGridTextColumn Header="Voornaam" IsReadOnly="True" Width="auto" Binding="{Binding Voornaam}"/>
                                     <DataGridTextColumn Header="Email" IsReadOnly="True" Width="auto" Binding="{Binding Email}"/>
                                     <DataGridTextColumn Header="Bedrijf" IsReadOnly="True" Width="*" Binding="{Binding Bedrijf}"/>
 
-                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="110">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource GridEditButton}" x:Name="BezoekerGridEditButton" Click="BezoekerGridEditButton_Click">
+                                                    <Button Style="{StaticResource GridEditButton}" x:Name="VisitorGridEditButton" Click="VisitorGridEditButton_Click">
                                                         <Image Source="../img/icons8-pencil-50.png" Height="20" Width="20"/>
                                                     </Button>
-                                                    <Button Style="{StaticResource GridRemoveButton}" x:Name="BezoekerGridRemoveButton" Click="BezoekerGridRemoveButton_Click">
+                                                    <Button Style="{StaticResource GridRemoveButton}" x:Name="VisitorGridRemoveButton" Click="VisitorGridRemoveButton_Click">
                                                         <Image Source="../img/icons8-trash-50.png" Height="20" Width="20"/>
                                                     </Button>
                                                 </StackPanel>
@@ -215,10 +278,27 @@
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
+                            <Border Grid.Row="4" HorizontalAlignment="Right" CornerRadius="10" Width="150" Background="#623ed0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="VisitorDataGridPreviewPage" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Foreground="White" Grid.Column="0" Width="auto" Style="{DynamicResource nextAndPreviewButton}" Click="VisitorDataGridPreviewPage_Click">
+                                        <Image Source="../img/icons8-back-arrow-50.png" Height="20" Width="20"/>
+                                    </Button>
+                                    <Button x:Name="VisitorDataGridNextPage" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Foreground="White" Grid.Column="2" Width="auto" Style="{DynamicResource nextAndPreviewButton}" Click="VisitorDataGridNextPage_Click">
+                                        <Image Source="../img/icons8-circled-right-50.png" Height="20" Width="20"/>
+                                    </Button>
+                                    <ComboBox x:Name="VisitorDataGridComboBox" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Grid.Column="1" Style="{StaticResource ComboBoxListPage}" Foreground="White" HorizontalContentAlignment="Center" SelectionChanged="VisitorDataGridComboBox_SelectionChanged">
+                                    </ComboBox>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Border>
                 </DockPanel>
-                <DockPanel x:Name="WerknemerBorder" Visibility="Collapsed">
+                <DockPanel x:Name="EmployeeBorder" Visibility="Collapsed">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -226,71 +306,103 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="25"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Border Grid.Row="3" CornerRadius="10" Background="WhiteSmoke" Width="350" HorizontalAlignment="Right" Height="40" Margin="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="5*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Border Grid.Column="0">
-                                        <ComboBox x:Name="WerknemerSearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}">
-                                            <ComboBoxItem Content="Naam" IsSelected="True"/>
-                                            <ComboBoxItem Content="Voornaam"/>
-                                        </ComboBox>
-                                    </Border>
-                                    <Grid Grid.Column="1">
-                                        <Rectangle StrokeThickness="1"/>
-                                        <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="WerknemerSearchBox" FontSize="18"/>
-                                        <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
-                                            <TextBlock.Style>
-                                                <Style TargetType="{x:Type TextBlock}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Text, ElementName=WerknemerSearchBox}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                    <Setter Property="Visibility" Value="Hidden"/>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
+                            <DockPanel Grid.Row="3">
+                                <Border x:Name="EmployeeSearchBorder" DockPanel.Dock="Right" CornerRadius="10" Background="WhiteSmoke" Width="55" Height="40" Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" x:Name="EmployeeSearchGrid1"/>
+                                            <ColumnDefinition Width="0" x:Name="EmployeeSearchGrid2"/>
+                                            <ColumnDefinition Width="0" x:Name="EmployeeSearchGrid3"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0">
+                                            <ComboBox x:Name="EmployeeSearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}" SelectionChanged="EmployeeSearchComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="All"  IsSelected="True"/>
+                                                <ComboBoxItem Content="Naam en Voornaam"/>
+                                                <ComboBoxItem Content="Naam"/>
+                                                <ComboBoxItem Content="Voornaam"/>
+                                            </ComboBox>
+                                        </Border>
+                                        <Grid Grid.Column="1">
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="EployeeSearchBox1" FontSize="18" SelectionChanged="EployeeSearchBox_SelectionChanged"/>
+                                            <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=EployeeSearchBox1}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                        <Grid Grid.Column="2">
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="EployeeSearchBox2" FontSize="18" SelectionChanged="EployeeSearchBox_SelectionChanged"/>
+                                            <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=EployeeSearchBox2}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
                                     </Grid>
-                                    <Button x:Name="WerknemerSearchBtn" Content="Search" Grid.Column="2" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Click="WerknemerSearchBtn_Click"/>
-                                </Grid>
-                            </Border>
+                                </Border>
+                                <Border DockPanel.Dock="Right" CornerRadius="10" Background="WhiteSmoke" Height="40" Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Werknemers per pagina: " Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                                        <Border Grid.Column="1">
+                                            <ComboBox x:Name="EmployeeItemsPerPageComboBox" VerticalContentAlignment="Center" Margin="5" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxListPerPage}" SelectionChanged="EmployeeItemsPerPageComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="5"/>
+                                                <ComboBoxItem Content="10"/>
+                                                <ComboBoxItem Content="20" IsSelected="True"/>
+                                                <ComboBoxItem Content="25"/>
+                                                <ComboBoxItem Content="50"/>
+                                            </ComboBox>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <Border DockPanel.Dock="Right"/>
+                            </DockPanel>
                             <TextBlock Text="Werknemers" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
-                            <Button x:Name="WerknemerAddWerknemer" Grid.Row="1" Style="{StaticResource addButton}" Click="WerknemerAddWerknemer_Click">
+                            <Button x:Name="AddEmployee" Grid.Row="1" Style="{StaticResource addButton}" Click="AddEmployee_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Add New Werknemer"/>
+                                    <TextBlock Text="Nieuwe Werknemer"/>
                                 </StackPanel>
                             </Button>
                             <Separator Margin="10 10 10 0" Height="1" Background="Gray" Grid.Row="2"/>
-                            <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="WerknemerDataGrid">
+                            <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="EmployeeDataGrid">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding PersoonId}"/>
-
-                                    <DataGridTemplateColumn Header="Naam" IsReadOnly="True" Width="auto">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding Naam}" VerticalAlignment="Center"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-
+                                    <DataGridTextColumn Header="Naam" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Naam}"/>
                                     <DataGridTextColumn Header="Voornaam" IsReadOnly="True" Width="*" Binding="{Binding Voornaam}"/>
 
-                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="150">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource GridEditButton}" x:Name="WerknemerGridEditButton" Click="WerknemerGridEditButton_Click">
-                                                        <Image Source="../img/icons8-pencil-50.png" Height="20" Width="20"/>
+                                                    <Button Style="{StaticResource GridEditButton}" x:Name="EmployeeGridEditButton1" Click="EmployeeGridEditButton_Click">
+                                                        <Image Source="../img/icons8-engineer-80.png" Height="20" Width="20"/>
                                                     </Button>
-                                                    <Button Style="{StaticResource GridRemoveButton}" x:Name="WerknemerGridRemoveButton" Click="WerknemerGridRemoveButton_Click">
+                                                    <Button Style="{StaticResource GridEditButton}" x:Name="EmployeeGridEditButton2" Click="EmployeeGridEditButton_Click">
+                                                        <Image Source="../img/icons8-calendar-50.png" Height="20" Width="20"/>
+                                                    </Button>
+                                                    <Button Style="{StaticResource GridRemoveButton}" x:Name="EmployeeGridRemoveButton" Click="EmployeeGridRemoveButton_Click">
                                                         <Image Source="../img/icons8-trash-50.png" Height="20" Width="20"/>
                                                     </Button>
                                                 </StackPanel>
@@ -299,10 +411,27 @@
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
+                            <Border Grid.Row="4" HorizontalAlignment="Right" CornerRadius="10" Width="150" Background="#623ed0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="EmployeeDataGridPreviewPage" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Foreground="White" Grid.Column="0" Width="auto" Click="EmployeeDataGridPreviewPage_Click" Style="{DynamicResource nextAndPreviewButton}">
+                                        <Image Source="../img/icons8-back-arrow-50.png" Height="20" Width="20"/>
+                                    </Button>
+                                    <Button x:Name="EmployeeDataGridNextPage" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Foreground="White" Grid.Column="2" Width="auto" Click="EmployeeDataGridNextPage_Click" Style="{DynamicResource nextAndPreviewButton}">
+                                        <Image Source="../img/icons8-circled-right-50.png" Height="20" Width="20"/>
+                                    </Button>
+                                    <ComboBox x:Name="EmployeeDataGridComboBox" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Grid.Column="1" Style="{StaticResource ComboBoxListPage}" Foreground="White" HorizontalContentAlignment="Center" SelectionChanged="EmployeeDataGridComboBox_SelectionChanged">
+                                    </ComboBox>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Border>
                 </DockPanel>
-                <DockPanel x:Name="BezoekBorder" Visibility="Visible">
+                <DockPanel x:Name="VisitBorder" Visibility="Visible">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -310,76 +439,104 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="25"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Border Grid.Row="3" CornerRadius="10" Background="WhiteSmoke" Width="350" HorizontalAlignment="Right" Height="40" Margin="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="5*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Border Grid.Column="0">
-                                        <ComboBox x:Name="BezoekSearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}">
-                                            <ComboBoxItem Content="Bedrijf" IsSelected="True"/>
-                                            <ComboBoxItem Content="Today"/>
-                                            <ComboBoxItem Content="This week"/>
-                                        </ComboBox>
-                                    </Border>
-                                    <Grid Grid.Column="1">
-                                        <Rectangle StrokeThickness="1"/>
-                                        <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="BezoekSearchBox" FontSize="18"/>
-                                        <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="Search here..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
-                                            <TextBlock.Style>
-                                                <Style TargetType="{x:Type TextBlock}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Text, ElementName=BezoekSearchBox}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                    <Setter Property="Visibility" Value="Hidden"/>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
+                            <DockPanel Grid.Row="3">
+                                <Border x:Name="VisitSearchBorder" DockPanel.Dock="Right" CornerRadius="10" Background="WhiteSmoke" Width="120" Height="40" Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" x:Name="VisitSearchGrid1"/>
+                                            <ColumnDefinition Width="0" x:Name="VisitSearchGrid2"/>
+                                            <ColumnDefinition Width="0" x:Name="VisitSearchGrid3"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0">
+                                            <ComboBox x:Name="VisitSearchComboBox" MinWidth="50" VerticalContentAlignment="Center" Margin="5 0 0 0" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxFilter}" SelectionChanged="VisitSearchComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="All"/>
+                                                <ComboBoxItem Content="Vandaag" IsSelected="True"/>
+                                                <ComboBoxItem Content="Deze Week"/>
+                                                <ComboBoxItem Content="Deze Maand"/>
+                                                <ComboBoxItem Content="Dit Jaar"/>
+                                                <ComboBoxItem Content="Speicfiek"/>
+                                            </ComboBox>
+                                        </Border>
+                                        <Grid Grid.Column="1">
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="VisitSearchBox1" FontSize="18" SelectionChanged="VisitSearchBox_SelectionChanged"/>
+                                            <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="dd-mm-yyyy..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=VisitSearchBox1}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                        <Grid Grid.Column="2">
+                                            <Rectangle StrokeThickness="1"/>
+                                            <TextBox Grid.Column="0" Margin="0" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="VisitSearchBox2" FontSize="18" SelectionChanged="VisitSearchBox_SelectionChanged"/>
+                                            <TextBlock Grid.Column="1" IsHitTestVisible="False" Text="dd-mm-yyyy..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=VisitSearchBox2}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
                                     </Grid>
-                                    <Button x:Name="BezoekSearchBtn" Content="Search" Grid.Column="2" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Click="BezoekSearchBtn_Click"/>
-                                </Grid>
-                            </Border>
+                                </Border>
+                                <Border DockPanel.Dock="Right" CornerRadius="10" Background="WhiteSmoke" Height="40" Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Bezoekers per pagina: " Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                                        <Border Grid.Column="1">
+                                            <ComboBox x:Name="VisitItemsPerPageComboBox" VerticalContentAlignment="Center" Margin="5" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Style="{StaticResource ComboBoxListPerPage}" SelectionChanged="VisitItemsPerPageComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="5"/>
+                                                <ComboBoxItem Content="10"/>
+                                                <ComboBoxItem Content="20" IsSelected="True"/>
+                                                <ComboBoxItem Content="25"/>
+                                                <ComboBoxItem Content="50"/>
+                                                <ComboBoxItem Content="1"/>
+                                            </ComboBox>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <Border DockPanel.Dock="Right"/>
+                            </DockPanel>
                             <TextBlock Text="Bezoeken" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
-                            <Button x:Name="BezoekAddBezoek" Grid.Row="1" Style="{StaticResource addButton}" Click="BezoekAddBezoek_Click">
+                            <Button x:Name="AddVisit" Grid.Row="1" Style="{StaticResource addButton}" Click="AddVisit_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Add New Bezoek"/>
+                                    <TextBlock Text="Nieuw Bezoek"/>
                                 </StackPanel>
                             </Button>
                             <Separator Margin="10 10 10 0" Height="1" Background="Gray" Grid.Row="2"/>
-                            <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="BezoekDataGrid">
+                            <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="VisitDataGrid">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Bezoeker.BezoekId}"/>
-
-                                    <DataGridTemplateColumn Header="Naam" IsReadOnly="True" Width="auto">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-
+                                    <DataGridTextColumn Header="Naam" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Name}"/>
                                     <DataGridTextColumn Header="Bedrijf" IsReadOnly="True" Width="auto" Binding="{Binding Bezoeker.Bedrijf.Naam}"/>
                                     <DataGridTextColumn Header="Werknemer" IsReadOnly="True" Width="auto" Binding="{Binding Werknemer}"/>
                                     <DataGridTextColumn Header="Begin Datum" IsReadOnly="True" Width="*" Binding="{Binding Begin}"/>
                                     <DataGridTextColumn Header="Eind Datum" IsReadOnly="True" Width="*" Binding="{Binding Einde}"/>
 
-                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="80">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource GridEditButton}" x:Name="BezoekGridEditButton" Click="BezoekGridEditButton_Click">
+                                                    <Button Style="{StaticResource GridEditButton}" x:Name="VisitGridEditButton" Click="VisitGridEditButton_Click">
                                                         <Image Source="../img/icons8-pencil-50.png" Height="20" Width="20"/>
-                                                    </Button>
-                                                    <Button Style="{StaticResource GridRemoveButton}" x:Name="BezoekGridRemoveButton" Click="BezoekGridRemoveButton_Click">
-                                                        <Image Source="../img/icons8-trash-50.png" Height="20" Width="20"/>
                                                     </Button>
                                                 </StackPanel>
                                             </DataTemplate>
@@ -387,6 +544,23 @@
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
+                            <Border Grid.Row="4" HorizontalAlignment="Right" CornerRadius="10" Width="150" Background="#623ed0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="VisitDataGridPreviewPage" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Foreground="White" Grid.Column="0" Width="auto" Style="{DynamicResource nextAndPreviewButton}" Click="VisitDataGridPreviewPage_Click">
+                                        <Image Source="../img/icons8-back-arrow-50.png" Height="20" Width="20"/>
+                                    </Button>
+                                    <Button x:Name="VisitDataGridNextPage" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Foreground="White" Grid.Column="2" Width="auto" Style="{DynamicResource nextAndPreviewButton}" Click="VisitDataGridNextPage_Click">
+                                        <Image Source="../img/icons8-circled-right-50.png" Height="20" Width="20"/>
+                                    </Button>
+                                    <ComboBox x:Name="VisitDataGridComboBox" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Grid.Column="1" Style="{StaticResource ComboBoxListPage}" Foreground="White" HorizontalContentAlignment="Center" SelectionChanged="VisitDataGridComboBox_SelectionChanged">
+                                    </ComboBox>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Border>
                 </DockPanel>

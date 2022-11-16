@@ -204,7 +204,7 @@
                                     </Grid>
                                 </Border>
 
-                                <Button x:Name="LoginButton" Content="Aanmelden" FontSize="20" FontWeight="SemiBold" Foreground="White" Grid.Column="1" Grid.Row="9" Width="180" Height="50" HorizontalAlignment="Left" BorderThickness="0" Margin="190,0,0,0" MouseLeftButtonDown="LoginButton_MouseLeftButtonDown">
+                                <Button x:Name="LoginButton" Content="Aanmelden" FontSize="20" FontWeight="SemiBold" Foreground="White" Grid.Column="1" Grid.Row="9" Width="180" Height="50" HorizontalAlignment="Left" BorderThickness="0" Margin="190,0,0,0">
                                     <Button.Style>
                                         <Style TargetType="Button">
                                             <Setter Property="Background" Value="#30D5C8"/>
@@ -269,7 +269,7 @@
                                     </Grid>
                                 </Border>
 
-                                <Button x:Name="LogoutButton" Content="Afmelden" FontSize="20" FontWeight="SemiBold" Foreground="White" Grid.Column="1" Grid.Row="9" Width="180" Height="50" HorizontalAlignment="Left" BorderThickness="0" Margin="190,0,0,0" MouseLeftButtonDown="LoginButton_MouseLeftButtonDown">
+                                <Button x:Name="LogoutButton" Content="Afmelden" FontSize="20" FontWeight="SemiBold" Foreground="White" Grid.Column="1" Grid.Row="9" Width="180" Height="50" HorizontalAlignment="Left" BorderThickness="0" Margin="190,0,0,0">
                                     <Button.Style>
                                         <Style TargetType="Button">
                                             <Setter Property="Background" Value="#30D5C8"/>

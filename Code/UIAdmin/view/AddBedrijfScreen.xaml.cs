@@ -2,6 +2,8 @@
 using BL_Projectwerk.Managers;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,7 +68,6 @@ namespace UIAdmin.view
                     string? nummer = null;
                     string? postcode = null;
                     string? plaats = null;
-                    string message = "";
                     if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfNaam = TextBoxBedrijfNaam.Text; }
                     if (!string.IsNullOrWhiteSpace(TextBoxBTWnummer.Text)) { bedrijfBTW = TextBoxBTWnummer.Text; }
                     if (!string.IsNullOrWhiteSpace(TextBoxTelefoon.Text)) { bedrijfTelefoon = TextBoxTelefoon.Text; }
@@ -88,6 +89,7 @@ namespace UIAdmin.view
                             MessageBox.Show($"error! {ex.Message}");
                         }
                     }
+                    else SaveBtn.IsEnabled = false;
                 }
             }
         }
@@ -95,28 +97,29 @@ namespace UIAdmin.view
         {
             bool bedrijf = true;
             #region Basic colours
-            BorderBedrijfNaam.BorderBrush = Brushes.Blue;
+            SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
+            BorderBedrijfNaam.BorderBrush = colorBrush;
             TBBedrijfNaam.Text = "";
             TBBedrijfNaam.Foreground = Brushes.Black;
-            BorderBTWnummer.BorderBrush = Brushes.Blue;
+            BorderBTWnummer.BorderBrush = colorBrush;
             TBBTWnummer.Text = "";
             TBBTWnummer.Foreground = Brushes.Black;
-            BorderEmail.BorderBrush = Brushes.Blue;
+            BorderEmail.BorderBrush = colorBrush;
             TBEmail.Text = "";
             TBEmail.Foreground = Brushes.Black;
-            BorderLand.BorderBrush = Brushes.Blue;
+            BorderLand.BorderBrush = colorBrush;
             TBLand.Text = "";
             TBLand.Foreground = Brushes.Black;
-            BorderStraatNaam.BorderBrush = Brushes.Blue;
+            BorderStraatNaam.BorderBrush = colorBrush;
             TBStraatNaam.Text = "";
             TBStraatNaam.Foreground = Brushes.Black;
-            BorderNummer.BorderBrush = Brushes.Blue;
+            BorderNummer.BorderBrush = colorBrush;
             TBNummer.Text = "";
             TBNummer.Foreground = Brushes.Black;
-            BorderPostcode.BorderBrush = Brushes.Blue;
+            BorderPostcode.BorderBrush = colorBrush;
             TBPostcode.Text = "";
             TBPostcode.Foreground = Brushes.Black;
-            BorderPlaats.BorderBrush = Brushes.Blue;
+            BorderPlaats.BorderBrush = colorBrush;
             TBPlaats.Text = "";
             TBPlaats.Foreground = Brushes.Black;
             #endregion
@@ -150,10 +153,10 @@ namespace UIAdmin.view
                 catch (Exception ex)
                 {
                     bedrijf = false;
-                    if (ex.Message == "Controle - IsBestaandBTWnummer - ongeldig BTW Nummer")
+                    if (ex.Message == "Controle - IsBestaandBTWnummer - Ongeldig BTW Nummer")
                     {
                         BorderBTWnummer.BorderBrush = Brushes.Red;
-                        TBBTWnummer.Text += "ongeldige syntacs!";
+                        TBBTWnummer.Text += "ongeldige syntax!";
                         TBBTWnummer.Foreground = Brushes.Red;
                     }
                 }
@@ -167,10 +170,10 @@ namespace UIAdmin.view
                 catch (Exception ex)
                 {
                     bedrijf = false;
-                    if (ex.Message == "Controle - IsGoedeEmailSyntax - ongeldige email")
+                    if (ex.Message == "Controle - IsGoedeEmailSyntax - Ongeldige email")
                     {
                         BorderEmail.BorderBrush = Brushes.Red;
-                        TBEmail.Text += "ongeldige syntacs!";
+                        TBEmail.Text += "ongeldige syntax!";
                         TBEmail.Foreground = Brushes.Red;
                     }
                 }
@@ -221,7 +224,7 @@ namespace UIAdmin.view
                     catch (Exception ex)
                     {
                         bedrijf = false;
-                        if (ex.Message == "Controle - IsGoedeAdresNummerSyntax - geen geldige nummer ingevuld")
+                        if (ex.Message == "Controle - IsGoedeAdresNummerSyntax - Geen geldig nummer ingevuld")
                         {
                             BorderNummer.BorderBrush = Brushes.Red;
                             TBNummer.Text += "ongeldige syntacs!";
@@ -231,6 +234,35 @@ namespace UIAdmin.view
                 }
             }
             return bedrijf;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string? bedrijfNaam = null;
+            string? bedrijfBTW = null;
+            string? bedrijfTelefoon = null;
+            string? bedrijfEmail = null;
+            string? land = null;
+            string? straat = null;
+            string? nummer = null;
+            string? postcode = null;
+            string? plaats = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfNaam = TextBoxBedrijfNaam.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxBTWnummer.Text)) { bedrijfBTW = TextBoxBTWnummer.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxTelefoon.Text)) { bedrijfTelefoon = TextBoxTelefoon.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { bedrijfEmail = TextBoxEmail.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxLand.Text)) { land = TextBoxLand.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxStraat.Text)) { straat = TextBoxStraat.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxNummer.Text)) { nummer = TextBoxNummer.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxPostcode.Text)) { postcode = TextBoxPostcode.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxPlaats.Text)) { plaats = TextBoxPlaats.Text; }
+            if (!SaveBtn.IsEnabled)
+            {
+                if (CheckingIsIngevuld(bedrijfNaam, bedrijfBTW, bedrijfEmail, land, straat, nummer, postcode, plaats))
+                {
+                    SaveBtn.IsEnabled = true;
+                }
+            }
         }
     }
 }

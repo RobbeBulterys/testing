@@ -13,18 +13,3 @@ E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Debug\net6.0\ref
 E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\bin\Debug\net6.0\BL-Projectwerk.dll
 E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\bin\Debug\net6.0\BL-Projectwerk.pdb
 E:\programming\github repos\ProjectWerk\Code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.csproj.CopyComplete
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.dll
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\refint\DL-Projectwerk.dll
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.pdb
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\bin\Debug\net6.0\DL-Projectwerk.deps.json
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\bin\Debug\net6.0\DL-Projectwerk.dll
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\bin\Debug\net6.0\DL-Projectwerk.pdb
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\bin\Debug\net6.0\BL-Projectwerk.dll
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\bin\Debug\net6.0\BL-Projectwerk.pdb
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.csproj.AssemblyReference.cache
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.AssemblyInfoInputs.cache
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.AssemblyInfo.cs
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.csproj.CoreCompileInputs.cache
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\DL-Projectwerk.csproj.CopyComplete
-C:\Users\Robbe Bulterys\Desktop\school 2022-2023\ProjectWerk\GroepsWerk\testing\code\DL-Projectwerk\obj\Debug\net6.0\ref\DL-Projectwerk.dll

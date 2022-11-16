@@ -27,15 +27,14 @@ namespace BL_Projectwerk.Domein
 
         public void ZetId(int id)
         {
-            if (id < 1) { throw new ParkeerplaatsException("Parkeerplaats - ZetId - Id ongeldig; kleiner dan 1"); }
+            if (id < 1) { throw new ParkeerplaatsException("Parkeerplaats - ZetId - Id ongeldig; Kleiner dan 1"); }
             ParkeerId = id;
         }
 
         public void ZetVanBedrijf(Bedrijf bedrijfVanReservatie, bool IsReserveerbaar)
         {
-            if (!IsReserveerbaar && bedrijfVanReservatie != null) { throw new ParkeerplaatsException("Parkeerplaats - ZetBedrijf - Een niet reserveerbare parkeerplek mag geen bedrijf toegewezen krijgen"); }
+            if (!IsReserveerbaar && bedrijfVanReservatie != null) { throw new ParkeerplaatsException("Parkeerplaats - ZetVanBedrijf - Een niet reserveerbare parkeerplek mag geen bedrijf toegewezen krijgen"); }
             BedrijfVanReservatie = bedrijfVanReservatie;
         }
-
     }
 }

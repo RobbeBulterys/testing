@@ -1,14 +1,14 @@
 ﻿using BL_Projectwerk.Domein;
 using BL_Projectwerk.Interfaces;
 using BL_Projectwerk.Managers;
-using DL_Projectwerk;
+using DL_Projectwerk.repoADO;
 using Microsoft.IdentityModel.Tokens;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using TriggerMe.VAT;
 
 
-namespace Program {
+namespace Test {
     public class Program {
 
 
@@ -31,7 +31,55 @@ namespace Program {
             // Test AdresManager
 
 
-            string connectieString = "Server=tcp:bezoekerregistratiesysteem.database.windows.net,1433;Initial Catalog=bezoekerregistratiesysteemdb;Persist Security Info=False;User ID=Hackerman;Password=RootRoot!69;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //string connectieString = "Server=tcp:bezoekerregistratiesysteem.database.windows.net,1433;Initial Catalog=bezoekerregistratiesysteemdb;Persist Security Info=False;User ID=Hackerman;Password=RootRoot!69;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+            string connectieStringMysql = "Server=ID367284_VRS.db.webhosting.be;User ID=ID367284_VRS;Password=RootRoot!69;Database=ID367284_VRS";
+            BedrijfRepoADO bedrijfRepo = new BedrijfRepoADO(connectieStringMysql);
+            WerknemerManager werknemerManager = new WerknemerManager(new WerknemerRepoADO(connectieStringMysql));
+            WerknemercontractManager wcManager = new WerknemercontractManager(new WerknemercontractRepoADO(connectieStringMysql));
+            AdresManager adresManager = new AdresManager(new AdresRepoADO(connectieStringMysql), bedrijfRepo);
+            BedrijfManager bedrijfManager = new BedrijfManager(bedrijfRepo, adresManager, wcManager);
+
+            Werknemer nicole = werknemerManager.GeefWerknemer(1);
+            Werknemer hugo = werknemerManager.GeefWerknemer(2);
+            Bedrijf vtm = bedrijfManager.GeefBedrijven()[0];
+            Werknemercontract nicoleAtVtm = new Werknemercontract(vtm, nicole, "Zangeres");
+            Werknemercontract hugoAtVtm = new Werknemercontract(vtm, hugo, "Zanger");
+            //wcManager.VoegContractToe(nicoleAtVtm);
+            //wcManager.VoegContractToe(hugoAtVtm);
+
+
+            Bedrijf allphi = bedrijfManager.ZoekBedrijven(null, "Allphi", null, null)[0];
+            Werknemer alien = new Werknemer("Carlier", "Alien");
+            //werknemerManager.VoegWerknemerToe(alien);
+            Werknemercontract alienAtAllphi = new Werknemercontract(allphi, alien, "Regional consultant coordinator");
+            alienAtAllphi.ZetEmail("alien@allphi.be");
+            //wcManager.VoegContractToe(alienAtAllphi);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // OUDE DB TESTS
 
             //WerknemerRepoADO _werknemerRepo = new WerknemerRepoADO(connectieString);
             //WerknemerManager Werkmanager = new WerknemerManager(_werknemerRepo);
@@ -69,21 +117,21 @@ namespace Program {
 
             // TESTS ADO -----------------------------------------------------------------------------------------------------------------------------------------------
             //string connectionString = "Data Source=FRENK\\SQLEXPRESS;Initial Catalog=\"projectwerk test\";Integrated Security=True";
-            BedrijfRepoADO bedrijfrepo = new BedrijfRepoADO(connectieString);
-            ////AdresRepoADO adresRepo = new AdresRepoADO(connectionString);
-            BezoekRepoADO bezoekRepo = new BezoekRepoADO(connectieString);
+            //BedrijfRepoADO bedrijfrepo = new BedrijfRepoADO(connectieString);
+            //////AdresRepoADO adresRepo = new AdresRepoADO(connectionString);
+            //BezoekRepoADO bezoekRepo = new BezoekRepoADO(connectieString);
 
-            Console.WriteLine("==== TEST BezoekRepoADO ==== ");
-            Bezoeker bezoeker = new Bezoeker(1, "Doe", "John", "John@Doe.be", "Allphi");
-            Bedrijf Allphi = new Bedrijf(1, "Allphi", "BE0123321123", "Allphi@info.be");
-            Werknemer werknemer = new Werknemer(1, "John", "Doe");
-            
-            werknemer.ZetEmail("john@doe.be");
-            DateTime StartTijd = new DateTime(2022, 10, 02);
-            DateTime EindTijd = new DateTime(2022, 11, 02);
-            Bezoek bezoek = new Bezoek(bezoeker, Allphi, werknemer, StartTijd);
+            //Console.WriteLine("==== TEST BezoekRepoADO ==== ");
+            //Bezoeker bezoeker = new Bezoeker(1, "Doe", "John", "John@Doe.be", "Allphi");
+            //Bedrijf Allphi = new Bedrijf(1, "Allphi", "BE0123321123", "Allphi@info.be");
+            //Werknemer werknemer = new Werknemer(1, "John", "Doe");
 
-            Console.WriteLine(  bezoekRepo.BestaatBezoek(bezoek));
+            //werknemer.ZetEmail("john@doe.be");
+            //DateTime StartTijd = new DateTime(2022, 10, 02);
+            //DateTime EindTijd = new DateTime(2022, 11, 02);
+            //Bezoek bezoek = new Bezoek(bezoeker, Allphi, werknemer, StartTijd);
+
+            //Console.WriteLine(bezoekRepo.BestaatBezoek(bezoek));
             //Console.WriteLine("==== TEST WerknemerRepoADO ==== ");
             ////WerknemerRepoADO repo = new WerknemerRepoADO();
             //Werknemer sarahMetId = new Werknemer(1, "Cools", "Sarah", "SAFETY");
@@ -136,13 +184,13 @@ namespace Program {
             //bedrijfrepo.VoegBedrijfToe("BE1234567890", "Advalvas", "Advalvas@fastmail.com",null,10); //werkt
             // Test VerwijderBedrijf--------------------------------------------------------------
 
-            WerknemerRepoADO _werknemerRepo = new WerknemerRepoADO(connectieString);
-            WerknemerManager Werkmanager = new WerknemerManager(_werknemerRepo);
+            //WerknemerRepoADO _werknemerRepo = new WerknemerRepoADO(connectieString);
+            //WerknemerManager Werkmanager = new WerknemerManager(_werknemerRepo);
 
-            Console.WriteLine(Werkmanager.BestaatWerknemer("Grootaers", "Walter"));
+            //Console.WriteLine(Werkmanager.BestaatWerknemer("Grootaers", "Walter"));
 
-            AdresRepoADO adresrepo = new AdresRepoADO(connectieString);
-            WerknemercontractRepoADO wcrepo = new WerknemercontractRepoADO(connectieString);
+            //AdresRepoADO adresrepo = new AdresRepoADO(connectieString);
+            //WerknemercontractRepoADO wcrepo = new WerknemercontractRepoADO(connectieString);
 
 
             //AdresManager AM = new AdresManager(adresrepo, bedrijfrepo);
@@ -247,6 +295,18 @@ namespace Program {
             //wcManager.UpdateContract(new Werknemer("random", "naam"), advalvas, "moet error gooien", null);
             //wcManager.UpdateContract(gomez, advalvas, "moet exception gooien", null);
 
+
+            //Console.WriteLine(Controle.IsGoedeEmailSyntax(".mike@email.com"));
+            //Console.WriteLine(Controle.IsGoedeEmailSyntax(".mike@email.come"));
+            //Console.WriteLine(Controle.IsGoedeEmailSyntax(".mike@email.come"));
+
+
+
+            // TEST MySql
+            //AdresRepoMySql adresRepositoryMySql = new AdresRepoMySql(connectieStringMysql);
+            //Console.WriteLine(adresRepositoryMySql.BestaatAdresMetId(1));
+            //Console.WriteLine(adresRepositoryMySql.BestaatAdresMetId(2));
+            //Console.WriteLine(adresRepositoryMySql.BestaatAdresMetId(3));
 
         }
     }
