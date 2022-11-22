@@ -24,9 +24,9 @@ namespace UIAdmin.view
     public partial class AddBedrijfScreen : Window
     {
         private bool _isMaximized = false;
-        private AdresManager _adresManager;
-        private BedrijfManager _bedrijfManager;
-        public AddBedrijfScreen(AdresManager adresManager, BedrijfManager bedrijfManager)
+        private AddressManager _adresManager;
+        private CompanyManager _bedrijfManager;
+        public AddBedrijfScreen(AddressManager adresManager, CompanyManager bedrijfManager)
         {
             InitializeComponent();
             _adresManager = adresManager;
@@ -59,29 +59,29 @@ namespace UIAdmin.view
                 Button button = (Button)sender;
                 if (button.Name == "SaveBtn")
                 {
-                    string? bedrijfNaam = null;
-                    string? bedrijfBTW = null;
-                    string? bedrijfTelefoon = null;
-                    string? bedrijfEmail = null;
-                    string? land = null;
-                    string? straat = null;
-                    string? nummer = null;
-                    string? postcode = null;
-                    string? plaats = null;
-                    if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfNaam = TextBoxBedrijfNaam.Text; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxBTWnummer.Text)) { bedrijfBTW = TextBoxBTWnummer.Text; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxTelefoon.Text)) { bedrijfTelefoon = TextBoxTelefoon.Text; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { bedrijfEmail = TextBoxEmail.Text; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxLand.Text)) { land = TextBoxLand.Text; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxStraat.Text)) { straat = TextBoxStraat.Text; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxNummer.Text)) { nummer = TextBoxNummer.Text; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxPostcode.Text)) { postcode = TextBoxPostcode.Text; }
-                    if (!string.IsNullOrWhiteSpace(TextBoxPlaats.Text)) { plaats = TextBoxPlaats.Text; }
-                    if (CheckingIsIngevuld(bedrijfNaam, bedrijfBTW, bedrijfEmail, land, straat, nummer, postcode, plaats))
+                    string? companyName = null;
+                    string? companyVatNumber = null;
+                    string? companyPhoneNumber = null;
+                    string? companyEmail = null;
+                    string? country = null;
+                    string? street = null;
+                    string? number = null;
+                    string? postalcode = null;
+                    string? place = null;
+                    if (!string.IsNullOrWhiteSpace(TextBoxCompanyName.Text)) { companyName = TextBoxCompanyName.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxVatNumber.Text)) { companyVatNumber = TextBoxVatNumber.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxPhoneNumber.Text)) { companyPhoneNumber = TextBoxPhoneNumber.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { companyEmail = TextBoxEmail.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxCountry.Text)) { country = TextBoxCountry.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxStreetName.Text)) { street = TextBoxStreetName.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxNumber.Text)) { number = TextBoxNumber.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxPostalCode.Text)) { postalcode = TextBoxPostalCode.Text; }
+                    if (!string.IsNullOrWhiteSpace(TextBoxPlace.Text)) { place = TextBoxPlace.Text; }
+                    if (CheckingIsIngevuld(companyName, companyVatNumber, companyEmail, country, street, number, postalcode, place))
                     {
                         try
                         {
-                            _bedrijfManager.VoegBedrijfToe(bedrijfBTW, bedrijfNaam, bedrijfEmail, bedrijfTelefoon, land, straat, nummer, postcode, plaats);
+                            _bedrijfManager.AddCompany(companyVatNumber, companyName, companyEmail, companyPhoneNumber, country, street, number, postalcode, place);
                             MessageBox.Show($"succes!");
                         }
                         catch (Exception ex)
@@ -93,83 +93,83 @@ namespace UIAdmin.view
                 }
             }
         }
-        private bool CheckingIsIngevuld(string? bedrijfNaam, string? bedrijfBTW, string? bedrijfEmail, string? land, string? straat, string? nummer, string? postcode, string? plaats)
+        private bool CheckingIsIngevuld(string? companyName, string? companyVatNumber, string? companyEmail, string? country, string? street, string? number, string? postalcode, string? place)
         {
-            bool bedrijf = true;
+            bool companyIsCorrect = true;
             #region Basic colours
             SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
-            BorderBedrijfNaam.BorderBrush = colorBrush;
-            TBBedrijfNaam.Text = "";
-            TBBedrijfNaam.Foreground = Brushes.Black;
-            BorderBTWnummer.BorderBrush = colorBrush;
-            TBBTWnummer.Text = "";
-            TBBTWnummer.Foreground = Brushes.Black;
+            BorderCompanyName.BorderBrush = colorBrush;
+            TBCompanyName.Text = "";
+            TBCompanyName.Foreground = Brushes.Black;
+            BorderVatNumber.BorderBrush = colorBrush;
+            TBVatNumber.Text = "";
+            TBVatNumber.Foreground = Brushes.Black;
             BorderEmail.BorderBrush = colorBrush;
             TBEmail.Text = "";
             TBEmail.Foreground = Brushes.Black;
-            BorderLand.BorderBrush = colorBrush;
-            TBLand.Text = "";
-            TBLand.Foreground = Brushes.Black;
-            BorderStraatNaam.BorderBrush = colorBrush;
-            TBStraatNaam.Text = "";
-            TBStraatNaam.Foreground = Brushes.Black;
-            BorderNummer.BorderBrush = colorBrush;
-            TBNummer.Text = "";
-            TBNummer.Foreground = Brushes.Black;
-            BorderPostcode.BorderBrush = colorBrush;
-            TBPostcode.Text = "";
-            TBPostcode.Foreground = Brushes.Black;
-            BorderPlaats.BorderBrush = colorBrush;
-            TBPlaats.Text = "";
-            TBPlaats.Foreground = Brushes.Black;
+            BorderCountry.BorderBrush = colorBrush;
+            TBCountry.Text = "";
+            TBCountry.Foreground = Brushes.Black;
+            BorderStreetName.BorderBrush = colorBrush;
+            TBStreetName.Text = "";
+            TBStreetName.Foreground = Brushes.Black;
+            BorderNumber.BorderBrush = colorBrush;
+            TBNumber.Text = "";
+            TBNumber.Foreground = Brushes.Black;
+            BorderPostalCode.BorderBrush = colorBrush;
+            TBPostalCode.Text = "";
+            TBPostalCode.Foreground = Brushes.Black;
+            BorderPlace.BorderBrush = colorBrush;
+            TBPlace.Text = "";
+            TBPlace.Foreground = Brushes.Black;
             #endregion
-            if (bedrijfNaam == null) 
+            if (companyName == null) 
             {
-                BorderBedrijfNaam.BorderBrush = Brushes.Red;
-                TBBedrijfNaam.Text += "Bedrijf naam: mag niet leeg zijn!";
-                TBBedrijfNaam.Foreground = Brushes.Red;
-                bedrijf = false;
+                BorderCompanyName.BorderBrush = Brushes.Red;
+                TBCompanyName.Text += "Bedrijf naam: mag niet leeg zijn!";
+                TBCompanyName.Foreground = Brushes.Red;
+                companyIsCorrect = false;
             } 
-            if (bedrijfBTW == null)
+            if (companyVatNumber == null)
             {
-                BorderBTWnummer.BorderBrush = Brushes.Red;
-                TBBTWnummer.Text += "BTW-nummer: mag niet leeg zijn!";
-                TBBTWnummer.Foreground = Brushes.Red;
-                bedrijf = false;
+                BorderVatNumber.BorderBrush = Brushes.Red;
+                TBVatNumber.Text += "BTW-nummer: mag niet leeg zijn!";
+                TBVatNumber.Foreground = Brushes.Red;
+                companyIsCorrect = false;
             }
-            if (bedrijfEmail == null)
+            if (companyEmail == null)
             {
                 BorderEmail.BorderBrush = Brushes.Red;
                 TBEmail.Text += "Email: mag niet leeg zijn!";
                 TBEmail.Foreground = Brushes.Red;
-                bedrijf = false;
+                companyIsCorrect = false;
             }
-            if (bedrijfBTW != null)
+            if (companyVatNumber != null)
             {
                 try
                 {
-                    if(Controle.IsBestaandBTWnummer(bedrijfBTW)) { }
+                    if(Verify.IsExistingVATnumber(companyVatNumber)) { }
                 }
                 catch (Exception ex)
                 {
-                    bedrijf = false;
+                    companyIsCorrect = false;
                     if (ex.Message == "Controle - IsBestaandBTWnummer - Ongeldig BTW Nummer")
                     {
-                        BorderBTWnummer.BorderBrush = Brushes.Red;
-                        TBBTWnummer.Text += "ongeldige syntax!";
-                        TBBTWnummer.Foreground = Brushes.Red;
+                        BorderVatNumber.BorderBrush = Brushes.Red;
+                        TBVatNumber.Text += "ongeldige syntax!";
+                        TBVatNumber.Foreground = Brushes.Red;
                     }
                 }
             }
-            if (bedrijfEmail != null)
+            if (companyEmail != null)
             {
                 try
                 {
-                    if (Controle.IsGoedeEmailSyntax(bedrijfEmail)) { }
+                    if (Verify.IsValidEmailSyntax(companyEmail)) { }
                 }
                 catch (Exception ex)
                 {
-                    bedrijf = false;
+                    companyIsCorrect = false;
                     if (ex.Message == "Controle - IsGoedeEmailSyntax - Ongeldige email")
                     {
                         BorderEmail.BorderBrush = Brushes.Red;
@@ -178,87 +178,86 @@ namespace UIAdmin.view
                     }
                 }
             }
-            if (!string.IsNullOrWhiteSpace(land) || !string.IsNullOrWhiteSpace(straat) || !string.IsNullOrWhiteSpace(nummer) || !string.IsNullOrWhiteSpace(postcode) || !string.IsNullOrWhiteSpace(plaats))
+            if (!string.IsNullOrWhiteSpace(country) || !string.IsNullOrWhiteSpace(street) || !string.IsNullOrWhiteSpace(number) || !string.IsNullOrWhiteSpace(postalcode) || !string.IsNullOrWhiteSpace(place))
             {
-                if (land == null)
+                if (country == null)
                 {
-                    BorderLand.BorderBrush = Brushes.Red;
-                    TBLand.Text += "Land: mag niet leeg zijn!";
-                    TBLand.Foreground = Brushes.Red;
-                    bedrijf = false;
+                    BorderCountry.BorderBrush = Brushes.Red;
+                    TBCountry.Text += "Land: mag niet leeg zijn!";
+                    TBCountry.Foreground = Brushes.Red;
+                    companyIsCorrect = false;
                 }
-                if (straat == null)
+                if (street == null)
                 {
-                    BorderStraatNaam.BorderBrush = Brushes.Red;
-                    TBStraatNaam.Text += "Straatnaam: mag niet leeg zijn!";
-                    TBStraatNaam.Foreground = Brushes.Red;
-                    bedrijf = false;
+                    BorderStreetName.BorderBrush = Brushes.Red;
+                    TBStreetName.Text += "Straatnaam: mag niet leeg zijn!";
+                    TBStreetName.Foreground = Brushes.Red;
+                    companyIsCorrect = false;
                 }
-                if (nummer == null)
+                if (number == null)
                 {
-                    BorderNummer.BorderBrush = Brushes.Red;
-                    TBNummer.Text += "Nummer: mag niet leeg zijn!";
-                    TBNummer.Foreground = Brushes.Red;
-                    bedrijf = false;
+                    BorderNumber.BorderBrush = Brushes.Red;
+                    TBNumber.Text += "Nummer: mag niet leeg zijn!";
+                    TBNumber.Foreground = Brushes.Red;
+                    companyIsCorrect = false;
                 }
-                if (postcode == null)
+                if (postalcode == null)
                 {
-                    BorderPostcode.BorderBrush = Brushes.Red;
-                    TBPostcode.Text += "Postcode: mag niet leeg zijn!";
-                    TBPostcode.Foreground = Brushes.Red;
-                    bedrijf = false;
+                    BorderPostalCode.BorderBrush = Brushes.Red;
+                    TBPostalCode.Text += "Postcode: mag niet leeg zijn!";
+                    TBPostalCode.Foreground = Brushes.Red;
+                    companyIsCorrect = false;
                 }
-                if (plaats == null)
+                if (place == null)
                 {
-                    BorderPlaats.BorderBrush = Brushes.Red;
-                    TBPlaats.Text += "Plaats: mag niet leeg zijn!";
-                    TBPlaats.Foreground = Brushes.Red;
-                    bedrijf = false;
+                    BorderPlace.BorderBrush = Brushes.Red;
+                    TBPlace.Text += "Plaats: mag niet leeg zijn!";
+                    TBPlace.Foreground = Brushes.Red;
+                    companyIsCorrect = false;
                 }
-                if (nummer != null)
+                if (number != null)
                 {
                     try
                     {
-                        if (Controle.IsGoedeAdresNummerSyntax(nummer)) { }
+                        if (Verify.IsValidAdressNumberSyntax(number)) { }
                     }
                     catch (Exception ex)
                     {
-                        bedrijf = false;
+                        companyIsCorrect = false;
                         if (ex.Message == "Controle - IsGoedeAdresNummerSyntax - Geen geldig nummer ingevuld")
                         {
-                            BorderNummer.BorderBrush = Brushes.Red;
-                            TBNummer.Text += "ongeldige syntacs!";
-                            TBNummer.Foreground = Brushes.Red;
+                            BorderNumber.BorderBrush = Brushes.Red;
+                            TBNumber.Text += "ongeldige syntacs!";
+                            TBNumber.Foreground = Brushes.Red;
                         }
                     }
                 }
             }
-            return bedrijf;
+            return companyIsCorrect;
         }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string? bedrijfNaam = null;
-            string? bedrijfBTW = null;
-            string? bedrijfTelefoon = null;
-            string? bedrijfEmail = null;
-            string? land = null;
-            string? straat = null;
-            string? nummer = null;
-            string? postcode = null;
-            string? plaats = null;
-            if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfNaam = TextBoxBedrijfNaam.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxBTWnummer.Text)) { bedrijfBTW = TextBoxBTWnummer.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxTelefoon.Text)) { bedrijfTelefoon = TextBoxTelefoon.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { bedrijfEmail = TextBoxEmail.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxLand.Text)) { land = TextBoxLand.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxStraat.Text)) { straat = TextBoxStraat.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxNummer.Text)) { nummer = TextBoxNummer.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxPostcode.Text)) { postcode = TextBoxPostcode.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxPlaats.Text)) { plaats = TextBoxPlaats.Text; }
+            string? companyName = null;
+            string? companyVatNumber = null;
+            string? companyPhoneNumber = null;
+            string? companyEmail = null;
+            string? country = null;
+            string? street = null;
+            string? number = null;
+            string? postalcode = null;
+            string? place = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxCompanyName.Text)) { companyName = TextBoxCompanyName.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxVatNumber.Text)) { companyVatNumber = TextBoxVatNumber.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxPhoneNumber.Text)) { companyPhoneNumber = TextBoxPhoneNumber.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { companyEmail = TextBoxEmail.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxCountry.Text)) { country = TextBoxCountry.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxStreetName.Text)) { street = TextBoxStreetName.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxNumber.Text)) { number = TextBoxNumber.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxPostalCode.Text)) { postalcode = TextBoxPostalCode.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxPlace.Text)) { place = TextBoxPlace.Text; }
             if (!SaveBtn.IsEnabled)
             {
-                if (CheckingIsIngevuld(bedrijfNaam, bedrijfBTW, bedrijfEmail, land, straat, nummer, postcode, plaats))
+                if (CheckingIsIngevuld(companyName, companyVatNumber, companyEmail, country, street, number, postalcode, place))
                 {
                     SaveBtn.IsEnabled = true;
                 }

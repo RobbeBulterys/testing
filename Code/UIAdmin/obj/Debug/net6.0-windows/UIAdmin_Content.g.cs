@@ -11,6 +11,8 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-back-arrow-50.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-calendar-13-16.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-calendar-50.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-chevron-down-24.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-chevron-up-24.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-circled-right-50.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-engineer-80.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-factory-50.png")]

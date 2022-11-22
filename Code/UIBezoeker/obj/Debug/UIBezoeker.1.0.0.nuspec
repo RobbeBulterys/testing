@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>UIBezoeker</id>
+    <version>1.0.0</version>
+    <authors>UIBezoeker</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0">
+        <dependency id="BL-Projectwerk" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="DL-Projectwerk" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/net6.0-windows7.0/img/background.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-home-page-64.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-login-64.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-logout-64.png" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\bin\Debug\net6.0-windows\UIBezoeker.runtimeconfig.json" target="lib\net6.0-windows7.0\UIBezoeker.runtimeconfig.json" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\bin\Debug\net6.0-windows\UIBezoeker.dll" target="lib\net6.0-windows7.0\UIBezoeker.dll" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\img\background.png" target="content\img\background.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\img\background.png" target="contentFiles\any\net6.0-windows7.0\img\background.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\img\icons8-home-page-64.png" target="content\img\icons8-home-page-64.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\img\icons8-home-page-64.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-home-page-64.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\img\icons8-login-64.png" target="content\img\icons8-login-64.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\img\icons8-login-64.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-login-64.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\img\icons8-logout-64.png" target="content\img\icons8-logout-64.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIBezoeker\img\icons8-logout-64.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-logout-64.png" />
+  </files>
+</package>

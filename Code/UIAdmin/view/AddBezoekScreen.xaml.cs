@@ -24,15 +24,15 @@ namespace UIAdmin.view
     public partial class AddBezoekScreen : Window
     {
         private bool _isMaximized = false;
-        private BezoekerManager _bezoekerManager;
-        private BedrijfManager _bedrijfManager;
-        private BezoekManager _bezoekManager;
-        private WerknemercontractManager _werknemercontractManager;
-        private List<Bedrijf> bedrijven = new List<Bedrijf>();
-        private List<Werknemer> werknemersList = new List<Werknemer>();
+        private VisitorManager _bezoekerManager;
+        private CompanyManager _bedrijfManager;
+        private VisitManager _bezoekManager;
+        private EmployeecontractManager _werknemercontractManager;
+        private List<Company> bedrijven = new List<Company>();
+        private List<Employee> werknemersList = new List<Employee>();
         private ObservableCollection<string> BedrijfNamen = new ObservableCollection<string>();
         private ObservableCollection<string> WerknemersNamen = new ObservableCollection<string>();
-        public AddBezoekScreen(BezoekerManager bezoekerManager, BedrijfManager bedrijfManager, WerknemercontractManager werknemercontract, BezoekManager bezoekManager)
+        public AddBezoekScreen(VisitorManager bezoekerManager, CompanyManager bedrijfManager, EmployeecontractManager werknemercontract, VisitManager bezoekManager)
         {
             InitializeComponent();
             _bezoekerManager = bezoekerManager;
@@ -47,8 +47,8 @@ namespace UIAdmin.view
             ComboBoxWerknemer.ItemsSource = WerknemersNamen;
             bedrijven.Clear();
             BedrijfNamen.Clear();
-            bedrijven = _bedrijfManager.GeefBedrijven().ToList();
-            bedrijven.ForEach(b => BedrijfNamen.Add(b.Naam));
+            bedrijven = _bedrijfManager.GetCompanies().ToList();
+            bedrijven.ForEach(b => BedrijfNamen.Add(b.Name));
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -91,15 +91,15 @@ namespace UIAdmin.view
                     if (naam == null || voornaam == null || email == null || bedrijfnaam == null || contactPersoon == null) MessageBox.Show("Alle velden moeten worden ingevuld!");
                     else
                     {
-                        Bezoeker bezoeker = _bezoekerManager.ZoekBezoekers(naam, voornaam, email, null).ToList()[0];
-                        Bedrijf bedrijfSelected = null;
-                        Werknemer werknemerSelected = null;
-                        foreach (Bedrijf bedrijf in bedrijven) { if (bedrijf.Naam == bedrijfnaam) { bedrijfSelected = bedrijf; break; } }
-                        foreach (Werknemer werknemer in werknemersList) { if ($"{werknemer.Naam}, {werknemer.Voornaam}" == contactPersoon) { werknemerSelected = werknemer; break; } }
-                        Bezoek b = new Bezoek(bezoeker, bedrijfSelected, werknemerSelected, DateTime.Now);
+                        Visitor bezoeker = _bezoekerManager.SearchVisitors(naam, voornaam, email, null).ToList()[0];
+                        Company bedrijfSelected = null;
+                        Employee werknemerSelected = null;
+                        foreach (Company bedrijf in bedrijven) { if (bedrijf.Name == bedrijfnaam) { bedrijfSelected = bedrijf; break; } }
+                        foreach (Employee werknemer in werknemersList) { if ($"{werknemer.LastName}, {werknemer.FirstName}" == contactPersoon) { werknemerSelected = werknemer; break; } }
+                        Visit b = new Visit(bezoeker, bedrijfSelected, werknemerSelected, DateTime.Now);
                         try
                         {
-                            _bezoekManager.VoegBezoekToe(b);
+                            _bezoekManager.AddVisit(b);
                         }
                         catch (Exception ex)
                         {
@@ -113,16 +113,16 @@ namespace UIAdmin.view
         {
             werknemersList.Clear();
             WerknemersNamen.Clear();
-            List<Werknemercontract> werker = new List<Werknemercontract>();
-            foreach (Bedrijf bedrijf in bedrijven)
+            List<Employeecontract> werker = new List<Employeecontract>();
+            foreach (Company bedrijf in bedrijven)
             {
-                if (bedrijf.Naam == ComboBoxBedrijf.SelectedValue.ToString())
+                if (bedrijf.Name == ComboBoxBedrijf.SelectedValue.ToString())
                 {
-                    werker.AddRange(_werknemercontractManager.GeefContractenVanBedrijf(bedrijf));
+                    werker.AddRange(_werknemercontractManager.GetCompanyContracts(bedrijf));
                 }
             }
-            werker.ForEach(w => werknemersList.Add(w.Werknemer));
-            werknemersList.ForEach(c => WerknemersNamen.Add($"{c.Naam}, {c.Voornaam}"));
+            werker.ForEach(w => werknemersList.Add(w.Employee));
+            werknemersList.ForEach(c => WerknemersNamen.Add($"{c.LastName}, {c.FirstName}"));
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -168,7 +168,7 @@ namespace UIAdmin.view
             {
                 try
                 {
-                    if (Controle.IsGoedeEmailSyntax(email)) { }
+                    if (Verify.IsValidEmailSyntax(email)) { }
                 }
                 catch (Exception ex)
                 {

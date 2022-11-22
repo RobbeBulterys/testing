@@ -42,7 +42,7 @@
 
             <!--Main Menu-->
             <Grid Grid.Column="1">
-                <DockPanel x:Name="CompanyBorder" Visibility="Visible">
+                <DockPanel x:Name="CompanyBorder" Visibility="Collapsed">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -418,7 +418,7 @@
                         </Grid>
                     </Border>
                 </DockPanel>
-                <DockPanel x:Name="EmployeeBorder" Visibility="Collapsed">
+                <DockPanel x:Name="EmployeeBorder" Visibility="Visible">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -429,13 +429,18 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <TextBlock x:Name="CompanyEmployees" Text="" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
+                            <Button x:Name="AddEmployeeContract" Grid.Row="1" Style="{StaticResource addButton}" Click="AddEmployeeContract_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Nieuw werknemer contract"/>
+                                </StackPanel>
+                            </Button>
                             <Separator Margin="10 10 10 0" Height="1" Background="Gray" Grid.Row="2"/>
                             <Grid Grid.Row="3">
                                 <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="BedrijfContractDataGrid">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Naam" IsReadOnly="True" Width="auto" Binding="{Binding Werknemer.Naam}"/>
-                                        <DataGridTextColumn Header="Voornaam" IsReadOnly="True" Width="auto" Binding="{Binding Werknemer.Voornaam}"/>
-                                        <DataGridTextColumn Header="Functie" IsReadOnly="True" Width="auto" Binding="{Binding Functie}"/>
+                                        <DataGridTextColumn Header="Naam" IsReadOnly="True" Width="auto" Binding="{Binding Employee.LastName}"/>
+                                        <DataGridTextColumn Header="Voornaam" IsReadOnly="True" Width="auto" Binding="{Binding Employee.FirstName}"/>
+                                        <DataGridTextColumn Header="Functie" IsReadOnly="True" Width="auto" Binding="{Binding Function}"/>
                                         <DataGridTextColumn Header="Email" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
@@ -458,9 +463,9 @@
                             <Grid Grid.Row="3">
                                 <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="BezoekenDataGrid">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Bezoeker.BezoekId}"/>
+                                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Bezoeker.VisitId}"/>
                                         <DataGridTextColumn Header="Naam" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Name}"/>
-                                        <DataGridTextColumn Header="Bedrijf" IsReadOnly="True" Width="*" Binding="{Binding Bezoeker.Bedrijf.Naam}"/>
+                                        <DataGridTextColumn Header="Bedrijf" IsReadOnly="True" Width="*" Binding="{Binding Bezoeker.Company.Name}"/>
                                         <DataGridTextColumn Header="Werknemer" IsReadOnly="True" Width="*" Binding="{Binding Werknemer}"/>
                                         <DataGridTextColumn Header="Begin Datum" IsReadOnly="True" Width="*" Binding="{Binding Begin}"/>
                                         <DataGridTextColumn Header="Eind Datum" IsReadOnly="True" Width="*" Binding="{Binding Einde}"/>

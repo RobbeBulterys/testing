@@ -27,22 +27,29 @@ namespace UIAdmin
             
 
             // Repo's aanmaken om te gebruiken
-            IAdresRepository adresRepository = new AdresRepoADO(connectieString);
-            IBedrijfRepository bedrijfRepository = new BedrijfRepoADO(connectieString);
-            IBezoekerRepository bezoekerRepository = new BezoekerRepoADO(connectieString);
-            IBezoekRepository bezoekRepository = new BezoekRepoADO(connectieString);
-            IWerknemerRepository werknemerRepository = new WerknemerRepoADO(connectieString);
-            IWerknemercontractRepository werknemercontractRepository = new WerknemercontractRepoADO(connectieString);
-            AdresManager adresManager = new AdresManager(adresRepository, bedrijfRepository);
-            BezoekerManager bezoekerManager = new BezoekerManager(bezoekerRepository);
-            BezoekManager bezoekManager = new BezoekManager(bezoekRepository);
-            WerknemerManager werknemerManager = new WerknemerManager(werknemerRepository);
-            WerknemercontractManager werknemercontractManager = new WerknemercontractManager(werknemercontractRepository);
-            BedrijfManager bedrijfManager = new BedrijfManager(bedrijfRepository, adresManager, werknemercontractManager);
+            IAddressRepository adresRepository = new AddressRepoADO(connectieString);
+            ICompanyRepository bedrijfRepository = new CompanyRepoADO(connectieString);
+            IVisitorRepository bezoekerRepository = new VisitorRepoADO(connectieString);
+            IVisitRepository bezoekRepository = new VisitRepoADO(connectieString);
+            IEmployeeRepository werknemerRepository = new EmployeeRepoADO(connectieString);
+            IEmployeecontractRepository werknemercontractRepository = new EmployeecontractRepoADO(connectieString);
+            AddressManager adresManager = new AddressManager(adresRepository, bedrijfRepository);
+            VisitorManager bezoekerManager = new VisitorManager(bezoekerRepository);
+            VisitManager bezoekManager = new VisitManager(bezoekRepository);
+            EmployeeManager werknemerManager = new EmployeeManager(werknemerRepository);
+            EmployeecontractManager werknemercontractManager = new EmployeecontractManager(werknemercontractRepository);
+            CompanyManager bedrijfManager = new CompanyManager(bedrijfRepository, werknemercontractManager);
 
             // Oproepen van het venster
-            MainScreen mainScreen = new MainScreen(adresManager, bedrijfManager, bezoekerManager, werknemerManager, werknemercontractManager, bezoekManager);
-            mainScreen.Show();
+            try
+            {
+                MainScreen mainScreen = new MainScreen(adresManager, bedrijfManager, bezoekerManager, werknemerManager, werknemercontractManager, bezoekManager);
+                mainScreen.Show();
+            }
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message); 
+            }
         }
     }
 }

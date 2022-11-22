@@ -22,8 +22,8 @@ namespace UIAdmin.view
     public partial class AddBezoekerScreen : Window
     {
         private bool _isMaximized = false;
-        private BezoekerManager _bezoekerManager;
-        public AddBezoekerScreen(BezoekerManager bezoekerManager)
+        private VisitorManager _bezoekerManager;
+        public AddBezoekerScreen(VisitorManager bezoekerManager)
         {
             InitializeComponent();
             _bezoekerManager = bezoekerManager;
@@ -66,7 +66,7 @@ namespace UIAdmin.view
                     if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfnaam = TextBoxBedrijfNaam.Text; message += $"bedrijfnaam => {bedrijfnaam}\n"; }
                     if (naam != null && voornaam != null && email != null && bedrijfnaam != null)
                     {
-                        _bezoekerManager.VoegBezoekerToe(new Bezoeker(naam, voornaam, email, bedrijfnaam));
+                        _bezoekerManager.AddVisitor(new Visitor(naam, voornaam, email, bedrijfnaam));
                         this.Close();
                     }
                 }
@@ -128,7 +128,7 @@ namespace UIAdmin.view
             {
                 try
                 {
-                    if (Controle.IsGoedeEmailSyntax(email)) { }
+                    if (Verify.IsValidEmailSyntax(email)) { }
                 }
                 catch (Exception ex)
                 {

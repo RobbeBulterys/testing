@@ -25,14 +25,14 @@ namespace UIAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
-        private AdresManager _adresManager;
-        private ObservableCollection<Werknemer> werknemersList = new ObservableCollection<Werknemer>();
-        private ObservableCollection<Bedrijf> bedrijven = new ObservableCollection<Bedrijf>();
-        private ObservableCollection<Bezoeker> bezoekers = new ObservableCollection<Bezoeker>();
-        private ObservableCollection<Bezoek> bezoeken = new ObservableCollection<Bezoek>();
+        private AddressManager _adresManager;
+        private ObservableCollection<Employee> werknemersList = new ObservableCollection<Employee>();
+        private ObservableCollection<Company> bedrijven = new ObservableCollection<Company>();
+        private ObservableCollection<Visitor> bezoekers = new ObservableCollection<Visitor>();
+        private ObservableCollection<Visit> bezoeken = new ObservableCollection<Visit>();
         private ObservableCollection<string> BedrijfNamen = new ObservableCollection<string>();
         private ObservableCollection<string> WerknemersNamen = new ObservableCollection<string>();
-        public MainWindow(AdresManager adresManager)
+        public MainWindow(AddressManager adresManager)
         {
             InitializeComponent();
 
@@ -433,45 +433,45 @@ namespace UIAdmin
         //Het geeft aan welk item is ge selecteerd in de listview en geeft de data mee aan de juiste textboxen om het weer te geven
         private void ListviewWerknemerOpzoeken_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ListviewWerknemerOpzoeken.SelectedItem is Werknemer)
+            if (ListviewWerknemerOpzoeken.SelectedItem is Employee)
             {
-                Werknemer werknemer = (Werknemer)ListviewWerknemerOpzoeken.SelectedItem;
-                WerknemerOpzoekenTextBoxNaam.Text = werknemer.Naam;
-                WerknemerOpzoekenTextBoxVoornaam.Text = werknemer.Voornaam;
+                Employee werknemer = (Employee)ListviewWerknemerOpzoeken.SelectedItem;
+                WerknemerOpzoekenTextBoxNaam.Text = werknemer.LastName;
+                WerknemerOpzoekenTextBoxVoornaam.Text = werknemer.FirstName;
                 WerknemerOpzoekenTextBoxEmail.Text = werknemer.Email;
             }
-            if (ListviewBedrijfOpzoeken.SelectedItem is Bedrijf)
+            if (ListviewBedrijfOpzoeken.SelectedItem is Company)
             {
-                Bedrijf bedrijf = (Bedrijf)ListviewBedrijfOpzoeken.SelectedItem;
-                BedrijfOpzoekenTextBoxNaam.Text = bedrijf.Naam;
-                BedrijfOpzoekenTextBoxBTW.Text = bedrijf.BTWNummer;
-                BedrijfOpzoekenTextBoxTelefoon.Text = bedrijf.Telefoon;
+                Company bedrijf = (Company)ListviewBedrijfOpzoeken.SelectedItem;
+                BedrijfOpzoekenTextBoxNaam.Text = bedrijf.Name;
+                BedrijfOpzoekenTextBoxBTW.Text = bedrijf.VATNumber;
+                BedrijfOpzoekenTextBoxTelefoon.Text = bedrijf.PhoneNumber;
                 BedrijfOpzoekenTextBoxEmail.Text = bedrijf.Email;
-                BedrijfOpzoekenTextBoxLand.Text = bedrijf.Adres.Land;
-                BedrijfOpzoekenTextBoxStraat.Text = bedrijf.Adres.Straat;
-                BedrijfOpzoekenTextBoxPostcode.Text = bedrijf.Adres.Postcode;
-                BedrijfOpzoekenTextBoxNr.Text = bedrijf.Adres.Nummer;
-                BedrijfOpzoekenTextBoxPlaats.Text = bedrijf.Adres.Plaats;
+                BedrijfOpzoekenTextBoxLand.Text = bedrijf.Address.Country;
+                BedrijfOpzoekenTextBoxStraat.Text = bedrijf.Address.Street;
+                BedrijfOpzoekenTextBoxPostcode.Text = bedrijf.Address.Postalcode;
+                BedrijfOpzoekenTextBoxNr.Text = bedrijf.Address.Number;
+                BedrijfOpzoekenTextBoxPlaats.Text = bedrijf.Address.Place;
             }
-            if (ListviewBezoekerOpzoeken.SelectedItem is Bezoeker)
+            if (ListviewBezoekerOpzoeken.SelectedItem is Visitor)
             {
-                Bezoeker bezoeker = (Bezoeker)ListviewBezoekerOpzoeken.SelectedItem;
-                BezoekerOpzoekenTextBoxNaam.Text = bezoeker.Naam;
-                BezoekerOpzoekenTextBoxVoornaam.Text = bezoeker.Voornaam;
+                Visitor bezoeker = (Visitor)ListviewBezoekerOpzoeken.SelectedItem;
+                BezoekerOpzoekenTextBoxNaam.Text = bezoeker.LastName;
+                BezoekerOpzoekenTextBoxVoornaam.Text = bezoeker.FirstName;
                 BezoekerOpzoekenTextBoxEmail.Text = bezoeker.Email;
-                BezoekerOpzoekenTextBoxBedrijfNaam.Text = bezoeker.Bedrijf;
+                BezoekerOpzoekenTextBoxBedrijfNaam.Text = bezoeker.Company;
             }
-            if (ListviewBezoekOpzoeken.SelectedItem is Bezoek)
+            if (ListviewBezoekOpzoeken.SelectedItem is Visit)
             {
-                Bezoek bezoek = (Bezoek)ListviewBezoekOpzoeken.SelectedItem;
-                BezoekOpzoekenTextBoxEmail.Text = bezoek.Bezoeker.Email;
-                BezoekOpzoekenTextBoxNaam.Text = bezoek.Bezoeker.Naam;
-                BezoekOpzoekenTextBoxVoornaam.Text = bezoek.Bezoeker.Voornaam;
-                BezoekOpzoekenTextBoxBedrijfNaamBezoeker.Text = bezoek.Bezoeker.Bedrijf;
-                BezoekOpzoekenComboBoxBedrijfNaam.SelectedValue = bezoek.Bedrijf.Naam;
+                Visit bezoek = (Visit)ListviewBezoekOpzoeken.SelectedItem;
+                BezoekOpzoekenTextBoxEmail.Text = bezoek.Visitor.Email;
+                BezoekOpzoekenTextBoxNaam.Text = bezoek.Visitor.LastName;
+                BezoekOpzoekenTextBoxVoornaam.Text = bezoek.Visitor.FirstName;
+                BezoekOpzoekenTextBoxBedrijfNaamBezoeker.Text = bezoek.Visitor.Company;
+                BezoekOpzoekenComboBoxBedrijfNaam.SelectedValue = bezoek.Company.Name;
                 foreach (string s in WerknemersNamen)
                 {
-                    if (s.Contains(bezoek.Contactpersoon.Naam)) BezoekOpzoekenComboBoxContactPersoon.SelectedValue = s;
+                    if (s.Contains(bezoek.Contact.LastName)) BezoekOpzoekenComboBoxContactPersoon.SelectedValue = s;
                 }
             }
         }
@@ -482,7 +482,7 @@ namespace UIAdmin
         {
             if (ListviewBedrijfOpzoeken.SelectedItems.Count == 1)
             {
-                Bedrijf bedrijf = (Bedrijf)ListviewBedrijfOpzoeken.SelectedItem;
+                Company bedrijf = (Company)ListviewBedrijfOpzoeken.SelectedItem;
                 string? bedrijfNaam = null;
                 string? bedrijfBTW = null;
                 string? bedrijfTelefoon = null;
@@ -493,15 +493,15 @@ namespace UIAdmin
                 string? postcode = null;
                 string? plaats = null;
                 string message = "";
-                if (BedrijfOpzoekenTextBoxNaam.Text != bedrijf.Naam) { bedrijfNaam = BedrijfOpzoekenTextBoxNaam.Text; message += $"bedrijfNaam => {bedrijfNaam}\n"; }
-                if (BedrijfOpzoekenTextBoxBTW.Text != bedrijf.BTWNummer) { bedrijfBTW = BedrijfOpzoekenTextBoxBTW.Text; message += $"bedrijfBTW => {bedrijfBTW}\n"; }
-                if (BedrijfOpzoekenTextBoxTelefoon.Text != bedrijf.Telefoon) { bedrijfTelefoon = BedrijfOpzoekenTextBoxTelefoon.Text; message += $"bedrijfTelefoon => {bedrijfTelefoon}\n"; }
+                if (BedrijfOpzoekenTextBoxNaam.Text != bedrijf.Name) { bedrijfNaam = BedrijfOpzoekenTextBoxNaam.Text; message += $"bedrijfNaam => {bedrijfNaam}\n"; }
+                if (BedrijfOpzoekenTextBoxBTW.Text != bedrijf.VATNumber) { bedrijfBTW = BedrijfOpzoekenTextBoxBTW.Text; message += $"bedrijfBTW => {bedrijfBTW}\n"; }
+                if (BedrijfOpzoekenTextBoxTelefoon.Text != bedrijf.PhoneNumber) { bedrijfTelefoon = BedrijfOpzoekenTextBoxTelefoon.Text; message += $"bedrijfTelefoon => {bedrijfTelefoon}\n"; }
                 if (BedrijfOpzoekenTextBoxEmail.Text != bedrijf.Email) { bedrijfEmail = BedrijfOpzoekenTextBoxEmail.Text; message += $"bedrijfEmail => {bedrijfEmail}\n"; }
-                if (BedrijfOpzoekenTextBoxLand.Text != bedrijf.Adres.Land) { land = BedrijfOpzoekenTextBoxLand.Text; message += $"land => {land}\n"; }
-                if (BedrijfOpzoekenTextBoxStraat.Text != bedrijf.Adres.Straat) { straat = BedrijfOpzoekenTextBoxStraat.Text; message += $"straat => {straat}\n"; }
-                if (BedrijfOpzoekenTextBoxNr.Text != bedrijf.Adres.Nummer) { nummer = BedrijfOpzoekenTextBoxNr.Text; message += $"nummer => {nummer}\n"; }
-                if (BedrijfOpzoekenTextBoxPostcode.Text != bedrijf.Adres.Postcode) { postcode = BedrijfOpzoekenTextBoxPostcode.Text; message += $"postcode => {postcode}\n"; }
-                if (BedrijfOpzoekenTextBoxPlaats.Text != bedrijf.Adres.Plaats) { plaats = BedrijfOpzoekenTextBoxPlaats.Text; message += $"plaats => {plaats}\n"; }
+                if (BedrijfOpzoekenTextBoxLand.Text != bedrijf.Address.Country) { land = BedrijfOpzoekenTextBoxLand.Text; message += $"land => {land}\n"; }
+                if (BedrijfOpzoekenTextBoxStraat.Text != bedrijf.Address.Street) { straat = BedrijfOpzoekenTextBoxStraat.Text; message += $"straat => {straat}\n"; }
+                if (BedrijfOpzoekenTextBoxNr.Text != bedrijf.Address.Number) { nummer = BedrijfOpzoekenTextBoxNr.Text; message += $"nummer => {nummer}\n"; }
+                if (BedrijfOpzoekenTextBoxPostcode.Text != bedrijf.Address.Postalcode) { postcode = BedrijfOpzoekenTextBoxPostcode.Text; message += $"postcode => {postcode}\n"; }
+                if (BedrijfOpzoekenTextBoxPlaats.Text != bedrijf.Address.Place) { plaats = BedrijfOpzoekenTextBoxPlaats.Text; message += $"plaats => {plaats}\n"; }
                 if (message == "") MessageBox.Show("Er moet minimum 1 veld aangepast worden!");
                 else MessageBox.Show(message);
             }
@@ -511,7 +511,7 @@ namespace UIAdmin
         {
             if (ListviewBedrijfOpzoeken.SelectedItems.Count == 1)
             {
-                Bedrijf bedrijf = (Bedrijf)ListviewBedrijfOpzoeken.SelectedItem;
+                Company bedrijf = (Company)ListviewBedrijfOpzoeken.SelectedItem;
                 MessageBox.Show($"BedrijfId => {bedrijf.Id}");
                 bedrijven.Clear();
                 BedrijfOpzoekenTextBoxNaam.Text = "";
@@ -544,25 +544,25 @@ namespace UIAdmin
                     if (!string.IsNullOrWhiteSpace(BedrijfOpzoekenFilterTextBoxId.Text)) { bedrijfId = BedrijfOpzoekenFilterTextBoxId.Text; }
                     MessageBox.Show($"bedrijfId => {bedrijfId}\nbedrijfNaam => {bedrijfNaam}\nbedrijfBTW => {bedrijfBTW}");
                     bedrijven.Clear();
-                    Bedrijf bedrijf1 = new Bedrijf(1, "Bosteels brewery", "BE0123123123", "info@example.com");
-                    bedrijf1.ZetAdres(new Adres(1, "Bijvoegstraat", "20", "9530", "Eigem", "Belgie"));
-                    bedrijf1.ZetTelefoon("0491732014");
+                    Company bedrijf1 = new Company(1, "Bosteels brewery", "BE0123123123", "info@example.com");
+                    bedrijf1.SetAddress(new Address(1, "Bijvoegstraat", "20", "9530", "Eigem", "Belgie"));
+                    bedrijf1.SetPhoneNumber("0491732014");
                     bedrijven.Add(bedrijf1);
-                    Bedrijf bedrijf2 = new Bedrijf(2, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
-                    bedrijf2.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
-                    bedrijf2.ZetTelefoon("0491732123");
+                    Company bedrijf2 = new Company(2, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
+                    bedrijf2.SetAddress(new Address(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
+                    bedrijf2.SetPhoneNumber("0491732123");
                     bedrijven.Add(bedrijf2);
-                    Bedrijf bedrijf3 = new Bedrijf(3, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
-                    bedrijf3.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
-                    bedrijf3.ZetTelefoon("0491732123");
+                    Company bedrijf3 = new Company(3, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
+                    bedrijf3.SetAddress(new Address(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
+                    bedrijf3.SetPhoneNumber("0491732123");
                     bedrijven.Add(bedrijf3);
-                    Bedrijf bedrijf4 = new Bedrijf(4, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
-                    bedrijf4.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
-                    bedrijf4.ZetTelefoon("0491732123");
+                    Company bedrijf4 = new Company(4, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
+                    bedrijf4.SetAddress(new Address(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
+                    bedrijf4.SetPhoneNumber("0491732123");
                     bedrijven.Add(bedrijf4);
-                    Bedrijf bedrijf5 = new Bedrijf(5, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
-                    bedrijf5.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
-                    bedrijf5.ZetTelefoon("0491732123");
+                    Company bedrijf5 = new Company(5, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
+                    bedrijf5.SetAddress(new Address(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
+                    bedrijf5.SetPhoneNumber("0491732123");
                     bedrijven.Add(bedrijf5);
                 }
             }
@@ -635,8 +635,8 @@ namespace UIAdmin
         {
             if (ListviewWerknemerOpzoeken.SelectedItems.Count == 1)
             {
-                Werknemer werknemer = (Werknemer)ListviewWerknemerOpzoeken.SelectedItem;
-                MessageBox.Show($"werknemerId => {werknemer.PersoonId}");
+                Employee werknemer = (Employee)ListviewWerknemerOpzoeken.SelectedItem;
+                MessageBox.Show($"werknemerId => {werknemer.PersonId}");
                 werknemersList.Clear();
                 WerknemerOpzoekenTextBoxNaam.Text = "";
                 WerknemerOpzoekenTextBoxVoornaam.Text = "";
@@ -653,13 +653,13 @@ namespace UIAdmin
         {
             if (ListviewWerknemerOpzoeken.SelectedItems.Count == 1)
             {
-                Werknemer werknemer = (Werknemer)ListviewWerknemerOpzoeken.SelectedItem;
+                Employee werknemer = (Employee)ListviewWerknemerOpzoeken.SelectedItem;
                 string? naam = null;
                 string? voornaam = null;
                 string? email = null;
                 string message = "";
-                if ((!string.IsNullOrWhiteSpace(WerknemerOpzoekenTextBoxNaam.Text)) && (WerknemerOpzoekenTextBoxNaam.Text != werknemer.Naam)) { naam = WerknemerOpzoekenTextBoxNaam.Text; message += $"naam => {naam}\n"; }
-                if ((!string.IsNullOrWhiteSpace(WerknemerOpzoekenTextBoxVoornaam.Text)) && (WerknemerOpzoekenTextBoxVoornaam.Text != werknemer.Voornaam)) { voornaam = WerknemerOpzoekenTextBoxVoornaam.Text; message += $"voornaam => {voornaam}\n"; }
+                if ((!string.IsNullOrWhiteSpace(WerknemerOpzoekenTextBoxNaam.Text)) && (WerknemerOpzoekenTextBoxNaam.Text != werknemer.LastName)) { naam = WerknemerOpzoekenTextBoxNaam.Text; message += $"naam => {naam}\n"; }
+                if ((!string.IsNullOrWhiteSpace(WerknemerOpzoekenTextBoxVoornaam.Text)) && (WerknemerOpzoekenTextBoxVoornaam.Text != werknemer.FirstName)) { voornaam = WerknemerOpzoekenTextBoxVoornaam.Text; message += $"voornaam => {voornaam}\n"; }
                 if ((!string.IsNullOrWhiteSpace(WerknemerOpzoekenTextBoxEmail.Text)) && (WerknemerOpzoekenTextBoxEmail.Text != werknemer.Email)) { email = WerknemerOpzoekenTextBoxEmail.Text; message += $"email => {email}\n"; }
                 if (message == "") MessageBox.Show("Er moet minimum 1 veld aangepast worden!");
                 else MessageBox.Show(message);
@@ -709,16 +709,16 @@ namespace UIAdmin
                     if (!string.IsNullOrWhiteSpace(BezoekerOpzoekenFilterTextBoxBedrijfNaam.Text)) { bedrijfnaam = BezoekerOpzoekenFilterTextBoxBedrijfNaam.Text; }
                     MessageBox.Show($"persoonId => {persoonId}\nnaam => {naam}\nvoornaam => {voornaam}\nemail => {email}\nbedrijfnaam => {bedrijfnaam}");
                     bezoekers.Clear();
-                    bezoekers.Add(new Bezoeker(1, "Geeroms", "Jantje", "Jantje.Geeroms@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(2, "Stanton", "Rumaysa", "Rumaysa.Stanton@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(3, "Sims", "Eben", "Eben.Sims@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(4, "Pena", "Hannah", "Hannah.Pena@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(5, "Wall", "Eboni", "Eboni.Wall@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(6, "Rasmussen", "Zayan", "Zayan.Rasmussen@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(7, "Hope", "Adaline", "Adaline.Hope@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(8, "Knights", "Zeeshan", "Zeeshan.Knights@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(9, "Cooley", "Kayleigh", "Kayleigh.Cooley@hotmail.com", "allphi"));
-                    bezoekers.Add(new Bezoeker(10, "Baldwin", "David", "David.Baldwin@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(1, "Geeroms", "Jantje", "Jantje.Geeroms@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(2, "Stanton", "Rumaysa", "Rumaysa.Stanton@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(3, "Sims", "Eben", "Eben.Sims@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(4, "Pena", "Hannah", "Hannah.Pena@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(5, "Wall", "Eboni", "Eboni.Wall@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(6, "Rasmussen", "Zayan", "Zayan.Rasmussen@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(7, "Hope", "Adaline", "Adaline.Hope@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(8, "Knights", "Zeeshan", "Zeeshan.Knights@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(9, "Cooley", "Kayleigh", "Kayleigh.Cooley@hotmail.com", "allphi"));
+                    bezoekers.Add(new Visitor(10, "Baldwin", "David", "David.Baldwin@hotmail.com", "allphi"));
                 }
             }
         }
@@ -726,8 +726,8 @@ namespace UIAdmin
         {
             if (ListviewBezoekerOpzoeken.SelectedItems.Count == 1)
             {
-                Bezoeker bezoeker = (Bezoeker)ListviewBezoekerOpzoeken.SelectedItem;
-                MessageBox.Show($"bezoekerId => {bezoeker.PersoonId}");
+                Visitor bezoeker = (Visitor)ListviewBezoekerOpzoeken.SelectedItem;
+                MessageBox.Show($"bezoekerId => {bezoeker.PersonId}");
                 bezoekers.Clear();
                 BezoekerOpzoekenTextBoxNaam.Text = "";
                 BezoekerOpzoekenTextBoxVoornaam.Text = "";
@@ -745,16 +745,16 @@ namespace UIAdmin
         {
             if (ListviewBezoekerOpzoeken.SelectedItems.Count == 1)
             {
-                Bezoeker bezoeker = (Bezoeker)ListviewBezoekerOpzoeken.SelectedItem;
+                Visitor bezoeker = (Visitor)ListviewBezoekerOpzoeken.SelectedItem;
                 string? naam = null;
                 string? voornaam = null;
                 string? email = null;
                 string? bedrijfnaam = null;
                 string message = "";
-                if ((!string.IsNullOrWhiteSpace(BezoekerOpzoekenTextBoxNaam.Text)) && (BezoekerOpzoekenTextBoxNaam.Text != bezoeker.Naam)) { naam = BezoekerOpzoekenTextBoxNaam.Text; message += $"naam => {naam}\n"; }
-                if ((!string.IsNullOrWhiteSpace(BezoekerOpzoekenTextBoxVoornaam.Text)) && (BezoekerOpzoekenTextBoxVoornaam.Text != bezoeker.Voornaam)) { voornaam = BezoekerOpzoekenTextBoxVoornaam.Text; message += $"voornaam => {voornaam}\n"; }
+                if ((!string.IsNullOrWhiteSpace(BezoekerOpzoekenTextBoxNaam.Text)) && (BezoekerOpzoekenTextBoxNaam.Text != bezoeker.LastName)) { naam = BezoekerOpzoekenTextBoxNaam.Text; message += $"naam => {naam}\n"; }
+                if ((!string.IsNullOrWhiteSpace(BezoekerOpzoekenTextBoxVoornaam.Text)) && (BezoekerOpzoekenTextBoxVoornaam.Text != bezoeker.FirstName)) { voornaam = BezoekerOpzoekenTextBoxVoornaam.Text; message += $"voornaam => {voornaam}\n"; }
                 if ((!string.IsNullOrWhiteSpace(BezoekerOpzoekenTextBoxEmail.Text)) && (BezoekerOpzoekenTextBoxEmail.Text != bezoeker.Email)) { email = BezoekerOpzoekenTextBoxEmail.Text; message += $"email => {email}\n"; }
-                if ((!string.IsNullOrWhiteSpace(BezoekerOpzoekenTextBoxBedrijfNaam.Text)) && (BezoekerOpzoekenTextBoxBedrijfNaam.Text != bezoeker.Bedrijf)) { bedrijfnaam = BezoekerOpzoekenTextBoxBedrijfNaam.Text; message += $"bedrijfnaam => {bedrijfnaam}\n"; }
+                if ((!string.IsNullOrWhiteSpace(BezoekerOpzoekenTextBoxBedrijfNaam.Text)) && (BezoekerOpzoekenTextBoxBedrijfNaam.Text != bezoeker.Company)) { bedrijfnaam = BezoekerOpzoekenTextBoxBedrijfNaam.Text; message += $"bedrijfnaam => {bedrijfnaam}\n"; }
                 if (message == "") MessageBox.Show("Er moet minimum 1 veld aangepast worden!");
                 else MessageBox.Show(message);
             }
@@ -807,15 +807,15 @@ namespace UIAdmin
                     if (!string.IsNullOrWhiteSpace(BezoekOpzoekenFilterTextBoxPersoonId.Text)) { PersoonId = BezoekOpzoekenFilterTextBoxPersoonId.Text; }
                     MessageBox.Show($"naam => {naam}\nvoornaam => {voornaam}\nbedrijfId => {bedrijfnaam}\nemail => {email}\nPersoonId => {PersoonId}");
                     bezoeken.Clear();
-                    Bedrijf bedrijf1 = new Bedrijf(1, "Bosteels brewery", "BE0123123123", "info@example.com");
-                    bedrijf1.ZetAdres(new Adres(1, "Bijvoegstraat", "20", "9530", "Eigem", "Belgie"));
-                    bedrijf1.ZetTelefoon("0491732014");
-                    Bezoek bezoek1 = new Bezoek(1, new Bezoeker(1, "Geeroms", "Jantje", "Jantje.Geeroms@hotmail.com", "allphi"), bedrijf1, new Werknemer(2, "Janssen", "Jan"), new DateTime(2022, 10, 24), new DateTime(2022, 10, 24));
+                    Company bedrijf1 = new Company(1, "Bosteels brewery", "BE0123123123", "info@example.com");
+                    bedrijf1.SetAddress(new Address(1, "Bijvoegstraat", "20", "9530", "Eigem", "Belgie"));
+                    bedrijf1.SetPhoneNumber("0491732014");
+                    Visit bezoek1 = new Visit(1, new Visitor(1, "Geeroms", "Jantje", "Jantje.Geeroms@hotmail.com", "allphi"), bedrijf1, new Employee(2, "Janssen", "Jan"), new DateTime(2022, 10, 24), new DateTime(2022, 10, 24));
                     bezoeken.Add(bezoek1);
-                    Bedrijf bedrijf2 = new Bedrijf(2, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
-                    bedrijf2.ZetAdres(new Adres(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
-                    bedrijf2.ZetTelefoon("0491732123");
-                    Bezoek bezoek2 = new Bezoek(2, new Bezoeker(2, "Stanton", "Rumaysa", "Rumaysa.Stanton@hotmail.com", "allphi"), bedrijf2, new Werknemer(6, "Jonssen", "Robrecht"), new DateTime(2022, 10, 20), new DateTime(2022, 10, 20));
+                    Company bedrijf2 = new Company(2, "Bosteels Harbor", "BE0123123158", "infoExample@example.com");
+                    bedrijf2.SetAddress(new Address(2, "Coremareel", "82", "9530", "Eigem", "Belgie"));
+                    bedrijf2.SetPhoneNumber("0491732123");
+                    Visit bezoek2 = new Visit(2, new Visitor(2, "Stanton", "Rumaysa", "Rumaysa.Stanton@hotmail.com", "allphi"), bedrijf2, new Employee(6, "Jonssen", "Robrecht"), new DateTime(2022, 10, 20), new DateTime(2022, 10, 20));
                     bezoeken.Add(bezoek2);
                 }
             }
@@ -824,8 +824,8 @@ namespace UIAdmin
         {
             if (ListviewBezoekOpzoeken.SelectedItems.Count == 1)
             {
-                Bezoek bezoek = (Bezoek)ListviewBezoekOpzoeken.SelectedItem;
-                MessageBox.Show($"bezoekId => {bezoek.BezoekId}");
+                Visit bezoek = (Visit)ListviewBezoekOpzoeken.SelectedItem;
+                MessageBox.Show($"bezoekId => {bezoek.VisitId}");
                 bezoeken.Clear();
                 BezoekOpzoekenTextBoxEmail.Text = "";
                 BezoekOpzoekenTextBoxNaam.Text = "";
@@ -845,7 +845,7 @@ namespace UIAdmin
         {
             if (ListviewBezoekOpzoeken.SelectedItems.Count == 1)
             {
-                Bezoek bezoek = (Bezoek)ListviewBezoekOpzoeken.SelectedItem;
+                Visit bezoek = (Visit)ListviewBezoekOpzoeken.SelectedItem;
                 string? naam = null;
                 string? voornaam = null;
                 string? email = null;
@@ -853,12 +853,12 @@ namespace UIAdmin
                 string? bedrijf = null;
                 string? werknemer = null;
                 string message = "";
-                if ((!string.IsNullOrWhiteSpace(BezoekOpzoekenTextBoxNaam.Text)) && (BezoekOpzoekenTextBoxNaam.Text != bezoek.Bezoeker.Naam)) { naam = BezoekOpzoekenTextBoxNaam.Text; message += $"naam => {naam}\n"; }
-                if ((!string.IsNullOrWhiteSpace(BezoekOpzoekenTextBoxVoornaam.Text)) && (BezoekOpzoekenTextBoxVoornaam.Text != bezoek.Bezoeker.Voornaam)) { voornaam = BezoekOpzoekenTextBoxVoornaam.Text; message += $"voornaam => {voornaam}\n"; }
-                if ((!string.IsNullOrWhiteSpace(BezoekOpzoekenTextBoxEmail.Text)) && (BezoekOpzoekenTextBoxEmail.Text != bezoek.Bezoeker.Email)) { email = BezoekOpzoekenTextBoxEmail.Text; message += $"email => {email}\n"; }
-                if ((!string.IsNullOrWhiteSpace(BezoekOpzoekenTextBoxBedrijfNaamBezoeker.Text)) && (BezoekOpzoekenTextBoxBedrijfNaamBezoeker.Text != bezoek.Bezoeker.Bedrijf)) { bedrijfnaam = BezoekOpzoekenTextBoxBedrijfNaamBezoeker.Text; message += $"bedrijfnaam => {bedrijfnaam}\n"; }
-                if ((BezoekOpzoekenComboBoxBedrijfNaam.SelectedItem != null) && (BezoekOpzoekenComboBoxBedrijfNaam.SelectedItem.ToString() != bezoek.Bedrijf.Naam)) { bedrijf = BezoekOpzoekenComboBoxBedrijfNaam.SelectedItem.ToString(); message += $"bedrijf => {bedrijf}\n"; }
-                if ((BezoekOpzoekenComboBoxContactPersoon.SelectedItem != null) && (BezoekOpzoekenComboBoxContactPersoon.SelectedItem.ToString() != $"{bezoek.Contactpersoon.Naam}, {bezoek.Contactpersoon.Voornaam}")) { werknemer = BezoekOpzoekenComboBoxContactPersoon.SelectedItem.ToString(); message += $"werknemer => {werknemer}\n"; }
+                if ((!string.IsNullOrWhiteSpace(BezoekOpzoekenTextBoxNaam.Text)) && (BezoekOpzoekenTextBoxNaam.Text != bezoek.Visitor.LastName)) { naam = BezoekOpzoekenTextBoxNaam.Text; message += $"naam => {naam}\n"; }
+                if ((!string.IsNullOrWhiteSpace(BezoekOpzoekenTextBoxVoornaam.Text)) && (BezoekOpzoekenTextBoxVoornaam.Text != bezoek.Visitor.FirstName)) { voornaam = BezoekOpzoekenTextBoxVoornaam.Text; message += $"voornaam => {voornaam}\n"; }
+                if ((!string.IsNullOrWhiteSpace(BezoekOpzoekenTextBoxEmail.Text)) && (BezoekOpzoekenTextBoxEmail.Text != bezoek.Visitor.Email)) { email = BezoekOpzoekenTextBoxEmail.Text; message += $"email => {email}\n"; }
+                if ((!string.IsNullOrWhiteSpace(BezoekOpzoekenTextBoxBedrijfNaamBezoeker.Text)) && (BezoekOpzoekenTextBoxBedrijfNaamBezoeker.Text != bezoek.Visitor.Company)) { bedrijfnaam = BezoekOpzoekenTextBoxBedrijfNaamBezoeker.Text; message += $"bedrijfnaam => {bedrijfnaam}\n"; }
+                if ((BezoekOpzoekenComboBoxBedrijfNaam.SelectedItem != null) && (BezoekOpzoekenComboBoxBedrijfNaam.SelectedItem.ToString() != bezoek.Company.Name)) { bedrijf = BezoekOpzoekenComboBoxBedrijfNaam.SelectedItem.ToString(); message += $"bedrijf => {bedrijf}\n"; }
+                if ((BezoekOpzoekenComboBoxContactPersoon.SelectedItem != null) && (BezoekOpzoekenComboBoxContactPersoon.SelectedItem.ToString() != $"{bezoek.Contact.LastName}, {bezoek.Contact.FirstName}")) { werknemer = BezoekOpzoekenComboBoxContactPersoon.SelectedItem.ToString(); message += $"werknemer => {werknemer}\n"; }
                 if (message == "") MessageBox.Show("Er moet minimum 1 veld aangepast worden!");
                 else MessageBox.Show(message);
             }

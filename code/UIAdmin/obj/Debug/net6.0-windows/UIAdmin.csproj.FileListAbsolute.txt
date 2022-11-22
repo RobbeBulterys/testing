@@ -81,3 +81,7 @@ E:\programming\github repos\ProjectWerk\Code\UIAdmin\bin\Debug\net6.0-windows\My
 E:\programming\github repos\ProjectWerk\Code\UIAdmin\bin\Debug\net6.0-windows\img\icons8-back-arrow-50.png
 E:\programming\github repos\ProjectWerk\Code\UIAdmin\bin\Debug\net6.0-windows\img\icons8-next-page-50.png
 E:\programming\github repos\ProjectWerk\Code\UIAdmin\bin\Debug\net6.0-windows\img\icons8-circled-right-50.png
+E:\programming\github repos\ProjectWerk\Code\UIAdmin\bin\Debug\net6.0-windows\img\icons8-chevron-down-24.png
+E:\programming\github repos\ProjectWerk\Code\UIAdmin\bin\Debug\net6.0-windows\img\icons8-chevron-up-24.png
+E:\programming\github repos\ProjectWerk\Code\UIAdmin\obj\Debug\net6.0-windows\view\AddEmployeeContractScreen.g.cs
+E:\programming\github repos\ProjectWerk\Code\UIAdmin\obj\Debug\net6.0-windows\view\AddEmployeeContractScreen.baml

@@ -35,40 +35,40 @@ namespace UIBezoeker
 
         private static string connectionstring = "Server=ID367284_VRS.db.webhosting.be;User ID=ID367284_VRS;Password=RootRoot!69;Database=ID367284_VRS";
 
-        private static IBezoekerRepository bezoekerRepo = new BezoekerRepoADO(connectionstring);
-        private BezoekerManager _bezoekerManager = new BezoekerManager(bezoekerRepo);
-
-        private static IAdresRepository adresRepo = new AdresRepoADO(connectionstring);
-        private static AdresManager _adresManager = new AdresManager(adresRepo, bedrijfRepo);
+        private static IVisitorRepository _visitorRepo = new VisitorRepoADO(connectionstring);
+        private VisitorManager _visitorManager = new VisitorManager(_visitorRepo);
 
 
-        private static IWerknemercontractRepository contractRepo = new WerknemercontractRepoADO(connectionstring);
-        private static WerknemercontractManager _contractManager = new WerknemercontractManager(contractRepo);
+        private static IEmployeecontractRepository contractRepo = new EmployeecontractRepoADO(connectionstring);
+        private static EmployeecontractManager _contractManager = new EmployeecontractManager(contractRepo);
 
-        private static IBezoekRepository bezoekRepo = new BezoekRepoADO(connectionstring);
-        private BezoekManager _bezoekManager = new BezoekManager(bezoekRepo);
+        private static IVisitRepository _visitRepo = new VisitRepoADO(connectionstring);
+        private VisitManager _visitManager = new VisitManager(_visitRepo);
 
-        private static IWerknemerRepository werknemerRepo = new WerknemerRepoADO(connectionstring);
-        private WerknemerManager _werknemerRepo = new WerknemerManager(werknemerRepo);
+        private static IEmployeeRepository _employeeRepo = new EmployeeRepoADO(connectionstring);
+        private EmployeeManager _employeeManager = new EmployeeManager(_employeeRepo);
 
-        private static IBedrijfRepository bedrijfRepo = new BedrijfRepoADO(connectionstring);
-        private BedrijfManager _bedrijfManager = new BedrijfManager(bedrijfRepo, _adresManager, _contractManager);
+        private static ICompanyRepository _companyRepo = new CompanyRepoADO(connectionstring);
+        private CompanyManager _companyManager = new CompanyManager(_companyRepo, _adresManager, _contractManager);
 
-        static private Bedrijf _bedrijf;
-        static private Werknemer _werknemer;
+        private static IAddressRepository adresRepo = new AddressRepoADO(connectionstring);
+        private static AddressManager _adresManager = new AddressManager(adresRepo, _companyRepo);
+
+        static private Company _company;
+        static private Employee _employee;
         
-        static private Bezoek _bezoek;
-        static private Bezoeker _bezoeker;
-        static private Werknemercontract _werknemercontract;
+        static private Visit _visit;
+        static private Visitor _visitor;
+        static private Employeecontract _employeecontract;
 
 
         public MainView()
         {
             InitializeComponent();
 
-            ComboBoxBedrijf.ItemsSource = _bedrijfManager.GeefBedrijven();
-            
+            ComboBoxBedrijf.ItemsSource = _companyManager.GetCompanies();       
         }
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -76,7 +76,6 @@ namespace UIBezoeker
                 DragMove();
             }
         }
-
 
         private void Login_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -92,7 +91,6 @@ namespace UIBezoeker
         {
             Logout.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#85C4FF");
             Login.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#002242");
-
             LoginBorder.Visibility = Visibility.Collapsed;
             LogoutBorder.Visibility = Visibility.Visible;
             Titel.Text = "Afmelden";
@@ -111,21 +109,16 @@ namespace UIBezoeker
 
         private void ComboBoxBedrijf_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            _bedrijf = ComboBoxBedrijf.SelectedItem as Bedrijf;
-
+            _company = ComboBoxBedrijf.SelectedItem as Company;
             if (ComboBoxBedrijf.SelectedIndex != -1)
             {
-                ComboBoxContactpersoon.ItemsSource = _contractManager.GeefContractenVanBedrijf(_bedrijf);
-            }
-            
+                ComboBoxContactpersoon.ItemsSource = _contractManager.GetCompanyContracts(_company);
+            }       
         }
 
         private void ComboBoxContactPersoon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            _werknemercontract = ComboBoxContactpersoon.SelectedItem as Werknemercontract;
-
+            _employeecontract = ComboBoxContactpersoon.SelectedItem as Employeecontract;
         }
 
         private void LoginButtonEffect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -134,14 +127,14 @@ namespace UIBezoeker
             {
                 //TODO: Exceptionhandling WPF
                 LoginCheck();
-                _bezoeker = new Bezoeker(TextBoxNaam.Text, TextBoxVoornaam.Text, TextBoxEmailLogin.Text, TextBoxBedrijfVanBezoeker.Text);
-                if (_bezoekManager.IsLoggedIn(_bezoeker.Email)) throw new Exception("Bezoeker is reeds ingelogd");
-                _bezoekerManager.VoegBezoekerToe(_bezoeker);
-                _bezoeker = _bezoekerManager.ZoekBezoekers(_bezoeker.Naam, _bezoeker.Voornaam, _bezoeker.Email, _bezoeker.Bedrijf).ToList()[0];
-                _bezoek = new Bezoek(_bezoeker, _bedrijf, _werknemercontract.Werknemer, DateTime.Now);
-                if (MessageBox.Show($"Zijn deze gegevens correct? \nNaam: {TextBoxNaam.Text} {TextBoxVoornaam.Text} \nEmail: {TextBoxEmailLogin.Text} \nBedrijf van afkomst:{TextBoxBedrijfVanBezoeker.Text} \nBedrijf met afspraak:{_bedrijf.Naam} \nContactpersoon: {_werknemercontract.Werknemer.Naam} {_werknemercontract.Werknemer.Voornaam}", "Controle", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                _visitor = new Visitor(TextBoxNaam.Text, TextBoxVoornaam.Text, TextBoxEmailLogin.Text, TextBoxBedrijfVanBezoeker.Text);
+                _visitorManager.AddVisitor(_visitor);
+                _visitor = _visitorManager.SearchVisitors(_visitor.LastName, _visitor.FirstName, _visitor.Email, _visitor.Company).ToList()[0];
+                _visitManager.AlreadyLoggedIn(_visitor.Email);
+                _visit = new Visit(_visitor, _company, _employeecontract.Employee, DateTime.Now);
+                if (MessageBox.Show($"Zijn deze gegevens correct? \nNaam: {TextBoxNaam.Text} {TextBoxVoornaam.Text} \nEmail: {TextBoxEmailLogin.Text} \nBedrijf van afkomst:{TextBoxBedrijfVanBezoeker.Text} \nBedrijf met afspraak:{_company.Name} \nContactpersoon: {_employeecontract.Employee.LastName} {_employeecontract.Employee.FirstName}", "Controle", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    _bezoekManager.VoegBezoekToe(_bezoek);
+                    _visitManager.AddVisit(_visit);
                     ClearTextBoxLogin();
                 }
 
@@ -165,13 +158,13 @@ namespace UIBezoeker
         {
             try
             {
-                _bezoekManager.LogoutBezoek(TextBoxEmailLogout.Text);
+                _visitManager.LogoutVisit(TextBoxEmailLogout.Text);
                 MessageBox.Show("Succesvol Afgemeld");
                 TextBoxEmailLogout.Clear();
             }
             catch (Exception ex)
             {
-                if (ex.Message.Equals("not logged in"))
+                if (ex.Message.Equals("Is not logged in"))
                 {
                     MessageBox.Show("U bent nog niet aangemeld, gelieve u eerst aan te melden");
                     Login_MouseLeftButtonDown(sender, e);
@@ -200,8 +193,8 @@ namespace UIBezoeker
             TextBoxBedrijfVanBezoeker.Clear();
             ComboBoxContactpersoon.ItemsSource = null;
             ComboBoxBedrijf.SelectedIndex = -1;
-            _werknemer = null;
-            _bedrijf = null;
+            _employee = null;
+            _company = null;
         }
 
     }

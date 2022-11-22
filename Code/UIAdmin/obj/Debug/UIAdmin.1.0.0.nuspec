@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>UIAdmin</id>
+    <version>1.0.0</version>
+    <authors>UIAdmin</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0">
+        <dependency id="BL-Projectwerk" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="DL-Projectwerk" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/net6.0-windows7.0/img/icons8-back-arrow-50.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-calendar-13-16.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-calendar-50.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-circled-right-50.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-engineer-80.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-factory-50.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-factory-breakdown-16.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-home-page-16.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-home-page-50.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-male-user-50.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-next-page-50.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-pencil-50.png" buildAction="Content" />
+      <files include="any/net6.0-windows7.0/img/icons8-trash-50.png" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\bin\Debug\net6.0-windows\UIAdmin.runtimeconfig.json" target="lib\net6.0-windows7.0\UIAdmin.runtimeconfig.json" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\bin\Debug\net6.0-windows\UIAdmin.dll" target="lib\net6.0-windows7.0\UIAdmin.dll" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-back-arrow-50.png" target="content\img\icons8-back-arrow-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-back-arrow-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-back-arrow-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-calendar-13-16.png" target="content\img\icons8-calendar-13-16.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-calendar-13-16.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-calendar-13-16.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-calendar-50.png" target="content\img\icons8-calendar-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-calendar-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-calendar-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-circled-right-50.png" target="content\img\icons8-circled-right-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-circled-right-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-circled-right-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-engineer-80.png" target="content\img\icons8-engineer-80.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-engineer-80.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-engineer-80.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-factory-50.png" target="content\img\icons8-factory-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-factory-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-factory-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-factory-breakdown-16.png" target="content\img\icons8-factory-breakdown-16.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-factory-breakdown-16.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-factory-breakdown-16.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-home-page-16.png" target="content\img\icons8-home-page-16.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-home-page-16.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-home-page-16.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-home-page-50.png" target="content\img\icons8-home-page-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-home-page-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-home-page-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-male-user-50.png" target="content\img\icons8-male-user-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-male-user-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-male-user-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-next-page-50.png" target="content\img\icons8-next-page-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-next-page-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-next-page-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-pencil-50.png" target="content\img\icons8-pencil-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-pencil-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-pencil-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-trash-50.png" target="content\img\icons8-trash-50.png" />
+    <file src="E:\programming\github repos\ProjectWerk\Code\UIAdmin\img\icons8-trash-50.png" target="contentFiles\any\net6.0-windows7.0\img\icons8-trash-50.png" />
+  </files>
+</package>

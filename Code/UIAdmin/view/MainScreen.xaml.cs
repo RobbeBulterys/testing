@@ -25,22 +25,22 @@ namespace UIAdmin.view
     {
         private bool _IsInitialized = false;
         private bool _isMaximized = false;
-        private AdresManager _adresManager;
-        private BedrijfManager _companyManager;
-        private BezoekerManager _visitorManager;
-        private WerknemerManager _employeeManager;
-        private BezoekManager _visitManager;
-        private WerknemercontractManager _employeecontractManager;
-        private List<Werknemer> employees = new List<Werknemer>();
-        private List<Bedrijf> companys = new List<Bedrijf>();
-        private List<Bezoeker> visitors = new List<Bezoeker>();
-        private List<Bezoek> visits = new List<Bezoek>();
-        private List<Bezoek> allVisits = new List<Bezoek>();
-        private ObservableCollection<Bedrijf> companysCollection = new ObservableCollection<Bedrijf>();
-        private ObservableCollection<Bezoeker> visitorsCollection = new ObservableCollection<Bezoeker>();
-        private ObservableCollection<Werknemer> employeesCollection = new ObservableCollection<Werknemer>();
-        private ObservableCollection<BezoekAdmin> visitsAdminCollection = new ObservableCollection<BezoekAdmin>();
-        public MainScreen(AdresManager adresManager, BedrijfManager companyManager, BezoekerManager visitorManager, WerknemerManager employeeManager, WerknemercontractManager employeecontract, BezoekManager visitManager)
+        private AddressManager _adresManager;
+        private CompanyManager _companyManager;
+        private VisitorManager _visitorManager;
+        private EmployeeManager _employeeManager;
+        private VisitManager _visitManager;
+        private EmployeecontractManager _employeecontractManager;
+        private List<Employee> employees = new List<Employee>();
+        private List<Company> companys = new List<Company>();
+        private List<Visitor> visitors = new List<Visitor>();
+        private List<Visit> visits = new List<Visit>();
+        private List<Visit> allVisits = new List<Visit>();
+        private ObservableCollection<Company> companysCollection = new ObservableCollection<Company>();
+        private ObservableCollection<Visitor> visitorsCollection = new ObservableCollection<Visitor>();
+        private ObservableCollection<Employee> employeesCollection = new ObservableCollection<Employee>();
+        private ObservableCollection<VisitAdmin> visitsAdminCollection = new ObservableCollection<VisitAdmin>();
+        public MainScreen(AddressManager adresManager, CompanyManager companyManager, VisitorManager visitorManager, EmployeeManager employeeManager, EmployeecontractManager employeecontract, VisitManager visitManager)
         {
             InitializeComponent();
             _IsInitialized = true;
@@ -80,35 +80,63 @@ namespace UIAdmin.view
                 if (button.Name == "CompanyBtn")
                 {
                     CompanyBorder.Visibility = Visibility.Visible;
-                    companysCollection.Clear();
-                    companys = _companyManager.GeefBedrijven().ToList();
-                    CompanysShowList();
+                    if (companys.Count == 0)
+                    {
+                        try
+                        {
+                            companys.Clear();
+                            companysCollection.Clear();
+                            companys = _companyManager.GetCompanies().ToList();
+                            CompanysShowList();
+                        }
+                        catch (Exception ex) { MessageBox.Show(ex.InnerException.InnerException.Message); }
+                    }
                 }
                 if (button.Name == "VisitorBtn")
                 {
                     VisitorBorder.Visibility = Visibility.Visible;
-                    visitorsCollection.Clear();
-                    visitors.Clear();
-                    visitors = _visitorManager.GeefBezoekers().ToList();
-                    VisitorsShowList();
+                    if (visitors.Count == 0)
+                    {
+                        try
+                        {
+                            visitorsCollection.Clear();
+                            visitors.Clear();
+                            visitors = _visitorManager.GetVisitors().ToList();
+                            VisitorsShowList();
+                        }
+                        catch (Exception ex) { MessageBox.Show(ex.InnerException.InnerException.Message); }
+                    }
                 }
                 if (button.Name == "EmployeeBtn")
                 {
                     EmployeeBorder.Visibility = Visibility.Visible;
-                    employeesCollection.Clear();
-                    employees.Clear();
-                    employees = _employeeManager.GeefAlleWerknemers().ToList();
-                    EmployeesShowList();
+                    if (employees.Count == 0)
+                    {
+                        try
+                        {
+                            employeesCollection.Clear();
+                            employees.Clear();
+                            employees = _employeeManager.GetAllEmployees().ToList();
+                            EmployeesShowList();
+                        }
+                        catch (Exception ex) { MessageBox.Show(ex.InnerException.InnerException.Message); }
+                    }
                 }
                 if (button.Name == "VisitBtn")
                 {
                     VisitBorder.Visibility = Visibility.Visible;
-                    visitsAdminCollection.Clear();
-                    visits.Clear();
-                    allVisits.Clear();
-                    allVisits = _visitManager.GeefBezoeken().ToList();
-                    visits = _visitManager.ZoekBezoeken(null, null, null, $"{DateTime.Today.Year}-{DateTime.Today.Month}-{DateTime.Today.Day}").ToList();
-                    VisitsShowList();
+                    if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Vandaag")
+                    {
+                        try
+                        {
+                            visitsAdminCollection.Clear();
+                            visits.Clear();
+                            DateTime tomorrow = DateTime.Today.AddDays(1);
+                            visits = _visitManager.SearchSpecificVisits($"{DateTime.Today.Year}-{DateTime.Today.Month}-{DateTime.Today.Day}", $"{tomorrow.Year}-{tomorrow.Month}-{tomorrow.Day}").OrderBy(v => v.StartingTime).ToList();
+                            VisitsShowList();
+                        }
+                        catch (Exception ex) { MessageBox.Show(ex.InnerException.InnerException.Message); }
+                    }
                 }
             }
         }
@@ -116,7 +144,7 @@ namespace UIAdmin.view
         {
             this.Close();
         }
-        #region Bedrijf
+        #region Company
         private void AddCompany_Click(object sender, RoutedEventArgs e)
         {
             AddBedrijfScreen screen = new AddBedrijfScreen(_adresManager, _companyManager);
@@ -127,22 +155,22 @@ namespace UIAdmin.view
             if (sender.GetType() == typeof(Button))
             {
                 Button button = (Button)sender;
-                if (CompanyDataGrid.SelectedItem.GetType() == typeof(Bedrijf))
+                if (CompanyDataGrid.SelectedItem.GetType() == typeof(Company))
                 {
-                    Bedrijf b = (Bedrijf)CompanyDataGrid.SelectedItem;
-                    if (button.Name == "CompanyEditButton1") { EditBedrijfScreen screen = new EditBedrijfScreen(_adresManager, _companyManager, _employeecontractManager, _visitManager, b, "Company"); screen.Show(); }
-                    if (button.Name == "CompanyEditButton2") { EditBedrijfScreen screen = new EditBedrijfScreen(_adresManager, _companyManager, _employeecontractManager, _visitManager, b, "Workers"); screen.Show(); }
-                    if (button.Name == "CompanyEditButton3") { EditBedrijfScreen screen = new EditBedrijfScreen(_adresManager, _companyManager, _employeecontractManager, _visitManager, b, "Visits"); screen.Show(); }
+                    Company b = (Company)CompanyDataGrid.SelectedItem;
+                    if (button.Name == "CompanyEditButton1") { EditBedrijfScreen screen = new EditBedrijfScreen(_adresManager, _companyManager, _employeecontractManager, _visitManager, _employeeManager, b, "Company"); screen.Show(); }
+                    if (button.Name == "CompanyEditButton2") { EditBedrijfScreen screen = new EditBedrijfScreen(_adresManager, _companyManager, _employeecontractManager, _visitManager, _employeeManager, b, "Workers"); screen.Show(); }
+                    if (button.Name == "CompanyEditButton3") { EditBedrijfScreen screen = new EditBedrijfScreen(_adresManager, _companyManager, _employeecontractManager, _visitManager, _employeeManager, b, "Visits"); screen.Show(); }
                 }
             }
         }
         private void CompanyGridRemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CompanyDataGrid.SelectedItem.GetType() == typeof(Bedrijf))
+            if (CompanyDataGrid.SelectedItem.GetType() == typeof(Company))
             {
-                Bedrijf b = (Bedrijf)CompanyDataGrid.SelectedItem;
-                if (b.Adres != null) _companyManager.VerwijderBedrijf(b, b.Adres.Id);
-                else _companyManager.VerwijderBedrijf(b, null);
+                Company b = (Company)CompanyDataGrid.SelectedItem;
+                if (b.Address != null) _companyManager.DeleteCompany(b, b.Address.Id);
+                else _companyManager.DeleteCompany(b, null);
                 companysCollection.Clear();
             }
         }
@@ -156,7 +184,7 @@ namespace UIAdmin.view
                     CompanySearchGrid2.Width = new GridLength(0);
                     CompanySearchBorder.Width = 55;
                     companysCollection.Clear();
-                    companys = _companyManager.GeefBedrijven().ToList();
+                    companys = _companyManager.GetCompanies().ToList();
                     CompanysShowList();
                 }
                 else
@@ -173,16 +201,16 @@ namespace UIAdmin.view
             {
                 try
                 {
-                    if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: All") { companys = _companyManager.ZoekBedrijven(null, null, null, null).ToList(); }
-                    else if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Bedrijfsnaam") { companys = _companyManager.ZoekBedrijven(null, CompanySearchBox.Text, null, null).ToList(); }
-                    else if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: BTW-nummer") { companys = _companyManager.ZoekBedrijven(CompanySearchBox.Text, null, null, null).ToList(); }
-                    else if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Telefoon") { companys = _companyManager.ZoekBedrijven(null, null, null, CompanySearchBox.Text).ToList(); }
-                    else if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Email") { companys = _companyManager.ZoekBedrijven(null, null, CompanySearchBox.Text, null).ToList(); }
+                    if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: All") { companys = _companyManager.SearchCompanies(null, null, null, null).ToList(); }
+                    else if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Bedrijfsnaam") { companys = _companyManager.SearchCompanies(null, CompanySearchBox.Text, null, null).ToList(); }
+                    else if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: BTW-nummer") { companys = _companyManager.SearchCompanies(CompanySearchBox.Text, null, null, null).ToList(); }
+                    else if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Telefoon") { companys = _companyManager.SearchCompanies(null, null, null, CompanySearchBox.Text).ToList(); }
+                    else if (CompanySearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Email") { companys = _companyManager.SearchCompanies(null, null, CompanySearchBox.Text, null).ToList(); }
                     CompanysShowList();
                 }
                 catch (Exception ex) { MessageBox.Show($"{ex}"); }
             }
-            else { companys = _companyManager.ZoekBedrijven(null, null, null, null).ToList(); CompanysShowList(); }
+            else { companys = _companyManager.SearchCompanies(null, null, null, null).ToList(); CompanysShowList(); }
         }
         private void CompanysShowList()
         {
@@ -193,6 +221,7 @@ namespace UIAdmin.view
             if (companys.Count > numberPerPage)
             {
                 int totalPages = (companys.Count + (numberPerPage - (companys.Count % numberPerPage))) / numberPerPage;
+                CompanyDataGridMaxPages.Text = $"of {totalPages}";
                 for (int i = 1; i <= totalPages; i++)
                 {
                     ComboBoxItem item = new ComboBoxItem();
@@ -204,7 +233,11 @@ namespace UIAdmin.view
             }
             else
             {
-                companys.ForEach(c => companysCollection.Add(c));
+                CompanyDataGridMaxPages.Text = $"of 1";
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = 1;
+                item.IsSelected = true;
+                CompanyDataGridComboBox.Items.Add(item);
             }
         }
         private void CompanyItemsPerPageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -257,7 +290,7 @@ namespace UIAdmin.view
             }
         }
         #endregion
-        #region Bezoeker
+        #region Visitor
         private void AddVisitor_Click(object sender, RoutedEventArgs e)
         {
             AddBezoekerScreen screen = new AddBezoekerScreen(_visitorManager);
@@ -265,19 +298,19 @@ namespace UIAdmin.view
         }
         private void VisitorGridEditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (VisitorDataGrid.SelectedItem.GetType() == typeof(Bezoeker))
+            if (VisitorDataGrid.SelectedItem.GetType() == typeof(Visitor))
             {
-                Bezoeker b = (Bezoeker)VisitorDataGrid.SelectedItem;
+                Visitor b = (Visitor)VisitorDataGrid.SelectedItem;
                 EditBezoekerScreen screen = new EditBezoekerScreen(_visitorManager, _visitManager, b);
                 screen.Show();
             }
         }
         private void VisitorGridRemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (VisitorDataGrid.SelectedItem.GetType() == typeof(Bezoeker))
+            if (VisitorDataGrid.SelectedItem.GetType() == typeof(Visitor))
             {
-                Bezoeker b = (Bezoeker)VisitorDataGrid.SelectedItem;
-                _visitorManager.VerwijderBezoeker(b);
+                Visitor b = (Visitor)VisitorDataGrid.SelectedItem;
+                _visitorManager.DeleteVisitor(b);
                 visitorsCollection.Clear();
             }
         }
@@ -296,7 +329,7 @@ namespace UIAdmin.view
                     VisitorSearchBorder.Width = 55;
                     visitorsCollection.Clear();
                     visitors.Clear();
-                    visitors = _visitorManager.GeefBezoekers().ToList();
+                    visitors = _visitorManager.GetVisitors().ToList();
                     VisitorsShowList();
                 }
                 else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Naam en Voornaam")
@@ -320,17 +353,17 @@ namespace UIAdmin.view
                 visitors.Clear();
                 try
                 {
-                    if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: All") { visitors = _visitorManager.GeefBezoekers().ToList(); }
-                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Naam en Voornaam") { visitors = _visitorManager.ZoekBezoekers(VisitorSearchBox1.Text, VisitorSearchBox2.Text, null, null).ToList(); }
-                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Naam") { visitors = _visitorManager.ZoekBezoekers(VisitorSearchBox1.Text, null, null, null).ToList(); }
-                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Voornaam") { visitors = _visitorManager.ZoekBezoekers(null, VisitorSearchBox1.Text, null, null).ToList(); }
-                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Bedrijfsnaam") { visitors = _visitorManager.ZoekBezoekers(null, null, null, VisitorSearchBox1.Text).ToList(); }
-                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Email") { visitors = _visitorManager.ZoekBezoekers(null, null, VisitorSearchBox1.Text, null).ToList(); }
+                    if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: All") { visitors = _visitorManager.GetVisitors().ToList(); }
+                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Naam en Voornaam") { visitors = _visitorManager.SearchVisitors(VisitorSearchBox1.Text, VisitorSearchBox2.Text, null, null).ToList(); }
+                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Naam") { visitors = _visitorManager.SearchVisitors(VisitorSearchBox1.Text, null, null, null).ToList(); }
+                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Voornaam") { visitors = _visitorManager.SearchVisitors(null, VisitorSearchBox1.Text, null, null).ToList(); }
+                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Bedrijfsnaam") { visitors = _visitorManager.SearchVisitors(null, null, null, VisitorSearchBox1.Text).ToList(); }
+                    else if (VisitorSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Email") { visitors = _visitorManager.SearchVisitors(null, null, VisitorSearchBox1.Text, null).ToList(); }
                     VisitorsShowList();
                 }
                 catch (Exception ex) { MessageBox.Show($"{ex}"); }
             }
-            else { visitors = _visitorManager.GeefBezoekers().ToList(); VisitorsShowList(); }
+            else { visitors = _visitorManager.GetVisitors().ToList(); VisitorsShowList(); }
         }
         private void VisitorsShowList()
         {
@@ -342,6 +375,7 @@ namespace UIAdmin.view
             if (visitors.Count > numberPerPage)
             {
                 int totalPages = (visitors.Count + (numberPerPage - (visitors.Count % numberPerPage))) / numberPerPage;
+                VisitorDataGridMaxPages.Text = $"of {totalPages}";
                 for (int i = 1; i <= totalPages; i++)
                 {
                     ComboBoxItem item = new ComboBoxItem();
@@ -353,7 +387,11 @@ namespace UIAdmin.view
             }
             else
             {
-                visitors.ForEach(v => visitorsCollection.Add(v));
+                VisitorDataGridMaxPages.Text = $"of 1";
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = 1;
+                item.IsSelected = true;
+                VisitorDataGridComboBox.Items.Add(item);
             }
         }
         private void VisitorItemsPerPageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -406,7 +444,7 @@ namespace UIAdmin.view
             }
         }
         #endregion
-        #region Werknemer
+        #region Employee
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
         {
             AddWerknemerScreen screen = new AddWerknemerScreen(_employeeManager);
@@ -416,23 +454,23 @@ namespace UIAdmin.view
         {
             if (sender.GetType() == typeof(Button))
             {
-                if (EmployeeDataGrid.SelectedItem.GetType() == typeof(Werknemer))
+                if (EmployeeDataGrid.SelectedItem.GetType() == typeof(Employee))
                 {
                     Button button = (Button)sender;
-                    Werknemer w = (Werknemer)EmployeeDataGrid.SelectedItem;
-                    if (button.Name == "WorkerGridEditButton1") { EditWerknemerScreen screen = new EditWerknemerScreen(_employeeManager, _employeecontractManager, _visitManager, w, "Worker"); screen.Show(); }
-                    else if (button.Name == "WorkerGridEditButton2") { EditWerknemerScreen screen = new EditWerknemerScreen(_employeeManager, _employeecontractManager, _visitManager, w, "Visits"); screen.Show(); }
+                    Employee w = (Employee)EmployeeDataGrid.SelectedItem;
+                    if (button.Name == "EmployeeGridEditButton1") { EditWerknemerScreen screen = new EditWerknemerScreen(_employeeManager, _employeecontractManager, _visitManager, w, "Employee"); screen.Show(); }
+                    else if (button.Name == "EmployeeGridEditButton2") { EditWerknemerScreen screen = new EditWerknemerScreen(_employeeManager, _employeecontractManager, _visitManager, w, "Visits"); screen.Show(); }
                 }
             }
         }
         private void EmployeeGridRemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EmployeeDataGrid.SelectedItem.GetType() == typeof(Werknemer))
+            if (EmployeeDataGrid.SelectedItem.GetType() == typeof(Employee))
             {
-                Werknemer w = (Werknemer)EmployeeDataGrid.SelectedItem;
+                Employee w = (Employee)EmployeeDataGrid.SelectedItem;
                 try
                 {
-                    _employeeManager.VerwijderWerknemer(w.PersoonId);
+                    _employeeManager.DeleteEmployee(w.PersonId);
                 }
                 catch (Exception ex)
                 {
@@ -456,7 +494,7 @@ namespace UIAdmin.view
                     EmployeeSearchBorder.Width = 55;
                     employeesCollection.Clear();
                     employees.Clear();
-                    employees = _employeeManager.GeefAlleWerknemers().ToList();
+                    employees = _employeeManager.GetAllEmployees().ToList();
                     EmployeesShowList();
                 }
                 else if (EmployeeSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Naam en Voornaam")
@@ -483,10 +521,10 @@ namespace UIAdmin.view
             {
                 employeesCollection.Clear();
                 employees.Clear();
-                try { employees = _employeeManager.ZoekWerknemers(EployeeSearchBox1.Text, EployeeSearchBox2.Text).ToList(); EmployeesShowList(); }
+                try { employees = _employeeManager.SearchEmployees(EployeeSearchBox1.Text, EployeeSearchBox2.Text).ToList(); EmployeesShowList(); }
                 catch (Exception ex) { MessageBox.Show($"{ex}"); }
             }
-            else { employees = _employeeManager.GeefAlleWerknemers().ToList(); EmployeesShowList(); }
+            else { employees = _employeeManager.GetAllEmployees().ToList(); EmployeesShowList(); }
         }
         private void EmployeesShowList()
         {
@@ -498,6 +536,7 @@ namespace UIAdmin.view
             if (employees.Count > numberPerPage)
             {
                 int totalPages = (employees.Count + (numberPerPage - (employees.Count % numberPerPage))) / numberPerPage;
+                EmployeeDataGridMaxPages.Text = $"of {totalPages}";
                 for (int i = 1; i <= totalPages; i++)
                 {
                     ComboBoxItem item = new ComboBoxItem();
@@ -509,10 +548,11 @@ namespace UIAdmin.view
             }
             else
             {
-                foreach (Werknemer werknemer in employees)
-                {
-                    employeesCollection.Add(werknemer);
-                }
+                EmployeeDataGridMaxPages.Text = $"of 1";
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = 1;
+                item.IsSelected = true;
+                EmployeeDataGridComboBox.Items.Add(item);
             }
         }
         private void EmployeeItemsPerPageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -565,7 +605,7 @@ namespace UIAdmin.view
             }
         }
         #endregion
-        #region Bezoek
+        #region Visit
         private void AddVisit_Click(object sender, RoutedEventArgs e)
         {
             AddBezoekScreen screen = new AddBezoekScreen(_visitorManager, _companyManager, _employeecontractManager, _visitManager);
@@ -583,12 +623,19 @@ namespace UIAdmin.view
                 VisitSearchBox2.Text = "";
                 VisitSearchGrid2.Width = new GridLength(0);
                 VisitSearchGrid3.Width = new GridLength(0);
+                VisitSearchGrid4.Width = new GridLength(0);
+                VisitSearchGrid5.Width = new GridLength(0);
+                VisitSearchGrid6.Width = new GridLength(0);
+                VisitListOfMonthsBtnUp.Visibility = Visibility.Collapsed;
+                VisitListOfMonthsBtnDown.Visibility = Visibility.Collapsed;
+                VisitListOfWeeksBtnUp.Visibility = Visibility.Collapsed;
+                VisitListOfWeeksBtnDown.Visibility = Visibility.Collapsed;
                 if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: All")
                 {
                     VisitSearchBorder.Width = 55;
                     visitsAdminCollection.Clear();
                     visits.Clear();
-                    visits = _visitManager.GeefBezoeken().ToList();
+                    visits = _visitManager.GetVisits().ToList();
                     VisitsShowList();
                 }
                 else if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Speicfiek")
@@ -599,53 +646,32 @@ namespace UIAdmin.view
                 }
                 else if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Vandaag")
                 {
-                    VisitSearchBorder.Width = 120;
-                    visits = _visitManager.ZoekBezoeken(null, null, null, $"{DateTime.Today.Year}-{DateTime.Today.Month}-{DateTime.Today.Day}").ToList();
+                    VisitSearchBorder.Width = 80;
+                    visits.Clear();
+                    DateTime tomorrow = DateTime.Today.AddDays(1);
+                    visits = _visitManager.SearchSpecificVisits($"{DateTime.Today.Year}-{DateTime.Today.Month}-{DateTime.Today.Day}", $"{tomorrow.Year}-{tomorrow.Month}-{tomorrow.Day}").OrderBy(v => v.StartingTime).ToList();
                     VisitsShowList();
                 }
-                else if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Deze Week")
+                else if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Week")
                 {
-                    VisitSearchBorder.Width = 120;
-                    if (DateTime.Today.DayOfWeek.ToString() == "Monday")
-                    {
-                        visits = _visitManager.ZoekBezoeken(null, null, null, $"{DateTime.Today.Year}-{DateTime.Today.Month}-{DateTime.Today.Day}").ToList();
-                        VisitsShowList();
-                    }
-                    else
-                    {
-                        int number = 0;
-                        if (DateTime.Today.DayOfWeek.ToString() == "Tuesday") { number = 2; }
-                        else if (DateTime.Today.DayOfWeek.ToString() == "Wednesday") { number = 3; }
-                        else if (DateTime.Today.DayOfWeek.ToString() == "Thursday") { number = 4; }
-                        else if (DateTime.Today.DayOfWeek.ToString() == "Friday") { number = 5; }
-                        else if (DateTime.Today.DayOfWeek.ToString() == "Saturday") { number = 6; }
-                        else if (DateTime.Today.DayOfWeek.ToString() == "Sunday") { number = 7; }
-                        if (DateTime.Today.Day >= number)
-                        {
-                            int firstDayOfTheWeek = DateTime.Today.Day - (number - 1);
-                            visits = _visitManager.ZoekBezoeken(null, null, null, $"{DateTime.Today.Year}-{DateTime.Today.Month}-{firstDayOfTheWeek}").ToList();
-                            VisitsShowList();
-                        }
-                        else
-                        {
-                            int firstDayOfTheWeek = 0;
-                            if (DateTime.Today.Month == 1) { firstDayOfTheWeek = 31; }
-                            else { firstDayOfTheWeek = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month - 1) - (number - (DateTime.Today.Day + 1)); }
-                            visits = _visitManager.ZoekBezoeken(null, null, null, $"{DateTime.Today.Year}-{DateTime.Today.Month - 1}-{firstDayOfTheWeek}").ToList();
-                            VisitsShowList();
-                        }
-                    }
+                    VisitSearchBorder.Width = 500;
+                    if (VisitSearchGrid4.Width == new GridLength(0)) { VisitSearchGrid4.Width = (GridLength)new GridLengthConverter().ConvertFromInvariantString("*"); }
+                    if (VisitSearchGrid5.Width == new GridLength(0)) { VisitSearchGrid5.Width = (GridLength)new GridLengthConverter().ConvertFromInvariantString("2*"); }
+                    VisitListOfYearsComboBox.SelectedIndex = 0;
                 }
-                else if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Deze Maand")
+                else if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Maand")
                 {
-                    VisitSearchBorder.Width = 120;
-                    visits = _visitManager.ZoekBezoeken(null, null, null, $"{DateTime.Today.Year}-{DateTime.Today.Month}-0").ToList();
-                    VisitsShowList();
+                    VisitSearchBorder.Width = 500;
+                    if (VisitSearchGrid4.Width == new GridLength(0)) { VisitSearchGrid4.Width = (GridLength)new GridLengthConverter().ConvertFromInvariantString("*"); }
+                    if (VisitSearchGrid6.Width == new GridLength(0)) { VisitSearchGrid6.Width = (GridLength)new GridLengthConverter().ConvertFromInvariantString("2*"); }
+                    VisitListOfYearsComboBox.SelectedIndex = 0;
                 }
                 else if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Dit Jaar")
                 {
                     VisitSearchBorder.Width = 120;
-                    visits = _visitManager.ZoekBezoeken(null, null, null, $"{DateTime.Today.Year}-0-0").ToList();
+                    visits.Clear();
+                    DateTime tomorrow = DateTime.Today.AddYears(1);
+                    visits = _visitManager.SearchSpecificVisits($"{DateTime.Today.Year}-{0}-{0}", $"{tomorrow.Year}-{0}-{0}").OrderBy(v => v.StartingTime).ToList();
                     VisitsShowList();
                 }
             }
@@ -658,11 +684,11 @@ namespace UIAdmin.view
                 visits.Clear();
                 try
                 {
-                    foreach (Bezoek bezoek in allVisits)
+                    foreach (Visit bezoek in allVisits)
                     {
                         try
                         {
-                            if (bezoek.StartTijd > DateTime.Parse(VisitSearchBox1.Text) && bezoek.StartTijd < DateTime.Parse(VisitSearchBox2.Text))
+                            if (bezoek.StartingTime > DateTime.Parse(VisitSearchBox1.Text) && bezoek.StartingTime < DateTime.Parse(VisitSearchBox2.Text))
                             {
                                 visits.Add(bezoek);
                             }
@@ -673,18 +699,24 @@ namespace UIAdmin.view
                 }
                 catch (Exception ex) { MessageBox.Show($"{ex}"); }
             }
-            else { visits = _visitManager.ZoekBezoeken(null, null, null, $"{DateTime.Today.Year}-{DateTime.Today.Month}-{DateTime.Today.Day}").ToList(); VisitsShowList(); }
+            else 
+            {
+                visitsAdminCollection.Clear();
+                visits.Clear();
+                DateTime tomorrow = DateTime.Today.AddDays(1);
+                visits = _visitManager.SearchSpecificVisits($"{DateTime.Today.Year}-{DateTime.Today.Month}-{DateTime.Today.Day}", $"{tomorrow.Year}-{tomorrow.Month}-{tomorrow.Day}").OrderBy(v => v.StartingTime).ToList();
+                VisitsShowList();
+            }
         }
         private void VisitsShowList()
         {
             visitsAdminCollection.Clear();
             VisitDataGridComboBox.Items.Clear();
-            VisitDataGridNextPage.Visibility = Visibility.Collapsed;
-            VisitDataGridPreviewPage.Visibility = Visibility.Collapsed;
             int numberPerPage = int.Parse(VisitItemsPerPageComboBox.SelectedItem.ToString().Split(" ").ToList()[1]);
             if (visits.Count > numberPerPage)
             {
                 int totalPages = (visits.Count + (numberPerPage - (visits.Count % numberPerPage))) / numberPerPage;
+                VisitDataGridMaxPages.Text = $"of {totalPages}";
                 for (int i = 1; i <= totalPages; i++)
                 {
                     ComboBoxItem item = new ComboBoxItem();
@@ -696,7 +728,11 @@ namespace UIAdmin.view
             }
             else
             {
-                visits.ForEach(v => visitsAdminCollection.Add(new BezoekAdmin(v)));
+                VisitDataGridMaxPages.Text = $"of 1";
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = 1;
+                item.IsSelected = true;
+                VisitDataGridComboBox.Items.Add(item);
             }
         }
         private void VisitItemsPerPageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -721,7 +757,7 @@ namespace UIAdmin.view
                 {
                     for (int i = counter; i < visits.Count; i++)
                     {
-                        visitsAdminCollection.Add(new BezoekAdmin(visits[i]));
+                        visitsAdminCollection.Add(new VisitAdmin(visits[i]));
                     }
                     VisitDataGridNextPage.Visibility = Visibility.Collapsed;
                 }
@@ -729,7 +765,7 @@ namespace UIAdmin.view
                 {
                     for (int i = counter; i < counter + numberPerPage; i++)
                     {
-                        visitsAdminCollection.Add(new BezoekAdmin(visits[i]));
+                        visitsAdminCollection.Add(new VisitAdmin(visits[i]));
                     }
                 }
             }
@@ -746,6 +782,142 @@ namespace UIAdmin.view
             if (visitsAdminCollection.Count != 0)
             {
                 VisitDataGridComboBox.SelectedIndex -= 1;
+            }
+        }
+        private void VisitListOfYearsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender.GetType() == typeof(ComboBox) && _IsInitialized && VisitListOfYearsComboBox.SelectedIndex > 0)
+            {
+                if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Week")
+                {
+                    VisitListOfWeeksBtnUp.Visibility = Visibility.Collapsed;
+                    VisitListOfWeeksBtnDown.Visibility = Visibility.Collapsed;
+                    int selectedYear = int.Parse(VisitListOfYearsComboBox.SelectedItem.ToString().Split(" ").ToList()[1]);
+                    DateTime date = new DateTime(selectedYear, 1, 1);
+                    int number = 0;
+                    if (date.DayOfWeek.ToString() == "Monday") { number = 1; }
+                    else if (date.DayOfWeek.ToString() == "Tuesday") { number = 2; }
+                    else if (date.DayOfWeek.ToString() == "Wednesday") { number = 3; }
+                    else if (date.DayOfWeek.ToString() == "Thursday") { number = 4; }
+                    else if (date.DayOfWeek.ToString() == "Friday") { number = 5; }
+                    else if (date.DayOfWeek.ToString() == "Saturday") { number = 6; }
+                    else if (date.DayOfWeek.ToString() == "Sunday") { number = 7; }
+                    int firstDayOfTheWeek = 0;
+                    DateTime FirstWeek = DateTime.Now;
+                    if (number == 1) { FirstWeek = date; }
+                    else { firstDayOfTheWeek = 31 - (number - 2); FirstWeek = new DateTime(date.Year - 1, 12, firstDayOfTheWeek); }
+                    VisitListOfWeeksComboBox.Items.Clear();
+                    for (int i = 0; i < 55; i++)
+                    {
+                        if (FirstWeek.AddDays(7 * i).Year > date.Year) { break; }
+                        if (FirstWeek.AddDays(7 * i) > DateTime.Today) { break; }
+                        DateTime date1 = FirstWeek.AddDays(7 * i);
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Content = $"week {i + 1}: {date1.ToShortDateString()} - {date1.AddDays(6).ToShortDateString()}";
+                        if (FirstWeek.AddDays((7 * i) + 7) > DateTime.Today) { item.IsSelected = true; }
+                        if (i == 0 && selectedYear != DateTime.Today.Year) { item.IsSelected = true; }
+                        VisitListOfWeeksComboBox.Items.Add(item);
+                    }
+                }
+                else if (VisitSearchComboBox.SelectedValue.ToString() == "System.Windows.Controls.ComboBoxItem: Maand")
+                {
+                    VisitListOfMonthsBtnUp.Visibility = Visibility.Collapsed;
+                    VisitListOfMonthsBtnDown.Visibility = Visibility.Collapsed;
+                    int selectedYear = int.Parse(VisitListOfYearsComboBox.SelectedItem.ToString().Split(" ").ToList()[1]);
+                    DateTime date = new DateTime(selectedYear, 1, 1);
+                    VisitListOfMonthsComboBox.Items.Clear();
+                    for (int i = 0; i < 12; i++)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        if (date.Year < DateTime.Today.Year && i == 0) { item.IsSelected = true; }
+                        if (date.AddMonths(i).Month == 1) { item.Content = "Januari"; }
+                        else if (date.AddMonths(i).Month == 2) { item.Content = "Februari"; }
+                        else if (date.AddMonths(i).Month == 3) { item.Content = "Maart"; }
+                        else if (date.AddMonths(i).Month == 4) { item.Content = "April"; }
+                        else if (date.AddMonths(i).Month == 5) { item.Content = "Mei"; }
+                        else if (date.AddMonths(i).Month == 6) { item.Content = "Juni"; }
+                        else if (date.AddMonths(i).Month == 7) { item.Content = "Juli"; }
+                        else if (date.AddMonths(i).Month == 8) { item.Content = "Augustus"; }
+                        else if (date.AddMonths(i).Month == 9) { item.Content = "September"; }
+                        else if (date.AddMonths(i).Month == 10) { item.Content = "Oktober"; }
+                        else if (date.AddMonths(i).Month == 11) { item.Content = "November"; }
+                        else if (date.AddMonths(i).Month == 12) { item.Content = "December"; }
+                        if (date.Year == DateTime.Today.Year && date.AddMonths(i).Month == DateTime.Today.Month)
+                        { item.IsSelected = true; VisitListOfMonthsComboBox.Items.Add(item); break; }
+                        VisitListOfMonthsComboBox.Items.Add(item);
+                    }
+                }
+            }
+            else if (sender.GetType() == typeof(ComboBox) && _IsInitialized && VisitListOfYearsComboBox.SelectedIndex == 0)
+            {
+                VisitListOfWeeksBtnUp.Visibility = Visibility.Collapsed;
+                VisitListOfWeeksBtnDown.Visibility = Visibility.Collapsed;
+                VisitListOfMonthsBtnUp.Visibility = Visibility.Collapsed;
+                VisitListOfMonthsBtnDown.Visibility = Visibility.Collapsed;
+                VisitListOfWeeksComboBox.Items.Clear();
+                VisitListOfMonthsComboBox.Items.Clear();
+            }
+        }
+        private void VisitListOfWeeksComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender.GetType() == typeof(ComboBox) && _IsInitialized && VisitListOfWeeksComboBox.SelectedIndex != -1)
+            {
+                VisitListOfWeeksBtnUp.Visibility = Visibility.Collapsed;
+                VisitListOfWeeksBtnDown.Visibility = Visibility.Collapsed;
+                DateTime date = DateTime.Parse(VisitListOfWeeksComboBox.SelectedItem.ToString().Split(" ").ToList()[3]);
+                DateTime date1 = date.AddDays(7);
+                visits.Clear();
+                visits = _visitManager.SearchSpecificVisits($"{date.Year}-{date.Month}-{date.Day}", $"{date1.Year}-{date1.Month}-{date1.Day}").OrderBy(v => v.StartingTime).ToList();
+                VisitsShowList();
+                if (VisitListOfWeeksComboBox.SelectedIndex < VisitListOfWeeksComboBox.Items.Count - 1 || VisitListOfWeeksComboBox.SelectedIndex == 0) { VisitListOfWeeksBtnUp.Visibility = Visibility.Visible; }
+                if (VisitListOfWeeksComboBox.SelectedIndex > 0) { VisitListOfWeeksBtnDown.Visibility = Visibility.Visible; }
+            }
+        }
+        private void VisitListOfMonthsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender.GetType() == typeof(ComboBox) && _IsInitialized && VisitListOfMonthsComboBox.SelectedIndex != -1)
+            {
+                VisitListOfMonthsBtnUp.Visibility = Visibility.Collapsed;
+                VisitListOfMonthsBtnDown.Visibility = Visibility.Collapsed;
+                string selectedMonth = VisitListOfMonthsComboBox.SelectedItem.ToString().Split(" ").ToList()[1];
+                DateTime date = DateTime.Today;
+                if (selectedMonth == "Januari") { date = new DateTime(date.Year, 1, 1); }
+                else if (selectedMonth == "Februari") { date = new DateTime(date.Year, 2, 1); }
+                else if (selectedMonth == "Maart") { date = new DateTime(date.Year, 3, 1); }
+                else if (selectedMonth == "April") { date = new DateTime(date.Year, 4, 1); }
+                else if (selectedMonth == "Mei") { date = new DateTime(date.Year, 5, 1); }
+                else if (selectedMonth == "Juni") { date = new DateTime(date.Year, 6, 1); }
+                else if (selectedMonth == "Juli") { date = new DateTime(date.Year, 7, 1); }
+                else if (selectedMonth == "Augustus") { date = new DateTime(date.Year, 8, 1); }
+                else if (selectedMonth == "September") { date = new DateTime(date.Year, 9, 1); }
+                else if (selectedMonth == "Oktober") { date = new DateTime(date.Year, 10, 1); }
+                else if (selectedMonth == "November") { date = new DateTime(date.Year, 11, 1); }
+                else if (selectedMonth == "December") { date = new DateTime(date.Year, 12, 1); }
+                DateTime date1 = date.AddMonths(1);
+                visits.Clear();
+                visits = _visitManager.SearchSpecificVisits($"{date.Year}-{date.Month}-{date.Day}", $"{date1.Year}-{date1.Month}-{date1.Day}").OrderBy(v => v.StartingTime).ToList();
+                VisitsShowList();
+                if (VisitListOfMonthsComboBox.SelectedIndex < VisitListOfMonthsComboBox.Items.Count - 1 || VisitListOfMonthsComboBox.SelectedIndex == 0) { VisitListOfMonthsBtnUp.Visibility = Visibility.Visible; }
+                if (VisitListOfMonthsComboBox.SelectedIndex > 0) { VisitListOfMonthsBtnDown.Visibility = Visibility.Visible; }
+            }
+        }
+        private void VisitListOfBtnUp_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender.GetType() == typeof(Button) && _IsInitialized)
+            {
+                Button button = sender as Button;
+                if (button.Name == "VisitListOfMonthsBtnUp") { VisitListOfMonthsComboBox.SelectedIndex += 1; }
+                if (button.Name == "VisitListOfWeeksBtnUp") { VisitListOfWeeksComboBox.SelectedIndex += 1; }
+            }
+        }
+        private void VisitListOfBtnDown_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender.GetType() == typeof(Button) && _IsInitialized)
+            {
+                Button button = sender as Button;
+                if (button.Name == "VisitListOfMonthsBtnDown") { VisitListOfMonthsComboBox.SelectedIndex -= 1; }
+                if (button.Name == "VisitListOfWeeksBtnDown") { VisitListOfWeeksComboBox.SelectedIndex -= 1; }
+
             }
         }
         #endregion

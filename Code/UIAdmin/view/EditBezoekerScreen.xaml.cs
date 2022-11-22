@@ -25,32 +25,32 @@ namespace UIAdmin.view
     public partial class EditBezoekerScreen : Window
     {
         private bool _isMaximized = false;
-        private BezoekerManager _bezoekerManager;
-        private BezoekManager _bezoekManager;
-        private Bezoeker _bezoeker;
-        private ObservableCollection<BezoekAdmin> contracts = new ObservableCollection<BezoekAdmin>();
-        public EditBezoekerScreen(BezoekerManager bezoekerManager, BezoekManager bezoekManager, Bezoeker bezoeker)
+        private VisitorManager _visitorManager;
+        private VisitManager _visitManager;
+        private Visitor _visitor;
+        private ObservableCollection<VisitAdmin> contracts = new ObservableCollection<VisitAdmin>();
+        public EditBezoekerScreen(VisitorManager visitorManager, VisitManager visitManager, Visitor visitor)
         {
             InitializeComponent();
-            _bezoekerManager = bezoekerManager;
-            _bezoekManager = bezoekManager;
-            _bezoeker = bezoeker;
-            BezoekenDataGrid.ItemsSource = contracts;
-            InitializeBezoeker(bezoeker);
+            _visitorManager = visitorManager;
+            _visitManager = visitManager;
+            _visitor = visitor;
+            VisitsDataGrid.ItemsSource = contracts;
+            InitializeBezoeker(visitor);
         }
-        private void InitializeBezoeker(Bezoeker bezoeker)
+        private void InitializeBezoeker(Visitor visitor)
         {
-            TextBoxBezoekerNaam.Text = bezoeker.Naam;
-            TextBoxVoorNaam.Text = bezoeker.Voornaam;
-            TextBoxEmail.Text = bezoeker.Email;
-            TextBoxBedrijfNaam.Text = bezoeker.Bedrijf;
-            BezoekerIdAanpassen.Text = $"{bezoeker.Naam} {bezoeker.Voornaam}";
-            TextBlockIdBezoeker.Text = $"Id: {bezoeker.PersoonId}";
+            TextBoxVisitorName.Text = visitor.LastName;
+            TextBoxFirstName.Text = visitor.FirstName;
+            TextBoxEmail.Text = visitor.Email;
+            TextBoxCompanyName.Text = visitor.Company;
+            VisitorId.Text = $"{visitor.LastName} {visitor.FirstName}";
+            TextBlockIdVisitor.Text = $"Id: {visitor.PersonId}";
             contracts.Clear();
-            List<Bezoek> b = _bezoekManager.ZoekBezoeken(_bezoeker, null, null, null).ToList();
-            foreach (Bezoek bezoek in b)
+            List<Visit> b = _visitManager.SearchVisits(_visitor, null, null, null).ToList();
+            foreach (Visit visit in b)
             {
-                contracts.Add(new BezoekAdmin(bezoek));
+                contracts.Add(new VisitAdmin(visit));
             }
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -80,19 +80,19 @@ namespace UIAdmin.view
                 Button button = (Button)sender;
                 if (button.Name == "SaveBtn")
                 {
-                    string? naam = null;
-                    string? voornaam = null;
+                    string? name = null;
+                    string? firstname = null;
                     string? email = null;
-                    string? bedrijfnaam = null;
+                    string? companyName = null;
                     string message = "";
-                    if ((!string.IsNullOrWhiteSpace(TextBoxBezoekerNaam.Text)) && (TextBoxBezoekerNaam.Text != _bezoeker.Naam)) { naam = TextBoxBezoekerNaam.Text; message += $"naam => {naam}\n"; }
-                    if ((!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) && (TextBoxVoorNaam.Text != _bezoeker.Voornaam)) { voornaam = TextBoxVoorNaam.Text; message += $"voornaam => {voornaam}\n"; }
-                    if ((!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) && (TextBoxEmail.Text != _bezoeker.Email)) { email = TextBoxEmail.Text; message += $"email => {email}\n"; }
-                    if ((!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) && (TextBoxBedrijfNaam.Text != _bezoeker.Bedrijf)) { bedrijfnaam = TextBoxBedrijfNaam.Text; message += $"bedrijfnaam => {bedrijfnaam}\n"; }
+                    if ((!string.IsNullOrWhiteSpace(TextBoxVisitorName.Text)) && (TextBoxVisitorName.Text != _visitor.LastName)) { name = TextBoxVisitorName.Text; message += $"naam => {name}\n"; }
+                    if ((!string.IsNullOrWhiteSpace(TextBoxFirstName.Text)) && (TextBoxFirstName.Text != _visitor.FirstName)) { firstname = TextBoxFirstName.Text; message += $"voornaam => {firstname}\n"; }
+                    if ((!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) && (TextBoxEmail.Text != _visitor.Email)) { email = TextBoxEmail.Text; message += $"email => {email}\n"; }
+                    if ((!string.IsNullOrWhiteSpace(TextBoxCompanyName.Text)) && (TextBoxCompanyName.Text != _visitor.Company)) { companyName = TextBoxCompanyName.Text; message += $"bedrijfnaam => {companyName}\n"; }
                     if (message == "") MessageBox.Show("Er moet minimum 1 veld aangepast worden!");
                     else
                     {
-                        _bezoekerManager.UpdateBezoeker(_bezoeker.PersoonId, naam, voornaam, email, bedrijfnaam);
+                        _visitorManager.UpdateVisitor(_visitor.PersonId, name, firstname, email, companyName);
                     }
                 }
             }
@@ -101,38 +101,38 @@ namespace UIAdmin.view
         {
             SaveBtn.IsEnabled = true;
             SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
-            BorderNaam.BorderBrush = colorBrush;
-            TBNaam.Text = "";
-            TBNaam.Foreground = Brushes.Black;
-            BorderVoornaam.BorderBrush = colorBrush;
-            TBVoornaam.Text = "";
-            TBVoornaam.Foreground = Brushes.Black;
+            BorderName.BorderBrush = colorBrush;
+            TBName.Text = "";
+            TBName.Foreground = Brushes.Black;
+            BorderFirstName.BorderBrush = colorBrush;
+            TBFirstName.Text = "";
+            TBFirstName.Foreground = Brushes.Black;
             BorderEmail.BorderBrush = colorBrush;
             TBEmail.Text = "";
             TBEmail.Foreground = Brushes.Black;
-            BorderBedrijfNaam.BorderBrush = colorBrush;
-            TBBedrijfNaam.Text = "";
-            TBBedrijfNaam.Foreground = Brushes.Black;
-            string? naam = null;
-            string? voornaam = null;
+            BorderCompanyName.BorderBrush = colorBrush;
+            TBCompanyName.Text = "";
+            TBCompanyName.Foreground = Brushes.Black;
+            string? name = null;
+            string? firstname = null;
             string? email = null;
-            string? bedrijfNaam = null;
-            if (!string.IsNullOrWhiteSpace(TextBoxBezoekerNaam.Text)) { naam = TextBoxBezoekerNaam.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; }
+            string? companyName = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxVisitorName.Text)) { name = TextBoxVisitorName.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxFirstName.Text)) { firstname = TextBoxFirstName.Text; }
             if (!string.IsNullOrWhiteSpace(TextBoxEmail.Text)) { email = TextBoxEmail.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxBedrijfNaam.Text)) { bedrijfNaam = TextBoxBedrijfNaam.Text; }
-            if (naam == null)
+            if (!string.IsNullOrWhiteSpace(TextBoxCompanyName.Text)) { companyName = TextBoxCompanyName.Text; }
+            if (name == null)
             {
-                BorderNaam.BorderBrush = Brushes.Red;
-                TBNaam.Text = "Naam: mag niet leeg zijn!";
-                TBNaam.Foreground = Brushes.Red;
+                BorderName.BorderBrush = Brushes.Red;
+                TBName.Text = "Naam: mag niet leeg zijn!";
+                TBName.Foreground = Brushes.Red;
                 SaveBtn.IsEnabled = false;
             }
-            if (voornaam == null)
+            if (firstname == null)
             {
-                BorderVoornaam.BorderBrush = Brushes.Red;
-                TBVoornaam.Text = "Voornaam: mag niet leeg zijn!";
-                TBVoornaam.Foreground = Brushes.Red;
+                BorderFirstName.BorderBrush = Brushes.Red;
+                TBFirstName.Text = "Voornaam: mag niet leeg zijn!";
+                TBFirstName.Foreground = Brushes.Red;
                 SaveBtn.IsEnabled = false;
             }
             if (email == null)
@@ -142,18 +142,18 @@ namespace UIAdmin.view
                 TBEmail.Foreground = Brushes.Red;
                 SaveBtn.IsEnabled = false;
             }
-            if (bedrijfNaam == null)
+            if (companyName == null)
             {
-                BorderBedrijfNaam.BorderBrush = Brushes.Red;
-                TBBedrijfNaam.Text = "Bedrijfsnaam: mag niet leeg zijn!";
-                TBBedrijfNaam.Foreground = Brushes.Red;
+                BorderCompanyName.BorderBrush = Brushes.Red;
+                TBCompanyName.Text = "Bedrijfsnaam: mag niet leeg zijn!";
+                TBCompanyName.Foreground = Brushes.Red;
                 SaveBtn.IsEnabled = false;
             }
             if (email != null)
             {
                 try
                 {
-                    if (Controle.IsGoedeEmailSyntax(email)) { }
+                    if (Verify.IsValidEmailSyntax(email)) { }
                 }
                 catch (Exception ex)
                 {

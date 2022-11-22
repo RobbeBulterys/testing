@@ -3,9 +3,11 @@ using BL_Projectwerk.Interfaces;
 using BL_Projectwerk.Managers;
 using DL_Projectwerk.repoADO;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using TriggerMe.VAT;
+using System.Xml;
 
 
 namespace Test {
@@ -32,35 +34,51 @@ namespace Test {
 
 
             //string connectieString = "Server=tcp:bezoekerregistratiesysteem.database.windows.net,1433;Initial Catalog=bezoekerregistratiesysteemdb;Persist Security Info=False;User ID=Hackerman;Password=RootRoot!69;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            /*
+           
+            
 
-            string connectieStringMysql = "Server=ID367284_VRS.db.webhosting.be;User ID=ID367284_VRS;Password=RootRoot!69;Database=ID367284_VRS";
-            BedrijfRepoADO bedrijfRepo = new BedrijfRepoADO(connectieStringMysql);
-            WerknemerManager werknemerManager = new WerknemerManager(new WerknemerRepoADO(connectieStringMysql));
-            WerknemercontractManager wcManager = new WerknemercontractManager(new WerknemercontractRepoADO(connectieStringMysql));
-            AdresManager adresManager = new AdresManager(new AdresRepoADO(connectieStringMysql), bedrijfRepo);
-            BedrijfManager bedrijfManager = new BedrijfManager(bedrijfRepo, adresManager, wcManager);
+            AddressManager adresManager = new AddressManager(new AddressRepoADO(connectieStringMysql), bedrijfRepo);
+            
 
-            Werknemer nicole = werknemerManager.GeefWerknemer(1);
-            Werknemer hugo = werknemerManager.GeefWerknemer(2);
-            Bedrijf vtm = bedrijfManager.GeefBedrijven()[0];
-            Werknemercontract nicoleAtVtm = new Werknemercontract(vtm, nicole, "Zangeres");
-            Werknemercontract hugoAtVtm = new Werknemercontract(vtm, hugo, "Zanger");
+            Employee nicole = werknemerManager.GeefWerknemer(1);
+            Employee hugo = werknemerManager.GeefWerknemer(2);
+            Company vtm = bedrijfManager.GeefBedrijven()[0];
+            Employeecontract nicoleAtVtm = new Employeecontract(vtm, nicole, "Zangeres");
+            Employeecontract hugoAtVtm = new Employeecontract(vtm, hugo, "Zanger");
             //wcManager.VoegContractToe(nicoleAtVtm);
             //wcManager.VoegContractToe(hugoAtVtm);
 
 
-            Bedrijf allphi = bedrijfManager.ZoekBedrijven(null, "Allphi", null, null)[0];
-            Werknemer alien = new Werknemer("Carlier", "Alien");
+            Company allphi = bedrijfManager.ZoekBedrijven(null, "Allphi", null, null)[0];
+            Employee alien = new Employee("Carlier", "Alien");
             //werknemerManager.VoegWerknemerToe(alien);
-            Werknemercontract alienAtAllphi = new Werknemercontract(allphi, alien, "Regional consultant coordinator");
+            Employeecontract alienAtAllphi = new Employeecontract(allphi, alien, "Regional consultant coordinator");
             alienAtAllphi.ZetEmail("alien@allphi.be");
             //wcManager.VoegContractToe(alienAtAllphi);
+            */
 
 
+            string connectieStringMysql = "Server=ID367284_VRS.db.webhosting.be;User ID=ID367284_VRS;Password=RootRoot!69;Database=ID367284_VRS";
+            EmployeeManager werknemerManager = new EmployeeManager(new EmployeeRepoADO(connectieStringMysql));
+            EmployeecontractManager wcManager = new EmployeecontractManager(new EmployeecontractRepoADO(connectieStringMysql));
+            CompanyRepoADO bedrijfRepo = new CompanyRepoADO(connectieStringMysql);
+            CompanyManager bedrijfManager = new CompanyManager(bedrijfRepo, wcManager);
+            VisitRepoADO _visitRepoAD0 = new VisitRepoADO(connectieStringMysql);
+            VisitManager _visitManager = new VisitManager(_visitRepoAD0);
 
 
+            Company company = bedrijfManager.GetCompanies()[0];
+            Employee employee = werknemerManager.GetEmployee(1);
+            Visitor _visitor = new Visitor("Jansenss", "Thomas", "thomas.jansenss@gmail.com", "jansenssNV");
 
+            Visit _Visit = new Visit(2, _visitor, company, employee, DateTime.Now);
 
+            _visitManager.UpdateVisit(_Visit);
+
+            Console.WriteLine(employee.LastName);
+
+            Console.WriteLine(_visitManager.GetVisits()[1].Visitor.FirstName);
 
 
 
@@ -117,7 +135,7 @@ namespace Test {
 
             // TESTS ADO -----------------------------------------------------------------------------------------------------------------------------------------------
             //string connectionString = "Data Source=FRENK\\SQLEXPRESS;Initial Catalog=\"projectwerk test\";Integrated Security=True";
-            //BedrijfRepoADO bedrijfrepo = new BedrijfRepoADO(connectieString);
+            //CompanyRepoADO bedrijfrepo = new CompanyRepoADO(connectieString);
             //////AdresRepoADO adresRepo = new AdresRepoADO(connectionString);
             //BezoekRepoADO bezoekRepo = new BezoekRepoADO(connectieString);
 
@@ -145,9 +163,9 @@ namespace Test {
             //Werknemer luc = new Werknemer("Vervoort", "Luc", "Lector - coördinator");
             //TestWerknemerRepoADO.VoegWerknemerToe(luc);
             ////tests Adres========================================================================
-            //// Test BestaatAdresZonderID-------------------------------------------------------
+            //// Test AddressExistsWithoutId-------------------------------------------------------
             ////Adres a = new Adres("Kerkstraat", "3", "9000", "Gent", "Belgie");
-            //Console.WriteLine(adresRepo.BestaatAdresZonderId(a));             // werkt
+            //Console.WriteLine(adresRepo.AddressExistsWithoutId(a));             // werkt
 
             // Test BestaatAdresMetID------------------------------------------------------------
             //Adres a = new Adres(1,"Kerkstraat", "4", "9000", "Gent", "Belgie");
@@ -222,7 +240,7 @@ namespace Test {
             //
             // -------------------------------
             // Bedrijven
-            //BedrijfManager bedrijfManager = new BedrijfManager(new BedrijfRepoADO(connectieString));
+            //BedrijfManager bedrijfManager = new BedrijfManager(new CompanyRepoADO(connectieString));
 
             //IReadOnlyList<Bedrijf> bedrijven = bedrijfManager.GeefBedrijven();
             //Bedrijf allphidb = bedrijfManager.ZoekBedrijven(null, "allphi", null, null)[0];
@@ -307,7 +325,6 @@ namespace Test {
             //Console.WriteLine(adresRepositoryMySql.BestaatAdresMetId(1));
             //Console.WriteLine(adresRepositoryMySql.BestaatAdresMetId(2));
             //Console.WriteLine(adresRepositoryMySql.BestaatAdresMetId(3));
-
         }
     }
 }

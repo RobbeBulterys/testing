@@ -27,47 +27,49 @@ namespace UIAdmin.view
     public partial class EditBedrijfScreen : Window
     {
         private bool _isMaximized = false;
-        private Bedrijf _company;
-        private AdresManager _adresManager;
-        private BedrijfManager _companyManager;
-        private BezoekManager _visitManager;
-        private WerknemercontractManager _employeecontractManager;
-        private ObservableCollection<Werknemercontract> employeecontractsCollection = new ObservableCollection<Werknemercontract>();
-        private ObservableCollection<BezoekAdmin> visitsAdminCollection = new ObservableCollection<BezoekAdmin>();
-        public EditBedrijfScreen(AdresManager adresManager, BedrijfManager companyManager, WerknemercontractManager employeecontract, BezoekManager visitManager, Bedrijf company, string screen)
+        private Company _company;
+        private AddressManager _adresManager;
+        private CompanyManager _companyManager;
+        private VisitManager _visitManager;
+        private EmployeeManager _employeeManager;
+        private EmployeecontractManager _employeecontractManager;
+        private ObservableCollection<Employeecontract> employeecontractsCollection = new ObservableCollection<Employeecontract>();
+        private ObservableCollection<VisitAdmin> visitsAdminCollection = new ObservableCollection<VisitAdmin>();
+        public EditBedrijfScreen(AddressManager adresManager, CompanyManager companyManager, EmployeecontractManager employeecontract, VisitManager visitManager, EmployeeManager employeeManager, Company company, string screen)
         {
             InitializeComponent();
             _adresManager = adresManager;
             _companyManager = companyManager;
             _employeecontractManager = employeecontract;
             _visitManager = visitManager;
+            _employeeManager = employeeManager;
             _company = company;
             BedrijfContractDataGrid.ItemsSource = employeecontractsCollection;
             BezoekenDataGrid.ItemsSource = visitsAdminCollection;
             InitializeCompany(company, screen);
         }
-        private void InitializeCompany(Bedrijf company, string screen)
+        private void InitializeCompany(Company company, string screen)
         {
             if (screen == "Company") { CompanyBtn.IsChecked = true; }
             if (screen == "Workers") { EmployeelijstBtn.IsChecked = true; }
             if (screen == "Visits") { VisitLijstBtn.IsChecked = true; }
-            TextBoxCompanyName.Text = company.Naam;
-            TextBoxBTWnummer.Text = company.BTWNummer;
-            TextBoxPhoneNumber.Text = company.Telefoon;
+            TextBoxCompanyName.Text = company.Name;
+            TextBoxBTWnummer.Text = company.VATNumber;
+            TextBoxPhoneNumber.Text = company.PhoneNumber;
             TextBoxEmail.Text = company.Email;
-            if (company.Adres != null)
+            if (company.Address != null)
             {
-                TextBoxCountry.Text = company.Adres.Land;
-                TextBoxStreetName.Text = company.Adres.Straat;
-                TextBoxNumber.Text = company.Adres.Nummer;
-                TextBoxPostalCode.Text = company.Adres.Postcode;
-                TextBoxPlace.Text = company.Adres.Plaats;
+                TextBoxCountry.Text = company.Address.Country;
+                TextBoxStreetName.Text = company.Address.Street;
+                TextBoxNumber.Text = company.Address.Number;
+                TextBoxPostalCode.Text = company.Address.Postalcode;
+                TextBoxPlace.Text = company.Address.Place;
             }
-            ShowCompanyId.Text = $"{company.Naam}";
+            ShowCompanyId.Text = $"{company.Name}";
             TextBlockIdCompany.Text = $"Id: {company.Id}";
-            CompanyEmployees.Text = $"{company.Naam}";
-            CompanyVisits.Text = $"{company.Naam}";
-            CompanyBtn.Content = $"{company.Naam}";
+            CompanyEmployees.Text = $"{company.Name}";
+            CompanyVisits.Text = $"{company.Name}";
+            CompanyBtn.Content = $"{company.Name}";
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -106,11 +108,11 @@ namespace UIAdmin.view
                     string? postcode = null;
                     string? plaats = null;
                     string message = "";
-                    if (TextBoxCompanyName.Text != _company.Naam) { bedrijfNaam = TextBoxCompanyName.Text; message += $"bedrijfNaam => {bedrijfNaam}\n"; }
-                    if (TextBoxBTWnummer.Text != _company.BTWNummer) { bedrijfBTW = TextBoxBTWnummer.Text; message += $"bedrijfBTW => {bedrijfBTW}\n"; }
-                    if (TextBoxPhoneNumber.Text != _company.Telefoon) { bedrijfTelefoon = TextBoxPhoneNumber.Text; message += $"bedrijfTelefoon => {bedrijfTelefoon}\n"; }
+                    if (TextBoxCompanyName.Text != _company.Name) { bedrijfNaam = TextBoxCompanyName.Text; message += $"bedrijfNaam => {bedrijfNaam}\n"; }
+                    if (TextBoxBTWnummer.Text != _company.VATNumber) { bedrijfBTW = TextBoxBTWnummer.Text; message += $"bedrijfBTW => {bedrijfBTW}\n"; }
+                    if (TextBoxPhoneNumber.Text != _company.PhoneNumber) { bedrijfTelefoon = TextBoxPhoneNumber.Text; message += $"bedrijfTelefoon => {bedrijfTelefoon}\n"; }
                     if (TextBoxEmail.Text != _company.Email) { bedrijfEmail = TextBoxEmail.Text; message += $"bedrijfEmail => {bedrijfEmail}\n"; }
-                    if (_company.Adres == null)
+                    if (_company.Address == null)
                     {
                         if (TextBoxCountry.Text != "") { land = TextBoxCountry.Text; message += $"land => {land}\n"; }
                         if (TextBoxStreetName.Text != "") { straat = TextBoxStreetName.Text; message += $"straat => {straat}\n"; }
@@ -120,28 +122,28 @@ namespace UIAdmin.view
                     }
                     else
                     {
-                        if (TextBoxCountry.Text != _company.Adres.Land) { land = TextBoxCountry.Text; message += $"land => {land}\n"; }
-                        if (TextBoxStreetName.Text != _company.Adres.Straat) { straat = TextBoxStreetName.Text; message += $"straat => {straat}\n"; }
-                        if (TextBoxNumber.Text != _company.Adres.Nummer) { nummer = TextBoxNumber.Text; message += $"nummer => {nummer}\n"; }
-                        if (TextBoxPostalCode.Text != _company.Adres.Postcode) { postcode = TextBoxPostalCode.Text; message += $"postcode => {postcode}\n"; }
-                        if (TextBoxPlace.Text != _company.Adres.Plaats) { plaats = TextBoxPlace.Text; message += $"plaats => {plaats}\n"; }
+                        if (TextBoxCountry.Text != _company.Address.Country) { land = TextBoxCountry.Text; message += $"land => {land}\n"; }
+                        if (TextBoxStreetName.Text != _company.Address.Street) { straat = TextBoxStreetName.Text; message += $"straat => {straat}\n"; }
+                        if (TextBoxNumber.Text != _company.Address.Number) { nummer = TextBoxNumber.Text; message += $"nummer => {nummer}\n"; }
+                        if (TextBoxPostalCode.Text != _company.Address.Postalcode) { postcode = TextBoxPostalCode.Text; message += $"postcode => {postcode}\n"; }
+                        if (TextBoxPlace.Text != _company.Address.Place) { plaats = TextBoxPlace.Text; message += $"plaats => {plaats}\n"; }
                     }
                     if (message == "") MessageBox.Show("Er moet minimum 1 veld aangepast worden!");
                     else if (!string.IsNullOrWhiteSpace(land) || !string.IsNullOrWhiteSpace(straat) || !string.IsNullOrWhiteSpace(nummer) || !string.IsNullOrWhiteSpace(postcode) || !string.IsNullOrWhiteSpace(plaats))
                     {
-                        if ((land == null || straat == null || nummer == null || postcode == null || plaats == null) && _company.Adres == null) MessageBox.Show("Alle velden voor het adres moeten worden ingevuld!");
+                        if ((land == null || straat == null || nummer == null || postcode == null || plaats == null) && _company.Address == null) MessageBox.Show("Alle velden voor het adres moeten worden ingevuld!");
                         else
                         {
                             try
                             {
-                                if (_company.Adres == null)
+                                if (_company.Address == null)
                                 {
-                                    int id = _adresManager.VoegAdresToe(new Adres(straat, nummer, postcode, plaats, land));
-                                    _companyManager.UpdateBedrijfAdres(_company.Id, id);
+                                    int id = _adresManager.AddAddress(new Address(straat, nummer, postcode, plaats, land));
+                                    _companyManager.UpdateCompanyAddress(_company.Id, id);
                                 }
                                 else
                                 {
-                                    _adresManager.UpdateAdres(_company.Adres.Id, straat, nummer, postcode, plaats, land);
+                                    _adresManager.UpdateAddress(_company.Address.Id, straat, nummer, postcode, plaats, land);
                                 }
                                 this.Close();
                                 MessageBox.Show($"succes! adres");
@@ -156,7 +158,7 @@ namespace UIAdmin.view
                     {
                         try
                         {
-                            _companyManager.UpdateBedrijf(_company.Id, bedrijfBTW, bedrijfNaam, bedrijfEmail, bedrijfTelefoon);
+                            _companyManager.UpdateCompany(_company.Id, bedrijfBTW, bedrijfNaam, bedrijfEmail, bedrijfTelefoon);
                             MessageBox.Show($"succes! bedrijf");
                             this.Close();
                         }
@@ -184,17 +186,17 @@ namespace UIAdmin.view
                 {
                     EmployeeBorder.Visibility = Visibility.Visible;
                     employeecontractsCollection.Clear();
-                    List<Werknemercontract> w = _employeecontractManager.GeefContractenVanBedrijf(_company).ToList();
+                    List<Employeecontract> w = _employeecontractManager.GetCompanyContracts(_company).ToList();
                     w.ForEach(c => employeecontractsCollection.Add(c));
                 }
                 if (button.Name == "VisitLijstBtn")
                 {
                     VisitBorder.Visibility = Visibility.Visible;
                     visitsAdminCollection.Clear();
-                    List<Bezoek> b = _visitManager.ZoekBezoeken(null, _company, null, null).ToList();
-                    foreach (Bezoek bezoek in b)
+                    List<Visit> b = _visitManager.SearchVisits(null, _company, null, null).ToList();
+                    foreach (Visit bezoek in b)
                     {
-                        visitsAdminCollection.Add(new BezoekAdmin(bezoek));
+                        visitsAdminCollection.Add(new VisitAdmin(bezoek));
                     }
                 }
             }
@@ -280,7 +282,7 @@ namespace UIAdmin.view
             {
                 try
                 {
-                    if (Controle.IsBestaandBTWnummer(bedrijfBTW)) { }
+                    if (Verify.IsExistingVATnumber(bedrijfBTW)) { }
                 }
                 catch (Exception ex)
                 {
@@ -297,7 +299,7 @@ namespace UIAdmin.view
             {
                 try
                 {
-                    if (Controle.IsGoedeEmailSyntax(bedrijfEmail)) { }
+                    if (Verify.IsValidEmailSyntax(bedrijfEmail)) { }
                 }
                 catch (Exception ex)
                 {
@@ -351,7 +353,7 @@ namespace UIAdmin.view
                 {
                     try
                     {
-                        if (Controle.IsGoedeAdresNummerSyntax(nummer)) { }
+                        if (Verify.IsValidAdressNumberSyntax(nummer)) { }
                     }
                     catch (Exception ex)
                     {
@@ -366,6 +368,15 @@ namespace UIAdmin.view
                 }
             }
             return bedrijf;
+        }
+
+        private void AddEmployeeContract_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender.GetType() == typeof(Button))
+            {
+                AddEmployeeContractScreen screen = new AddEmployeeContractScreen(_employeeManager, _companyManager, _employeecontractManager, _company);
+                screen.Show();
+            }
         }
     }
 }

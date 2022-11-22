@@ -31,14 +31,14 @@
                         <StackPanel Grid.Row="2">
                             
                         </StackPanel>
-                        <Button x:Name="HomeBtn" Content="Home" Style="{StaticResource MenuButtonTheme3}" Grid.Row="3" Height="40" VerticalAlignment="Top" Click="HomeBtn_Click"/>
+                        <Button x:Name="HomeBtn" Content="Start Pagina" Style="{StaticResource MenuButtonTheme3}" Grid.Row="3" Height="40" VerticalAlignment="Top" Click="HomeBtn_Click"/>
                     </Grid>
                 </Border>
             </Grid>
 
             <!--Main Menu-->
             <Grid Grid.Column="1">
-                <DockPanel x:Name="BedrijfBorder">
+                <DockPanel x:Name="CompanyBorder">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -75,18 +75,18 @@
                                     <RowDefinition Height="50"/>
                                     
                                 </Grid.RowDefinitions>
-                                <TextBlock x:Name="TBBedrijfNaam" Grid.Row="0" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <TextBlock x:Name="TBBTWnummer" Grid.Row="0" Grid.Column="1" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black" Grid.ColumnSpan="2"/>
+                                <TextBlock x:Name="TBCompanyName" Grid.Row="0" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBVatNumber" Grid.Row="0" Grid.Column="1" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black" Grid.ColumnSpan="2"/>
                                 <Grid Grid.Column="0" Grid.Row="1">
-                                    <Border x:Name="BorderBedrijfNaam" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderCompanyName" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxBedrijfNaam" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxCompanyName" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Bedrijf naam*" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxBedrijfNaam}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxCompanyName}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -114,15 +114,15 @@
                                     </Grid>
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
-                                    <Border x:Name="BorderBTWnummer" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderVatNumber" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxBTWnummer" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxVatNumber" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="BTW-nummer*" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxBTWnummer}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxVatNumber}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -152,15 +152,15 @@
                                 <TextBlock Grid.Row="3" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
                                 <TextBlock x:Name="TBEmail" Grid.Row="3" Grid.Column="1" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black" Grid.ColumnSpan="2"/>
                                 <Grid Grid.Column="0" Grid.Row="4">
-                                    <Border x:Name="BorderTelefoon" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderPhoneNumber" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxTelefoon" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxPhoneNumber" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Telefoon nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxTelefoon}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxPhoneNumber}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -223,17 +223,17 @@
                                         </TextBlock>
                                     </Grid>
                                 </Grid>
-                                <TextBlock x:Name="TBLand" Grid.Row="6" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBCountry" Grid.Row="6" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
                                 <Grid Grid.Column="0" Grid.Row="7">
-                                    <Border x:Name="BorderLand" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderCountry" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxLand" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxCountry" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Land" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxLand}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxCountry}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -260,18 +260,18 @@
                                         </TextBlock>
                                     </Grid>
                                 </Grid>
-                                <TextBlock x:Name="TBPostcode" Grid.Row="9" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <TextBlock x:Name="TBPlaats" Grid.Row="9" Grid.Column="1" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBPostalCode" Grid.Row="9" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBPlace" Grid.Row="9" Grid.Column="1" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
                                 <Grid Grid.Column="0" Grid.Row="10">
-                                    <Border x:Name="BorderPostcode" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderPostalCode" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxPostcode" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxPostalCode" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Postcode" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxPostcode}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxPostalCode}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -299,15 +299,15 @@
                                     </Grid>
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2">
-                                    <Border x:Name="BorderPlaats" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderPlace" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxPlaats" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxPlace" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Plaats" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxPlaats}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxPlace}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -334,18 +334,18 @@
                                         </TextBlock>
                                     </Grid>
                                 </Grid>
-                                <TextBlock x:Name="TBStraatNaam" Grid.Row="12" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <TextBlock x:Name="TBNummer" Grid.Row="12" Grid.Column="1" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBStreetName" Grid.Row="12" Grid.Column="0" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBNumber" Grid.Row="12" Grid.Column="1" FontSize="12" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
                                 <Grid Grid.Column="0" Grid.Row="13">
-                                    <Border x:Name="BorderStraatNaam" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderStreetName" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxStraat" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxStreetName" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Straatnaam" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxStraat}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxStreetName}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -373,15 +373,15 @@
                                     </Grid>
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="13" Grid.ColumnSpan="2">
-                                    <Border x:Name="BorderNummer" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderNumber" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxNummer" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxNumber" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Nummer" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxNummer}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxNumber}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>

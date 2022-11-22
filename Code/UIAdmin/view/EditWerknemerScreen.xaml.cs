@@ -24,37 +24,37 @@ namespace UIAdmin.view
     public partial class EditWerknemerScreen : Window
     {
         private bool _isMaximized = false;
-        private Werknemer _werknemer;
-        private WerknemerManager _werknemerManager;
-        private BezoekManager _bezoekManager;
-        private WerknemercontractManager _werknemercontractManager;
-        private ObservableCollection<Werknemercontract> werknemercontracts = new ObservableCollection<Werknemercontract>();
-        private ObservableCollection<BezoekAdmin> contracts = new ObservableCollection<BezoekAdmin>();
-        public EditWerknemerScreen(WerknemerManager werknemerManager, WerknemercontractManager werknemercontractManager, BezoekManager bezoekManager, Werknemer werknemer, string screen)
+        private Employee _employee;
+        private EmployeeManager _employeeManager;
+        private VisitManager _visitManager;
+        private EmployeecontractManager _employeecontractManager;
+        private ObservableCollection<Employeecontract> employeecontracts = new ObservableCollection<Employeecontract>();
+        private ObservableCollection<VisitAdmin> contracts = new ObservableCollection<VisitAdmin>();
+        public EditWerknemerScreen(EmployeeManager employeeManager, EmployeecontractManager employeecontractManager, VisitManager visitManager, Employee employee, string screen)
         {
             InitializeComponent();
-            _werknemerManager = werknemerManager;
-            _bezoekManager = bezoekManager;
-            _werknemercontractManager = werknemercontractManager;
-            _werknemer = werknemer;
-            WerknemerContractDataGrid.ItemsSource = werknemercontracts;
-            BezoekenDataGrid.ItemsSource = contracts;
-            InitializeWerknemer(werknemer, screen);
+            _employeeManager = employeeManager;
+            _visitManager = visitManager;
+            _employeecontractManager = employeecontractManager;
+            _employee = employee;
+            EmployeeContractDataGrid.ItemsSource = employeecontracts;
+            VisitsDataGrid.ItemsSource = contracts;
+            InitializeEmployee(employee, screen);
         }
-        private void InitializeWerknemer(Werknemer werknemer, string screen)
+        private void InitializeEmployee(Employee employee, string screen)
         {
-            if (screen == "Worker") { WerknemerBtn.IsChecked = true; }
-            if (screen == "Visits") { BezoekenBtn.IsChecked = true; }
-            TextBoxNaam.Text = werknemer.Naam;
-            TextBoxVoorNaam.Text = werknemer.Voornaam;
-            WerknemerIdAanpassen.Text = $"{werknemer.Naam} {werknemer.Voornaam}";
-            WerknemerIdAanpassenBezoeken.Text = $"{werknemer.Naam} {werknemer.Voornaam}";
-            TextBlockIdWerknemer.Text = $"Id: {werknemer.PersoonId}";
-            WerknemerBtn.Content = $"{werknemer.Naam}";
-            werknemercontracts.Clear();
-            List<Werknemercontract> werknemercontracten = new List<Werknemercontract>();
-            werknemercontracten.AddRange(_werknemercontractManager.GeefContractenVanWerknemer(werknemer).ToList());
-            werknemercontracten.ForEach(a => werknemercontracts.Add(a));
+            if (screen == "Employee") { EmployeeBtn.IsChecked = true; }
+            if (screen == "Visits") { VisitsBtn.IsChecked = true; }
+            TextBoxName.Text = employee.LastName;
+            TextBoxFirstName.Text = employee.FirstName;
+            EmployeeId.Text = $"{employee.LastName} {employee.FirstName}";
+            EmployeeIdVisit.Text = $"{employee.LastName} {employee.FirstName}";
+            TextBlockIdEmployee.Text = $"Id: {employee.PersonId}";
+            EmployeeBtn.Content = $"{employee.LastName}";
+            employeecontracts.Clear();
+            List<Employeecontract> employeeContracts = new List<Employeecontract>();
+            employeeContracts.AddRange(_employeecontractManager.GetEmployeeContracts(employee).ToList());
+            employeeContracts.ForEach(a => employeecontracts.Add(a));
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -83,17 +83,17 @@ namespace UIAdmin.view
                 Button button = (Button)sender;
                 if (button.Name == "SaveBtn")
                 {
-                    string? naam = null;
-                    string? voornaam = null;
+                    string? name = null;
+                    string? firstname = null;
                     string message = "";
-                    if ((!string.IsNullOrWhiteSpace(TextBoxNaam.Text)) && (TextBoxNaam.Text != _werknemer.Naam)) { naam = TextBoxNaam.Text; message += $"naam => {naam}\n"; }
-                    if ((!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) && (TextBoxVoorNaam.Text != _werknemer.Voornaam)) { voornaam = TextBoxVoorNaam.Text; message += $"voornaam => {voornaam}\n"; }
+                    if ((!string.IsNullOrWhiteSpace(TextBoxName.Text)) && (TextBoxName.Text != _employee.LastName)) { name = TextBoxName.Text; message += $"naam => {name}\n"; }
+                    if ((!string.IsNullOrWhiteSpace(TextBoxFirstName.Text)) && (TextBoxFirstName.Text != _employee.FirstName)) { firstname = TextBoxFirstName.Text; message += $"voornaam => {firstname}\n"; }
                     if (message == "") MessageBox.Show("Er moet minimum 1 veld aangepast worden!");
                     else
                     {
                         try
                         {
-                            _werknemerManager.UpdateWerknemer(_werknemer.PersoonId, naam, voornaam);
+                            _employeeManager.UpdateEmployee(_employee.PersonId, name, firstname);
                             MessageBox.Show($"succes!");
                             this.Close();
                         }
@@ -105,25 +105,25 @@ namespace UIAdmin.view
                 }
             }
         }
-        private void WerknemerBtn_Checked(object sender, RoutedEventArgs e)
+        private void EmployeeBtn_Checked(object sender, RoutedEventArgs e)
         {
             if (sender.GetType() == typeof(RadioButton))
             {
-                BezoekenBorder.Visibility = Visibility.Collapsed;
-                BedrijfBorder.Visibility = Visibility.Visible;
+                VisitBorder.Visibility = Visibility.Collapsed;
+                EmployeeBorder.Visibility = Visibility.Visible;
             }
         }
-        private void BezoekenBtn_Checked(object sender, RoutedEventArgs e)
+        private void VisitsBtn_Checked(object sender, RoutedEventArgs e)
         {
             if (sender.GetType() == typeof(RadioButton))
             {
-                BezoekenBorder.Visibility = Visibility.Visible;
-                BedrijfBorder.Visibility = Visibility.Collapsed;
+                VisitBorder.Visibility = Visibility.Visible;
+                EmployeeBorder.Visibility = Visibility.Collapsed;
                 contracts.Clear();
-                List<Bezoek> b = _bezoekManager.ZoekBezoeken(null, null, _werknemer, null).ToList();
-                foreach (Bezoek bezoek in b)
+                List<Visit> b = _visitManager.SearchVisits(null, null, _employee, null).ToList();
+                foreach (Visit visit in b)
                 {
-                    contracts.Add(new BezoekAdmin(bezoek));
+                    contracts.Add(new VisitAdmin(visit));
                 }
             }
         }
@@ -131,28 +131,28 @@ namespace UIAdmin.view
         {
             SaveBtn.IsEnabled = true;
             SolidColorBrush colorBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#623ed0");
-            BorderNaam.BorderBrush = colorBrush;
-            TBNaam.Text = "";
-            TBNaam.Foreground = Brushes.Black;
-            BorderVoornaam.BorderBrush = colorBrush;
-            TBVoornaam.Text = "";
-            TBVoornaam.Foreground = Brushes.Black;
-            string? naam = null;
-            string? voornaam = null;
-            if (!string.IsNullOrWhiteSpace(TextBoxNaam.Text)) { naam = TextBoxNaam.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBoxVoorNaam.Text)) { voornaam = TextBoxVoorNaam.Text; }
-            if (naam == null)
+            BorderName.BorderBrush = colorBrush;
+            TBName.Text = "";
+            TBName.Foreground = Brushes.Black;
+            BorderFirstName.BorderBrush = colorBrush;
+            TBFirstName.Text = "";
+            TBFirstName.Foreground = Brushes.Black;
+            string? name = null;
+            string? firstname = null;
+            if (!string.IsNullOrWhiteSpace(TextBoxName.Text)) { name = TextBoxName.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBoxFirstName.Text)) { firstname = TextBoxFirstName.Text; }
+            if (name == null)
             {
-                BorderNaam.BorderBrush = Brushes.Red;
-                TBNaam.Text = "Naam: mag niet leeg zijn!";
-                TBNaam.Foreground = Brushes.Red;
+                BorderName.BorderBrush = Brushes.Red;
+                TBName.Text = "Naam: mag niet leeg zijn!";
+                TBName.Foreground = Brushes.Red;
                 SaveBtn.IsEnabled = false;
             }
-            if (voornaam == null)
+            if (firstname == null)
             {
-                BorderVoornaam.BorderBrush = Brushes.Red;
-                TBVoornaam.Text = "Voornaam: mag niet leeg zijn!";
-                TBVoornaam.Foreground = Brushes.Red;
+                BorderFirstName.BorderBrush = Brushes.Red;
+                TBFirstName.Text = "Voornaam: mag niet leeg zijn!";
+                TBFirstName.Foreground = Brushes.Red;
                 SaveBtn.IsEnabled = false;
             }
         }

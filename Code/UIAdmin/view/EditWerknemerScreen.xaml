@@ -28,20 +28,20 @@
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="Werknemer" Grid.Row="0" Foreground="White" Margin="15" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
-                        <TextBlock Text="" x:Name="TextBlockIdWerknemer" Grid.Row="1" Foreground="White" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
+                        <TextBlock Text="" x:Name="TextBlockIdEmployee" Grid.Row="1" Foreground="White" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
                         <Separator Margin="25 0 25 0" Height="1" Background="White" Grid.Row="2"/>
                         <StackPanel Grid.Row="3">
-                            <RadioButton x:Name="WerknemerBtn" Content="" Style="{StaticResource MenuButtonTheme2}" Checked="WerknemerBtn_Checked"/>
-                            <RadioButton x:Name="BezoekenBtn" Content="Bezoeken" Style="{StaticResource MenuButtonTheme2}" Checked="BezoekenBtn_Checked"/>
+                            <RadioButton x:Name="EmployeeBtn" Content="" Style="{StaticResource MenuButtonTheme2}" Checked="EmployeeBtn_Checked"/>
+                            <RadioButton x:Name="VisitsBtn" Content="Bezoeken" Style="{StaticResource MenuButtonTheme2}" Checked="VisitsBtn_Checked"/>
                         </StackPanel>
-                        <Button x:Name="HomeBtn" Content="Home" Style="{StaticResource MenuButtonTheme3}" Grid.Row="4" Height="40" VerticalAlignment="Top" Click="HomeBtn_Click"/>
+                        <Button x:Name="HomeBtn" Content="Start Pagina" Style="{StaticResource MenuButtonTheme3}" Grid.Row="4" Height="40" VerticalAlignment="Top" Click="HomeBtn_Click"/>
                     </Grid>
                 </Border>
             </Grid>
 
             <!--Main Menu-->
             <Grid Grid.Column="1">
-                <DockPanel x:Name="BedrijfBorder" Visibility="Visible">
+                <DockPanel x:Name="EmployeeBorder" Visibility="Visible">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -51,7 +51,7 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock x:Name="WerknemerIdAanpassen" Text="" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
+                            <TextBlock x:Name="EmployeeId" Text="" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
                             <Separator Margin="10 10 10 0" Height="1" Background="Gray" Grid.Row="2"/>
                             <Grid Grid.Row="3">
                                 <Grid.ColumnDefinitions>
@@ -67,18 +67,18 @@
                                     <RowDefinition Height="50"/>
 
                                 </Grid.RowDefinitions>
-                                <TextBlock x:Name="TBNaam" Grid.Row="0" Grid.Column="0" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
-                                <TextBlock x:Name="TBVoornaam" Grid.Row="0" Grid.Column="1" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBName" Grid.Row="0" Grid.Column="0" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
+                                <TextBlock x:Name="TBFirstName" Grid.Row="0" Grid.Column="1" FontSize="15" FontWeight="SemiBold" Margin="5" HorizontalAlignment="Left" Foreground="Black"/>
                                 <Grid Grid.Column="0" Grid.Row="1">
-                                    <Border x:Name="BorderNaam" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderName" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxNaam" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxName" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Naam*" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxNaam}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxName}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -106,15 +106,15 @@
                                     </Grid>
                                 </Grid>
                                 <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
-                                    <Border x:Name="BorderVoornaam" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
+                                    <Border x:Name="BorderFirstName" CornerRadius="10" Background="LightGray" Height="40" Margin="7" BorderBrush="#623ed0" BorderThickness="2">
                                         <Grid>
                                             <Rectangle StrokeThickness="1"/>
-                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxVoorNaam" FontSize="16" TextChanged="TextBox_TextChanged"/>
+                                            <TextBox Margin="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="5" Foreground="Black" x:Name="TextBoxFirstName" FontSize="16" TextChanged="TextBox_TextChanged"/>
                                             <TextBlock IsHitTestVisible="False" Text="Voornaam*" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" Grid.Column="1" Opacity="0.5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxVoorNaam}" Value="">
+                                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxFirstName}" Value="">
                                                                 <Setter Property="Visibility" Value="Visible"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
@@ -141,23 +141,12 @@
                                         </TextBlock>
                                     </Grid>
                                 </Grid>
-                                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="WerknemerContractDataGrid">
+                                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="EmployeeContractDataGrid">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Contractnummer}"/>
-
-                                        <DataGridTemplateColumn Header="Bedrijfsnaam" IsReadOnly="True" Width="auto">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding Bedrijf.Naam}" VerticalAlignment="Center"/>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-
-                                        <DataGridTextColumn Header="Naam" IsReadOnly="True" Width="auto" Binding="{Binding Werknemer.Naam}"/>
-                                        <DataGridTextColumn Header="Voornaam" IsReadOnly="True" Width="auto" Binding="{Binding Werknemer.Voornaam}"/>
-                                        <DataGridTextColumn Header="Functie" IsReadOnly="True" Width="auto" Binding="{Binding Functie}"/>
+                                        <DataGridTextColumn Header="Bedrijfsnaam" IsReadOnly="True" Width="auto" Binding="{Binding Company.Name}"/>
+                                        <DataGridTextColumn Header="Naam" IsReadOnly="True" Width="auto" Binding="{Binding Employee.LastName}"/>
+                                        <DataGridTextColumn Header="Voornaam" IsReadOnly="True" Width="auto" Binding="{Binding Employee.FirstName}"/>
+                                        <DataGridTextColumn Header="Functie" IsReadOnly="True" Width="auto" Binding="{Binding Function}"/>
                                         <DataGridTextColumn Header="Email" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
@@ -167,7 +156,7 @@
                         </Grid>
                     </Border>
                 </DockPanel>
-                <DockPanel x:Name="BezoekenBorder" Visibility="Collapsed">
+                <DockPanel x:Name="VisitBorder" Visibility="Collapsed">
                     <Border Margin="25">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -177,7 +166,7 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock x:Name="WerknemerIdAanpassenBezoeken" Text="" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
+                            <TextBlock x:Name="EmployeeIdVisit" Text="" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10" HorizontalAlignment="Left" Foreground="Black"/>
                             <Separator Margin="10 10 10 0" Height="1" Background="Gray" Grid.Row="2"/>
                             <Grid Grid.Row="3">
                                 <Grid.ColumnDefinitions>
@@ -192,21 +181,11 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="50"/>
                                 </Grid.RowDefinitions>
-                                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="BezoekenDataGrid">
+                                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="VisitsDataGrid">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Bezoeker.BezoekId}"/>
-
-                                        <DataGridTemplateColumn Header="Naam" IsReadOnly="True" Width="auto">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-
-                                        <DataGridTextColumn Header="Bedrijf" IsReadOnly="True" Width="auto" Binding="{Binding Bezoeker.Bedrijf.Naam}"/>
+                                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Bezoeker.VisitId}"/>
+                                        <DataGridTextColumn Header="Naam" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Name}"/>
+                                        <DataGridTextColumn Header="Bedrijf" IsReadOnly="True" Width="auto" Binding="{Binding Bezoeker.Company.Name}"/>
                                         <DataGridTextColumn Header="Werknemer" IsReadOnly="True" Width="auto" Binding="{Binding Werknemer}"/>
                                         <DataGridTextColumn Header="Begin Datum" IsReadOnly="True" Width="*" Binding="{Binding Begin}"/>
                                         <DataGridTextColumn Header="Eind Datum" IsReadOnly="True" Width="*" Binding="{Binding Einde}"/>

@@ -22,8 +22,8 @@ namespace UIAdmin.view
     public partial class AddWerknemerScreen : Window
     {
         private bool _isMaximized = false;
-        private WerknemerManager _werknemerManager;
-        public AddWerknemerScreen(WerknemerManager werknemerManager)
+        private EmployeeManager _werknemerManager;
+        public AddWerknemerScreen(EmployeeManager werknemerManager)
         {
             InitializeComponent();
             _werknemerManager = werknemerManager;
@@ -84,7 +84,7 @@ namespace UIAdmin.view
                     {
                         try
                         {
-                            _werknemerManager.VoegWerknemerToe(new Werknemer(naam, voornaam));
+                            _werknemerManager.AddEmployee(new Employee(naam, voornaam));
                             MessageBox.Show("Succes!");
                             this.Close();
                         }
