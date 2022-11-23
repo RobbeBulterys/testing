@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4ubdoURIUQcQmi7dQq8RY2p6zNmuxMv/OeTBF6hfIK7RQs7iVCr/kApTXNu3LCQqXGtnTeqLkeuDTcp9vOvetA==",
+  "dgSpecHash": "CbbaYcxB7Iq6Y2qfnjfimso/WX+xRI5iOmBUAd2HjOPBHgJLGz3Xlw+4L05on6CCV+7qIFb3H7zETEPGwkxy3Q==",
   "success": true,
-  "projectFilePath": "E:\\programming\\github repos\\ProjectWerk\\Code\\UIAdmin\\UIAdmin.csproj",
+  "projectFilePath": "E:\\programming\\github repos\\testing\\Code\\UIAdmin\\UIAdmin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.identitymodel.logging\\6.8.0\\microsoft.identitymodel.logging.6.8.0.nupkg.sha512",
@@ -15,6 +15,7 @@
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\mysqlconnector\\2.2.0\\mysqlconnector.2.2.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

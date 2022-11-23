@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "kKLjo9AYfKpvX2Ih49LlLwS3wbdnPkvsZ9huWcNGOljkVLHaUSAk2sh0SiODQtyBmzoE5f/fCEcyR+yGzoGczg==",
+  "dgSpecHash": "N2rlLBz//49dR2F4eLQaTM8/BbrKPeWGQjPCn8wjX7PnARfTCvAcQ+79nHin0h80V8ZbM/lN02al4iFhr0/JMQ==",
   "success": true,
-  "projectFilePath": "E:\\programming\\github repos\\ProjectWerk\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj",
+  "projectFilePath": "E:\\programming\\github repos\\testing\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.extensions.apidescription.client\\3.0.0\\microsoft.extensions.apidescription.client.3.0.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.identitymodel.logging\\6.8.0\\microsoft.identitymodel.logging.6.8.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.identitymodel.protocols.wstrust\\6.8.0\\microsoft.identitymodel.protocols.wstrust.6.8.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
@@ -13,6 +14,9 @@
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\nswag.apidescription.client\\13.0.5\\nswag.apidescription.client.13.0.5.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\nswag.msbuild\\13.0.5\\nswag.msbuild.13.0.5.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",

@@ -197,7 +197,7 @@ namespace UIAdmin.view {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UIAdmin;component/view/editwerknemerscreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UIAdmin;V1.0.0.0;component/view/editwerknemerscreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\view\EditWerknemerScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

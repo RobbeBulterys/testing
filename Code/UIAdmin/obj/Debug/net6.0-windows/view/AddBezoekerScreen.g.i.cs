@@ -181,7 +181,7 @@ namespace UIAdmin.view {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UIAdmin;component/view/addbezoekerscreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UIAdmin;V1.0.0.0;component/view/addbezoekerscreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\view\AddBezoekerScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

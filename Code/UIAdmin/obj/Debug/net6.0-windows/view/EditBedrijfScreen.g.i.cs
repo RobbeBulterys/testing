@@ -389,7 +389,7 @@ namespace UIAdmin.view {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UIAdmin;component/view/editbedrijfscreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UIAdmin;V1.0.0.0;component/view/editbedrijfscreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\view\EditBedrijfScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

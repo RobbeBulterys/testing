@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using TriggerMe.VAT;
 using System.Xml;
-
+using BL_Projectwerk;
 
 namespace Test {
     public class Program {
@@ -58,7 +58,7 @@ namespace Test {
             //wcManager.VoegContractToe(alienAtAllphi);
             */
 
-
+            /*
             string connectieStringMysql = "Server=ID367284_VRS.db.webhosting.be;User ID=ID367284_VRS;Password=RootRoot!69;Database=ID367284_VRS";
             EmployeeManager werknemerManager = new EmployeeManager(new EmployeeRepoADO(connectieStringMysql));
             EmployeecontractManager wcManager = new EmployeecontractManager(new EmployeecontractRepoADO(connectieStringMysql));
@@ -79,9 +79,15 @@ namespace Test {
             Console.WriteLine(employee.LastName);
 
             Console.WriteLine(_visitManager.GetVisits()[1].Visitor.FirstName);
+            */
 
-
-
+            ClassVatCheck classVatCheck = new ClassVatCheck();
+            classVatCheck.TestVatNumber();
+            Console.WriteLine(classVatCheck.Valid);
+            Console.WriteLine(classVatCheck.Name);
+            Console.WriteLine(classVatCheck.Address);
+            Console.WriteLine(classVatCheck.Result);
+            Console.ReadLine();
 
 
 

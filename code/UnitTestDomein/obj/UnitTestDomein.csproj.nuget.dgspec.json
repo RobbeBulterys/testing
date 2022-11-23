@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\programming\\github repos\\ProjectWerk\\Code\\UnitTestDomein\\UnitTestDomein.csproj": {}
+    "E:\\programming\\github repos\\testing\\Code\\UnitTestDomein\\UnitTestDomein.csproj": {}
   },
   "projects": {
-    "E:\\programming\\github repos\\ProjectWerk\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj": {
+    "E:\\programming\\github repos\\testing\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\programming\\github repos\\ProjectWerk\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj",
+        "projectUniqueName": "E:\\programming\\github repos\\testing\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj",
         "projectName": "BL-Projectwerk",
-        "projectPath": "E:\\programming\\github repos\\ProjectWerk\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj",
+        "projectPath": "E:\\programming\\github repos\\testing\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj",
         "packagesPath": "C:\\Users\\robbe\\.nuget\\packages\\",
-        "outputPath": "E:\\programming\\github repos\\ProjectWerk\\Code\\BL-Projectwerk\\obj\\",
+        "outputPath": "E:\\programming\\github repos\\testing\\Code\\BL-Projectwerk\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,22 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Extensions.ApiDescription.Client": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "NSwag.ApiDescription.Client": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[13.0.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "System.ServiceModel.Duplex": {
               "target": "Package",
               "version": "[4.8.*, )"
@@ -89,14 +105,14 @@
         }
       }
     },
-    "E:\\programming\\github repos\\ProjectWerk\\Code\\UnitTestDomein\\UnitTestDomein.csproj": {
+    "E:\\programming\\github repos\\testing\\Code\\UnitTestDomein\\UnitTestDomein.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\programming\\github repos\\ProjectWerk\\Code\\UnitTestDomein\\UnitTestDomein.csproj",
+        "projectUniqueName": "E:\\programming\\github repos\\testing\\Code\\UnitTestDomein\\UnitTestDomein.csproj",
         "projectName": "UnitTestDomein",
-        "projectPath": "E:\\programming\\github repos\\ProjectWerk\\Code\\UnitTestDomein\\UnitTestDomein.csproj",
+        "projectPath": "E:\\programming\\github repos\\testing\\Code\\UnitTestDomein\\UnitTestDomein.csproj",
         "packagesPath": "C:\\Users\\robbe\\.nuget\\packages\\",
-        "outputPath": "E:\\programming\\github repos\\ProjectWerk\\Code\\UnitTestDomein\\obj\\",
+        "outputPath": "E:\\programming\\github repos\\testing\\Code\\UnitTestDomein\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -117,8 +133,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\programming\\github repos\\ProjectWerk\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj": {
-                "projectPath": "E:\\programming\\github repos\\ProjectWerk\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj"
+              "E:\\programming\\github repos\\testing\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj": {
+                "projectPath": "E:\\programming\\github repos\\testing\\Code\\BL-Projectwerk\\BL-Projectwerk.csproj"
               }
             }
           }

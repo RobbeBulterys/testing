@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\programming\github repos\ProjectWerk\Code\UIAdmin\obj\Debug\net6.0-windows\
+E:\programming\github repos\testing\Code\UIAdmin\obj\Debug\net6.0-windows\
 UIAdmin
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-E:\programming\github repos\ProjectWerk\Code\UIAdmin\App.xaml
+E:\programming\github repos\testing\Code\UIAdmin\App.xaml
 151031079092
 15-1301912742
 15-2050963703
-2111656916799
+212-1773937533
 MainWindow.xaml;Theme\ButtonsList.xaml;Theme\DataGridList.xaml;Theme\MenuButtonTheme.xaml;Theme\StandardTextboxTheme.xaml;Theme\TextboxTheme.xaml;view\AddBedrijfScreen.xaml;view\AddBezoekerScreen.xaml;view\AddBezoekScreen.xaml;view\AddEmployeeContractScreen.xaml;view\AddWerknemerScreen.xaml;view\EditBedrijfScreen.xaml;view\EditBezoekerScreen.xaml;view\EditWerknemerScreen.xaml;view\MainScreen.xaml;
 
 True
